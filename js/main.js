@@ -12,7 +12,7 @@
         logCode('------');
         logCode('Input:');
         logCode(day.input);
-        logCode('Answer:');
+        logCode('Answer(s):');
         logCode(day.answer());
     }
     var inputs = [];
