@@ -10,10 +10,11 @@
         var day = days[i];
         logCode('Day ' + (i + 1));
         logCode('------');
-        logCode('Input:');
-        logCode(day.input);
+        //logCode('Input:');
+        //logCode(day.input);
         logCode('Answer(s):');
         logCode(day.answer());
+        logCode('\n');
     }
     var inputs = [];
 }(window));
