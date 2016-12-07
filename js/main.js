@@ -10,21 +10,25 @@
         var day = days[i];
         logCode('Day ' + (i + 1));
         logCode('------');
+        if (day.questions) {
+            logCode('Question(s):');
+            logCode(day.questions);
+        }
         /*
         if (day.input) {
             logCode('Input:');
             logCode(day.input);
         }
         */
-        var example = day.example();
-        if (example) {
-            logCode('Example(s):');
-            logCode(example);
-        }
         var answer = day.answer();
         if (answer) {
             logCode('Answer(s):');
             logCode(answer);
+        }
+        var example = day.example();
+        if (example) {
+            logCode('Example(s):');
+            logCode(example);
         }
         logCode('\n');
     }
