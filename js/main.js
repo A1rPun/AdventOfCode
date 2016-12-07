@@ -10,10 +10,22 @@
         var day = days[i];
         logCode('Day ' + (i + 1));
         logCode('------');
-        //logCode('Input:');
-        //logCode(day.input);
-        logCode('Answer(s):');
-        logCode(day.answer());
+        /*
+        if (day.input) {
+            logCode('Input:');
+            logCode(day.input);
+        }
+        */
+        var example = day.example();
+        if (example) {
+            logCode('Example(s):');
+            logCode(example);
+        }
+        var answer = day.answer();
+        if (answer) {
+            logCode('Answer(s):');
+            logCode(answer);
+        }
         logCode('\n');
     }
     var inputs = [];

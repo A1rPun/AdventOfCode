@@ -1,10 +1,5 @@
 (function () {
-    function getValidSectorId(room) {
-        var input = room.split('-');
-        var part = input.pop();
-        var name = input.join('');
-        var sectorId = +part.split('[')[0];
-        var checksum = part.split('[')[1].slice(0, -1);
+    function isValid(checksum, name) {
         var commons = {};
         // Count all occurences in the name
         for (var i = 0; i < name.length; i++) {
@@ -24,9 +19,9 @@
         // Check if checksum and mostcommons match
         for (var i = 0; i < checksum.length; i++) {
             if (checksum[i] !== mostCommons[i].key && !isTied(mostCommons, mostCommons[i].count, checksum[i]))
-                return 0;
+                return;
         }
-        return sectorId;
+        return true;
     }
     //IWishIHadThisFunctionEarlier
     function isTied(mostCommons, count, check) {
@@ -36,12 +31,27 @@
             .join('');
         return a.indexOf(check) !== -1;
     }
+    
+    function getSectorIds(rooms) {
+        var ids = 0;
+        for (var i = 0, l = rooms.length; i < l; i++) {
+            var room = rooms[i].split('-');
+            var part = room.pop();
+            var name = room.join('');
+            var sectorId = +part.split('[')[0];
+            var checksum = part.split('[')[1].slice(0, -1);
+            if (isValid(checksum, name))
+                ids += sectorId;
+        }
+        return [ids];
+    }
 
     function day_4() {
-        var answer1 = 0;
-        for (var i = 0, l = inputs.length; i < l; i++)
-            answer1 += getValidSectorId(inputs[i]);
-        return [answer1];
+        return getSectorIds(inputs);
+    }
+
+    function day_4_example() {
+        return getSectorIds(examples);
     }
 
     var examples = [
@@ -1033,5 +1043,5 @@
 	    'kyelcrga-cee-yaosgqgrgml-808[izdqr]',
 	    'hplazytkpo-prr-cpnptgtyr-379[prtya]'
     ];
-    December.addDay(new Day(inputs, day_4));
+    December.addDay(new Day(inputs, day_4, day_4_example));
 }());

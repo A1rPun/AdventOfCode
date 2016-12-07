@@ -1,7 +1,9 @@
 ﻿var Day = (function (w) {
-    function Day(input, answerFn) {
+    var emptyFn = function(){};
+    function Day(input, answerFn, exampleFn) {
         this.input = input;
-        this.answer = answerFn;
+        this.answer = answerFn || emptyFn;
+        this.example = exampleFn || emptyFn;
     }
     return Day;
 }());
