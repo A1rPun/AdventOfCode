@@ -1,4 +1,5 @@
 (function () {
+    var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     function isValid(checksum, name) {
         var commons = {};
         // Count all occurences in the name
@@ -32,26 +33,45 @@
         return a.indexOf(check) !== -1;
     }
     
-    function getSectorIds(rooms) {
+    function rotate(sectorId, name) {
+        var rotated = '';
+        for (var i = 0; i < name.length; i++) {
+            var char = name[i];
+            if (char === ' ')
+                continue;
+            var index = alpha.indexOf(char);
+            if (index != -1) {
+                index = (index + sectorId) % 26;
+                rotated += alpha[index];
+            }
+        }
+        return rotated;
+    }
+
+    function getAnswer(rooms, cipher) {
         var ids = 0;
+        var cipherSectorId = 0;
         for (var i = 0, l = rooms.length; i < l; i++) {
             var room = rooms[i].split('-');
             var part = room.pop();
-            var name = room.join('');
             var sectorId = +part.split('[')[0];
             var checksum = part.split('[')[1].slice(0, -1);
-            if (isValid(checksum, name))
+
+            if (isValid(checksum, room.join('')))
                 ids += sectorId;
+
+            if (rotate(sectorId, room.join(' ').toUpperCase()) === cipher)
+                cipherSectorId = sectorId;
         }
-        return [ids];
+        return [ids, cipherSectorId];
     }
 
     function day_4() {
-        return getSectorIds(inputs);
+        return getAnswer(inputs, 'NORTHPOLEOBJECTSTORAGE');
     }
 
     function day_4_example() {
-        return getSectorIds(examples);
+        return getAnswer(examples, 'BCHOFSOZFCCA');
     }
 
     var examples = [
