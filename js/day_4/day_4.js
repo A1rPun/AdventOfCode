@@ -12,10 +12,7 @@
         // Create a most common checksum
         var mostCommons = [];
         for (var key in commons)
-            mostCommons.push({
-                key: key,
-                count: commons[key]
-            });
+            mostCommons.push({ key: key, count: commons[key] });
         mostCommons = mostCommons.sort(function (a, b) { return b.count - a.count; });
         // Check if checksum and mostcommons match
         for (var i = 0; i < checksum.length; i++) {
