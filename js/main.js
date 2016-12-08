@@ -1,12 +1,13 @@
 ﻿(function (w, d) {
     var code = d.querySelector('.code');
     function logCode(c, click) {
-        var str = (typeof c === 'string' ? c : JSON.stringify(c, null, 4));// + '\n'
         var span = d.createElement('span');
-        span.className = 'line';
-        span.innerText = str;
-        if (click)
+        span.classList.add('line');
+        span.innerText = typeof c === 'string' ? c : JSON.stringify(c, null, 4);
+        if (click) {
+            span.classList.add('click');
             span.addEventListener('click', click);
+        }
         code.appendChild(span);
     }
     
