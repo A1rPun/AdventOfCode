@@ -3,6 +3,19 @@
     function logCode(c) {
         code.innerHTML += (typeof c === 'string' ? c : JSON.stringify(c, null, 4)) + '\n';
     }
+    var timer = {
+        begin: 0,
+        end: 0,
+        start: function () {
+            this.begin = performance.now();
+        },
+        stop: function () {
+            this.end = performance.now() - this.begin;
+        },
+        log: function () {
+            logCode('Execution took ' + this.end + ' milliseconds.');
+        }
+    };
     logCode('AdventOfCode - 2016 - A1rPun');
     logCode('----------------------------');
     var days = December.getDays();
@@ -20,15 +33,21 @@
             logCode(day.input);
         }
         */
+        timer.start();
         var answer = day.answer();
+        timer.stop();
         if (answer) {
             logCode('Answer(s):');
             logCode(answer);
+            timer.log();
         }
+        timer.start();
         var example = day.example();
+        timer.stop();
         if (example) {
             logCode('Example(s):');
             logCode(example);
+            timer.log();
         }
         logCode('\n');
     }
