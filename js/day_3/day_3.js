@@ -2037,6 +2037,8 @@
         ];
     }
     December.addDay(new Day({
+        day: 3,
+        title: 'Squares With Three Sides',
         questions: 'How many of the listed triangles are possible?',
         input: getInput,
         answer: day_3

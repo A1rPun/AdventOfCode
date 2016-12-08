@@ -79,6 +79,8 @@
     }
 
     December.addDay(new Day({
+        day: 1,
+        title: 'No Time for a Taxicab',
         questions: ['How many blocks away is Easter Bunny HQ?', 'How many blocks away is the first location you visit twice?'],
         input: getInput,
         answer: day_1

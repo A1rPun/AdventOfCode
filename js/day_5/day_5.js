@@ -2,12 +2,12 @@
     function day_5() {
 
     }
-    function getInput(){
-        return [];
-    }
+
     December.addDay(new Day({
-        questions: 'In Progress',
-        input: getInput,
+        day: 5,
+        //title: 'How About a Nice Game of Chess?',
+        //questions: 'Given the actual Door ID, what is the password?',
+        input: function () { return 'ffykfhsq'; },
         answer: day_5,
         //example: day_5_example
     }));

@@ -695,6 +695,8 @@
         ];
     }
     December.addDay(new Day({
+        day: 6,
+        title: 'Signals and Noise',
         questions: 'What is the error-corrected version of the message being sent?',
         input: getInput,
         answer: day_6,
