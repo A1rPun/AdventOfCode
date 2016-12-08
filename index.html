@@ -7,15 +7,26 @@
         html, body {
             margin: 0;
             padding: 8px;
-            background-color: black;
             font-size: 16px;
             word-wrap: break-word;
+            background-color: black;
             color: lime;
+        }
+        .code {
+            width: 50%;
+            margin: 0;
+        }
+        .line {
+            display: block;
+        }
+        .click:hover {
+            background-color: lightgray;
+            color: black;
         }
     </style>
 </head>
 <body>
-    <pre id="code" style="width: 100%; margin: 0;"></pre>
+    <pre class="code"></pre>
     <script src="js/day.js"></script>
     <script src="js/december.js"></script>
     <script src="js/day_1/day_1.js"></script>
@@ -25,6 +36,7 @@
     <script src="js/day_5/day_5.js"></script>
     <script src="js/day_6/day_6.js"></script>
     <script src="js/day_7/day_7.js"></script>
+    <script src="js/perfTimer.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
