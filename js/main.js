@@ -1,16 +1,6 @@
 ﻿(function (w, d) {
+    var NEW_LINE = '\n';
     var code = d.querySelector('.code');
-    function logCode(c, click) {
-        var span = d.createElement('span');
-        span.classList.add('line');
-        span.innerText = typeof c === 'string' ? c : JSON.stringify(c, null, 4);
-        if (click) {
-            span.classList.add('click');
-            span.addEventListener('click', click);
-        }
-        code.appendChild(span);
-    }
-
     logCode('AdventOfCode - 2016 - A1rPun');
     logCode('----------------------------');
     var days = December.getDays();
@@ -18,11 +8,15 @@
         if (days[i].title)
             logCode('Day ' + days[i].day, (function (day) {
                 return function () {
-                    if (day.title)
+                    code.innerHTML = '';
+                    if (day.title) {
                         logCode('--- Day ' + day.day + ': ' + day.title + ' ---');
+                        logCode(NEW_LINE);
+                    }
                     if (day.questions) {
                         logCode('Question(s):');
                         logCode(day.questions);
+                        logCode(NEW_LINE);
                     }
                     /*
                     if (day.input) {
@@ -37,6 +31,7 @@
                         logCode('Answer(s):');
                         logCode(answer);
                         logCode(timer.log());
+                        logCode(NEW_LINE);
                     }
                     timer.start();
                     var example = day.example();
@@ -45,9 +40,24 @@
                         logCode('Example(s):');
                         logCode(example);
                         logCode(timer.log());
+                        logCode(NEW_LINE);
                     }
                 };
             }(days[i])));
     }
-    var inputs = [];
+    logCode(NEW_LINE);
+    var results = d.createElement('span');
+    code.appendChild(results);
+    code = results;
+
+    function logCode(c, click) {
+        var span = d.createElement('span');
+        span.classList.add('line');
+        span.innerText = typeof c === 'string' ? c : JSON.stringify(c, null, 4);
+        if (click) {
+            span.classList.add('click');
+            span.addEventListener('click', click);
+        }
+        code.appendChild(span);
+    }
 }(window, document));
