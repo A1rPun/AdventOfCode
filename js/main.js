@@ -18,12 +18,6 @@
                         logCode(day.questions);
                         logCode(NEW_LINE);
                     }
-                    /*
-                    if (day.input) {
-                        logCode('Input:');
-                        logCode(day.input);
-                    }
-                    */
                     timer.start();
                     var answer = day.answer();
                     timer.stop();
@@ -41,6 +35,12 @@
                         logCode(example);
                         logCode(timer.log());
                         logCode(NEW_LINE);
+                    }
+                    var input = day.input();
+                    if (input) {
+                        logCode('Input(s):');
+                        logCode(input);
+                        //logCode(Array.isArray(input) ? input.slice(0, 10) : input);
                     }
                 };
             }(days[i])));
