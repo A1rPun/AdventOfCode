@@ -18,7 +18,7 @@
         return mostCommons[0].key;
     }
 
-    function getCorrected(errorCodes) {
+    function day_6(errorCodes) {
         var frequent = '';
         var lessLikely = '';
         var chunks = [];
@@ -38,33 +38,6 @@
         }
         return new Promise.resolve([frequent, lessLikely]);
     }
-
-    function day_6() {
-        return getCorrected(getInput());
-    }
-
-    function day_6_example() {
-        return getCorrected(examples);
-    }
-
-    var examples = [
-        'eedadn',
-        'drvtee',
-        'eandsr',
-        'raavrd',
-        'atevrs',
-        'tsrnev',
-        'sdttsa',
-        'rasrtv',
-        'nssdts',
-        'ntnada',
-        'svetve',
-        'tesnvt',
-        'vntsnd',
-        'vrdear',
-        'dvrsen',
-        'enarar'
-    ];
 
     function getInput() {
         return [
@@ -698,8 +671,27 @@
         day: 6,
         title: 'Signals and Noise',
         questions: 'What is the error-corrected version of the message being sent?',
-        input: getInput,
         answer: day_6,
-        example: day_6_example
+        input: getInput,
+        example: function () {
+            return [
+                'eedadn',
+                'drvtee',
+                'eandsr',
+                'raavrd',
+                'atevrs',
+                'tsrnev',
+                'sdttsa',
+                'rasrtv',
+                'nssdts',
+                'ntnada',
+                'svetve',
+                'tesnvt',
+                'vntsnd',
+                'vrdear',
+                'dvrsen',
+                'enarar'
+            ];
+        }
     });
 }());

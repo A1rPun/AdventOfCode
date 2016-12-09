@@ -29,7 +29,7 @@
             .join('');
         return a.indexOf(check) !== -1;
     }
-    
+
     function rotate(sectorId, name) {
         var rotated = '';
         for (var i = 0; i < name.length; i++) {
@@ -45,7 +45,8 @@
         return rotated;
     }
 
-    function getAnswer(rooms, cipher) {
+    function day_4(puzzle) {
+        var rooms = puzzle[0], cipher = puzzle[1];
         var ids = 0;
         var cipherSectorId = 0;
         for (var i = 0, l = rooms.length; i < l; i++) {
@@ -63,23 +64,8 @@
         return new Promise.resolve([ids, cipherSectorId]);
     }
 
-    function day_4() {
-        return getAnswer(getInput(), 'NORTHPOLEOBJECTSTORAGE');
-    }
-
-    function day_4_example() {
-        return getAnswer(examples, 'BCHOFSOZFCCA');
-    }
-
-    var examples = [
-        'aaaaa-bbb-z-y-x-123[abxyz]',
-        'a-b-c-d-e-f-g-h-987[abcde]',
-        'not-a-real-room-404[oarel]',
-        'totally-real-room-200[decoy]'
-    ];
-
     function getInput() {
-        return [
+        return [[
 	        'bkwzkqsxq-tovvilokx-nozvyiwoxd-172[fstek]',
 	        'wifilzof-wbiwifuny-yhachyylcha-526[qrazx]',
 	        'jvyyvzpcl-jhukf-shivyhavyf-487[zhtsi]',
@@ -1060,14 +1046,21 @@
 	        'zhdsrqlchg-gbh-frqwdlqphqw-361[nqzts]',
 	        'kyelcrga-cee-yaosgqgrgml-808[izdqr]',
 	        'hplazytkpo-prr-cpnptgtyr-379[prtya]'
-        ];
+        ], 'NORTHPOLEOBJECTSTORAGE'];
     }
     December.addDay({
         day: 4,
         title: 'Security Through Obscurity',
         questions: ['What is the sum of the sector IDs of the real rooms?', 'What is the sector ID of the room where North Pole objects are stored?'],
-        input: getInput,
         answer: day_4,
-        example: day_4_example
+        input: getInput,
+        example: function () {
+            return [[
+            'aaaaa-bbb-z-y-x-123[abxyz]',
+            'a-b-c-d-e-f-g-h-987[abcde]',
+            'not-a-real-room-404[oarel]',
+            'totally-real-room-200[decoy]'
+            ], 'BCHOFSOZFCCA'];
+        }
     });
 }());

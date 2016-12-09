@@ -52,7 +52,7 @@
                 return true;
     }
 
-    function getAnswers(ips) {
+    function day_7(ips) {
         var answer1 = 0;
         var answer2 = 0;
         for (var i = ips.length; i--;) {
@@ -61,25 +61,6 @@
         }
         return new Promise.resolve([answer1, answer2]);
     }
-
-    function day_7() {
-        return getAnswers(getInput());
-    }
-
-    function day_7_example() {
-        return getAnswers(examples);
-    }
-
-    var examples = [
-        'abba[mnop]qrst',
-        'abcd[bddb]xyyx',
-        'aaaa[qwer]tyui',
-        'ioxxoj[asdfgh]zxcvbn',
-        'aba[bab]xyz',
-        'xyx[xyx]xyx',
-        'aaa[kek]eke',
-        'zazbz[bzb]cdb'
-    ];
 
     function getInput() {
         return [
@@ -2089,8 +2070,19 @@
         day: 7,
         title: 'Internet Protocol Version 7',
         questions: ['How many IPs in your puzzle input support TLS?', 'How many IPs in your puzzle input support SSL?'],
-        input: getInput,
         answer: day_7,
-        example: day_7_example
+        input: getInput,
+        example: function () {
+            return [
+                'abba[mnop]qrst',
+                'abcd[bddb]xyyx',
+                'aaaa[qwer]tyui',
+                'ioxxoj[asdfgh]zxcvbn',
+                'aba[bab]xyz',
+                'xyx[xyx]xyx',
+                'aaa[kek]eke',
+                'zazbz[bzb]cdb'
+            ];
+        }
     });
 }());

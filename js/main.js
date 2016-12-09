@@ -19,7 +19,7 @@
                     logCode(NEW_LINE);
                 }
                 var answerT = new perfTimer();
-                day.answer().then(function (answer) {
+                day.getAnswer().then(function (answer) {
                     answerT.stop();
                     logCode('Answer(s):');
                     logCode(answer);
@@ -27,7 +27,7 @@
                     logCode(NEW_LINE);
                 });
                 var exampleT = new perfTimer();
-                day.example().then(function (example) {
+                day.getExample().then(function (example) {
                     exampleT.stop();
                     logCode('Example(s):');
                     logCode(example);

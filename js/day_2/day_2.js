@@ -31,14 +31,13 @@
     function getKeyFromIndex(pad, index) {
         return pad[index.y][index.x];
     }
-    function day_2() {
+    function day_2(puzzle) {
         var startIndex1 = { x: 1, y: 1 };
         var startIndex2 = { x: 0, y: 2 };
         var answer1 = '';
         var answer2 = '';
-        var inputs = getInput();
-        for (var i = 0; i < inputs.length; i++) {
-            var input = inputs[i].split('');
+        for (var i = 0; i < puzzle.length; i++) {
+            var input = puzzle[i].split('');
             for (var j = 0; j < input.length; j++) {
                 var direction = directions[input[j]];
                 startIndex1 = moveIndex(startIndex1, direction, keypad);
@@ -64,7 +63,15 @@
         day: 2,
         title: 'Bathroom Security',
         questions: 'What is the bathroom code?',
+        answer: day_2,
         input: getInput,
-        answer: day_2
+        example: function () {
+            return [
+                'ULL',
+                'RRDDD',
+                'LURDL',
+                'UUUUD'
+            ];
+        }
     });
 }());

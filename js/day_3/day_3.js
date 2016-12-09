@@ -6,12 +6,11 @@
             return true;
     }
 
-    function day_3() {
+    function day_3(puzzle) {
         var answer1 = 0;
-        var inputs = getInput();
-        var inputLength = inputs.length;
+        var inputLength = puzzle.length;
         for (var i = 0; i < inputLength; i++) {
-            var triangle = inputs[i];
+            var triangle = puzzle[i];
             if (isValid(triangle))
                 answer1++;
         }
@@ -29,11 +28,11 @@
 
         for (var i = 0; i < inputLength; i++) {
             var triangle = [];
-            triangle[0] = inputs[row][column];
+            triangle[0] = puzzle[row][column];
             setNext();
-            triangle[1] = inputs[row][column];
+            triangle[1] = puzzle[row][column];
             setNext();
-            triangle[2] = inputs[row][column];
+            triangle[2] = puzzle[row][column];
             setNext();
             if (isValid(triangle))
                 answer2++;
@@ -2040,7 +2039,8 @@
         day: 3,
         title: 'Squares With Three Sides',
         questions: 'How many of the listed triangles are possible?',
+        answer: day_3,
         input: getInput,
-        answer: day_3
+        example: function () { return [[7, 10, 25], [7, 10, 7], [13,33,37]]; }
     });
 }());
