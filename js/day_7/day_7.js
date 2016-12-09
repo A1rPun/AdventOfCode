@@ -59,7 +59,7 @@
             isTLS(ips[i]) && answer1++;
             isSSL(ips[i]) && answer2++;
         }
-        return new Promise.resolve([answer1, answer2]);
+        return Promise.resolve([answer1, answer2]);
     }
 
     function getInput() {

@@ -61,7 +61,7 @@
             if (rotate(sectorId, room.join(' ').toUpperCase()) === cipher)
                 cipherSectorId = sectorId;
         }
-        return new Promise.resolve([ids, cipherSectorId]);
+        return Promise.resolve([ids, cipherSectorId]);
     }
 
     function getInput() {

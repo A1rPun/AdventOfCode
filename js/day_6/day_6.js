@@ -36,7 +36,7 @@
             frequent += getHighestCount(chunks[i], true);
             lessLikely += getHighestCount(chunks[i]);
         }
-        return new Promise.resolve([frequent, lessLikely]);
+        return Promise.resolve([frequent, lessLikely]);
     }
 
     function getInput() {

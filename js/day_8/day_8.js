@@ -1,6 +1,6 @@
 (function () {
     function day_8(puzzle) {
-        return new Promise.resolve();
+        return Promise.resolve();
     }
     function getInput() {
         return [];

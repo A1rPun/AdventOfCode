@@ -70,7 +70,7 @@
             } else
                 dict[key] = true;//{ x: endPoint.x, y: endPoint.y };
         }
-        return new Promise.resolve([answer1, answer2]);
+        return Promise.resolve([answer1, answer2]);
     };
 
 

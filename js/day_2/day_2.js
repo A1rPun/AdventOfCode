@@ -46,7 +46,7 @@
             answer1 += getKeyFromIndex(keypad, startIndex1);
             answer2 += getKeyFromIndex(keypadBathroom, startIndex2)
         }
-        return new Promise.resolve([answer1, answer2]);
+        return Promise.resolve([answer1, answer2]);
     }
 
     function getInput() {
