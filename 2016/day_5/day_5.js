@@ -2,7 +2,7 @@
     function day_5(doorId) {
         return new Promise(function (resolve, reject) {
             if (Worker !== arguments[1337]) { // lamest undefined check ever
-                var md5Worker = new Worker('js/day_5/day_5_worker.js');
+                var md5Worker = new Worker('2016/day_5/day_5_worker.js');
                 md5Worker.onmessage = function (e) {
                     resolve(e.data);
                 };
