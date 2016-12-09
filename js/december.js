@@ -1,6 +1,6 @@
 ﻿var December = (function (w) {
     var days = [];
-    function noop() { }
+    function noop() { return new Promise.reject(); }
     return {
         addDay: function (d) {
             d.input = d.input || noop;

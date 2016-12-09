@@ -19,7 +19,7 @@
                     logCode(NEW_LINE);
                 }
                 timer.start();
-                day.answer().then(function () {
+                day.answer().then(function (answer) {
                     timer.stop();
                     logCode('Answer(s):');
                     logCode(answer);
@@ -27,20 +27,20 @@
                     logCode(NEW_LINE);
                 });
                 timer.start();
-                day.example().then(function () {
+                day.example().then(function (example) {
                     timer.stop();
                     logCode('Example(s):');
                     logCode(example);
                     logCode(timer.log());
                     logCode(NEW_LINE);
                 });
-
+                /*
                 var input = day.input();
                 if (input) {
                     logCode('Input(s):');
                     //logCode(input);
                     logCode(Array.isArray(input) ? input.slice(0, 10) : input);
-                }
+                }*/
             };
         }(days[i])));
     }
