@@ -36,7 +36,7 @@
             frequent += getHighestCount(chunks[i], true);
             lessLikely += getHighestCount(chunks[i]);
         }
-        return [frequent, lessLikely];
+        return new Promise.resolve([frequent, lessLikely]);
     }
 
     function day_6() {
@@ -694,12 +694,12 @@
             'yddmqxle'
         ];
     }
-    December.addDay(new Day({
+    December.addDay({
         day: 6,
         title: 'Signals and Noise',
         questions: 'What is the error-corrected version of the message being sent?',
         input: getInput,
         answer: day_6,
         example: day_6_example
-    }));
+    });
 }());

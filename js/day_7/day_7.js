@@ -59,7 +59,7 @@
             isTLS(ips[i]) && answer1++;
             isSSL(ips[i]) && answer2++;
         }
-        return [answer1, answer2];
+        return new Promise.resolve([answer1, answer2]);
     }
 
     function day_7() {
@@ -2085,12 +2085,12 @@
             'xuabbxdwkutpsogcfea[tgetfqpgstsxrokcemk]cbftstsldgcqbxf[vwjejomptmifhdulc]ejeroshnazbwjjzofbe'
         ];
     }
-    December.addDay(new Day({
+    December.addDay({
         day: 7,
         title: 'Internet Protocol Version 7',
         questions: ['How many IPs in your puzzle input support TLS?', 'How many IPs in your puzzle input support SSL?'],
         input: getInput,
         answer: day_7,
         example: day_7_example
-    }));
+    });
 }());

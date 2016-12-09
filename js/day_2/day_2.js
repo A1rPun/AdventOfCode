@@ -47,7 +47,7 @@
             answer1 += getKeyFromIndex(keypad, startIndex1);
             answer2 += getKeyFromIndex(keypadBathroom, startIndex2)
         }
-        return [answer1, answer2];
+        return new Promise.resolve([answer1, answer2]);
     }
 
     function getInput() {
@@ -60,11 +60,11 @@
         ];
     }
 
-    December.addDay(new Day({
+    December.addDay({
         day: 2,
         title: 'Bathroom Security',
         questions: 'What is the bathroom code?',
         input: getInput,
         answer: day_2
-    }));
+    });
 }());

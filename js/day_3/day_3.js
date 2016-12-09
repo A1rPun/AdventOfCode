@@ -38,7 +38,7 @@
             if (isValid(triangle))
                 answer2++;
         }
-        return [answer1, answer2];
+        return new Promise.resolve([answer1, answer2]);
     }
     function getInput() {
         return [
@@ -2036,11 +2036,11 @@
             [103, 324, 576]
         ];
     }
-    December.addDay(new Day({
+    December.addDay({
         day: 3,
         title: 'Squares With Three Sides',
         questions: 'How many of the listed triangles are possible?',
         input: getInput,
         answer: day_3
-    }));
+    });
 }());

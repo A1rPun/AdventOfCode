@@ -60,7 +60,7 @@
             if (rotate(sectorId, room.join(' ').toUpperCase()) === cipher)
                 cipherSectorId = sectorId;
         }
-        return [ids, cipherSectorId];
+        return new Promise.resolve([ids, cipherSectorId]);
     }
 
     function day_4() {
@@ -1062,12 +1062,12 @@
 	        'hplazytkpo-prr-cpnptgtyr-379[prtya]'
         ];
     }
-    December.addDay(new Day({
+    December.addDay({
         day: 4,
         title: 'Security Through Obscurity',
         questions: ['What is the sum of the sector IDs of the real rooms?', 'What is the sector ID of the room where North Pole objects are stored?'],
         input: getInput,
         answer: day_4,
         example: day_4_example
-    }));
+    });
 }());
