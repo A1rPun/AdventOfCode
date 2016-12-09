@@ -18,20 +18,20 @@
                     logCode(day.questions);
                     logCode(NEW_LINE);
                 }
-                timer.start();
+                var answerT = new perfTimer();
                 day.answer().then(function (answer) {
-                    timer.stop();
+                    answerT.stop();
                     logCode('Answer(s):');
                     logCode(answer);
-                    logCode(timer.log());
+                    logCode(answerT.log());
                     logCode(NEW_LINE);
                 });
-                timer.start();
+                var exampleT = new perfTimer();
                 day.example().then(function (example) {
-                    timer.stop();
+                    exampleT.stop();
                     logCode('Example(s):');
                     logCode(example);
-                    logCode(timer.log());
+                    logCode(exampleT.log());
                     logCode(NEW_LINE);
                 });
                 /*
