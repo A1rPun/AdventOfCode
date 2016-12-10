@@ -1,9 +1,89 @@
 (function () {
-    function day_8(puzzle) {
-        return Promise.resolve(puzzle);
+
+    var actions = {
+        rect: {
+            txt: 'e',
+            index: 1,
+            slice: 5,
+            process: function (strip, input) {
+                var point = input.slice(this.slice).split('x');
+                var x = point[0];
+                var y = point[1];
+                // TODO: bounds check?
+                for (var i = 0; i < y; i++) {
+                    for (var j = 0; j < x; j++) {
+                        strip[i][j] = '#';
+                    }
+                }
+            }
+        },
+        rotateRow: {
+            txt: 'r',
+            index: 7,
+            slice: 13,
+            process: function (strip, input) {
+                var point = input.slice(this.slice).split(' by ');
+                strip[point[0]] = arrayRotate(strip[point[0]], -point[1]);
+            }
+        },
+        rotateColumn: {
+            txt: 'c',
+            index: 7,
+            slice: 16,
+            process: function (strip, input) {
+                var point = input.slice(this.slice).split(' by ');
+                var x = point[0];
+                var y = point[1];
+                var arr = [];
+                for (var i = 0; i < strip.length; i++)
+                    arr.push(strip[i][x]);
+                arr = arrayRotate(arr, -y);
+                for (var i = 0; i < strip.length; i++)
+                    strip[i][x] = arr[i];
+            }
+        }
+    };
+
+    function arrayRotate(arr, n) {
+        return arr.slice(n, arr.length).concat(arr.slice(0, n));
     }
+
+    function getStrip(width, height) {
+        var strip = [];
+        for (var i = height; i--;) {
+            strip[i] = [];
+            for (var j = width; j--;) {
+                strip[i][j] = '.';
+            }
+        }
+        return strip;
+    }
+
+    function day_8(puzzle) {
+        var answer1 = getStrip(puzzle[1], puzzle[2]);
+        var inputs = puzzle[0];
+        for (var i = 0; i < inputs.length; i++) {
+            var input = inputs[i];
+            for (var action in actions) {
+                var a = actions[action];
+                if (input[a.index] === a.txt) {
+                    a.process(answer1, input);
+                }
+            }
+        }
+        return Promise.resolve(prettifyStrip(answer1));
+    }
+
+    function prettifyStrip(strip) {
+        var result = '';
+        for (var i = 0; i < strip.length; i++) {
+            result += strip[i].join('') + '\n';
+        }
+        return result;
+    }
+
     function getInput() {
-        return [
+        return [[
             'rect 1x1',
             'rotate row y=0 by 10',
             'rect 1x1',
@@ -178,21 +258,21 @@
             'rotate column x=6 by 5',
             'rotate column x=3 by 1',
             'rotate column x=2 by 3'
-        ];
+        ], 50, 6];
     }
     December.addDay({
         day: 8,
         title: 'Two-Factor Authentication',
         questions: 'There seems to be an intermediate check of the voltage used by the display: after you swipe your card, if the screen did work, how many pixels should be lit?',
         answer: day_8,
-        //input: getInput,
+        input: getInput,
         example: function () {
-            return [
+            return [[
                 'rect 3x2',
                 'rotate column x=1 by 1',
                 'rotate row y=0 by 4',
                 'rotate column x=1 by 1'
-            ];
+            ], 7, 3];
         }
     });
 }());
