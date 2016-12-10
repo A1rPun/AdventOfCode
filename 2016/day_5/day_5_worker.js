@@ -2,22 +2,26 @@
 onmessage = function (e) {
     processInput(e.data);
 
-    function hasZeroes(hex) {
-        var check = hex.slice(0, 5);
-        return check === '00000' ? hex[5] : false;
-    }
-
     function processInput(doorId) {
-        var EIGHT_CHARACTER_PASSWORD = 8;
-        var index = 0;
-        var result = '';
-        var r;
-        while (result.length < EIGHT_CHARACTER_PASSWORD) {
-            if (r = hasZeroes(MD5(doorId + index)))
-                result += r;
-            index++;
+        let PASSWORD_LENGTH = 8;
+        let numHashes = 0;
+        let numChars = 0;
+        let answer1 = '';
+        let answer2 = [];
+        while (numChars < PASSWORD_LENGTH) {
+            let hash = md5(doorId + numHashes);
+            if (hash.slice(0, 5) === '00000') {
+                let pos = hash[5];
+                if (pos && answer1.length < PASSWORD_LENGTH)
+                    answer1 += pos;
+                if (+pos < PASSWORD_LENGTH && !answer2[pos]) {
+                    answer2[pos] = hash[6];
+                    numChars++;
+                }
+            }
+            numHashes++;
         }
-        postMessage(result);
+        postMessage([answer1, answer2.join('')]);
         close();
     }
 }
