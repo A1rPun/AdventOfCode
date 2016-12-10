@@ -1,8 +1,9 @@
 ﻿(function (w, d) {
     var NEW_LINE = '\n';
     var code = d.querySelector('.code');
-    logCode('AdventOfCode - 2016 - A1rPun');
+    logCode('AdventOfCode - A1rPun');
     logCode('----------------------------');
+    logCode('December 2016');
     var days = December.getDays();
     for (var i = 0; i < days.length; i++) {
         if (!days[i].title) continue;
