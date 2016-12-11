@@ -60,18 +60,20 @@
     }
 
     function day_8(puzzle) {
-        var answer1 = getStrip(puzzle[1], puzzle[2]);
+        var strip = getStrip(puzzle[1], puzzle[2]);
         var inputs = puzzle[0];
         for (var i = 0; i < inputs.length; i++) {
             var input = inputs[i];
             for (var action in actions) {
                 var a = actions[action];
                 if (input[a.index] === a.txt) {
-                    a.process(answer1, input);
+                    a.process(strip, input);
                 }
             }
         }
-        return Promise.resolve(prettifyStrip(answer1));
+        var pretty = prettifyStrip(strip);
+        //var length = (pretty.match(/#/g)||[]).length;
+        return Promise.resolve(pretty);
     }
 
     function prettifyStrip(strip) {
