@@ -59,21 +59,39 @@
         return strip;
     }
 
-    function day_8(puzzle) {
-        var strip = getStrip(puzzle[1], puzzle[2]);
-        var inputs = puzzle[0];
-        for (var i = 0; i < inputs.length; i++) {
-            var input = inputs[i];
-            for (var action in actions) {
-                var a = actions[action];
-                if (input[a.index] === a.txt) {
-                    a.process(strip, input);
-                }
+    function processInput(input, strip) {
+        for (var action in actions) {
+            var a = actions[action];
+            if (input[a.index] === a.txt) {
+                a.process(strip, input);
             }
         }
-        var pretty = prettifyStrip(strip);
-        //var length = (pretty.match(/#/g)||[]).length;
-        return Promise.resolve(pretty);
+    }
+
+    function day_8(puzzle, animate) {
+        var strip = getStrip(puzzle[1], puzzle[2]);
+        var inputs = puzzle[0];
+        return new Promise(function (resolve) {
+            if (animate) {
+                var interval = 50;
+                var i = 0;
+                var fn = function () {
+                    processInput(inputs[i], strip);
+                    December.log(prettifyStrip(strip), true);
+                    i++;
+                    if (i < inputs.length)
+                        setTimeout(fn, interval);
+                    else
+                        resolve(prettifyStrip(strip));
+                };
+                setTimeout(fn, interval);
+            } else {
+                for (var i = 0; i < inputs.length; i++)
+                    processInput(inputs[i], strip);
+                resolve(prettifyStrip(strip));
+            }
+            //var length = (prettifyStrip(strip).match(/#/g)||[]).length;
+        });
     }
 
     function prettifyStrip(strip) {

@@ -1,7 +1,17 @@
 ﻿(function (w, d) {
     var NEW_LINE = '\n';
     var code = d.querySelector('.code');
+    December.log = function (o, clear) {
+        if (clear)
+            code.innerHTML = '';
+        logCode(o);
+    };
     logCode('AdventOfCode - A1rPun');
+    logCode('----------------------------');
+    logCode('Animation = true', function () {
+        December.animate = !December.animate
+        this.innerHTML = 'Animation = ' + (December.animate ? 'true' : 'false');
+    });
     logCode('----------------------------');
     logCode('December 2016');
     var days = December.getDays();

@@ -9,14 +9,15 @@
 }
  */
 var December = (function () {
-    var days = [];
     function noop() { return new Promise.reject(); }
     function curryAnswer(answer, input) {
         return function () {
-            return answer(input());
+            return answer(input(), december.animate);
         };
     }
-    return {
+    var days = [];
+    var december = {
+        animate: true,
         addDay: function (d) {
             d.getAnswer = d.input ? curryAnswer(d.answer, d.input) : noop;
             d.getExample = d.example ? curryAnswer(d.answer, d.example) : noop;
@@ -24,6 +25,11 @@ var December = (function () {
         },
         getDays: function (d) {
             return days;
+        },
+        log: function (object, clear) {
+            clear && console.clear();
+            console.log(object);
         }
     };
+    return december;
 }());
