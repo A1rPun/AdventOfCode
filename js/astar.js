@@ -4,17 +4,17 @@
     var pow = Math.pow;
     var sqrt = Math.sqrt;
 
-    function p47hF1nd3r() {
-        this.acceptableTiles = [0];
-        this.grid = [[]];
+    function p47hF1nd3r(grid, tiles) {
+        this.setGrid(grid);
+        this.setAcceptableTiles(tiles);
     }
 
     p47hF1nd3r.prototype = {
         setAcceptableTiles: function (acceptableTiles) {
-            this.acceptableTiles = acceptableTiles;
+            this.acceptableTiles = acceptableTiles || [0];
         },
         setGrid: function (level) {
-            this.grid = level;
+            this.grid = level ||  [[]];
             this.worldHeight = level.length;
             this.worldWidth = level[0].length;            
             this.worldSize = this.worldHeight * this.worldWidth;
