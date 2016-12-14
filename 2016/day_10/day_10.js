@@ -1,67 +1,78 @@
 (function () {
-    function setValue(collection, number, value) {
-        if (!collection[number])
-            collection[number] = [];
-        collection[number].push(value);
-        collection[number].sort();
+    function Bot(number, low, high, lowCollection, highCollection) {
+        this.number = number;
+        this.values = [];
+        this.low = low;
+        this.high = high;
+        this.lowCollection = lowCollection;
+        this.highCollection = highCollection;
     }
+    Bot.prototype = {
+        addValue: function (val) {
+            this.values.push(val);
+        },
+        process: function (val) {
+            if (this.values.length > 1) {
+                this.values.sort();
+                var highValue = this.values.pop();
+                var lowValue = this.values.pop();
+                var high = this.highCollection[this.high];
+                var low = this.lowCollection[this.low];
 
-    function getValue(collection, number) {
-        return collection[number] || [];
-    }
+                if (high instanceof Bot) {
+                    high.addValue(highValue);
+                } else {
+                    this.highCollection[this.high] = [highValue];
+                }
+
+                if (low instanceof Bot) {
+                    low.addValue(lowValue);
+                } else {
+                    this.lowCollection[this.low] = [lowValue];
+                }
+
+                if (high)
+                    high.process();
+
+                if (low)
+                    low.process();
+
+                if (lowValue === 17 && highValue === 61)
+                    console.log(this.number);
+            }
+        }
+    };
 
     function day_10(puzzle) {
+        var answer1;
+        var answer2;
+        puzzle.sort(); // forces values to be the latest instructions
         var bots = {};
         var outputs = {};
 
         for (var i = 0; i < puzzle.length; i++) {
             var input = puzzle[i];
-            var bot = input.split('bot ');
-            var botInput = parseInt(bot[1]);
-            if (input[0] === 'v') {
-                var val = parseInt(input.split('value ')[1]);
-                setValue(bots, botInput, val);
+            var matches = input.match(/\d+/g);
+
+            if (input[0] === 'b') {
+                var lowCollection = input.indexOf('low to bot') !== -1 ? bots : outputs;
+                var highCollection = input.indexOf('high to bot') !== -1 ? bots : outputs;
+                bots[matches[0]] = new Bot(+matches[0], +matches[1], +matches[2], lowCollection, highCollection);
+            } else if (input[0] === 'v') {
+                bots[matches[1]].addValue(+matches[0]);
             }
         }
 
-        for (var i = 0; i < puzzle.length; i++) {
-            var input = puzzle[i];
-            var bot = input.split('bot ');
-            var botInput = parseInt(bot[1]);
-            if (input[0] === 'b') {
-                var vals = getValue(bots, botInput);
-                if (bot.length === 2) {
-                    //only output
-                    var outs = input.split('output ');
-                    var output1 = parseInt(outs[1]);
-                    var output2 = parseInt(outs[2]);
-                    setValue(outputs, output2, vals.pop());
-                    setValue(outputs, output1, vals.pop());
-                } else if (bot.length === 4) {
-                    //only bots
-                    var bot1 = parseInt(bot[2]);
-                    var bot2 = parseInt(bot[3]);
-                    setValue(bots, bot2, vals.pop());
-                    setValue(bots, bot1, vals.pop());
-                } else {
-                    //one bot one output .. hardest
-                    var bot = parseInt(bot[2]);
-                    var output = parseInt(input.split('output ')[1]);
-                    if (~input.indexOf('gives low to output')) {
-                        setValue(bots, bot, vals.pop());
-                        setValue(outputs, output, vals.pop());
-                    } else {
-                        setValue(outputs, output, vals.pop());
-                        setValue(bots, bot, vals.pop());
-                    }
-                }
-            }
+        for (var bot in bots) {
+            bots[bot].process();
         }
-        return Promise.resolve([bots, outputs]);
+
+        return Promise.resolve(answer1);
     }
+
     function getInput() {
         return [
-            'bot 75 gives  to bot 145 and high to bot 95',
+            'bot 75 gives low to bot 145 and high to bot 95',
             'bot 116 gives low to bot 157 and high to bot 197',
             'bot 185 gives low to bot 57 and high to bot 139',
             'bot 202 gives low to bot 105 and high to bot 209',
