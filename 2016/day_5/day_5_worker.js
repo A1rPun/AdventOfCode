@@ -1,4 +1,4 @@
-﻿importScripts('md5.js');
+﻿importScripts('../../js/md5.js');
 onmessage = function (e) {
     const PASSWORD_LENGTH = 8;
     processInput(e.data);
