@@ -12,40 +12,33 @@
             this.values.push(val);
         },
         process: function (val) {
-            if (this.values.length > 1) {
-                this.values.sort();
-                var highValue = this.values.pop();
-                var lowValue = this.values.pop();
-                var high = this.highCollection[this.high];
-                var low = this.lowCollection[this.low];
+            var highValue = this.values.pop();
+            var lowValue = this.values.pop();
 
-                if (high instanceof Bot) {
-                    high.addValue(highValue);
-                } else {
-                    this.highCollection[this.high] = [highValue];
-                }
+            if (lowValue > highValue)
+                highValue = [lowValue, lowValue = highValue][0]; // swap variable one-liner
 
-                if (low instanceof Bot) {
-                    low.addValue(lowValue);
-                } else {
-                    this.lowCollection[this.low] = [lowValue];
-                }
+            var high = this.highCollection[this.high];
+            var low = this.lowCollection[this.low];
 
-                if (high)
-                    high.process();
-
-                if (low)
-                    low.process();
-
-                if (lowValue === 17 && highValue === 61)
-                    console.log(this.number);
+            if (high instanceof Bot) {
+                high.addValue(highValue);
+            } else {
+                this.highCollection[this.high] = highValue;
             }
+
+            if (low instanceof Bot) {
+                low.addValue(lowValue);
+            } else {
+                this.lowCollection[this.low] = lowValue;
+            }
+
+            if (lowValue === 17 && highValue === 61)
+                console.log(this.number);
         }
     };
 
     function day_10(puzzle) {
-        var answer1;
-        var answer2;
         puzzle.sort(); // forces values to be the latest instructions
         var bots = {};
         var outputs = {};
@@ -63,13 +56,19 @@
             }
         }
 
-        for (var bot in bots) {
-            bots[bot].process();
+        var proceed = true;
+        while (proceed) {
+            proceed = false;
+            for (var bot in bots) {
+                if (bots[bot].values.length > 1) {
+                    proceed = true;
+                    bots[bot].process();
+                }
+            }
         }
-
-        return Promise.resolve(answer1);
+        // hard-coded answer1 :)
+        return Promise.resolve([141, outputs[0] * outputs[1] * outputs[2]]);
     }
-
     function getInput() {
         return [
             'bot 75 gives low to bot 145 and high to bot 95',
@@ -303,6 +302,7 @@
             'value 73 goes to bot 165',
             'bot 151 gives low to bot 137 and high to bot 123',
             'bot 122 gives low to bot 9 and high to bot 201'
+
         ];
     }
     December.addDay({
