@@ -1,7 +1,7 @@
 (function () {
     function getTile(x, y, num) {
         var sum = (x * x + 3 * x + 2 * x * y + y + y * y) + num;
-        var bitCount = (sum.toString(2).match(/1/g) || []).length;
+        var bitCount = December.count(sum.toString(2), '1');
         return bitCount & 1 ? '#' : '.';
     }
 
@@ -29,12 +29,9 @@
     }
 
     function prettifyGrid(grid, path) {
-        var result = '';
         for (var i = 0; i < path.length; i++)
             grid[path[i][1]][path[i][0]] = i === path.length - 1 ? 'X' : 'O';
-        for (var i = 0; i < grid.length; i++)
-            result += grid[i].join('') + '\n';
-        return result;
+        return December.prettify(grid);
     }
 
     December.addDay({

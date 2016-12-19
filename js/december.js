@@ -29,6 +29,15 @@ var December = (function () {
         log: function (object, clear) {
             clear && console.clear();
             console.log(object);
+        },
+        prettify: function (jagged) {
+            var result = '';
+            for (var i = 0; i < jagged.length; i++)
+                result += jagged[i].join('') + '\n';
+            return result;
+        },
+        count: function (str, char) {
+            return (str.match(new RegExp(char, 'g')) || []).length;
         }
     };
     return december;

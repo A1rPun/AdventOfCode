@@ -40,7 +40,6 @@
         title: 'Timing is Everything',
         questions: 'What is the first time you can press the button to get a capsule?',
         answer: day_15,
-        /* */
         input: function () {
             return [
                 'Disc #1 has 7 positions; at time=0, it is at position 0.',
@@ -51,7 +50,6 @@
                 'Disc #6 has 19 positions; at time=0, it is at position 7.'
             ];
         },
-        /* */
         example: function () {
             return [
                 'Disc #1 has 5 positions; at time=0, it is at position 4.',

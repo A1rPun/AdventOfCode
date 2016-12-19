@@ -31,7 +31,7 @@
         title: 'Dragon Checksum',
         questions: 'What is the correct checksum?',
         answer: day_16,
-        input: function () { return ['01111010110010011', 272]; }, // answer 2 = 35651584
+        input: function () { return ['01111010110010011', 272]; }, // answer 2 = ['01111010110010011', 35651584]
         example: function () { return ['10000', 20]; }
     });
 }());

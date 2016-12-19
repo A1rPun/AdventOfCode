@@ -15,7 +15,7 @@ onmessage = function (e) {
                     valids.push({
                         occur: occur,
                         index: numHashes
-                    });                    
+                    });
                 } else if (occur.length === 5) {
                     var newOccur = occur.slice(-3);
                     for (var j = valids.length; j--;) {
@@ -23,7 +23,7 @@ onmessage = function (e) {
                         if (valid.occur === newOccur) {
                             valids.splice(j, 1);
                             if (valid.index + 1000 > numHashes) {
-                                keys.push(numHashes);
+                                keys.push(valid.index);
                             }
                         }
                     }
@@ -31,7 +31,9 @@ onmessage = function (e) {
             }
             numHashes++;
         }
-        postMessage(keys[keys.length - 1]);
+        keys.sort(function (a, b) { return a - b; });
+        keys = keys.slice(0, 63);
+        postMessage(keys);
         close();
     }
 }

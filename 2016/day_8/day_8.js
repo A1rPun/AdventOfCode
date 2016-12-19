@@ -77,29 +77,21 @@
                 var i = 0;
                 var fn = function () {
                     processInput(inputs[i], strip);
-                    December.log(prettifyStrip(strip), true);
+                    December.log(December.prettify(strip), true);
                     i++;
                     if (i < inputs.length)
                         setTimeout(fn, interval);
                     else
-                        resolve(prettifyStrip(strip));
+                        resolve(December.prettify(strip));
                 };
                 setTimeout(fn, interval);
             } else {
                 for (var i = 0; i < inputs.length; i++)
                     processInput(inputs[i], strip);
-                resolve(prettifyStrip(strip));
+                resolve(December.prettify(strip));
             }
-            //var length = (prettifyStrip(strip).match(/#/g)||[]).length;
+            //var length = December.count(December.prettify(strip), '#');
         });
-    }
-
-    function prettifyStrip(strip) {
-        var result = '';
-        for (var i = 0; i < strip.length; i++) {
-            result += strip[i].join('') + '\n';
-        }
-        return result;
     }
 
     function getInput() {
