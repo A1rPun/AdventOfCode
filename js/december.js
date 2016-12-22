@@ -17,14 +17,20 @@ var December = (function () {
     }
     var days = [];
     var december = {
-        animate: true,
         addDay: function (d) {
             d.getAnswer = d.input ? curryAnswer(d.answer, d.input) : noop;
             d.getExample = d.example ? curryAnswer(d.answer, d.example) : noop;
             days.push(d);
         },
+        animate: true,
+        count: function (str, char) {
+            return (str.match(new RegExp(char, 'g')) || []).length;
+        },
         getDays: function (d) {
             return days;
+        },
+        getNumbers: function (str) {
+            return str.match(/\d+/g).map(function (x) { return +x; });
         },
         log: function (object, clear) {
             clear && console.clear();
@@ -36,8 +42,8 @@ var December = (function () {
                 result += jagged[i].join('') + '\n';
             return result;
         },
-        count: function (str, char) {
-            return (str.match(new RegExp(char, 'g')) || []).length;
+        rotate: function (arr, n) {
+            return arr.slice(n, arr.length).concat(arr.slice(0, n));
         }
     };
     return december;

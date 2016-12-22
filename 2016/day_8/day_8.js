@@ -1,5 +1,4 @@
 (function () {
-
     var actions = {
         rect: {
             txt: 'e',
@@ -23,7 +22,7 @@
             slice: 13,
             process: function (strip, input) {
                 var point = input.slice(this.slice).split(' by ');
-                strip[point[0]] = arrayRotate(strip[point[0]], -point[1]);
+                strip[point[0]] = December.rotate(strip[point[0]], -point[1]);
             }
         },
         rotateColumn: {
@@ -37,16 +36,12 @@
                 var arr = [];
                 for (var i = 0; i < strip.length; i++)
                     arr.push(strip[i][x]);
-                arr = arrayRotate(arr, -y);
+                arr = December.rotate(arr, -y);
                 for (var i = 0; i < strip.length; i++)
                     strip[i][x] = arr[i];
             }
         }
     };
-
-    function arrayRotate(arr, n) {
-        return arr.slice(n, arr.length).concat(arr.slice(0, n));
-    }
 
     function getStrip(width, height) {
         var strip = [];

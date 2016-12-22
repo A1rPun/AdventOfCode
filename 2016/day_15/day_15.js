@@ -21,8 +21,8 @@
     function day_15(puzzle) {
         var discs = [];
         for (var i = 0; i < puzzle.length; i++) {
-            var matches = puzzle[i].match(/\d+/g);
-            discs.push(new Disc(+matches[1], +matches[3]));
+            var nums = December.getNumbers(puzzle[i]);
+            discs.push(new Disc(nums[1], nums[3]));
         }
         discs.push(new Disc(11, 0)); // Answer2
 

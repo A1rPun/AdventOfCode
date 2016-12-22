@@ -45,14 +45,13 @@
 
         for (var i = 0; i < puzzle.length; i++) {
             var input = puzzle[i];
-            var matches = input.match(/\d+/g);
-
+            var nums = December.getNumbers(input);
             if (input[0] === 'b') {
                 var lowCollection = input.indexOf('low to bot') !== -1 ? bots : outputs;
                 var highCollection = input.indexOf('high to bot') !== -1 ? bots : outputs;
-                bots[matches[0]] = new Bot(+matches[0], +matches[1], +matches[2], lowCollection, highCollection);
+                bots[nums[0]] = new Bot(nums[0], nums[1], nums[2], lowCollection, highCollection);
             } else if (input[0] === 'v') {
-                bots[matches[1]].addValue(+matches[0]);
+                bots[nums[1]].addValue(nums[0]);
             }
         }
 
