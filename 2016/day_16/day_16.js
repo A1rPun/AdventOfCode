@@ -28,6 +28,7 @@
 
     December.addDay({
         day: 16,
+        year: 2016,
         title: 'Dragon Checksum',
         questions: 'What is the correct checksum?',
         answer: day_16,

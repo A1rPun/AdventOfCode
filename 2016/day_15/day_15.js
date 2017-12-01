@@ -37,6 +37,7 @@
 
     December.addDay({
         day: 15,
+        year: 2016,
         title: 'Timing is Everything',
         questions: 'What is the first time you can press the button to get a capsule?',
         answer: day_15,

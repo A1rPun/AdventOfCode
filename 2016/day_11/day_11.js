@@ -5,6 +5,7 @@
 
     December.addDay({
         day: 11,
+        year: 2016,
         title: 'Radioisotope Thermoelectric Generators',
         questions: 'What is the minimum number of steps required to bring all of the objects to the fourth floor?',
         answer: day_11,

@@ -1050,6 +1050,7 @@
     }
     December.addDay({
         day: 4,
+        year: 2016,
         title: 'Security Through Obscurity',
         questions: ['What is the sum of the sector IDs of the real rooms?', 'What is the sector ID of the room where North Pole objects are stored?'],
         answer: day_4,

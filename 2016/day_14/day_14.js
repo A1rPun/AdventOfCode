@@ -15,6 +15,7 @@
     }
     December.addDay({
         day: 14,
+        year: 2016,
         title: 'One-Time Pad',
         questions: 'Given the actual salt in your puzzle input, what index produces your 64th one-time pad key?',
         answer: day_14,

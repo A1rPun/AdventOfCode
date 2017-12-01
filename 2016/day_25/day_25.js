@@ -5,6 +5,7 @@
 
     December.addDay({
         day: 25,
+        year: 2016,
         title: '',
         questions: '',
         answer: day_25,

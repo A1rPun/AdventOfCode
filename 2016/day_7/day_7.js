@@ -2068,6 +2068,7 @@
     }
     December.addDay({
         day: 7,
+        year: 2016,
         title: 'Internet Protocol Version 7',
         questions: ['How many IPs in your puzzle input support TLS?', 'How many IPs in your puzzle input support SSL?'],
         answer: day_7,

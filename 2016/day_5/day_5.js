@@ -28,6 +28,7 @@
 
     December.addDay({
         day: 5,
+        year: 2016,
         title: 'How About a Nice Game of Chess?',
         questions: 'Given the actual Door ID and this new method, what is the password? Be extra proud of your solution if it uses a cinematic "decrypting" animation.',
         answer: day_5,

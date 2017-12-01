@@ -10,7 +10,21 @@
     }
 
     function stealOppositePresents(arr) {
-        return [arr[0]];
+        var odd = arr.length & 1;
+        /*
+        for (var i = 0, l = arr.length / 2; i < l; i++) {
+            var middle = Math.floor(arr.length / 2) + i;
+            if (middle < arr.length)
+                arr.splice(middle, 1);
+            else
+                break;
+        }
+        if (odd) {
+            var middle = Math.floor(arr.length / 2) + i;
+            arr.splice(middle < arr.length ? middle : 0, 1);
+        }
+        */
+        return arr;
     }
 
     function day_19(puzzle) {
@@ -29,6 +43,7 @@
 
     December.addDay({
         day: 19,
+        year: 2016,
         title: 'An Elephant Named Joseph',
         questions: 'Which Elf gets all the presents?',
         answer: day_19,

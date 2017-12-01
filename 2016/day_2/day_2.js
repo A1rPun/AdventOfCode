@@ -61,6 +61,7 @@
 
     December.addDay({
         day: 2,
+        year: 2016,
         title: 'Bathroom Security',
         questions: 'What is the bathroom code?',
         answer: day_2,

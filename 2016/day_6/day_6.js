@@ -669,6 +669,7 @@
     }
     December.addDay({
         day: 6,
+        year: 2016,
         title: 'Signals and Noise',
         questions: 'What is the error-corrected version of the message being sent?',
         answer: day_6,

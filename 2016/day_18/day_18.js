@@ -32,6 +32,7 @@
 
     December.addDay({
         day: 18,
+        year: 2016,
         title: 'Like a Rogue',
         questions: 'Starting with the map in your puzzle input, in a total of 40 rows (including the starting row), how many safe tiles are there?',
         answer: day_18,

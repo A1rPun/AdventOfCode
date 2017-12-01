@@ -306,6 +306,7 @@
     }
     December.addDay({
         day: 10,
+        year: 2016,
         title: 'Balance Bots',
         questions: 'What is the number of the bot that is responsible for comparing value-61 microchips with value-17 microchips?',
         answer: day_10,

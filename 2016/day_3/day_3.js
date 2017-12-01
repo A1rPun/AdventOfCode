@@ -2037,6 +2037,7 @@
     }
     December.addDay({
         day: 3,
+        year: 2016,
         title: 'Squares With Three Sides',
         questions: 'How many of the listed triangles are possible?',
         answer: day_3,

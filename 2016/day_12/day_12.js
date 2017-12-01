@@ -16,10 +16,7 @@
         },
         jnz: function (register, values) {
             var vals = values.split(' ');
-            var from = parseInt(vals[0]);
-            if (isNaN(from)) {
-                from = register[vals[0]];
-            }
+            var from = register[vals[0]];
             return from ? parseInt(vals[1]) : 0;
         }
     };
@@ -37,6 +34,7 @@
 
     December.addDay({
         day: 12,
+        year: 2016,
         title: 'Leonardo\'s Monorail',
         questions: 'After executing the assembunny code in your puzzle input, what value is left in register a?',
         answer: day_12,

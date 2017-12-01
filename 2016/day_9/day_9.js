@@ -33,6 +33,7 @@
 
     December.addDay({
         day: 9,
+        year: 2016,
         title: 'Explosives in Cyberspace',
         questions: 'What is the decompressed length of the file (your puzzle input)? Don\'t count whitespace.',
         answer: day_9,
