@@ -35,11 +35,7 @@
         }
         return points;
     }
-
-    function ManhattanDistance(Point, Goal) {
-        return Math.abs(Point.x - Goal.x) + Math.abs(Point.y - Goal.y);
-    }
-
+    
     function day_1(puzzle) {
         var currentDirection = directions.north;
         var startPoint = { x: 0, y: 0 };
@@ -58,14 +54,14 @@
             points = points.concat(pts);
             endPoint = pts[pts.length - 1];
         }
-        answer1 = ManhattanDistance(startPoint, endPoint);
+        answer1 = AStar.prototype.ManhattanDistance(startPoint, endPoint);
 
         var dict = {};
         for (var i = 0; i < points.length; i++) {
             var p = points[i];
             var key = p.x + '_' + p.y;
             if (dict[key]) {
-                answer2 = ManhattanDistance(startPoint, p);
+                answer2 = AStar.prototype.ManhattanDistance(startPoint, p);
                 break;
             } else
                 dict[key] = true;//{ x: endPoint.x, y: endPoint.y };

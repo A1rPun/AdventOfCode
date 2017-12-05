@@ -41,14 +41,11 @@ var December = (function () {
         getYears: function () {
             return Object.keys(days);
         },
-        log: function (object, clear) {
-            clear && console.clear();
-            console.log(object);
-        },
-        prettify: function (jagged) {
+        prettify: function (jagged, char) {
             var result = '';
+            char = char || '';
             for (var i = 0; i < jagged.length; i++)
-                result += jagged[i].join('') + '\n';
+                result += jagged[i].join(char) + '\n';
             return result;
         },
         // Rotate + = left, - = right
