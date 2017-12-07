@@ -1,6 +1,8 @@
 ﻿# AdventOfCode
 :christmas_tree: My take on the challenges :trophy:
 
+[Example (rawgit)](https://rawgit.com/A1rPun/AdventOfCode/master/index.html)
+
 ## 2017
 
 ```
@@ -25,7 +27,7 @@
 |                                               |   8 
 |                                               |   7 
 |                                               |   6 
-|                                               |   5 
+|                                               |   5 **
 |                                               |   4 **
 |                                               |   3 **
 |                                               |   2 **
