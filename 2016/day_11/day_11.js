@@ -1,6 +1,49 @@
 (function () {
+    function Floor(generators, microchips){
+        this.generators = generators || [];
+        this.microchips = microchips || [];
+    }
+    Floor.prototype = {
+        isClear: function () {
+            return !this.generators.length && !this.microchips.length;
+        },
+        hasGenerator: function (generator) {
+            return this.generators.indexOf(generator) !== -1;
+        },
+        hasMicrochip: function (microchip) {
+            return this.microchips.indexOf(microchip) !== -1;
+        },
+        getGenerator: function (generator) {
+            return this.generators.splice(this.generators.indexOf(generator), 1)[0];
+        },
+        setGenerator: function (generator) {
+            this.generators.push(generator);
+        },
+        getMicrochip: function (microchip) {
+            return this.microchips.splice(this.microchips.indexOf(microchip), 1)[0];
+        },
+        setMicrochip: function (microchip) {
+            this.microchips.push(microchip);
+        },
+    };
     function day_11(puzzle) {
-        return Promise.resolve();
+        var answer1 = 0;
+        var elevator = 0;
+        var elevatorWeight = 2;
+        var carry = new Floor();
+        while (puzzle[0].isClear() || puzzle[1].isClear() || puzzle[2].isClear()) {
+            var previousfloor = puzzle[elevator-1];
+            var floor = puzzle[elevator];
+            var nextfloor = puzzle[elevator+1];
+            // what can I take up?
+
+            // what can I take down?
+
+            // check if ascending or descending is safe and set elevator
+            elevator += true ? 1 : -1;
+            answer1++;
+        }
+        return Promise.resolve([answer1]);
     }
 
     December.addDay({
@@ -11,18 +54,30 @@
         answer: day_11,
         input: function () {
             return [
-                'The first floor contains a thulium generator, a thulium-compatible microchip, a plutonium generator, and a strontium generator.',
-                'The second floor contains a plutonium-compatible microchip and a strontium-compatible microchip.',
-                'The third floor contains a promethium generator, a promethium-compatible microchip, a ruthenium generator, and a ruthenium-compatible microchip.',
-                'The fourth floor contains nothing relevant.'
+                new Floor(),
+                new Floor(),
+                new Floor(),
+                new Floor()
+            ];
+            return [
+                ['thulium generator', 'thulium microchip', 'plutonium generator', 'strontium generator'],
+                ['plutonium microchip', 'strontium microchip'],
+                ['promethium generator', 'promethium microchip', 'ruthenium generator', 'ruthenium microchip'],
+                []
             ];
         },
         example: function () {
             return [
-                'The first floor contains a hydrogen-compatible microchip and a lithium-compatible microchip.',
-                'The second floor contains a hydrogen generator.',
-                'The third floor contains a lithium generator.',
-                'The fourth floor contains nothing relevant.'
+                new Floor([],['hydrogen', 'lithium']),
+                new Floor(['hydrogen']),
+                new Floor(['lithium']),
+                new Floor()
+            ];
+            return [
+                ['hydrogen microchip', 'lithium microchip'],
+                ['hydrogen generator'],
+                ['lithium generator'],
+                []
             ];
         }
     });
