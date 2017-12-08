@@ -1,18 +1,29 @@
 (function () {
-    function day_(puzzle) {
-        return Promise.resolve();
+    function day_4(puzzle, animate) {
+        return new Promise(function (resolve, reject) {
+            if (Worker !== undefined) {
+                var md5Worker = new Worker('/2015/day_4/day_4_worker.js');
+                md5Worker.onmessage = function (e) {
+                    if (e.data.length === 2)
+                        resolve(e.data);
+                    else if (animate)
+                        December.log(e.data[0], true);
+                };
+                md5Worker.onerror = function (e) {
+                    reject(e);
+                };
+                md5Worker.postMessage(puzzle);
+            }
+        });
     }
+
     December.addDay({
-        //day: ,
+        day: 4,
         year: 2015,
-        title: '',
+        title: 'The Ideal Stocking Stuffer',
         questions: '',
-        answer: day_,
-        input: function () {
-            return [];
-        },
-        example: function () {
-            return [];
-        },
+        answer: day_4,
+        input: function () { return 'iwrupvqb'; },
+        example: function () { return 'abcdef'; },
     });
 }());
