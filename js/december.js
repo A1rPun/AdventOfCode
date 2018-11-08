@@ -20,6 +20,7 @@ var December = (function () {
         '2015': [],
         '2016': [],
         '2017': [],
+        '2018': [],
     };
     var december = {
         addDay: function (d) {
@@ -31,7 +32,7 @@ var December = (function () {
         count: function (str, char) {
             return (str.match(new RegExp(char, 'g')) || []).length;
         },
-        currentYear: '2017',
+        currentYear: '2018',
         getDays: function (d) {
             return days[this.currentYear];
         },
