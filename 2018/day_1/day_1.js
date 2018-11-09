@@ -9,6 +9,7 @@
         questions: 'Coming soon',
         answer: day_1,
         input: function () {
+            console.log(this);
             return [];
         },
         example: function () {
