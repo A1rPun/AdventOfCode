@@ -23,6 +23,7 @@ var December = (function () {
         '2018': [],
     };
     var december = {
+        currentYear: '2017',
         addDay: function (d) {
             d.getAnswer = d.input ? curryAnswer(d.answer, d.input) : noop;
             d.getExample = d.example ? curryAnswer(d.answer, d.example) : noop;
@@ -32,7 +33,6 @@ var December = (function () {
         count: function (str, char) {
             return (str.match(new RegExp(char, 'g')) || []).length;
         },
-        currentYear: '2018',
         getDays: function (d) {
             return days[this.currentYear];
         },
