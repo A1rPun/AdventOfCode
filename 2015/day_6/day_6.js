@@ -21,7 +21,7 @@
             }
 
         }
-        return lights.reduce(function (acc, cur) { return cur ? acc + 1 : acc }, 0);
+        return lights.reduce(function (acc, cur) { return acc + cur }, 0);
     }
     function answer2(puzzle) {
         var lights = new Uint8Array(1000 * 1000);
@@ -33,6 +33,8 @@
                     var brightness = lights[index] || 0;
                     brightness += instruction.phrase === 'turn off' ? -1 : 1;
                     brightness += instruction.phrase === 'toggle' ? 1 : 0;
+                    if (brightness < 0)
+                        brightness = 0;
                     lights[index] = brightness;
                 }
             }
@@ -355,13 +357,11 @@
         },
         example: function () {
             return [
-                'turn on 0,0 through 0,0',
-                'toggle 0,0 through 999,999',
-            ];
-            return [
                 'turn on 0,0 through 999,999',
                 'toggle 0,0 through 999,0',
                 'turn off 499,499 through 500,500',
+                //'turn on 0,0 through 0,0',
+                //'toggle 0,0 through 999,999',
             ];
         },
     });
