@@ -1,14 +1,22 @@
 ﻿importScripts('../../js/md5.js');
 onmessage = function (e) {
-    var answer1 = 1;
-    var secretKey = e.data;
-    var hash = '';
-    while (hash.slice(0, 5) === '00000') {
-        hash = md5(secretKey + answer1);
-        answer1++;
-        if (answer1 % 1000 === 0)
+    const secretKey = e.data;
+    let answer1 = 0;
+    let answer2 = 0;
+    let num = 0;
+    let hash = '';
+    while (true) {
+        num++;
+        hash = md5(secretKey + num);
+        if (!answer1 && hash.slice(0, 5) === '00000') {
+            answer1 = num;
             postMessage([hash]);
+        } else if (!answer2 && hash.slice(0, 6) === '000000') {
+            answer2 = num;
+            postMessage([hash]);
+            break;
+        }
     }
-    postMessage([hash, answer1]);
+    postMessage([answer1, answer2]);
     close();
 }
