@@ -1,26 +1,27 @@
 ﻿(function (w, d) {
-    var NEW_LINE = '\n';
+    const NEW_LINE = '\n';
+    const seperator = '----------------------------';
     var code = d.querySelector('.code');
     December.log = function (o, clear) {
         if (clear)
             clearCode();
         logCode(o);
     };
-    logCode('AdventOfCode - A1rPun');
-    logCode('----------------------------');
+    logCode('★★ AdventOfCode - A1rPun ★★');
+    logCode(seperator);
     logCode('Animation = true', function () {
         December.animate = !December.animate
         this.innerHTML = 'Animation = ' + (December.animate ? 'true' : 'false');
-    });
-    logCode('----------------------------');
+    }).classList.add('animated');
+    logCode(seperator);
     var spanYear = d.createElement('span');
     logYears();
     code.appendChild(spanYear);
-    logCode('----------------------------');
+    logCode(seperator);
     var spanDay = d.createElement('span');
     logDays();
     code.appendChild(spanDay);
-    logCode('----------------------------');
+    logCode(seperator);
     var results = d.createElement('span');
     code.appendChild(results);
     code = results;
@@ -38,6 +39,7 @@
             span.addEventListener('click', click);
         }
         code.appendChild(span);
+        return span;
     }
 
     function dayClick(day) {
@@ -85,6 +87,12 @@
             if (!days[i].title) continue;
             var day = d.createElement('span');
             day.classList.add('line');
+            if (days[i].hasAnimation) {
+                day.classList.add('animated');
+            }
+            if (days[i].development) {
+                day.classList.add('development');
+            }
             day.innerText = 'Day ' + days[i].day;
             day.classList.add('click');
             day.addEventListener('click', dayClick(days[i]));
@@ -113,6 +121,7 @@
             December.currentYear = year;
             logYears();
             logDays();
-        }        
+            clearCode();
+        }
     }
 }(window, document));

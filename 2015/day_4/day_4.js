@@ -25,5 +25,6 @@
         answer: day_4,
         input: function () { return 'iwrupvqb'; },
         example: function () { return 'abcdef'; },
+        development: true,
     });
 }());

@@ -281,6 +281,7 @@
                 'rotate row y=0 by 4',
                 'rotate column x=1 by 1'
             ], 7, 3];
-        }
+        },
+        hasAnimation: true,
     });
 }());

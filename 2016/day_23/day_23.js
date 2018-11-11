@@ -102,6 +102,7 @@
                 'dec a',
                 'dec a',
             ];
-        }
+        },
+        development: true,
     });
 }());

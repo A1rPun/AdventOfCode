@@ -8,8 +8,8 @@
             for (let i = 0; i < input.length; i++) {
                 const knotLength = input[i];
                 const toIndex = hashIndex + knotLength;
-                var wrapIndex = toIndex > l ? toIndex - l : -1;
-                let current = (~wrapIndex
+                const wrapIndex = toIndex > l ? toIndex - l : -1;
+                const current = (~wrapIndex
                     ? hash.slice(hashIndex, l + 1).concat(hash.slice(0, wrapIndex))
                     : hash.slice(hashIndex, toIndex)).reverse();
                 hash = ~wrapIndex

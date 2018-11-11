@@ -10,7 +10,7 @@
 }
  */
 var December = (function () {
-    function noop() { return new Promise.reject(); }
+    function noop() { return Promise.reject(); }
     function curryAnswer(answer, input) {
         return function () {
             return answer(input(), december.animate);

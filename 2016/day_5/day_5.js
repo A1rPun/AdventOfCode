@@ -34,5 +34,6 @@
         answer: day_5,
         input: function () { return 'ffykfhsq'; },
         //example: function () { return 'abc'; },
+        hasAnimation: true,
     });
 }());

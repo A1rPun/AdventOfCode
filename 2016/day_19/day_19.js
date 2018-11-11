@@ -48,6 +48,7 @@
         questions: 'Which Elf gets all the presents?',
         answer: day_19,
         input: function () { return 3012210; },
-        example: function () { return 5; }
+        example: function () { return 5; },
+        development: true,
     });
 }());

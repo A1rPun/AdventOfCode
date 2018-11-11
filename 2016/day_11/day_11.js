@@ -79,6 +79,7 @@
                 ['lithium generator'],
                 []
             ];
-        }
+        },
+        development: true,
     });
 }());
