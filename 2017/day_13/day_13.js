@@ -5,16 +5,16 @@
             prev[layer[0]] = +layer[1];
             return prev;
         }, []);
-        let answer1, isCaught;
+        let answer1;
         let picoSeconds = 0;
-        while (!isCaught) {
-            isCaught = false;
+        while (true) {
+            let isCaught;
             const severity = firewall.reduce((prev, curr, i) => {
                 const isRootLevel = (picoSeconds + i) % ((curr - 1) * 2) === 0;
                 return prev + (isRootLevel ? (isCaught = true, curr * i) : 0);
             }, 0);
-            if (!answer1)
-                answer1 = severity;
+            if (!answer1) answer1 = severity;
+            if (!isCaught) break;
             picoSeconds++;
         }
         return Promise.resolve([answer1, picoSeconds]);
