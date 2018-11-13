@@ -1,6 +1,6 @@
 (function () {
-    function knotHash(input, times) {
-        let hash = [...Array(256).keys()];
+    function tieKnots(input, times = 64) {
+        let hash = December.range(256);
         const l = hash.length;
         let hashIndex = 0;
         let skipSize = 0;
@@ -36,30 +36,34 @@
     }
 
     function day_10(puzzle) {
-        const input1 = puzzle.split(',').map(function (e) { return +e; });
-        const input2 = puzzle.split('').map(function (char) {
-            return char.charCodeAt(0);
-        }).concat([17, 31, 73, 47, 23]);
-        const answer1 = knotHash(input1, 1);
-        const densedHash = dense(knotHash(input2, 64));
-        const answer2 = densedHash.map(function (a) {
-            return a.toString(16).padStart(2, '0');
-        }).join('');
+        const answer1 = tieKnots(puzzle.split(',').map(x => +x), 1);
+        const answer2 = knotHash(puzzle);
         return Promise.resolve([answer1[0] * answer1[1], answer2]);
+    }
+
+    function knotHash(puzzle) {
+        const lengths = puzzle.split('').map(function (char) { return char.charCodeAt(0); }).concat([17, 31, 73, 47, 23]);
+        const densedHash = dense(tieKnots(lengths));
+        return densedHash.map(function (a) { return a.toString(16).padStart(2, '0'); }).join('');
     }
 
     December.addDay({
         day: 10,
         year: 2017,
         title: 'Knot Hash',
-        questions: 'What is the result of multiplying the first two numbers in the list?',
+        questions: [
+            'What is the result of multiplying the first two numbers in the list?',
+            'Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input?',
+        ],
         answer: day_10,
         input: function () {
-            //70b856a24d586194331398c7fcfa0aaf
             return '147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70';
         },
         example: function () {
             return '1,2,3';
+        },
+        public: {
+            knotHash: knotHash,
         },
     });
 }());

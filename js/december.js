@@ -28,6 +28,9 @@ var December = (function () {
             d.getAnswer = d.input ? curryAnswer(d.answer, d.input) : noop;
             d.getExample = d.example ? curryAnswer(d.answer, d.example) : noop;
             days[d.year].push(d);
+            for (const fn in d.public) if (d.public.hasOwnProperty(fn)) {
+                this[fn] = d.public[fn];
+            }
         },
         animate: true,
         count: function (str, char) {
@@ -48,6 +51,9 @@ var December = (function () {
             for (var i = 0; i < jagged.length; i++)
                 result += jagged[i].join(char) + '\n';
             return result;
+        },
+        range: function (num) {
+            return [...Array(num).keys()];
         },
         // Rotate + = left, - = right
         rotate: function (arr, n) {
