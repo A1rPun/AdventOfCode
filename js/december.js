@@ -1,21 +1,4 @@
-﻿/*
-{
-    day: 0,
-    year: 0,
-    title: 'Foo',
-    questions: ['Bar', 'Quux'],
-    answer: day_0,
-    input: getInput,
-    example: getExample
-}
- */
-var December = (function () {
-    function noop() { return Promise.reject(); }
-    function curryAnswer(answer, input) {
-        return function () {
-            return answer(input(), december.animate);
-        };
-    }
+﻿var December = (function () {
     var days = {
         '2015': [],
         '2016': [],
@@ -25,8 +8,6 @@ var December = (function () {
     var december = {
         currentYear: '2017',
         addDay: function (d) {
-            d.getAnswer = d.input ? curryAnswer(d.answer, d.input) : noop;
-            d.getExample = d.example ? curryAnswer(d.answer, d.example) : noop;
             days[d.year].push(d);
             for (const fn in d.public) if (d.public.hasOwnProperty(fn)) {
                 this[fn] = d.public[fn];

@@ -1,18 +1,14 @@
 ﻿(function (w, d) {
     const NEW_LINE = '\n';
-    const seperator = '----------------------------';
+    const seperator = '--------------------------------------------------';
     var code = d.querySelector('.code');
     December.log = function (o, clear) {
         if (clear)
             clearCode();
         logCode(o);
     };
+    showTree();
     logCode('★★ AdventOfCode - A1rPun ★★');
-    logCode(seperator);
-    logCode('Animation = true', function () {
-        December.animate = !December.animate
-        this.innerHTML = 'Animation = ' + (December.animate ? 'true' : 'false');
-    }).classList.add('animated');
     logCode(seperator);
     var spanYear = d.createElement('span');
     logYears();
@@ -42,41 +38,113 @@
         return span;
     }
 
+    async function getInputForDay(day) {
+        let input = day.input;
+        if (!input) {
+            const res = await fetch(`${day.year}/day_${day.day}/input`);
+            input = await res.text();
+        }
+        return input;
+    }
+
+    function handleAnswer(day, input) {
+        const answerT = new perfTimer();
+        day.answer(input, December.animate).then(function (answer) {
+            answerT.stop();
+            if (Array.isArray(answer)) {
+                for (let i = 0; i < answer.length; i++) {
+                    const question = Array.isArray(day.questions)
+                        ? day.questions[i]
+                        : day.questions;
+                    logCode(question);
+                    logCode(answer[i]).classList.add('yellow');
+                    logCode(NEW_LINE);
+                }
+            } else {
+                const question = Array.isArray(day.questions)
+                    ? day.questions[day.questions.length - 1]
+                    : day.questions;
+                logCode(question);
+                logCode(answer).classList.add('yellow');
+                logCode(NEW_LINE);
+            }
+            logCode(answerT.log());
+        });
+    }
+
     function dayClick(day) {
         return function () {
-            clearCode();
-            if (day.title) {
-                logCode('--- Day ' + day.day + ': ' + day.title + ' ---');
-                logCode(NEW_LINE);
-            }
-            if (day.questions) {
-                logCode('Question(s):');
-                logCode(day.questions);
-                logCode(NEW_LINE);
-            }
-            var answerT = new perfTimer();
-            day.getAnswer().then(function (answer) {
-                answerT.stop();
-                logCode('Answer(s):');
-                logCode(answer);
-                logCode(answerT.log());
-                logCode(NEW_LINE);
+            spanDay.innerHTML = '';
+
+            const back = d.createElement('span');
+            back.classList.add('line', 'click');
+            back.innerText = '<< Back <<';
+            back.addEventListener('click', function () {
+                clearCode();
+                logDays();
             });
-            var exampleT = new perfTimer();
-            day.getExample().then(function (example) {
-                exampleT.stop();
-                logCode('Example(s):');
-                logCode(example);
-                logCode(exampleT.log());
-                logCode(NEW_LINE);
+            spanDay.appendChild(back);
+
+            const title = d.createElement('span');
+            title.innerText = `Day ${day.day.toString().padStart(2, '0')} - ${day.title}`;
+            spanDay.appendChild(title);
+
+            if (day.hasAnimation) {
+                const anim = d.createElement('span');
+                anim.classList.add('line', 'click', 'animated');
+                anim.innerText = `Animation = ${December.animate}`;
+                anim.addEventListener('click', function () {
+                    December.animate = !December.animate
+                    this.innerHTML = `Animation = ${December.animate}`;
+                });
+                spanDay.appendChild(anim);
+            }
+
+            const ans = d.createElement('span');
+            ans.classList.add('line', 'click');
+            ans.innerText = 'Show answers';
+            ans.addEventListener('click', async function () {
+                clearCode();
+                const input = await getInputForDay(day);
+                handleAnswer(day, input);
             });
-            /*
-            var input = day.input();
-            if (input) {
-                logCode('Input(s):');
-                //logCode(input);
-                logCode(Array.isArray(input) ? input.slice(0, 10) : input);
-            }*/
+            spanDay.appendChild(ans);
+
+            const example = d.createElement('span');
+            example.classList.add('line', 'click');
+            example.innerText = 'Show example';
+            example.addEventListener('click', function () {
+                clearCode();
+                handleAnswer(day, day.example());
+            });
+            spanDay.appendChild(example);
+
+            const input = d.createElement('span');
+            input.classList.add('line', 'click');
+            input.innerText = 'Show input';
+            input.addEventListener('click', async function () {
+                clearCode();
+                const input = await getInputForDay(day);
+                logCode(input);
+            });
+            spanDay.appendChild(input);
+
+            const custom = d.createElement('textarea');
+            custom.rows = 1;
+            custom.classList.add('line');
+            custom.addEventListener('input', function (e) {
+                cheat.classList[this.value ? 'remove' : 'add']('hidden');
+            });
+            spanDay.appendChild(custom);
+
+            const cheat = d.createElement('span');
+            cheat.classList.add('line', 'click', 'hidden');
+            cheat.innerText = 'Execute';
+            cheat.addEventListener('click', function () {
+                clearCode();
+                handleAnswer(day, custom.value);
+            });
+            spanDay.appendChild(cheat);
         };
     }
 
@@ -84,18 +152,23 @@
         spanDay.innerHTML = '';
         var days = December.getDays();
         for (var i = 0; i < days.length; i++) {
-            if (!days[i].title) continue;
+            const decDay = days[i];
             var day = d.createElement('span');
             day.classList.add('line');
-            if (days[i].hasAnimation) {
+            if (decDay.hasAnimation) {
                 day.classList.add('animated');
             }
-            if (days[i].development) {
+            if (decDay.development) {
                 day.classList.add('development');
             }
-            day.innerText = 'Day ' + days[i].day;
-            day.classList.add('click');
-            day.addEventListener('click', dayClick(days[i]));
+            if (decDay.title) {
+                day.innerText = `Day ${decDay.day.toString().padStart(2, '0')} - ${decDay.title}`;
+                day.classList.add('click');
+                day.addEventListener('click', dayClick(decDay));
+            } else {
+                day.innerText = `Day ${i + 1}`;
+                day.classList.add('unsolved');
+            }
             spanDay.appendChild(day);
         }
     }
@@ -124,4 +197,36 @@
             clearCode();
         }
     }
+
+    function showTree() {
+        const tree = `|
+\\|/
+--*--
+>o<
+>O<<<
+>>*>>*<
+>>o>>@>*<
+>>O>>o>*<<<
+>>@>*>>*<<<o<
+>>*>O<<@>O<o<<<
+>O<@>>>O>@>>>o<<<
+_ __|_|__ _`;
+        const mapping = {
+            '\\': '<span class="yellow">\\</span>',
+            '/': '<span class="yellow">/</span>',
+            '|': '<span class="yellow">|</span>',
+            '>': '<span class="green">&gt;</span>',
+            '<': '<span class="green">&lt;</span>',
+            '*': '<span class="yellow">*</span>',
+            '@': '<span class="red">@</span>',
+            'O': '<span class="blue">O</span>',
+            'o': '<span class="orange">o</span>',
+        };
+        const html = tree.split('').reduce((prev, curr) => prev + (mapping[curr] ? mapping[curr] : curr), '');
+        const span = logCode();
+        span.innerHTML = html;
+        span.classList.add('white');
+        logCode(seperator);
+    }
+
 }(window, document));

@@ -102,7 +102,7 @@
         title: 'Spiral Memory',
         questions: 'How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?',
         answer: day_3,
-        input: function () { return 347991; },
+        input: 347991,
         example: function () { return 12; },
     });
 }());

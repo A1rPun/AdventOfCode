@@ -48,9 +48,7 @@
         title: 'Memory Reallocation',
         questions: ['Given the initial block counts in your puzzle input, how many redistribution cycles must be completed before a configuration is produced that has been seen before?', 'How many cycles are in the infinite loop that arises from the configuration in your puzzle input?'],
         answer: day_6,
-        input: function () {
-            return '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11';
-        },
+        input: '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11',
         example: function () {
             return '0	2	7	0';
         },

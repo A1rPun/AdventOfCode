@@ -56,9 +56,7 @@
             'Treating your puzzle input as a string of ASCII characters, what is the Knot Hash of your puzzle input?',
         ],
         answer: day_10,
-        input: function () {
-            return '147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70';
-        },
+        input: '147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70',
         example: function () {
             return '1,2,3';
         },
