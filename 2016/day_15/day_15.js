@@ -19,6 +19,7 @@
     }
 
     function day_15(puzzle) {
+        puzzle = puzzle.split('\n');
         var discs = [];
         for (var i = 0; i < puzzle.length; i++) {
             var nums = December.getNumbers(puzzle[i]);
@@ -41,21 +42,8 @@
         title: 'Timing is Everything',
         questions: 'What is the first time you can press the button to get a capsule?',
         answer: day_15,
-        input: function () {
-            return [
-                'Disc #1 has 7 positions; at time=0, it is at position 0.',
-                'Disc #2 has 13 positions; at time=0, it is at position 0.',
-                'Disc #3 has 3 positions; at time=0, it is at position 2.',
-                'Disc #4 has 5 positions; at time=0, it is at position 2.',
-                'Disc #5 has 17 positions; at time=0, it is at position 0.',
-                'Disc #6 has 19 positions; at time=0, it is at position 7.'
-            ];
-        },
         example: function () {
-            return [
-                'Disc #1 has 5 positions; at time=0, it is at position 4.',
-                'Disc #2 has 2 positions; at time=0, it is at position 1.'
-            ];
+            return 'Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 positions; at time=0, it is at position 1.';
         }
     });
 }());

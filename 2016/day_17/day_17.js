@@ -9,9 +9,7 @@
         title: '',
         questions: '',
         answer: day_17,
-        input: function () {
-            return 'ioramepc';
-        },
+        input: 'ioramepc',
         example: function () {
             return 'hijkl';
         }

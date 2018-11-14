@@ -6,26 +6,27 @@
     }
 
     function day_13(puzzle) {
+        const size = 45;
         var grid = [];
-        for (var y = 0; y < puzzle[2]; y++) {
+        for (var y = 0; y < size; y++) {
             var row = [];
-            for (var x = 0; x < puzzle[2]; x++)
-                row.push(getTile(x, y, puzzle[0]));
+            for (var x = 0; x < size; x++)
+                row.push(getTile(x, y, puzzle));
             grid.push(row);
         }
         var astar = new AStar(grid, ['.']);
-        var path = astar.findPath([1, 1], puzzle[1]);
+        var path = astar.findPath([1, 1], [31, 39]);
 
-        /* /
         var answer2 = 1;
-        for (var y = 0; y < puzzle[2]; y++)
-            for (var x = 0; x < puzzle[2]; x++) {
+        for (var y = 0; y < size; y++) {
+            for (var x = 0; x < size; x++) {
                 var length = astar.findPath([1, 1], [x, y]).length - 1;
                 if (length > 0 && length <= 50)
                     answer2++;
             }
-        /* */
-        return Promise.resolve(prettifyGrid(grid, path));
+        }
+        December.log(prettifyGrid(grid, path));
+        return Promise.resolve([path.length - 1, answer2]);
     }
 
     function prettifyGrid(grid, path) {
@@ -40,7 +41,7 @@
         title: 'A Maze of Twisty Little Cubicles',
         questions: ['What is the fewest number of steps required for you to reach 31,39?', 'How many locations (distinct x,y coordinates, including your starting location) can you reach in at most 50 steps?'],
         answer: day_13,
-        input: function () { return [1358, [31, 39], 45]; },
-        example: function () { return [10, [7, 4], 10]; }
+        input: 1358,
+        example: function () { return 10; }
     });
 }());

@@ -19,7 +19,7 @@
         title: 'One-Time Pad',
         questions: 'Given the actual salt in your puzzle input, what index produces your 64th one-time pad key?',
         answer: day_14,
-        input: function () { return 'qzyelonm'; },
+        input: 'qzyelonm',
         example: function () { return 'abc'; },
         development: true,
     });

@@ -52,34 +52,6 @@
         title: 'Radioisotope Thermoelectric Generators',
         questions: 'What is the minimum number of steps required to bring all of the objects to the fourth floor?',
         answer: day_11,
-        input: function () {
-            return [
-                new Floor(),
-                new Floor(),
-                new Floor(),
-                new Floor()
-            ];
-            return [
-                ['thulium generator', 'thulium microchip', 'plutonium generator', 'strontium generator'],
-                ['plutonium microchip', 'strontium microchip'],
-                ['promethium generator', 'promethium microchip', 'ruthenium generator', 'ruthenium microchip'],
-                []
-            ];
-        },
-        example: function () {
-            return [
-                new Floor([],['hydrogen', 'lithium']),
-                new Floor(['hydrogen']),
-                new Floor(['lithium']),
-                new Floor()
-            ];
-            return [
-                ['hydrogen microchip', 'lithium microchip'],
-                ['hydrogen generator'],
-                ['lithium generator'],
-                []
-            ];
-        },
         development: true,
     });
 }());

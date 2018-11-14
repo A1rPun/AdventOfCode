@@ -13,9 +13,7 @@
         return result;
     }
 
-    function day_16(puzzle) {
-        var bits = puzzle[0];
-        var length = puzzle[1];
+    function checkDisc(bits, length) {
         while (bits.length < length) {
             bits = dragonCurve(bits);
         }
@@ -23,16 +21,23 @@
         while (!(bits.length & 1)) {
             bits = getChecksum(bits);
         }
-        return Promise.resolve(bits);
+        return bits;
+    }
+
+    function day_16(puzzle) {
+        return Promise.resolve([checkDisc(puzzle, 272), checkDisc(puzzle, 35651584)]);
     }
 
     December.addDay({
         day: 16,
         year: 2016,
         title: 'Dragon Checksum',
-        questions: 'What is the correct checksum?',
+        questions: [
+            'What is the correct checksum for disc 272?',
+            'What is the correct checksum for disc 35651584?',
+        ],
         answer: day_16,
-        input: function () { return ['01111010110010011', 272]; }, // answer 2 = ['01111010110010011', 35651584]
-        example: function () { return ['10000', 20]; }
+        input: '01111010110010011',
+        example: function () { return '10000'; },
     });
 }());

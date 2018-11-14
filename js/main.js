@@ -159,7 +159,7 @@
                 day.classList.add('animated');
             }
             if (decDay.development) {
-                day.classList.add('development');
+                day.classList.add('unsolved', 'development');
             }
             if (decDay.title) {
                 day.innerText = `Day ${decDay.day.toString().padStart(2, '0')} - ${decDay.title}`;
