@@ -1,5 +1,6 @@
 (function () {
     function day_17(puzzle) {
+        puzzle = parseInt(puzzle, 10);
         const answer1 = [0];
         const max = 2017;
         let position = 0;
@@ -23,7 +24,7 @@
             'What is the value after 0 the moment 50000000 is inserted?'
         ],
         answer: day_17,
-        input: 329,
+        input: '329',
         example: function () {
             return 3;
         },

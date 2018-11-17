@@ -24,7 +24,15 @@
             return str.match(/\d+/g).map(function (x) { return +x; });
         },
         getYears: function () {
-            return Object.keys(days);
+            const years = [];
+            for (const year in days) {
+                const day = days[year];
+                years.push({
+                    year,
+                    score: day.reduce((acc, curr) => acc + (curr.title && !curr.development ? 2 : 0), 0),
+                });
+            }
+            return years;
         },
         prettify: function (jagged, char) {
             var result = '';

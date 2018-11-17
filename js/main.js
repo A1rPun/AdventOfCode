@@ -2,6 +2,17 @@
     const NEW_LINE = '\n';
     const seperator = '--------------------------------------------------';
     var code = d.querySelector('.code');
+    function logCode(c, click) {
+        var span = d.createElement('span');
+        span.classList.add('line');
+        span.innerText = typeof c === 'string' ? c : (c ? JSON.stringify(c, null, 4) : '');
+        if (click) {
+            span.classList.add('click');
+            span.addEventListener('click', click);
+        }
+        code.appendChild(span);
+        return span;
+    }
     December.log = function (o, clear) {
         if (clear)
             clearCode();
@@ -10,32 +21,16 @@
     showTree();
     logCode('★★ AdventOfCode - A1rPun ★★');
     logCode(seperator);
-    var spanYear = d.createElement('span');
+    var spanYear = logCode();
     logYears();
-    code.appendChild(spanYear);
     logCode(seperator);
-    var spanDay = d.createElement('span');
+    var spanDay = logCode();
     logDays();
-    code.appendChild(spanDay);
     logCode(seperator);
-    var results = d.createElement('span');
-    code.appendChild(results);
-    code = results;
+    code = logCode();
 
     function clearCode() {
         code.innerHTML = '';
-    }
-
-    function logCode(c, click) {
-        var span = d.createElement('span');
-        span.classList.add('line');
-        span.innerText = typeof c === 'string' ? c : JSON.stringify(c, null, 4);
-        if (click) {
-            span.classList.add('click');
-            span.addEventListener('click', click);
-        }
-        code.appendChild(span);
-        return span;
     }
 
     async function getInputForDay(day) {
@@ -178,11 +173,11 @@
         var years = December.getYears();
         for (var i = 0, l = years.length; i < l; i++) {
             var option = d.createElement('span');
-            var value = years[i];
-            option.innerHTML = value;
+            var year = years[i];
+            option.innerHTML = `${year.year}<span class="yellow darken">★${year.score}</span>`;
             option.classList.add('click', 'option');
-            option.addEventListener('click', switchYear(value));
-            if (December.currentYear === value) {
+            option.addEventListener('click', switchYear(year.year));
+            if (December.currentYear === year.year) {
                 option.classList.add('active');
             }
             spanYear.appendChild(option);

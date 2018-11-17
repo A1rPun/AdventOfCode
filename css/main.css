@@ -29,8 +29,12 @@ textarea:active {
     width: 100%;
 }
 
+.darken {
+    opacity: .5;
+}
+
 .unsolved {
-    color: #003300;
+    opacity: .2;
 }
 
 .animated {

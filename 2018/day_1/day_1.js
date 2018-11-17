@@ -5,13 +5,9 @@
     December.addDay({
         day: 1,
         year: 2018,
-        title: 'Coming soon',
-        questions: 'Coming soon',
+        title: '',
+        questions: '',
         answer: day_1,
-        input: function () {
-            console.log(this);
-            return [];
-        },
         example: function () {
             return [];
         },
