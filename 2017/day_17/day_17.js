@@ -1,14 +1,18 @@
 (function () {
     function day_17(puzzle) {
-        const buffer = [0];
+        const answer1 = [0];
         const max = 2017;
         let position = 0;
         for (let i = 0; i < max;) {
-            position = (position + puzzle) % buffer.length;
-            buffer.splice(++position, 0, ++i);
+            position = (position + puzzle + 1) % ++i;
+            answer1.splice(position, 0, i);
         }
-        const answer1 = buffer[buffer.indexOf(max) + 1];
-        return Promise.resolve(answer1);
+        let answer2;
+        for (let i = max; i <= 50000000;) {
+            position = (position + puzzle + 1) % ++i;
+            if (position === 0) answer2 = i;
+        }
+        return Promise.resolve([answer1[answer1.indexOf(max) + 1], answer2]);
     }
     December.addDay({
         day: 17,
