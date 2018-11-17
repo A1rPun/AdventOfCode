@@ -1,19 +1,19 @@
 (function () {
-    function exchange(a, b, programs) {
-        programs[a] = programs.splice(b, 1, programs[a])[0];
-        return programs;
+    function exchange(a, b, prog) {
+        [prog[a], prog[b]] = [prog[b], prog[a]];
+        return prog;
     }
 
-    function partner(a, b, programs){
-        return exchange(programs.indexOf(a), programs.indexOf(b), programs);
+    function partner(a, b, prog) {
+        return exchange(prog.indexOf(a), prog.indexOf(b), prog);
     }
 
-    function spin(index, programs) {
-        return programs.slice(-index).concat(programs.slice(0, -index));
+    function spin(index, prog) {
+        return prog.slice(-index).concat(prog.slice(0, -index));
     }
 
-    function doDance(programs, dance) {
-        return dance(programs);
+    function doDance(prog, dance) {
+        return dance(prog);
     }
 
     function parseDance(dance, length) {
@@ -33,17 +33,20 @@
     }
 
     function day_16(puzzle) {
-        const programs = 'abcdefghijklmnop'.split(''); //'abcde';
-        const dances = puzzle.split(',').map(x => parseDance(x, programs.length));
-        let answer2 = dances.reduce(doDance, programs);
-        const answer1 = answer2.join('');
-        
-        let max = 10;//999999999;
-        while (max--) {
-            answer2 = dances.reduce(doDance, answer2);
+        const programs = 'abcdefghijklmnop';
+        let prog = programs.split(''); 
+        const dances = puzzle.split(',').map(x => parseDance(x, prog.length));
+        let answer1, answer2;
+        let max = 1000000000;
+        for (let i = 0; i < max;) {
+            prog = dances.reduce(doDance, prog);
+            answer2 = prog.join('');
+            i = answer2 === programs ? i = max - (max % (i + 1)) : i + 1;
+            if (!answer1) answer1 = answer2;
         }
-        return Promise.resolve([answer1, answer2.join('')]);
+        return Promise.resolve([answer1, answer2]);
     }
+
     December.addDay({
         day: 16,
         year: 2017,
@@ -51,7 +54,7 @@
         questions: ['In what order are the programs standing after their dance?', 'In what order are the programs standing after their billion dances?'],
         answer: day_16,
         example: function () {
-            return 's1,x3/4,pe/b';
+            return 's1,x3/4,pe/b'; //const programs = 'abcde';
         },
     });
 }());
