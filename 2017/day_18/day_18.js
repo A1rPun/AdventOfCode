@@ -40,7 +40,7 @@
         add(x, y) { this.register[x] += this.getValue(y); }
         mul(x, y) { this.register[x] *= this.getValue(y); }
         mod(x, y) { this.register[x] %= this.getValue(y); }
-        jgz(x, y) { return this.getValue(x) ? this.getValue(y) : 1; }
+        jgz(x, y) { return this.getValue(x) > 0 ? this.getValue(y) : 1; }
     }
 
     function day_18(puzzle) {
