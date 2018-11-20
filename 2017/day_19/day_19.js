@@ -61,7 +61,7 @@
         day: 19,
         year: 2017,
         title: 'A Series of Tubes',
-        questions: 'What letters will it see if it follows the path?',
+        questions: ['What letters will it see if it follows the path?', 'How many steps does the packet need to go?'],
         answer: day_19,
         example: function () {
             return `     |          

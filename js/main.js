@@ -5,7 +5,7 @@
     function logCode(c, click) {
         var span = d.createElement('span');
         span.classList.add('line');
-        span.innerText = typeof c === 'string' ? c : (c ? JSON.stringify(c, null, 4) : '');
+        span.innerText = typeof c === 'string' || c === 0 ? c : (c ? JSON.stringify(c, null, 4) : '');
         if (click) {
             span.classList.add('click');
             span.addEventListener('click', click);
