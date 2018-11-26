@@ -16,8 +16,10 @@
     }
 
     function parsePattern(acc, curr) {
-        let [patternString, transform] = curr.split(' => ');
-        const pattern = patternString.match(/#|\./g);
+        //TODO: in one regex?
+        let [patternInput, transformInput] = curr.split(' => ');
+        const pattern = patternInput.match(/#|\./g);
+        const transform = transformInput.match(/#|\./g);
         return [pattern, rotate(pattern)].reduce((acc, curr) => {
             return [curr, flip(curr)].reduce((acc, curr) => {
                 acc[curr.join('')] = transform;
@@ -27,11 +29,40 @@
         }, acc);
     }
 
-    function day_21(puzzle) {
-        let fractal = '.#...####';
-        const patterns = puzzle.split('\n').reduce(parsePattern, {});
-        
+    function divide(fractal) {
+        const length = Math.sqrt(fractal.length);
+        const size = length % 2 === 0 ? 2 : 3;
+        return fractal.reduce((acc, curr, i) => {
+            const index = Math.floor(i / (length * size)) * (length / size) + Math.floor(i % length / size);
+            if (!acc[index])
+                acc[index] = [];
+            acc[index].push(curr);
+            return acc;
+        }, []);
+    }
 
+    function reunite(ruled) {
+        const length = Math.sqrt(ruled.length * ruled[0].length);
+        const size = Math.sqrt(ruled[0].length);
+        const beacon = length / size;
+        return ruled.reduce((acc, curr, idx) => {
+            return curr.reduce((acc, curr, i) => {
+                const index = Math.floor(i / size) * length + (i % size) + (Math.floor(idx / beacon) * (length * beacon)) + (idx * size);
+                acc[index] = curr;
+                return acc;
+            }, acc);
+        }, []);
+    }
+
+    function day_21(puzzle) {
+        const patterns = puzzle.split('\n').reduce(parsePattern, {});
+        let fractal = '.#...####'.split('');
+        let iterations = 5;
+        while (iterations--) {
+            const divided = divide(fractal);
+            const ruled = divided.map(x => patterns[x.join('')]);
+            fractal = reunite(ruled);
+        }
         const answer1 = December.count(fractal, '#');
         return Promise.resolve([answer1, patterns]);
     }
