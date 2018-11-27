@@ -61,10 +61,11 @@
         while (iterations--) {
             const divided = divide(fractal);
             const ruled = divided.map(x => patterns[x.join('')]);
-            fractal = reunite(ruled);
+            fractal = reunite(ruled).filter(x => x); // TODO Fix reunite indexing (9x2 vs 9x3) so that the filter isn't needed
         }
-        const answer1 = December.count(fractal, '#');
-        return Promise.resolve([answer1, patterns]);
+        December.log(prettify(fractal));
+        const answer1 = December.count(fractal.join(''), '#');
+        return Promise.resolve(answer1);
     }
     December.addDay({
         day: 21,
@@ -76,6 +77,15 @@
             return '../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#';
         },
     });
+
+    function prettify(fractal) {
+        const size = Math.sqrt(fractal.length);
+        const pretty = [];
+        for (var i = 0; i < fractal.length; i += size) {
+            pretty.push(fractal.slice(i, i + size).join(''));
+        }
+        return pretty.join('\n');
+    }
 }());
 
 /* /
