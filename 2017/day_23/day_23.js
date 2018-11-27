@@ -1,28 +1,25 @@
 (function () {
-    class Assembunny {
-        constructor() {
-            this.register = { a: 1 };
-            this.multiplyCount = 0;
+    function optimize(puzzle) {
+        let h = 0;
+        let b = puzzle * 100 + 100000;
+        let c = b + 17000;
+        for (; b <= c; b += 17) {
+            let d = 2;
+            while (b % d)
+                d++;
+            if (b !== d)
+                h++;
         }
-        getValue(val) {
-            return isNaN(val) ? this.register[val] || 0 : parseInt(val, 10);
-        }
-        set(x, y) { this.register[x] = this.getValue(y); }
-        sub(x, y) { this.register[x] -= this.getValue(y); }
-        mul(x, y) { this.register[x] *= this.getValue(y); this.multiplyCount++ }
-        jnz(x, y) { return this.getValue(x) ? this.getValue(y) : 1; }
+        return h;
     }
 
     function day_23(puzzle) {
-        puzzle = puzzle.split('\n').map(x => x.split(' '));
-        const register = new Assembunny();
-        for (let i = 0; i < puzzle.length;) {
-            const [op, x, y] = puzzle[i];
-            const addIndex = register[op](x, y);
-            i += addIndex ? addIndex : 1;
-        }
-        return Promise.resolve(register.multiplyCount);
+        puzzle = puzzle.match(/\d+/)[0];
+        const answer1 = (puzzle - 2) ** 2;
+        const answer2 = optimize(puzzle);
+        return Promise.resolve([answer1, answer2]);
     }
+
     December.addDay({
         day: 23,
         year: 2017,
