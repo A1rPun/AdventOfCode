@@ -15,7 +15,7 @@
         const virus = puzzle.split('\n').reduce((acc, curr, y) => {
             curr.split('').forEach((val, x) => {
                 if (val === '#')
-                    acc[`${x}_${y}`] = 1;
+                    acc[`${x}_${y}`] = state.infected;
             });
             return acc;
         }, {});
