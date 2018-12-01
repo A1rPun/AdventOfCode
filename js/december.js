@@ -6,7 +6,7 @@
         '2018': [],
     };
     var december = {
-        currentYear: '2017',
+        currentYear: '2018',
         addDay: function (d) {
             days[d.year].push(d);
             for (const fn in d.public) if (d.public.hasOwnProperty(fn)) {

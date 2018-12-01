@@ -1,15 +1,30 @@
 (function () {
     function day_1(puzzle) {
-        return Promise.resolve();
+        puzzle = puzzle.split('\n').map(x => parseInt(x, 10));
+        const answer1 = puzzle.reduce((acc, curr) => acc + curr);
+
+        let answer2;
+        let i = 0;
+        let acc = 0;
+        const dict = { 0: 1 };
+        while (!answer2) {
+            acc += puzzle[i];
+            if (dict[acc])
+                answer2 = acc;
+            else
+                dict[acc] = 1;
+            i = (i + 1) % puzzle.length;
+        }
+        return Promise.resolve([answer1, answer2]);
     }
     December.addDay({
         day: 1,
         year: 2018,
-        title: '',
-        questions: '',
+        title: 'Chronal Calibration',
+        questions: [
+            'Starting with a frequency of zero, what is the resulting frequency after all of the changes in frequency have been applied?',
+            'What is the first frequency your device reaches twice?'
+        ],
         answer: day_1,
-        example: function () {
-            return [];
-        },
     });
 }());
