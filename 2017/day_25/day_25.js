@@ -1,6 +1,27 @@
 (function () {
     function day_25(puzzle) {
-        return Promise.resolve();
+        let [nextState, steps, ...stateValues] = puzzle.match(/[A-Z][:|\.]|\d+|left|right/g);
+        const states = {};
+        while (stateValues.length) {
+            let [name, current1, write1, dir1, next1, current2, write2, dir2, next2, ...rest] = stateValues
+            stateValues = rest;
+            states[name[0]] = {
+                [current1]: [+write1, dir1 === 'right' ? 1 : -1, next1[0]],
+                [current2]: [+write2, dir2 === 'right' ? 1 : -1, next2[0]],
+            };
+        }
+        const tape = {};
+        let cursor = 0;
+        nextState = nextState[0];
+        while (steps--) {
+            let current = tape[cursor] || 0;
+            let move;
+            [current, move, nextState] = states[nextState][current];
+            tape[cursor] = current;
+            cursor += move;
+        }
+        const answer1 = Object.values(tape).reduce((a, b) => a + b);
+        return Promise.resolve([answer1]);
     }
     December.addDay({
         day: 25,
