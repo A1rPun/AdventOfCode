@@ -42,29 +42,28 @@
         return input;
     }
 
-    function handleAnswer(day, input) {
+    async function handleAnswer(day, input) {
         const answerT = new perfTimer();
-        day.answer(input, December.animate).then(function (answer) {
-            answerT.stop();
-            if (Array.isArray(answer)) {
-                for (let i = 0; i < answer.length; i++) {
-                    const question = Array.isArray(day.questions)
-                        ? day.questions[i]
-                        : day.questions;
-                    logCode(question);
-                    logCode(answer[i]).classList.add('yellow');
-                    logCode(NEW_LINE);
-                }
-            } else {
+        let answer = await day.answer(input, December.animate);
+        answerT.stop();
+        if (Array.isArray(answer)) {
+            for (let i = 0; i < answer.length; i++) {
                 const question = Array.isArray(day.questions)
-                    ? day.questions[day.questions.length - 1]
+                    ? day.questions[i]
                     : day.questions;
                 logCode(question);
-                logCode(answer).classList.add('yellow');
+                logCode(answer[i]).classList.add('yellow');
                 logCode(NEW_LINE);
             }
-            logCode(answerT.log());
-        });
+        } else {
+            const question = Array.isArray(day.questions)
+                ? day.questions[day.questions.length - 1]
+                : day.questions;
+            logCode(question);
+            logCode(answer).classList.add('yellow');
+            logCode(NEW_LINE);
+        }
+        logCode(answerT.log());
     }
 
     function dayClick(day) {

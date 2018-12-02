@@ -39,7 +39,7 @@
         day: 2,
         year: 2018,
         title: 'Inventory Management System',
-        questions: 'What is the checksum for your list of box IDs?',
+        questions: ['What is the checksum for your list of box IDs?', 'What letters are common between the two correct box IDs?'],
         answer: day_2,
         example: function () {
             return `abcde
