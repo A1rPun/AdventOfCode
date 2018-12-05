@@ -1,15 +1,15 @@
 (function () {
-    function react(str) {
-        for (let i = 0; i < str.length - 1; i++) {
-            const char = str.charCodeAt(i);
-            const nextChar = str.charCodeAt(i + 1);
+    function react(polymer) {
+        for (let i = 0; i < polymer.length - 1; i++) {
+            const char = polymer.charCodeAt(i);
+            const nextChar = polymer.charCodeAt(i + 1);
 
             if (Math.abs(char - nextChar) === 32) {
-                str = str.slice(0, i) + str.slice(i + 2);
+                polymer = polymer.slice(0, i) + polymer.slice(i + 2);
                 i -= 2;
             }
         }
-        return str;
+        return polymer;
     }
     function day_5(puzzle) {
         const answer1 = react(puzzle);
