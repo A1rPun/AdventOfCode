@@ -1,39 +1,26 @@
-﻿importScripts('../../js/md5.js');
-onmessage = function (e) {
-    processInput(e.data);
+importScripts('../../js/md5.js');
 
-    function processInput(salt) {
-        let numHashes = 0;
-        let keys = [];
-        let valids = [];
-        while (keys.length < 64) {
-            let hash = md5(salt + numHashes).toLowerCase();
-            let occurrences = hash.match(/(\S)\1{2,}/g) || [];
-            for (var i = 0; i < occurrences.length; i++) {
-                var occur = occurrences[i];
-                if (occur.length === 3) {
-                    valids.push({
-                        occur: occur,
-                        index: numHashes
-                    });
-                } else if (occur.length === 5) {
-                    var newOccur = occur.slice(-3);
-                    for (var j = valids.length; j--;) {
-                        var valid = valids[j];
-                        if (valid.occur === newOccur) {
-                            valids.splice(j, 1);
-                            if (valid.index + 1000 > numHashes) {
-                                keys.push(valid.index);
-                            }
-                        }
-                    }
-                }
-            }
-            numHashes++;
-        }
-        keys.sort(function (a, b) { return a - b; });
-        keys = keys.slice(0, 63);
-        postMessage(keys);
-        close();
+function solve(salt) {
+  const hashes = [];
+  const keys = [];
+  let index = 0;
+  while (keys.length < 64) {
+    const hash = md5(salt + index);
+    hashes[index] = hash;
+    const checkIndex = index - 1000;
+    const triplets = checkIndex > -1 ? hashes[checkIndex].match(/\S{2}/g) : null;
+    if (triplets) {
+      const hasQuintuple = new RegExp(`${triplets[0][0]}{5}`, 'g');
+      if (hashes.slice(-1000).any(x => x.test(hasQuintuple)))
+        keys.push(checkIndex);
     }
+    index++;
+  }
+  return keys;
+}
+
+onmessage = function (e) {
+  const keys = solve(e.data);
+  postMessage(keys[keys.length - 1]);
+  close();
 }
