@@ -10,7 +10,8 @@
         });
         const invalidChars = {};
         const grid = [];
-        
+        let answer2 = 0;
+
         for (let y = 0; y < 400; y++) {
             for (let x = 0; x < 400; x++) {
                 const coordinate = { x, y };
@@ -19,6 +20,7 @@
                 const char = coordinates[0].distance !== coordinates[1].distance ? String.fromCharCode(coordinates[0].id) : '.';
                 grid[400 * y + x] = char;
                 if (x === 0 || x === 399 || y === 0 || y === 399) invalidChars[char] = true;
+                if (coordinates.reduce((a, b) => a + b.distance, 0) < 10000) answer2++;
             }
         }
 
@@ -31,7 +33,8 @@
             return acc;
         }, {});
 
-        return Promise.resolve([letters]);
+        const answer1 = Math.max(...Object.values(letters));
+        return Promise.resolve([answer1, answer2]);
     }
     December.addDay({
         day: 6,
