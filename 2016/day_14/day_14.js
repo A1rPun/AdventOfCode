@@ -4,7 +4,10 @@
             if (Worker !== arguments[1337]) { // lamest undefined check ever
                 var md5Worker = new Worker('/2016/day_14/day_14_worker.js');
                 md5Worker.onmessage = function (e) {
-                    resolve(e.data);
+                    if (Array.isArray(e.data))
+                        resolve(e.data);
+                    else
+                        December.log(e.data);
                 };
                 md5Worker.onerror = function (e) {
                     reject(e);
@@ -21,6 +24,5 @@
         answer: day_14,
         input: 'qzyelonm',
         example: function () { return 'abc'; },
-        development: true,
     });
 }());
