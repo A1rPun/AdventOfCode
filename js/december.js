@@ -34,6 +34,7 @@
             }
             return years;
         },
+        plus: (a, b) => a + b,
         prettify: function (jagged, char) {
             var result = '';
             char = char || '';

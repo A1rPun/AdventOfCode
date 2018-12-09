@@ -1,7 +1,7 @@
 (function () {
     function day_1(puzzle) {
         puzzle = puzzle.split('\n').map(x => parseInt(x, 10));
-        const answer1 = puzzle.reduce((acc, curr) => acc + curr);
+        const answer1 = puzzle.reduce(December.plus);
 
         let answer2;
         let i = 0;

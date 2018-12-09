@@ -2,7 +2,7 @@
     class Component {
         constructor(portA, portB) {
             this.ports = [+portA, +portB];
-            this.strength = this.ports.reduce((a, b) => a + b);
+            this.strength = this.ports.reduce(December.plus);
         }
     }
     class Bridge {
