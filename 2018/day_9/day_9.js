@@ -1,37 +1,43 @@
 (function () {
-    function day_9(puzzle) {
-        let answer1, answer2;
-        let [playerCount, points] = puzzle.match(/\d+/g).map(x => parseInt(x, 10));
-        let players = Array(playerCount).fill(0);
-        let marbles = [0];
-        let currentPlayer = 0;
-        let currentMarble = 0;
+    class Marble {
+        constructor(value, previous, next) {
+            this.value = value;
+            this.previous = previous || this;
+            this.next = next || this;
+        }
+    }
 
-        points *= 100;
+    function getHighScore(playerCount, points) {
+        let players = Array(playerCount).fill(0);
+        let currentPlayer = 0;
+        let currentMarble = new Marble(0);
 
         for (let marble = 1; marble <= points; marble++) {
-            const earnPoint = marble % 23 === 0;
-            let newMarble = (marbles.length + (earnPoint ? currentMarble - 7 : currentMarble + 2)) % (marbles.length);
-            if (!newMarble) newMarble = marbles.length;
-            if (earnPoint) {
-                const removedMarble = marbles.splice(newMarble, 1)[0];
-                players[currentPlayer] += marble + removedMarble;
-            } else
-                marbles.splice(newMarble, 0, marble);
-            /*
-            console.log(`[${currentPlayer + 1}] ${marbles.map((x, i) => {
-                return i === newMarble ? `(${x})` : ('' + x).padStart(2, ' ');
-            }).join(' ')}`);
-            */
-            currentMarble = newMarble;
+            if (marble % 23 === 0) {
+                let rotate = 7;
+                while (rotate--)
+                    currentMarble = currentMarble.previous;
+                players[currentPlayer] += marble + currentMarble.value;
+                currentMarble.next.previous = currentMarble.previous;
+                currentMarble.previous.next = currentMarble.next;
+                currentMarble = currentMarble.next;
+            } else {
+                let insertBefore = currentMarble.next;
+                let newMarble = new Marble(marble, insertBefore, insertBefore.next)
+                insertBefore.next.previous = newMarble;
+                insertBefore.next = newMarble;
+                currentMarble = newMarble;
+            }
             currentPlayer = (currentPlayer + 1) % players.length;
-
-            if (marble % 10000 === 0)
-                console.log(Math.max(...players));
         }
+        return Math.max(...players);
+    }
 
-        answer1 = Math.max(...players);
-        return Promise.resolve([answer1]);
+    function day_9(puzzle) {
+        let [playerCount, points] = puzzle.match(/\d+/g).map(x => parseInt(x, 10));
+        const answer1 = getHighScore(playerCount, points);
+        const answer2 = getHighScore(playerCount, points * 100);
+        return Promise.resolve([answer1, answer2]);
     }
     December.addDay({
         day: 9,
