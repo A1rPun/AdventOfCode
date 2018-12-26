@@ -43,6 +43,7 @@
     }
 
     function day_21(puzzle, animate) {
+        puzzle = puzzle.split('\n');
         var answer1 = 'abcdefgh';
         return new Promise(function (resolve) {
             if (animate) {
@@ -50,11 +51,11 @@
                 var i = 0;
                 var fn = function () {
                     answer1 = processInput(puzzle[i], answer1);
-                    December.log(answer1.join(''), true);
                     i++;
-                    if (i < puzzle.length)
+                    if (i < puzzle.length) {
+                        December.log(answer1.join(''), true);
                         setTimeout(fn, interval);
-                    else
+                    } else
                         resolve(answer1.join(''));
                 };
                 setTimeout(fn, interval);
@@ -73,17 +74,14 @@
         questions: ['Now, you just need to generate a new scrambled password and you can access the system. What is the result of scrambling abcdefgh?', 'What is the un-scrambled version of the scrambled password fbgdceah?'],
         answer: day_21,
         example: function () {
-            return [[
-                'swap position 4 with position 0',
-                'swap letter d with letter b',
-                'reverse positions 0 through 4',
-                'rotate left 1 step',
-                'move position 1 to position 4',
-                'move position 3 to position 0',
-                'rotate based on position of letter b',
-                'rotate based on position of letter d'
-            ], 'abcde', 'decab'];
+            return `swap position 4 with position 0
+swap letter d with letter b
+reverse positions 0 through 4
+rotate left 1 step
+move position 1 to position 4
+move position 3 to position 0
+rotate based on position of letter b
+rotate based on position of letter d`;
         },
-        development: true,
     });
 }());
