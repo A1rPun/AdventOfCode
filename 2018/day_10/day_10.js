@@ -12,7 +12,7 @@
 
     function day_10(puzzle) {
         const stars = puzzle.split('\n').map(x => {
-            const [posX, posY, velX, velY] = x.match(/-?\d+/g).map(d => parseInt(d, 10));
+            const [posX, posY, velX, velY] = x.match(/-?\d+/g).map(December.toInt);
             return {
                 position: new Vector(posX, posY),
                 velocity: new Vector(velX, velY),

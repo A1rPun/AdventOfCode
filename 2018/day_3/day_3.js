@@ -1,6 +1,6 @@
 (function () {
     function day_3(puzzle) {
-        puzzle = puzzle.split('\n').map(x => x.match(/\d+/g).map(i => parseInt(i, 10)));
+        puzzle = puzzle.split('\n').map(x => x.match(/\d+/g).map(December.toInt));
         
         const stride = 1000;
         let answer1 = 0;

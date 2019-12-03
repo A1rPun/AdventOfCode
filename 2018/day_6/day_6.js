@@ -5,7 +5,7 @@
 
     function day_6(puzzle) {
         const coordinates = puzzle.split('\n').map((c, i) => {
-            const [x, y] = c.match(/\d+/g).map(d => parseInt(d, 10));
+            const [x, y] = c.match(/\d+/g).map(December.toInt);
             return { x, y, id: 65 + i };
         });
         const invalidChars = {};

@@ -4,6 +4,7 @@
         '2016': [],
         '2017': [],
         '2018': [],
+        '2019': [],
     };
     var december = {
         currentYear: '2018',
@@ -49,6 +50,7 @@
         rotate: function (arr, n) {
             return arr.slice(n, arr.length).concat(arr.slice(0, n));
         },
+        toInt: x => parseInt(x, 10),
     };
     return december;
 }());

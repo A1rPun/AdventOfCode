@@ -17,7 +17,7 @@
     }
 
     function day_8(puzzle) {
-        const stream = puzzle.split(' ').map(x => parseInt(x, 10));
+        const stream = puzzle.split(' ').map(December.toInt);
         const nodes = [];
         createNode(stream, nodes);
         const answer1 = nodes.reduce((acc, curr) => acc + curr.metadata.reduce(December.plus), 0);

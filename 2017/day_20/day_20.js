@@ -32,7 +32,7 @@
 
     function day_20(puzzle) {
         const particles = puzzle.split('\n').map(p => {
-            return new Particle(...p.match(/(-?\d+)/g).map(x => parseInt(x, 10)));
+            return new Particle(...p.match(/(-?\d+)/g).map(December.toInt));
         });
         const middlePoint = new Particle();
         let i = 333; // Arbitrary number to find "the long run"

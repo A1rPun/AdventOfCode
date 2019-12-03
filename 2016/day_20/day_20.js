@@ -3,7 +3,7 @@
         puzzle = puzzle.split('\n');
         puzzle.push(puzzle.length > 10 ? '4294967296-4294967296' : '10-10'); // MAX 4294967295
         puzzle = puzzle.map(x => {
-            const [low, high] = x.split('-').map(x => parseInt(x, 10));
+            const [low, high] = x.split('-').map(December.toInt);
             return { low, high };
         }).sort((a, b) => a.low - b.low);
 
