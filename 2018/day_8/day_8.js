@@ -12,7 +12,7 @@
         node.value = node.metadata.reduce(childCount ? (acc, curr) => {
             const child = node.childs[curr - 1];
             return acc + (child ? child.value : 0);
-        } : December.plus, 0);
+        } : December.sum, 0);
         return stream;
     }
 
@@ -20,7 +20,7 @@
         const stream = puzzle.split(' ').map(December.toInt);
         const nodes = [];
         createNode(stream, nodes);
-        const answer1 = nodes.reduce((acc, curr) => acc + curr.metadata.reduce(December.plus), 0);
+        const answer1 = nodes.reduce((acc, curr) => acc + curr.metadata.reduce(December.sum), 0);
         const answer2 = nodes[0].value;
         return Promise.resolve([answer1, answer2]);
     }

@@ -20,7 +20,7 @@
             tape[cursor] = current;
             cursor += move;
         }
-        const answer1 = Object.values(tape).reduce(December.plus);
+        const answer1 = Object.values(tape).reduce(December.sum);
         return Promise.resolve([answer1]);
     }
     December.addDay({

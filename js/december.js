@@ -35,12 +35,11 @@
             }
             return years;
         },
-        plus: (a, b) => a + b,
         prettify: function (jagged, char) {
             var result = '';
             char = char || '';
             for (var i = 0; i < jagged.length; i++)
-                result += jagged[i].join(char) + '\n';
+            result += jagged[i].join(char) + '\n';
             return result;
         },
         range: function (num) {
@@ -50,6 +49,7 @@
         rotate: function (arr, n) {
             return arr.slice(n, arr.length).concat(arr.slice(0, n));
         },
+        sum: (a, b) => a + b,
         toInt: x => parseInt(x, 10),
     };
     return december;

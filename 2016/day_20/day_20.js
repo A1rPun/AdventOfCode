@@ -20,7 +20,7 @@
         });
 
         const answer1 = Math.min(...Object.keys(whitelist));
-        const answer2 = Object.values(whitelist).reduce(December.plus);
+        const answer2 = Object.values(whitelist).reduce(December.sum);
         return Promise.resolve([answer1, answer2]);
     }
 
