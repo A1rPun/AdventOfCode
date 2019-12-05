@@ -65,6 +65,7 @@
   }
 
   December.addDay({
+    development: true,
     day: 3,
     year: 2019,
     title: 'Crossed Wires',
