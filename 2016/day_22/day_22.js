@@ -17,5 +17,6 @@
         title: 'Grid Computing',
         questions: 'How many viable pairs of nodes are there?',
         answer: day_22,
+        solutions: [],
     });
 }());

@@ -36,10 +36,11 @@
     title: 'Secure Container',
     questions: [
       'How many different passwords within the range given in your puzzle input meet these criteria?',
-      '',
+      'How many different passwords within the range given in your puzzle input meet all of the criteria?',
     ],
     input: '382345-843167',
     answer: day_1,
     example: () => '112233-112233',
+    solutions: [460, 290],
   });
 })();

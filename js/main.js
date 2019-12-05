@@ -152,8 +152,8 @@
             if (decDay.hasAnimation) {
                 day.classList.add('animated');
             }
-            if (decDay.development) {
-                day.classList.add('unsolved', 'development');
+            if (decDay.solutions && !decDay.solutions.length) {
+                day.classList.add('development');
             }
             if (decDay.title) {
                 day.innerText = `Day ${decDay.day.toString().padStart(2, '0')} - ${decDay.title}`;
@@ -173,7 +173,7 @@
         for (var i = 0, l = years.length; i < l; i++) {
             var option = d.createElement('span');
             var year = years[i];
-            option.innerHTML = `${year.year}<span class="yellow darken">★${year.score}</span>`;
+            option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
             option.classList.add('click', 'option');
             option.addEventListener('click', switchYear(year.year));
             if (December.currentYear === year.year) {

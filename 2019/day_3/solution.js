@@ -59,13 +59,14 @@
       return acc;
     }, []);
 
-    const answer1 = intersections.map(x => manhatten(centralPort, x)).sort((a, b) => a - b);
+    const answer1 = intersections
+      .map(x => manhatten(centralPort, x))
+      .sort((a, b) => a - b);
     const answer2 = 1;
     return Promise.resolve([answer1, answer2]);
   }
 
   December.addDay({
-    development: true,
     day: 3,
     year: 2019,
     title: 'Crossed Wires',
@@ -74,6 +75,7 @@
     ],
     answer: day_3,
     example: () =>
-      'R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83'
+      'R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83',
+    solutions: [],
   });
 })();

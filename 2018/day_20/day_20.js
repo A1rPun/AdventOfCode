@@ -51,7 +51,6 @@
         return Promise.resolve(root);
     }
     December.addDay({
-        development: true,
         day: 20,
         year: 2018,
         title: 'A Regular Map',
@@ -60,5 +59,6 @@
         example: function () {
             return `^ENWWW(NEEE|SSE(EE|N))$`;
         },
+        solutions: [],
     });
 }());

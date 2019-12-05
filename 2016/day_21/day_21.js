@@ -83,5 +83,6 @@ move position 3 to position 0
 rotate based on position of letter b
 rotate based on position of letter d`;
         },
+        solutions: ['agcebfdh'],
     });
 }());

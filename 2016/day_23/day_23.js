@@ -69,6 +69,6 @@ cpy 1 a
 dec a
 dec a`;
         },
-        development: true,
+        solutions: [],
     });
 }());
