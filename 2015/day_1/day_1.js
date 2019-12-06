@@ -14,6 +14,7 @@
             }
             return Promise.resolve([answer1, answer2]);
         },
-        example: function () { return '()())' }
+        example: function () { return '()())' },
+        solutions: [],
     });
 }());

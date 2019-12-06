@@ -8,8 +8,7 @@
         title: '',
         questions: '',
         answer: day_,
-        example: function () {
-            return ``;
-        },
+        example: () => [],
+        solutions: [],
     });
 }());

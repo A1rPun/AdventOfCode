@@ -34,14 +34,15 @@
       .map(x => x.split(',').reduce(getVectors, [centralPort]));
 
     const grid = wires.reduce(
-      (acc, wire) => {
+      (acc, wire, index) => {
         wire.reduce((prev, cur) => {
           let vector = new Vector(prev.x, prev.y, 1, cur.direction);
           let len = cur.length;
           for (let i = 0; i < len; i++) {
             const key = `${vector.x}_${vector.y}`;
-            if (!acc[key]) acc[key] = 1;
-            else acc[key]++;
+            if (!acc[key]) acc[key] = {};
+            if (!acc[key][index]) acc[key][index] = 1;
+            else acc[key][index]++;
             vector = directions[vector.direction](vector, 1);
           }
           return cur;
@@ -52,7 +53,7 @@
     );
 
     const intersections = Object.entries(grid).reduce((acc, [key, times]) => {
-      if (times > 1) {
+      if (times[0] >= 1 && times[1] >= 1) {
         const [x, y] = key.split('_').map(December.toInt);
         acc.push(new Vector(x, y));
       }
@@ -72,6 +73,7 @@
     title: 'Crossed Wires',
     questions: [
       'What is the Manhattan distance from the central port to the closest intersection?',
+      'What is the fewest combined steps the wires must take to reach an intersection?',
     ],
     answer: day_3,
     example: () =>

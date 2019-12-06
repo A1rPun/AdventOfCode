@@ -12,5 +12,6 @@
         answer: day_,
         // input: '',
         example: () => [],
+        solutions: [],
     });
 }());
