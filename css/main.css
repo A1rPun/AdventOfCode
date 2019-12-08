@@ -1,97 +1,108 @@
-html, body {
-    margin: 0;
-    padding: 8px;
-    font-size: 16px;
-    background-color: #0f0f23;
+html,
+body {
+  margin: 0;
+  padding: 8px;
+  font-size: 16px;
+  background-color: #0f0f23;
 }
 
 textarea {
-    background-color: #0f0f23;
-    color: #009900;
-    font-size: 16px;
-    height: 19px;
-    border: none;
+  background-color: #0f0f23;
+  color: #009900;
+  font-size: 16px;
+  height: 19px;
+  border: none;
 }
 textarea:active {
-    border: 1px;
+  border: 1px;
 }
 
 .code {
-    width: 512px;
-    margin: 0 auto;
-    text-align: center;
-    white-space: pre-wrap;
-    word-wrap: break-word;  
+  width: 512px;
+  margin: 0 auto;
+  text-align: center;
+  white-space: pre-wrap;
+  word-wrap: break-word;
 }
 
 .line {
-    display: block;
-    width: 100%;
+  display: block;
+  width: 100%;
 }
 
 .darken {
-    opacity: .5;
+  opacity: 0.5;
 }
 
 .unsolved {
-    opacity: .2;
+  opacity: 0.2;
 }
 
 .animated {
-    color: #00cc00;
-    text-shadow: 0 0 4px #00cc00;
+  color: #00cc00;
+  text-shadow: 0 0 4px #00cc00;
 }
 
 .development::after {
-    content: " \1f528"
+  content: ' \1f528';
 }
 
 .click:hover {
-    background-color: lightgray;
-    color: black;
-    cursor: pointer;
+  background-color: lightgray;
+  color: black;
+  cursor: pointer;
 }
 
 .option {
-    margin-right: 8px;
+  margin-right: 8px;
 }
 
 .active {
-    color: #ffff66;
+  color: #ffff66;
 }
 
 .white {
-    color: #ffffff;
+  color: #ffffff;
 }
 
 .brown {
-    color: #8b7355;
+  color: #8b7355;
 }
 
 .green {
-    color: #009900;
+  color: #009900;
 }
 
 .yellow {
-    color: #ffff66;
-    text-shadow: 0 0 16px #ffffff;
+  color: #ffff66;
+  text-shadow: 0 0 16px #ffffff;
 }
 
 .red {
-    color: #ff0000;
-    text-shadow: 0 0 16px #ffffff;
+  color: #ff0000;
+  text-shadow: 0 0 16px #ffffff;
 }
 
 .blue {
-    color: #0000ff;
-    text-shadow: 0 0 16px #ffffff;
+  color: #0000ff;
+  text-shadow: 0 0 16px #ffffff;
 }
 
 .orange {
-    color: #ffa500;
-    text-shadow: 0 0 16px #ffffff;
+  color: #ffa500;
+  text-shadow: 0 0 16px #ffffff;
+}
+
+.first-only {
+  color: #666699;
+  text-shadow: 0 0 16px #ffffff;
 }
 
 .hidden {
-    display: none;
+  display: none;
+}
+
+.text-left {
+  text-align: left;
+  padding-left: 8px;
 }
