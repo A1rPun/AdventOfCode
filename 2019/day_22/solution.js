@@ -2,7 +2,7 @@
     function day_(puzzle) {
         const answer1 = 0;
         const answer2 = 0;
-        return Promise.resolve(answer1, answer2);
+        return Promise.resolve([answer1, answer2]);
     }
     December.addDay({
         // day: ,
