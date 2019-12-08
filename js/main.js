@@ -46,9 +46,9 @@
     return input;
   }
 
-  async function handleAnswer(day, input) {
+  async function handleAnswer(day, input, debug = false) {
     const answerT = new perfTimer();
-    let answer = await day.answer(input, December.animate);
+    let answer = await day.answer(input, December.animate, debug);
     answerT.stop();
     if (Array.isArray(answer)) {
       for (let i = 0; i < answer.length; i++) {
@@ -115,7 +115,7 @@
       example.innerText = 'Show example';
       example.addEventListener('click', function() {
         clearCode();
-        handleAnswer(day, day.example());
+        handleAnswer(day, day.example(), true);
       });
       spanDay.appendChild(example);
 
