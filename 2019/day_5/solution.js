@@ -105,6 +105,6 @@
       return Promise.resolve([answer1(memory, 1), answer2(memory, 5)]);
     },
     example: () => '3,0,1001,0,1,0,4,0,99',
-    solutions: [9006673],
+    solutions: [9006673, 3629692],
   });
 })();

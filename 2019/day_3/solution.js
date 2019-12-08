@@ -35,15 +35,20 @@
 
     const grid = wires.reduce(
       (acc, wire, index) => {
+        let wireLength = 0;
         wire.reduce((prev, cur) => {
           let vector = new Vector(prev.x, prev.y, 1, cur.direction);
           let len = cur.length;
           for (let i = 0; i < len; i++) {
             const key = `${vector.x}_${vector.y}`;
             if (!acc[key]) acc[key] = {};
-            if (!acc[key][index]) acc[key][index] = 1;
-            else acc[key][index]++;
+            if (!acc[key][index]) {
+              acc[key][index] = { times: 1, length: wireLength };
+            } else {
+              acc[key][index].times++;
+            }
             vector = directions[vector.direction](vector, 1);
+            wireLength++;
           }
           return cur;
         });
@@ -52,10 +57,10 @@
       { '0_0': 1 - wires.length }
     );
 
-    const intersections = Object.entries(grid).reduce((acc, [key, times]) => {
-      if (times[0] >= 1 && times[1] >= 1) {
+    const intersections = Object.entries(grid).reduce((acc, [key, point]) => {
+      if (point[0] && point[1] && point[0].times >= 1 && point[1].times >= 1) {
         const [x, y] = key.split('_').map(December.toInt);
-        acc.push(new Vector(x, y));
+        acc.push({ x, y, steps: point[0].length + point[1].length });
       }
       return acc;
     }, []);
@@ -63,7 +68,7 @@
     const answer1 = intersections
       .map(x => manhatten(centralPort, x))
       .sort((a, b) => a - b);
-    const answer2 = 1;
+    const answer2 = intersections.sort((a, b) => a.steps - b.steps);
     return Promise.resolve([answer1, answer2]);
   }
 
@@ -76,8 +81,7 @@
       'What is the fewest combined steps the wires must take to reach an intersection?',
     ],
     answer: day_3,
-    example: () =>
-      'R75,D30,R83,U83,L12,D49,R71,U7,L72\nU62,R66,U55,R34,D71,R55,D58,R83',
-    solutions: [],
+    example: () => 'R8,U5,L5,D3\nU7,R6,D4,L4',
+    solutions: [1264, 37390],
   });
 })();

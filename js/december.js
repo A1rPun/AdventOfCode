@@ -19,7 +19,7 @@
     count: function(str, char) {
       return (str.match(new RegExp(char, 'g')) || []).length;
     },
-    getDays: function(d) {
+    getDays: function() {
       return days[this.currentYear];
     },
     getNumbers: function(str) {
