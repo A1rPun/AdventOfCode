@@ -81,7 +81,7 @@
       'What is the fewest combined steps the wires must take to reach an intersection?',
     ],
     answer: day_3,
-    example: () => 'R8,U5,L5,D3\nU7,R6,D4,L4',
+    example: ['R8,U5,L5,D3\nU7,R6,D4,L4'],
     solutions: [1264, 37390],
   });
 })();

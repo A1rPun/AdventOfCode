@@ -115,7 +115,7 @@
       example.innerText = 'Show example';
       example.addEventListener('click', function() {
         clearCode();
-        handleAnswer(day, day.example(), true);
+        handleAnswer(day, day.example[0], true);
       });
       spanDay.appendChild(example);
 
@@ -190,9 +190,7 @@
     for (var i = 0, l = years.length; i < l; i++) {
       var option = d.createElement('span');
       var year = years[i];
-      option.innerHTML = `[${year.year}]<small class="yellow darken">★${
-        year.score
-      }</small>`;
+      option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
       option.classList.add('click', 'option');
       option.addEventListener('click', switchYear(year.year));
       if (December.currentYear === year.year) {

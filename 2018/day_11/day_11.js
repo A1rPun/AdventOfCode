@@ -1,14 +1,11 @@
-(function () {
-    function day_(puzzle) {
-        return Promise.resolve();
-    }
-    December.addDay({
-        //day: ,
-        year: 2018,
-        title: '',
-        questions: '',
-        answer: day_,
-        example: () => [],
-        solutions: [],
-    });
-}());
+(function() {
+  December.addDay({
+    //day: ,
+    year: 2018,
+    title: '',
+    questions: '',
+    answer: puzzle => Promise.resolve([]),
+    example: [],
+    solutions: [],
+  });
+})();

@@ -48,7 +48,7 @@
       'What message is produced after decoding your image?',
     ],
     answer: day_8,
-    example: () => '123456789012',
+    example: ['123456789012'],
     solutions: [2684, 'YGRYZ'],
   });
 })();

@@ -34,7 +34,7 @@
           : [createIntCode([...memory]), answer2(memory, 19690720)]
       );
     },
-    example: () => '1,1,1,4,99,5,6,0,99',
+    example: ['1,1,1,4,99,5,6,0,99'],
     solutions: [6327510, 4112],
   });
 })();

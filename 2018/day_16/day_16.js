@@ -97,8 +97,7 @@
         }, 0)
     ).length;
 
-    const opCodeMap = {
-    };
+    const opCodeMap = {};
 
     const answer2 = testProgram.split('\n').reduce((acc, cur) => {
       if (cur) {
@@ -119,13 +118,15 @@
       'What value is contained in register 0 after executing the test program?',
     ],
     answer: day_16,
-    example: () => `Before: [3, 2, 1, 1]
+    example: [
+      `Before: [3, 2, 1, 1]
 9 2 1 2
 After:  [3, 2, 2, 1]
 
 
 
 9 2 1 2`,
+    ],
     solutions: [570],
   });
 })();

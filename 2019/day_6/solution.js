@@ -83,7 +83,8 @@
       const planets = puzzle.split('\n');
       return Promise.resolve(answer(planets, ['YOU', 'SAN']));
     },
-    example: () => `COM)B
+    example: [
+      `COM)B
 B)C
 C)D
 D)E
@@ -96,6 +97,7 @@ J)K
 K)L
 K)YOU
 I)SAN`,
+    ],
     solutions: [358244, 517],
   });
 })();

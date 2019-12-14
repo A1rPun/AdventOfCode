@@ -1,6 +1,6 @@
 (function() {
   const getFuel = x => Math.floor(x / 3) - 2;
-  const getAnswer = (x, fn) =>  x.map(fn).reduce(December.sum);
+  const getAnswer = (x, fn) => x.map(fn).reduce(December.sum);
 
   function doubleCheckAux(totalFuel, fuel) {
     const extraFuel = getFuel(fuel);
@@ -15,7 +15,10 @@
   }
 
   function day_1(puzzle) {
-    const modules = puzzle.split('\n').filter(x => x).map(December.toInt);
+    const modules = puzzle
+      .split('\n')
+      .filter(x => x)
+      .map(December.toInt);
     const answer1 = getAnswer(modules, getFuel);
     const answer2 = getAnswer(modules, doubleCheckFuel);
     return Promise.resolve([answer1, answer2]);
@@ -30,7 +33,7 @@
       '... when also taking into account the mass of the added fuel? ',
     ],
     answer: day_1,
-    example: () => '1969',
+    example: ['1969'],
     solutions: [3249817, 4871866],
   });
 })();

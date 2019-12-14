@@ -33,7 +33,12 @@
         const day = days[year];
         years.push({
           year,
-          score: day.reduce((acc, curr) => acc + (curr.title ? curr.solutions ? curr.solutions.length : 2 : 0), 0),
+          score: day.reduce(
+            (acc, curr) =>
+              acc +
+              (curr.title ? (curr.solutions ? curr.solutions.length : 2) : 0),
+            0
+          ),
         });
       }
       return years;
@@ -56,4 +61,4 @@
     toInt: x => parseInt(x, 10),
   };
   return december;
-}());
+})();
