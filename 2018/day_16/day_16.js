@@ -1,4 +1,6 @@
 (function() {
+  const strToNumbers = str => str.match(/(\d+)/g).map(Number);
+
   class Device {
     constructor(memory) {
       this.memory = memory || [0, 0, 0, 0];
@@ -52,15 +54,16 @@
       this.memory[c] = this.memory[a] === this.memory[b] ? 1 : 0;
     }
   }
+  December.Device = Device;
 
   function day_16(puzzle) {
     const [manual, testProgram] = puzzle.split('\n\n\n\n');
     const instructions = manual.split('\n\n').map(x => {
       const [before, codes, after] = x.split('\n');
       return {
-        before: before.match(/(\d+)/g).map(Number),
-        codes: codes.match(/(\d+)/g).map(Number),
-        after: after.match(/(\d+)/g).join(''),
+        before: strToNumbers(before),
+        codes: strToNumbers(codes),
+        after: strToNumbers(after).join(''),
       };
     });
 
@@ -94,7 +97,17 @@
         }, 0)
     ).length;
 
-    return Promise.resolve([answer1]);
+    const opCodeMap = {
+    };
+
+    const answer2 = testProgram.split('\n').reduce((acc, cur) => {
+      if (cur) {
+        const [opCode, ...args] = strToNumbers(cur);
+        // acc[opCodeMap[opCode]](...args);
+      }
+      return acc;
+    }, new Device());
+    return Promise.resolve([answer1, answer2.memory[0]]);
   }
 
   December.addDay({

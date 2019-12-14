@@ -5,9 +5,9 @@
         return Promise.resolve([answer1, answer2]);
     }
     December.addDay({
-        // day: ,
+        day: 10,
         year: 2019,
-        title: '',
+        title: 'Monitoring Station',
         questions: ['', ''],
         answer: day_,
         // input: '',
