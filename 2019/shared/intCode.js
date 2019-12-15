@@ -45,7 +45,7 @@
         this.pointer + 1,
         this.pointer + 4
       );
-
+      
       if (opCode !== 3) {
         firstArg = this.getArgumentMode(firstArg, firstArgMode);
         secondArg = this.getArgumentMode(secondArg, secondArgMode);
@@ -60,8 +60,8 @@
     run(value) {
       this.halted = false;
       this.input.push(value);
-      if (this.lastTarget) this.setValue(this.lastTarget);
-
+      if (this.lastTarget) this[SEND](this.lastTarget);
+      
       while (!this.halted && this.pointer >= 0) {
         this.tick();
       }

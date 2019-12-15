@@ -16,17 +16,7 @@
         }
     },
     animate: true,
-    count: function(str, char) {
-      return (str.match(new RegExp(char, 'g')) || []).length;
-    },
-    getDays: function() {
-      return days[this.currentYear];
-    },
-    getNumbers: function(str) {
-      return str.match(/\d+/g).map(function(x) {
-        return +x;
-      });
-    },
+    getDays: () => days[december.currentYear],
     getYears: function() {
       const years = [];
       for (const year in days) {
@@ -43,6 +33,9 @@
       }
       return years;
     },
+    // Shared utility functions
+    count: (str, char) => (str.match(new RegExp(char, 'g')) || []).length,
+    getNumbers: str => str.match(/-?\d+/g).map(december.toInt),
     prettify: function(jagged, char) {
       var result = '';
       char = char || '';
@@ -50,13 +43,9 @@
         result += jagged[i].join(char) + '\n';
       return result;
     },
-    range: function(num) {
-      return [...Array(num).keys()];
-    },
+    range: num => [...Array(num).keys()],
     // Rotate + = left, - = right
-    rotate: function(arr, n) {
-      return arr.slice(n, arr.length).concat(arr.slice(0, n));
-    },
+    rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
     sum: (a, b) => a + b,
     toInt: x => parseInt(x, 10),
   };

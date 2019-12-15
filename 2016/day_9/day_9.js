@@ -5,7 +5,7 @@
       if (file[i] === '(') {
         const endMarker = file.indexOf(')', i) + 1;
         const marker = file.slice(i, endMarker);
-        const [x, y] = marker.match(/\d+/g).map(December.toInt);
+        const [x, y] = December.getNumbers(marker);
         count += deep
           ? simpleCompress(file.slice(endMarker, endMarker + x), deep) * y
           : x * y;

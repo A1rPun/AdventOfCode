@@ -33,7 +33,7 @@
   }
 
   function day_9(puzzle) {
-    let [playerCount, points] = puzzle.match(/\d+/g).map(December.toInt);
+    let [playerCount, points] = December.getNumbers(puzzle);
     const answer1 = getHighScore(playerCount, points);
     const answer2 = getHighScore(playerCount, points * 100);
     return Promise.resolve([answer1, answer2]);

@@ -48,7 +48,8 @@
     return actions[splitted[0]](charArr, splitted);
   }
 
-  function day_21(puzzle, animate) {
+  function day_21(puzzle) {
+    const animate = December.animate;
     puzzle = puzzle.split('\n');
     var answer1 = 'abcdefgh';
     return new Promise(function(resolve) {

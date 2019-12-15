@@ -16,7 +16,7 @@
     */
   function day_23(puzzle) {
     const nanoBots = puzzle.split('\n').map(b => {
-      const [x, y, z, radius] = b.match(/-?\d+/g).map(December.toInt);
+      const [x, y, z, radius] = December.getNumbers(b);
       return { x, y, z, radius };
     });
     const strongestBot = nanoBots.reduce((a, b) =>

@@ -61,7 +61,8 @@
     }
   }
 
-  function day_8(puzzle, animate) {
+  function day_8(puzzle) {
+    const animate = December.animate;
     var inputs = puzzle.split('\n');
     var strip = getStrip(50, 6);
     return new Promise(function(resolve) {

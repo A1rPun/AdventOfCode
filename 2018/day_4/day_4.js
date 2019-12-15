@@ -35,7 +35,7 @@
 
   function day_4(puzzle) {
     puzzle = puzzle.split('\n');
-    const duties = puzzle.sort().map(x => x.match(/\d+/g).map(December.toInt));
+    const duties = puzzle.sort().map(December.getNumbers);
 
     const guards = {};
     let currentGuard;

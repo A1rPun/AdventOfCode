@@ -1,5 +1,6 @@
 (function() {
-  function day_5(doorId, animate) {
+  function day_5(doorId) {
+    const animate = December.animate;
     return new Promise(function(resolve, reject) {
       if (Worker !== arguments[1337]) {
         // lamest undefined check ever
