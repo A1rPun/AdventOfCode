@@ -1,58 +1,60 @@
 (function() {
-  const POSITION_MODE = 0;
-  const IMMEDIATE_MODE = 1;
-  const RELATIVE_MODE = 2;
+  const POSITION_MODE = '0';
+  const IMMEDIATE_MODE = '1';
+  const RELATIVE_MODE = '2';
 
-  const ADD = 1;
-  const MULTIPLY = 2;
-  const RECEIVE = 3;
-  const SEND = 4;
-  const JUMP_IF_NOT_ZERO = 5;
-  const JUMP_IF_ZERO = 6;
-  const LESS_THAN = 7;
-  const EQUALS = 8;
-  const ADJUST_RELATIVE_BASE = 9;
-  const HALT = 99;
+  const ADD = '01';
+  const MULTIPLY = '02';
+  const RECEIVE = '03';
+  const SEND = '04';
+  const JUMP_IF_NOT_ZERO = '05';
+  const JUMP_IF_ZERO = '06';
+  const LESS_THAN = '07';
+  const EQUALS = '08';
+  const ADJUST_RELATIVE_BASE = '09';
+  const HALT = '99';
 
   class IntCode {
     constructor(memory, input) {
       this.memory = memory || [];
       this.pointer = 0;
-      this.input = [input];
+      this.input = typeof input === 'undefined' ? [] : [input];
       this.outputs = [];
       this.halted = true;
       this.lastTarget = null;
       this.relativeBase = 0;
     }
-    getArgumentMode(arg, mode) {
+    getArgumentMode(arg, mode, write) {
       let argument;
-      switch (parseInt(mode)) {
-        case IMMEDIATE_MODE:
-          argument = arg;
-          break;
-        case RELATIVE_MODE:
-          argument = this.memory[this.relativeBase + arg];
-          break;
-        case POSITION_MODE:
-        default:
-          argument = this.memory[arg];
+
+      if (!write && mode === POSITION_MODE) {
+        argument = this.memory[arg];
+      } else if (mode === IMMEDIATE_MODE) {
+        argument = arg;
+      } else if (mode === RELATIVE_MODE) {
+        argument = write
+          ? this.relativeBase + arg
+          : this.memory[this.relativeBase + arg];
       }
       return argument || 0;
     }
     parseInstruction(instruction) {
-      const [_, secondArgMode, firstArgMode, op2, op1] = instruction
+      const [thirdArgMode, secondArgMode, firstArgMode, op2, op1] = instruction
         .toString()
         .padStart(5, '0')
         .split('');
-      const opCode = parseInt(op2 + op1);
+      const opCode = op2 + op1;
       let [firstArg, secondArg, thirdArg] = this.memory.slice(
         this.pointer + 1,
         this.pointer + 4
       );
 
-      if (opCode !== 3) {
+      if (opCode === RECEIVE) {
+        firstArg = this.getArgumentMode(firstArg, firstArgMode, true);
+      } else {
         firstArg = this.getArgumentMode(firstArg, firstArgMode);
         secondArg = this.getArgumentMode(secondArg, secondArgMode);
+        thirdArg = this.getArgumentMode(thirdArg, thirdArgMode, true);
       }
       return [opCode, firstArg, secondArg, thirdArg];
     }
