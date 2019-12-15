@@ -1,19 +1,4 @@
 (function() {
-  class Vector {
-    constructor(x = 0, y = 0, z = 0) {
-      this.x = x;
-      this.y = y;
-      this.z = z;
-    }
-    add(v) {
-      this.x += v.x;
-      this.y += v.y;
-      this.z += v.z;
-    }
-    key() {
-      return `${this.x}-${this.y}-${this.z}`;
-    }
-  }
   class Particle {
     constructor(px, py, pz, vx, vy, vz, ax, ay, az) {
       this.position = new Vector(px, py, pz);

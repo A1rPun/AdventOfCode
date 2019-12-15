@@ -1,15 +1,4 @@
 (function() {
-  class Vector {
-    constructor(x, y) {
-      this.x = x;
-      this.y = y;
-    }
-    add(vector) {
-      this.x += vector.x;
-      this.y += vector.y;
-    }
-  }
-
   function day_10(puzzle) {
     const stars = puzzle.split('\n').map(x => {
       const [posX, posY, velX, velY] = December.getNumbers(x);

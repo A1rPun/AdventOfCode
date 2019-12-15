@@ -1,34 +1,8 @@
 (function() {
-  class Point {
-    constructor(x = 0, y = 0, z = 0) {
-      this.x = x;
-      this.y = y;
-      this.z = z;
-    }
-
-    add(point) {
-      this.x += point.x;
-      this.y += point.y;
-      this.z += point.z;
-    }
-
-    resolve(point) {
-      return new Point(
-        this.x === point.x ? 0 : this.x < point.x ? 1 : -1,
-        this.y === point.y ? 0 : this.y < point.y ? 1 : -1,
-        this.z === point.z ? 0 : this.z < point.z ? 1 : -1
-      );
-    }
-
-    size() {
-      return Math.abs(this.x) + Math.abs(this.y) + Math.abs(this.z);
-    }
-  }
-
   class Moon {
     constructor(x, y, z) {
-      this.pos = new Point(x, y, z);
-      this.vel = new Point();
+      this.pos = new Vector(x, y, z);
+      this.vel = new Vector();
     }
 
     applyGravity(moon) {

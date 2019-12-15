@@ -1,5 +1,5 @@
 (function() {
-  class Vector {
+  class Wire {
     constructor(x, y, length, direction) {
       this.x = x;
       this.y = y;
@@ -8,12 +8,12 @@
     }
   }
 
-  const centralPort = new Vector(0, 0);
+  const centralPort = new Wire(0, 0);
   const directions = {
-    U: (cur, n) => new Vector(cur.x, cur.y - n, n, 'U'),
-    R: (cur, n) => new Vector(cur.x + n, cur.y, n, 'R'),
-    D: (cur, n) => new Vector(cur.x, cur.y + n, n, 'D'),
-    L: (cur, n) => new Vector(cur.x - n, cur.y, n, 'L'),
+    U: (cur, n) => new Wire(cur.x, cur.y - n, n, 'U'),
+    R: (cur, n) => new Wire(cur.x + n, cur.y, n, 'R'),
+    D: (cur, n) => new Wire(cur.x, cur.y + n, n, 'D'),
+    L: (cur, n) => new Wire(cur.x - n, cur.y, n, 'L'),
   };
 
   function manhatten(a, b) {
@@ -21,7 +21,7 @@
   }
 
   function day_3(puzzle) {
-    const getVectors = (acc, cur) => {
+    const getWires = (acc, cur) => {
       const direction = cur[0];
       const length = parseInt(cur.slice(1), 10);
       const vector = directions[direction](acc[acc.length - 1], length);
@@ -31,13 +31,13 @@
     const wires = puzzle
       .split('\n')
       .filter(x => x)
-      .map(x => x.split(',').reduce(getVectors, [centralPort]));
+      .map(x => x.split(',').reduce(getWires, [centralPort]));
 
     const grid = wires.reduce(
       (acc, wire, index) => {
         let wireLength = 0;
         wire.reduce((prev, cur) => {
-          let vector = new Vector(prev.x, prev.y, 1, cur.direction);
+          let vector = new Wire(prev.x, prev.y, 1, cur.direction);
           let len = cur.length;
           for (let i = 0; i < len; i++) {
             const key = `${vector.x}_${vector.y}`;
