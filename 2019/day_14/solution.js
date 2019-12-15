@@ -1,8 +1,8 @@
 (function() {
   December.addDay({
-    // day: ,
+    // day: 14,
     year: 2019,
-    title: '',
+    title: 'Space Stoichiometry',
     questions: ['', ''],
     answer: puzzle => Promise.resolve([]),
     // input: '',

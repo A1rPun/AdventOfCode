@@ -7,14 +7,12 @@
       'What BOOST keycode does it produce?',
       'Run the BOOST program in sensor boost mode. What are the coordinates of the distress signal?',
     ],
-    answer1: puzzle => {
-      const memory = puzzle.split(',').map(December.toInt);
+    answer1: memory => {
       const computer = new December.IntCode(memory);
       computer.run(1);
       return Promise.resolve(computer.outputs.join(','));
     },
-    answer2: puzzle => {
-      const memory = puzzle.split(',').map(December.toInt);
+    answer2: memory => {
       const computer = new December.IntCode(memory);
       computer.run(2);
       return Promise.resolve(computer.outputs.join(','));

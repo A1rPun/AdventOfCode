@@ -1,8 +1,8 @@
 (function() {
   December.addDay({
-    // day: ,
+    // day: 13,
     year: 2019,
-    title: '',
+    title: 'Care Package',
     questions: ['', ''],
     answer: puzzle => Promise.resolve([]),
     // input: '',

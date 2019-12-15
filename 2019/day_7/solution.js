@@ -15,7 +15,7 @@
     return getPermutation([0, 1, 2, 3, 4])
       .map(setting =>
         setting
-          .map(x => new December.IntCode([...memory], x))
+          .map(x => new December.IntCode(memory, x))
           .reduce((acc, cur) => cur.run(acc), 0)
       )
       .sort(sortNum)[0];
@@ -24,7 +24,7 @@
   function answer2(memory) {
     return getPermutation([5, 6, 7, 8, 9])
       .map(setting => {
-        const programs = setting.map(x => new December.IntCode([...memory], x));
+        const programs = setting.map(x => new December.IntCode(memory, x));
         let result = 0;
         let i = 0;
         let value = 0;
@@ -47,10 +47,8 @@
       'What is the highest signal that can be sent to the thrusters?',
       'What is the highest signal that can be sent to the thrusters?',
     ],
-    answer1: puzzle =>
-      Promise.resolve(answer1(puzzle.split(',').map(December.toInt))),
-    answer2: puzzle =>
-      Promise.resolve(answer2(puzzle.split(',').map(December.toInt))),
+    answer1: memory => Promise.resolve(answer1(memory)),
+    answer2: memory => Promise.resolve(answer2(memory)),
     example: [
       {
         input: '3,15,3,16,1002,16,10,16,1,16,15,15,4,15,99,0,0',

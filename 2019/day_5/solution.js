@@ -7,14 +7,12 @@
       'After providing 1 to the only input instruction and passing all the tests, what diagnostic code does the program produce?',
       'What is the diagnostic code for system ID 5?',
     ],
-    answer1: puzzle => {
-      const memory = puzzle.split(',').map(December.toInt);
+    answer1: memory => {
       const program = new December.IntCode(memory, 1);
       program.run();
       return Promise.resolve(program.outputs[0]);
     },
-    answer2: puzzle => {
-      const memory = puzzle.split(',').map(December.toInt);
+    answer2: memory => {
       const program = new December.IntCode(memory, 5);
       program.run();
       return Promise.resolve(program.outputs[0]);

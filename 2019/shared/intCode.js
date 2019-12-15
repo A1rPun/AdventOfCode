@@ -16,7 +16,10 @@
 
   class IntCode {
     constructor(memory, input) {
-      this.memory = memory || [];
+      this.memory =
+      typeof memory === 'string'
+        ? memory.split(',').map(December.toInt)
+        : memory || [];
       this.pointer = 0;
       this.input = typeof input === 'undefined' ? [] : [input];
       this.outputs = [];
@@ -27,8 +30,8 @@
     getArgumentMode(arg, mode, write) {
       let argument;
 
-      if (!write && mode === POSITION_MODE) {
-        argument = this.memory[arg];
+      if (mode === POSITION_MODE) {
+        argument = write ? arg : this.memory[arg];
       } else if (mode === IMMEDIATE_MODE) {
         argument = arg;
       } else if (mode === RELATIVE_MODE) {

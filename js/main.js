@@ -219,7 +219,7 @@
       if (decDay.hasAnimation) {
         day.classList.add('animated');
       }
-      if (decDay.title) {
+      if (decDay.day && decDay.title) {
         const solutions = decDay.solutions ? decDay.solutions.length : 2;
 
         if (!solutions) {
@@ -238,7 +238,7 @@
         day.classList.add('click');
         day.addEventListener('click', dayClick(decDay));
       } else {
-        day.innerText = `Day ${(i + 1).toString().padStart(2, '0')}`;
+        day.innerText = `Day ${(i + 1).toString().padStart(2, '0')}    ${decDay.title}`;
         day.classList.add('unsolved');
       }
       spanDay.appendChild(day);

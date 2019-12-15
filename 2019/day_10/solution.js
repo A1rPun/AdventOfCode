@@ -1,4 +1,10 @@
 (function() {
+  class Asteroid {
+    constructor(x, y) {
+      this.visible = [];
+    }
+  }
+
   function createGrid(input) {
     return input.split('\n').map(x => x.split('').map(y => y === '#'));
   }
@@ -24,6 +30,7 @@
   ....#
   ...##`,
         solutions: [8],
+        answer: 1,
       },
       {
         input: `......#.#.
@@ -37,6 +44,7 @@
 ##...#..#.
 .#....####`,
         solutions: [33],
+        answer: 1,
       },
       {
         input: `#.#...#.#.
@@ -50,6 +58,7 @@
 ......#...
 .####.###.`,
         solutions: [41],
+        answer: 1,
       },
     ],
     solutions: [],
