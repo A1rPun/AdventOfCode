@@ -25,15 +25,19 @@
       this.relativeBase = 0;
     }
     getArgumentMode(arg, mode) {
+      let argument;
       switch (parseInt(mode)) {
         case IMMEDIATE_MODE:
-          return arg;
+          argument = arg;
+          break;
         case RELATIVE_MODE:
-          return this.memory[this.relativeBase + arg];
+          argument = this.memory[this.relativeBase + arg];
+          break;
         case POSITION_MODE:
         default:
-          return this.memory[arg];
+          argument = this.memory[arg];
       }
+      return argument || 0;
     }
     parseInstruction(instruction) {
       const [_, secondArgMode, firstArgMode, op2, op1] = instruction
@@ -45,7 +49,7 @@
         this.pointer + 1,
         this.pointer + 4
       );
-      
+
       if (opCode !== 3) {
         firstArg = this.getArgumentMode(firstArg, firstArgMode);
         secondArg = this.getArgumentMode(secondArg, secondArgMode);
@@ -61,7 +65,7 @@
       this.halted = false;
       this.input.push(value);
       if (this.lastTarget) this[SEND](this.lastTarget);
-      
+
       while (!this.halted && this.pointer >= 0) {
         this.tick();
       }
@@ -87,9 +91,7 @@
       return this.pointer + 2;
     }
     [SEND](target) {
-      let value = this.memory[target];
-      if (value === undefined) value = target;
-      this.outputs.push(value);
+      this.outputs.push(target);
       return this.pointer + 2;
     }
     [JUMP_IF_NOT_ZERO](a, target) {

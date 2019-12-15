@@ -46,11 +46,32 @@
     return input;
   }
 
-  async function handleAnswer(day, input, debug = false) {
+  async function handleAnswer(day, input) {
+    if (day.answer1) {
+      const answer1T = new perfTimer();
+      const answer1 = await day.answer1(input);
+      answer1T.stop();
+      logCode(day.questions[0]);
+      logCode(answer1).classList.add('yellow');
+      logCode(NEW_LINE);
+      logCode(answer1T.log());
+
+      if (day.answer2 && day.questions[1]) {
+        const answer2T = new perfTimer();
+        const answer2 = await day.answer2(input);
+        answer2T.stop();
+        logCode(day.questions[1]);
+        logCode(answer2).classList.add('yellow');
+        logCode(NEW_LINE);
+        logCode(answer2T.log());
+      }
+    } else {
     const answerT = new perfTimer();
-    let answer = await day.answer(input, December.animate, debug);
+      let answer = await day.answer(input);
     answerT.stop();
-    if (Array.isArray(answer)) {
+
+      if (!Array.isArray(answer)) answer = [answer];
+
       for (let i = 0; i < answer.length; i++) {
         const question = Array.isArray(day.questions)
           ? day.questions[i]
@@ -59,15 +80,52 @@
         logCode(answer[i]).classList.add('yellow');
         logCode(NEW_LINE);
       }
+      logCode(answerT.log());
+    }
+  }
+
+  async function handleExample(day, example) {
+    if (typeof example === 'string') {
+      handleAnswer(day, example);
+      return;
+    }
+    logCode('Example input');
+    logCode(`${example.input}`);
+    logCode(NEW_LINE);
+
+    if (!example.answer || example.answer & 1) {
+      const answer1T = new perfTimer();
+      const answer1 = await day.answer1(example.input);
+      answer1T.stop();
+      const line1 = logCode(answer1);
+
+      if (example.solutions[0] === answer1) {
+        line1.classList.add('yellow');
     } else {
-      const question = Array.isArray(day.questions)
-        ? day.questions[day.questions.length - 1]
-        : day.questions;
-      logCode(question);
-      logCode(answer).classList.add('yellow');
+        line1.classList.add('red');
+        logCode(`Output should be ${example.solutions[0]}`);
+      }
+      logCode(NEW_LINE);
+      logCode(answer1T.log());
       logCode(NEW_LINE);
     }
-    logCode(answerT.log());
+
+    if (!example.answer || example.answer & 2) {
+      const answer2T = new perfTimer();
+      const answer2 = await day.answer2(example.input);
+      answer2T.stop();
+      const line2 = logCode(answer2);
+
+      if (example.solutions[1] === answer2) {
+        line2.classList.add('yellow');
+      } else {
+        line2.classList.add('red');
+        logCode(`Output should be ${example.solutions[1]}`);
+      }
+      logCode(NEW_LINE);
+      logCode(answer2T.log());
+      logCode(NEW_LINE);
+    }
   }
 
   function dayClick(day) {
@@ -113,9 +171,12 @@
       const example = d.createElement('span');
       example.classList.add('line', 'click');
       example.innerText = 'Show example';
-      example.addEventListener('click', function() {
+      example.addEventListener('click', async function() {
         clearCode();
-        handleAnswer(day, day.example[0], true);
+
+        for (let i = 0; i < day.example.length; i++) {
+          await handleExample(day, day.example[i]);
+        }
       });
       spanDay.appendChild(example);
 

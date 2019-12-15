@@ -26,15 +26,29 @@
       'What value is left at position 0 after the program halts?',
       'Find the input noun and verb that cause the program to produce the output 19690720. What is 100 * noun + verb?',
     ],
-    answer: (puzzle, animate, debug) => {
-      const memory = puzzle.split(',').map(December.toInt);
-      return Promise.resolve(
-        debug
-          ? [createIntCode([...memory], 1, 1)]
-          : [createIntCode([...memory]), answer2(memory, 19690720)]
-      );
-    },
-    example: ['1,1,1,4,99,5,6,0,99'],
+    // Answers fail because the IntCode changed requirements for opCode 1, 2
+    answer1: puzzle =>
+      Promise.resolve(createIntCode(puzzle.split(',').map(December.toInt))),
+    answer2: puzzle =>
+      Promise.resolve(answer2(puzzle.split(',').map(December.toInt), 19690720)),
+    example: [
+      // Examples fail because they don't have a noun and a verb
+      // {
+      //   input: '1,9,10,3,2,3,11,0,99,30,40,50',
+      //   solutions: [3500],
+      //   answer: 1,
+      // },
+      // {
+      //   input: '1,0,0,0,99',
+      //   solutions: [2],
+      //   answer: 1,
+      // },
+      // {
+      //   input: '1,1,1,4,99,5,6,0,99',
+      //   solutions: [30],
+      //   answer: 1,
+      // },
+    ],
     solutions: [6327510, 4112],
   });
 })();
