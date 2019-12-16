@@ -26,7 +26,11 @@
           score: day.reduce(
             (acc, curr) =>
               acc +
-              (curr.day && curr.title ? (curr.solutions ? curr.solutions.length : 2) : 0),
+              (curr.day && curr.title
+                ? curr.solutions
+                  ? curr.solutions.length
+                  : 2
+                : 0),
             0
           ),
         });

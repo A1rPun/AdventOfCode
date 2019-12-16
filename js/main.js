@@ -52,7 +52,14 @@
       const answer1 = await day.answer1(input);
       answer1T.stop();
       logCode(day.questions[0]);
-      logCode(answer1).classList.add('yellow');
+      const line1 = logCode(answer1);
+
+      if (day.solutions[0] === answer1) {
+        line1.classList.add('yellow');
+      } else {
+        line1.classList.add('red');
+        logCode(`Output should be ${day.solutions[0]}`);
+      }
       logCode(NEW_LINE);
       logCode(answer1T.log());
 
@@ -61,14 +68,20 @@
         const answer2 = await day.answer2(input);
         answer2T.stop();
         logCode(day.questions[1]);
-        logCode(answer2).classList.add('yellow');
+        const line2 = logCode(answer2);
+        if (day.solutions[1] === answer2) {
+          line2.classList.add('yellow');
+        } else {
+          line2.classList.add('red');
+          logCode(`Output should be ${day.solutions[1]}`);
+        }
         logCode(NEW_LINE);
         logCode(answer2T.log());
       }
     } else {
-    const answerT = new perfTimer();
+      const answerT = new perfTimer();
       let answer = await day.answer(input);
-    answerT.stop();
+      answerT.stop();
 
       if (!Array.isArray(answer)) answer = [answer];
 
@@ -101,7 +114,7 @@
 
       if (example.solutions[0] === answer1) {
         line1.classList.add('yellow');
-    } else {
+      } else {
         line1.classList.add('red');
         logCode(`Output should be ${example.solutions[0]}`);
       }
@@ -173,9 +186,12 @@
       example.innerText = 'Show example';
       example.addEventListener('click', async function() {
         clearCode();
-
-        for (let i = 0; i < day.example.length; i++) {
-          await handleExample(day, day.example[i]);
+        if (day.example.length) {
+          for (let i = 0; i < day.example.length; i++) {
+            await handleExample(day, day.example[i]);
+          }
+        } else {
+          logCode('No examples');
         }
       });
       spanDay.appendChild(example);
@@ -238,7 +254,9 @@
         day.classList.add('click');
         day.addEventListener('click', dayClick(decDay));
       } else {
-        day.innerText = `Day ${(i + 1).toString().padStart(2, '0')}    ${decDay.title}`;
+        day.innerText = `Day ${(i + 1).toString().padStart(2, '0')}    ${
+          decDay.title
+        }`;
         day.classList.add('unsolved');
       }
       spanDay.appendChild(day);
