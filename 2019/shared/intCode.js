@@ -15,17 +15,17 @@
   const HALT = '99';
 
   class IntCode {
-    constructor(memory, input) {
+    constructor(memory, ...input) {
       this.memory =
-      typeof memory === 'string'
-        ? memory.split(',').map(December.toInt)
-        : memory || [];
-      this.pointer = 0;
-      this.input = typeof input === 'undefined' ? [] : [input];
+        typeof memory === 'string'
+          ? memory.split(',').map(December.toInt)
+          : memory || [];
+      this.input = input;
       this.outputs = [];
-      this.halted = true;
-      this.lastTarget = null;
+      this.pointer = 0;
       this.relativeBase = 0;
+      this.lastTarget = null;
+      this.halted = false;
     }
     getArgumentMode(arg, mode, write) {
       let argument;
@@ -47,35 +47,31 @@
         .padStart(5, '0')
         .split('');
       const opCode = op2 + op1;
-      let [firstArg, secondArg, thirdArg] = this.memory.slice(
-        this.pointer + 1,
-        this.pointer + 4
-      );
-
-      if (opCode === RECEIVE) {
-        firstArg = this.getArgumentMode(firstArg, firstArgMode, true);
-      } else {
-        firstArg = this.getArgumentMode(firstArg, firstArgMode);
-        secondArg = this.getArgumentMode(secondArg, secondArgMode);
-        thirdArg = this.getArgumentMode(thirdArg, thirdArgMode, true);
-      }
-      return [opCode, firstArg, secondArg, thirdArg];
+      return [
+        opCode,
+        this.getArgumentMode(
+          this.memory[this.pointer + 1],
+          firstArgMode,
+          opCode === RECEIVE
+        ),
+        this.getArgumentMode(this.memory[this.pointer + 2], secondArgMode),
+        this.getArgumentMode(this.memory[this.pointer + 3], thirdArgMode, true),
+      ];
     }
-    tick() {
-      const instruction = this.memory[this.pointer];
-      const [opCode, ...args] = this.parseInstruction(instruction);
-      this.pointer = this[opCode](...args);
-    }
-    run(value) {
-      this.halted = false;
-      this.input.push(value);
+    run(input, breakAfter = 0) {
+      if (input) this.input.push(input);
       if (this.lastTarget) this[SEND](this.lastTarget);
 
-      while (!this.halted && this.pointer >= 0) {
-        this.tick();
+      while (!this.halted) {
+        const instruction = this.memory[this.pointer];
+        const [opCode, ...args] = this.parseInstruction(instruction);
+        this.pointer = this[opCode](...args);
+
+        if (breakAfter > 0 && this.outputs.length === breakAfter) {
+          break;
+        }
       }
-      const output = this.outputs[this.outputs.length - 1];
-      return this.pointer >= 0 ? output : null;
+      return this.outputs;
     }
     // OpCodes
     [ADD](a, b, target) {
@@ -88,7 +84,6 @@
     }
     [RECEIVE](target) {
       if (!this.input.length) {
-        this.halted = true;
         this.lastTarget = target;
       } else {
         this.memory[target] = this.input.shift();
@@ -97,6 +92,7 @@
     }
     [SEND](target) {
       this.outputs.push(target);
+      this.lastTarget = null;
       return this.pointer + 2;
     }
     [JUMP_IF_NOT_ZERO](a, target) {
@@ -119,7 +115,7 @@
     }
     [HALT]() {
       this.halted = true;
-      return -1;
+      return this.pointer;
     }
   }
   December.IntCode = IntCode;

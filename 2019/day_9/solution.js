@@ -8,14 +8,10 @@
       'Run the BOOST program in sensor boost mode. What are the coordinates of the distress signal?',
     ],
     answer1: memory => {
-      const computer = new December.IntCode(memory);
-      computer.run(1);
-      return Promise.resolve(computer.outputs.join(','));
+      return Promise.resolve(new December.IntCode(memory).run(1).join(','));
     },
     answer2: memory => {
-      const computer = new December.IntCode(memory);
-      computer.run(2);
-      return Promise.resolve(computer.outputs.join(','));
+      return Promise.resolve(new December.IntCode(memory).run(2).join(','));
     },
     example: [
       {

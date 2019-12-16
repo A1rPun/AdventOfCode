@@ -2,9 +2,9 @@
   function createIntCode(memory, noun = 12, verb = 2) {
     memory[1] = noun;
     memory[2] = verb;
-    const program = new December.IntCode(memory);
-    program.run();
-    return memory[0];
+    const computer = new December.IntCode(memory);
+    computer.run();
+    return computer.memory[0];
   }
 
   function answer2(memory, test) {
@@ -12,7 +12,7 @@
     for (let noun = 0; noun < maxOpCode; noun++) {
       for (let verb = 0; verb < maxOpCode; verb++) {
         const result = createIntCode([...memory], noun, verb);
-        if (result === test) return `Found ${100 * noun + verb}`;
+        if (result === test) return 100 * noun + verb;
       }
     }
     return 'Not found';
