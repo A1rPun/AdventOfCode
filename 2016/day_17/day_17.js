@@ -3,8 +3,9 @@
     day: 17,
     year: 2016,
     title: '',
-    questions: '',
-    answer: puzzle => Promise.resolve([]),
+    questions: ['', ''],
+    answer1: puzzle => Promise.resolve(),
+    answer2: puzzle => Promise.resolve(),
     input: 'ioramepc',
     example: ['hijkl'],
   });

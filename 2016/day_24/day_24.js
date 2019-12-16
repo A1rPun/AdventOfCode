@@ -7,12 +7,15 @@
     day: 24,
     year: 2016,
     title: '',
-    questions: '',
+    questions: ['', ''],
     answer: day_24,
-    input: function() {
-      return '';
-    },
-    example: [],
+    example: [
+      // {
+      //   input: 123456789,
+      //   solutions: [],
+      //   answer: 1,
+      // },
+    ],
     solutions: [],
   });
 })();

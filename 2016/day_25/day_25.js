@@ -3,7 +3,7 @@
     day: 25,
     year: 2016,
     title: '',
-    questions: '',
+    questions: ['', ''],
     answer: puzzle => Promise.resolve(),
     // input:
     example: [''],

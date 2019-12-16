@@ -4,9 +4,15 @@
     year: 2019,
     title: 'Oxygen System',
     questions: ['', ''],
-    answer: puzzle => Promise.resolve([]),
-    // input: '',
-    example: [],
+    answer1: puzzle => Promise.resolve(),
+    answer2: puzzle => Promise.resolve(),
+    example: [
+      // {
+      //   input: 123456789,
+      //   solutions: [],
+      //   answer: 1,
+      // },
+    ],
     solutions: [],
   });
 })();

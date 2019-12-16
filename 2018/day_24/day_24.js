@@ -3,9 +3,16 @@
     //day: ,
     year: 2018,
     title: '',
-    questions: '',
-    answer: puzzle => Promise.resolve([]),
-    example: [],
+    questions: ['', ''],
+    answer1: puzzle => Promise.resolve(),
+    answer2: puzzle => Promise.resolve(),
+    example: [
+      // {
+      //   input: 123456789,
+      //   solutions: [],
+      //   answer: 1,
+      // },
+    ],
     solutions: [],
   });
 })();

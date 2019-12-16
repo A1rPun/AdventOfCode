@@ -18,7 +18,7 @@
     day: 4,
     year: 2015,
     title: 'The Ideal Stocking Stuffer',
-    questions: '',
+    questions: ['', ''],
     answer: day_4,
     input: 'iwrupvqb',
     example: ['abcdef'],
