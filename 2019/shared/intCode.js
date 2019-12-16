@@ -24,7 +24,6 @@
       this.outputs = [];
       this.pointer = 0;
       this.relativeBase = 0;
-      this.lastTarget = null;
       this.halted = false;
     }
     getArgumentMode(arg, mode, write) {
@@ -59,19 +58,22 @@
       ];
     }
     run(input, breakAfter = 0) {
-      if (input) this.input.push(input);
-      if (this.lastTarget) this[SEND](this.lastTarget);
+      if (typeof input !== 'undefined') {
+        this.input.push(input);
+      }
 
       while (!this.halted) {
         const instruction = this.memory[this.pointer];
         const [opCode, ...args] = this.parseInstruction(instruction);
         this.pointer = this[opCode](...args);
 
-        if (breakAfter > 0 && this.outputs.length === breakAfter) {
+        if (breakAfter > 0 && this.outputs.length >= breakAfter) {
           break;
         }
       }
-      return this.outputs;
+      const outputs = this.outputs;
+      this.outputs = [];
+      return outputs;
     }
     // OpCodes
     [ADD](a, b, target) {
