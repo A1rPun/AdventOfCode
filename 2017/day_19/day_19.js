@@ -7,10 +7,7 @@
       left: 8,
     };
     const grid = puzzle.split('\n').map(x => x.split(''));
-    const position = {
-      y: 0,
-      x: grid[0].indexOf('|'),
-    };
+    const position = new Vector(grid[0].indexOf('|'), 0);
     let direction = directions.bottom;
     let answer1 = '';
     let answer2 = 0;

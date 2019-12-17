@@ -24,6 +24,7 @@ class Vector {
   }
 
   key() {
-    return `${this.x}-${this.y}-${this.z}`;
+    return `${this.x}_${this.y}_${this.z}`;
   }
 }
+Vector.fromKey = key => new Vector(...key.split('_'));

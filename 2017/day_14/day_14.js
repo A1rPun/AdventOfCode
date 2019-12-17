@@ -17,7 +17,7 @@
     for (let y = 0; y < size; y++) {
       for (let x = 0; x < size; x++) {
         if (grid[y][x] === char) {
-          return { x, y };
+          return new Vector(x, y);
         }
       }
     }

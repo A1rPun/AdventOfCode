@@ -16,17 +16,17 @@
     }
   }
   function day_3(puzzle) {
-    var houses = { '0_0': 2 };
-    var santa = { x: 0, y: 0 };
-    var roboSanta = { x: 0, y: 0 };
+    var houses = { [new Vector().key()]: 2 };
+    var santa = new Vector();
+    var roboSanta = new Vector();
 
     for (var i = 0, l = puzzle.length; i < l; i++) {
       setPosition(santa, puzzle[i]);
-      var key = santa.x + '_' + santa.y;
+      var key = santa.key();
       houses[key] = houses[key] ? houses[key] + 1 : 1;
       i++;
       setPosition(roboSanta, puzzle[i]);
-      var key = roboSanta.x + '_' + roboSanta.y;
+      var key = roboSanta.key();
       houses[key] = houses[key] ? houses[key] + 1 : 1;
     }
     return Promise.resolve(Object.keys(houses).length);

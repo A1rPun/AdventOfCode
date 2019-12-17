@@ -20,7 +20,7 @@
     var points = [];
 
     for (var i = 0; i < num; i++) {
-      var p = { x: point.x, y: point.y };
+      var p = new Vector(point.x, point.y);
       if (direction === directions.east) p.x++;
       else if (direction === directions.south) p.y++;
       else if (direction === directions.west) p.x--;
@@ -33,8 +33,8 @@
 
   function day_1(puzzle) {
     var currentDirection = directions.north;
-    var startPoint = { x: 0, y: 0 };
-    var endPoint = { x: 0, y: 0 };
+    var startPoint = new Vector();
+    var endPoint = new Vector();
     var inputs = puzzle.split(', ');
     var answer1 = 0;
     var answer2 = 0;
@@ -58,7 +58,7 @@
       if (dict[key]) {
         answer2 = AStar.prototype.ManhattanDistance(startPoint, p);
         break;
-      } else dict[key] = true; //{ x: endPoint.x, y: endPoint.y };
+      } else dict[key] = true; // new Vector(endPoint.x, endPoint.y);
     }
     return Promise.resolve([answer1, answer2]);
   }

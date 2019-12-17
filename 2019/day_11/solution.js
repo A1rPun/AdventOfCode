@@ -48,7 +48,7 @@
     const painter = new Painter(memory);
 
     while (!painter.computer.halted) {
-      const key = `${painter.pos.x}_${painter.pos.y}`;
+      const key = painter.pos.key();
       painter.computer.input = [grid[key] || colors.black];
       const [color, direction] = painter.computer.run(undefined, 2);
 
@@ -63,7 +63,7 @@
 
   function answer2(memory) {
     const grid = createGrid(memory, {
-      '0_0': colors.white,
+      [new Vector().key()]: colors.white,
     });
 
     const width = 43;

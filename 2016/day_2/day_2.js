@@ -22,10 +22,10 @@
   }
   function moveIndex(index, direction, pad) {
     var l = pad.length - 1;
-    var newIndex = {
-      x: clamp(index.x + direction[0], 0, l),
-      y: clamp(index.y + direction[1], 0, l),
-    };
+    var newIndex = new Vector(
+      clamp(index.x + direction[0], 0, l),
+      clamp(index.y + direction[1], 0, l)
+    );
     return getKeyFromIndex(pad, newIndex) ? newIndex : index;
   }
   function getKeyFromIndex(pad, index) {
@@ -33,8 +33,8 @@
   }
   function day_2(puzzle) {
     puzzle = puzzle.split('\n');
-    var startIndex1 = { x: 1, y: 1 };
-    var startIndex2 = { x: 0, y: 2 };
+    var startIndex1 = new Vector(1, 1);
+    var startIndex2 = new Vector(0, 2);
     var answer1 = '';
     var answer2 = '';
     for (var i = 0; i < puzzle.length; i++) {

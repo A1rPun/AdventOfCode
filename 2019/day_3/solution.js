@@ -40,7 +40,7 @@
           let vector = new Wire(prev.x, prev.y, 1, cur.direction);
           let len = cur.length;
           for (let i = 0; i < len; i++) {
-            const key = `${vector.x}_${vector.y}`;
+            const key = vector.key();
             if (!acc[key]) acc[key] = {};
             if (!acc[key][index]) {
               acc[key][index] = { times: 1, length: wireLength };
@@ -54,7 +54,7 @@
         });
         return acc;
       },
-      { '0_0': 1 - wires.length }
+      { [new Vector().key()]: 1 - wires.length }
     );
 
     const intersections = Object.entries(grid).reduce((acc, [key, point]) => {

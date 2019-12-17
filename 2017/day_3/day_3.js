@@ -78,11 +78,11 @@
     for (var y = l; y--; ) {
       for (var x = l; x--; ) {
         if (grid[y][x] === value) {
-          return { x: x, y: y };
+          return new Vector(x, y);
         }
       }
     }
-    return { x: 0, y: 0 };
+    return new Vector();
   }
   function day_3(puzzle) {
     var grid = generateSpiralGrid(puzzle);
