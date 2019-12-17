@@ -16,10 +16,6 @@
     L: (cur, n) => new Wire(cur.x - n, cur.y, n, 'L'),
   };
 
-  function manhatten(a, b) {
-    return Math.abs(a.x - b.x) + Math.abs(a.y - b.y);
-  }
-
   function day_3(puzzle) {
     const getWires = (acc, cur) => {
       const direction = cur[0];
@@ -66,7 +62,7 @@
     }, []);
 
     const answer1 = intersections
-      .map(x => manhatten(centralPort, x))
+      .map(x => AStar.prototype.ManhattanDistance(centralPort, x))
       .sort((a, b) => a - b);
     const answer2 = intersections.sort((a, b) => a.steps - b.steps);
     return Promise.resolve([answer1, answer2]);

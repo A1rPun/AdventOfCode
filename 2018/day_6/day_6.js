@@ -1,8 +1,4 @@
 (function() {
-  function manhatten(p1, p2) {
-    return Math.abs(p1.x - p2.x) + Math.abs(p1.y - p2.y);
-  }
-
   function day_6(puzzle) {
     const coordinates = puzzle.split('\n').map((c, i) => {
       const [x, y] = December.getNumbers(c);
@@ -15,7 +11,7 @@
     for (let y = 0; y < 400; y++) {
       for (let x = 0; x < 400; x++) {
         const coordinate = { x, y };
-        coordinates.forEach(x => (x.distance = manhatten(x, coordinate)));
+        coordinates.forEach(x => (x.distance = AStar.prototype.ManhattanDistance(x, coordinate)));
         coordinates.sort((a, b) =>
           a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0
         );

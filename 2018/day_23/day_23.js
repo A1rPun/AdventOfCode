@@ -1,10 +1,10 @@
 (function() {
-  function manhatten(a, b) {
+  function manhattan(a, b) {
     return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z);
   }
 
   function inRadius(a, b) {
-    return manhatten(a, b) <= b.radius;
+    return manhattan(a, b) <= b.radius;
   }
   /*
     function factorial(n) {
