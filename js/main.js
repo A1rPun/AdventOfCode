@@ -62,6 +62,7 @@
       }
       logCode(NEW_LINE);
       logCode(answer1T.log());
+      logCode(NEW_LINE);
 
       if (day.answer2 && day.questions[1]) {
         const answer2T = new perfTimer();
