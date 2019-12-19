@@ -156,9 +156,7 @@
       spanDay.appendChild(back);
 
       const title = d.createElement('span');
-      title.innerText = `Day ${day.day.toString().padStart(2, '0')} - ${
-        day.title
-      }`;
+      setDayTitle(title, day);
       spanDay.appendChild(title);
 
       if (day.hasAnimation) {
@@ -182,20 +180,18 @@
       });
       spanDay.appendChild(ans);
 
+      if (day.example && day.example.length) {
       const example = d.createElement('span');
       example.classList.add('line', 'click');
       example.innerText = 'Show example';
       example.addEventListener('click', async function() {
         clearCode();
-        if (day.example.length) {
           for (let i = 0; i < day.example.length; i++) {
             await handleExample(day, day.example[i]);
           }
-        } else {
-          logCode('No examples');
-        }
       });
       spanDay.appendChild(example);
+      }
 
       const input = d.createElement('span');
       input.classList.add('line', 'click');
@@ -226,6 +222,22 @@
     };
   }
 
+  function setDayTitle(el, day) {
+    const solutions = day.solutions ? day.solutions.length : 2;
+
+    if (!solutions) {
+      el.classList.add('development');
+    }
+
+    el.innerHTML = `Day ${day.day.toString().padStart(2, '0')} ${
+      solutions === 2
+        ? '<span class="yellow">★</span>'
+        : solutions >= 1
+        ? '<span class="first-only">★</span>'
+        : ' '
+    }${solutions === 2 ? '<span class="yellow">★</span>' : ' '} ${day.title}`;
+  }
+
   function logDays() {
     spanDay.innerHTML = '';
     var days = December.getDays();
@@ -237,21 +249,7 @@
         day.classList.add('animated');
       }
       if (decDay.day && decDay.title) {
-        const solutions = decDay.solutions ? decDay.solutions.length : 2;
-
-        if (!solutions) {
-          day.classList.add('development');
-        }
-
-        day.innerHTML = `Day ${decDay.day.toString().padStart(2, '0')} ${
-          solutions === 2
-            ? '<span class="yellow">★</span>'
-            : solutions >= 1
-            ? '<span class="first-only">★</span>'
-            : ' '
-        }${solutions === 2 ? '<span class="yellow">★</span>' : ' '} ${
-          decDay.title
-        }`;
+        setDayTitle(day, decDay);
         day.classList.add('click');
         day.addEventListener('click', dayClick(decDay));
       } else {
