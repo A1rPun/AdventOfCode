@@ -8,11 +8,11 @@
       'What is the diagnostic code for system ID 5?',
     ],
     answer1: memory => {
-      const outputs = new December.IntCode(memory).run(1);
-      return Promise.resolve(outputs.pop());
+      const diagnostics = new December.IntCode(memory, 1).run();
+      return Promise.resolve(diagnostics.pop());
     },
     answer2: memory => {
-      return Promise.resolve(new December.IntCode(memory).run(5)[0]);
+      return Promise.resolve(new December.IntCode(memory, 5).run()[0]);
     },
     example: [
       { input: '3,0,4,0,99', solutions: [1, 5] },

@@ -16,7 +16,7 @@
       .map(setting =>
         setting
           .map(x => new December.IntCode(memory, x))
-          .reduce((acc, cur) => cur.run(acc, 1)[0], 0)
+          .reduce((acc, cur) => cur.setInput(acc).run(1)[0], 0)
       )
       .sort(sortNum)[0];
   }
@@ -29,7 +29,7 @@
         let i = 0;
         while (true) {
           const program = programs[i % programs.length];
-          [result] = program.run(result, 1);
+          [result] = program.setInput(result).run(1);
           if (program.halted) break;
           i++;
         }

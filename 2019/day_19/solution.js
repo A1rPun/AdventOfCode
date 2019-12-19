@@ -1,10 +1,6 @@
 (function() {
-  function checkVector(memory, x, y) {
-    const computer = new December.IntCode(memory);
-    computer.input = [x, y];
-    const [force] = computer.run();
-    return force;
-  }
+  const checkVector = (memory, x, y) =>
+    new December.IntCode(memory, x, y).run()[0];
 
   function countBeam(memory, stride) {
     const mapSize = stride * stride;
@@ -30,6 +26,7 @@
     answer2: memory => {
       const houseSize = 100 - 1;
       const pos = new Vector(houseSize * 5, houseSize * 10);
+
       while (true) {
         if (checkVector(memory, pos.x, pos.y)) {
           if (checkVector(memory, pos.x + houseSize, pos.y - houseSize)) {

@@ -49,8 +49,9 @@
 
     while (!painter.computer.halted) {
       const key = painter.pos.key();
-      painter.computer.input = [grid[key] || colors.black];
-      const [color, direction] = painter.computer.run(undefined, 2);
+      const [color, direction] = painter.computer
+        .setInput(grid[key] || colors.black)
+        .run(2);
 
       if (color === colors.black || color === colors.white) {
         painter.turn(direction);

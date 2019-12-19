@@ -11,7 +11,9 @@
     for (let y = 0; y < 400; y++) {
       for (let x = 0; x < 400; x++) {
         const coordinate = { x, y };
-        coordinates.forEach(x => (x.distance = AStar.prototype.ManhattanDistance(x, coordinate)));
+        coordinates.forEach(
+          x => (x.distance = AStar.prototype.ManhattanDistance(x, coordinate))
+        );
         coordinates.sort((a, b) =>
           a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0
         );

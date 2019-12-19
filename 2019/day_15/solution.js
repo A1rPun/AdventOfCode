@@ -28,7 +28,7 @@
     );
     let movement = directions.north;
     // while (!computer.halted) {
-    //   const [status] = computer.run(movement, 1);
+    //   const [status] = computer.setInput(movement).run(1);
     // }
     return Promise.resolve();
   }

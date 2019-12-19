@@ -16,15 +16,14 @@
       'What is your score after the last block is broken?',
     ],
     answer1: memory => {
-      const computer = new December.IntCode(memory);
-      const answer = computer
+      const blockTiles = new December.IntCode(memory)
         .run()
         .reduce(
           (acc, cur, i) =>
             cur === tile.block && (i + 1) % 3 === 0 ? acc + 1 : acc,
           0
         );
-      return Promise.resolve(answer);
+      return Promise.resolve(blockTiles);
     },
     answer2: memory => {
       const computer = new December.IntCode(memory);
@@ -36,8 +35,7 @@
       let input = 0;
 
       while (!computer.halted) {
-        computer.input = [input];
-        const [x, y, z] = computer.run(undefined, 3);
+        const [x, y, z] = computer.setInput(input).run(3);
 
         if (x === -1 && y === 0) {
           score = z;

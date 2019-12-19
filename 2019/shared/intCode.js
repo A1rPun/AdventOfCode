@@ -26,6 +26,10 @@
       this.relativeBase = 0;
       this.halted = false;
     }
+    setInput(...input) {
+      this.input = input;
+      return this;
+    }
     getArgumentMode(arg, mode, write) {
       let argument;
 
@@ -57,11 +61,7 @@
         this.getArgumentMode(this.memory[this.pointer + 3], thirdArgMode, true),
       ];
     }
-    run(input, breakAfter = 0) {
-      if (typeof input !== 'undefined') {
-        this.input.push(input);
-      }
-
+    run(breakAfter = 0) {
       while (!this.halted) {
         const instruction = this.memory[this.pointer];
         const [opCode, ...args] = this.parseInstruction(instruction);
