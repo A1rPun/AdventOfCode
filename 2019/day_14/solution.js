@@ -28,8 +28,8 @@
       });
   }
 
-  function binarySearch(max, fn) {
-    let lo = -1;
+  function binarySearch(fn, max, min = 0) {
+    let lo = min - 1;
     let hi = max;
 
     while (lo + 1 < hi) {
@@ -81,8 +81,8 @@
       const storage = 1000000000000;
       return Promise.resolve(
         binarySearch(
-          100000000, // Arbitrary number
-          x => getOre(reactions, new Map(), FUEL, x) >= storage
+          x => getOre(reactions, new Map(), FUEL, x) >= storage,
+          100000000 // Arbitrary number
         ) - 1
       );
     },
@@ -162,5 +162,8 @@
       },
     ],
     solutions: [168046, 6972986],
+    public: {
+      binarySearch,
+    },
   });
 })();

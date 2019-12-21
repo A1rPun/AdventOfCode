@@ -1,8 +1,8 @@
 (function() {
   December.addDay({
-    // day: ,
+    // day: 20,
     year: 2019,
-    title: '',
+    title: 'Donut Maze',
     questions: ['', ''],
     answer1: puzzle => Promise.resolve(),
     answer2: puzzle => Promise.resolve(),

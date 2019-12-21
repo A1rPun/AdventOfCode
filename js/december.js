@@ -47,7 +47,7 @@
         result += jagged[i].join(char) + '\n';
       return result;
     },
-    range: num => [...Array(num).keys()],
+    range: (max, min = 0) => Array.from(Array(max), (_, i) => i + min),
     // Rotate + = left, - = right
     rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
     sum: (a, b) => a + b,

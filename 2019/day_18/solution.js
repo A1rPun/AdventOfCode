@@ -1,8 +1,8 @@
 (function() {
   December.addDay({
-    // day: ,
+    // day: 18,
     year: 2019,
-    title: '',
+    title: 'Many-Worlds Interpretation',
     questions: ['', ''],
     answer1: puzzle => Promise.resolve(),
     answer2: puzzle => Promise.resolve(),
