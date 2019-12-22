@@ -3,10 +3,17 @@
     constructor(x, y, z) {
       this.pos = new Vector(x, y, z);
       this.vel = new Vector();
+      this.initialPosition = new Vector(x, y, z);
     }
 
     applyGravity(moon) {
-      this.vel.add(this.pos.resolve(moon.pos));
+      this.vel.add(
+        new Vector(
+          this.pos.x === moon.pos.x ? 0 : this.pos.x < moon.pos.x ? 1 : -1,
+          this.pos.y === moon.pos.y ? 0 : this.pos.y < moon.pos.y ? 1 : -1,
+          this.pos.z === moon.pos.z ? 0 : this.pos.z < moon.pos.z ? 1 : -1
+        )
+      );
     }
 
     applyVelocity() {
@@ -16,10 +23,42 @@
     getEnergy() {
       return this.pos.size() * this.vel.size();
     }
+
+    atInitialAxis(axis) {
+      return (
+        this.vel[axis] === 0 && this.pos[axis] === this.initialPosition[axis]
+      );
+    }
   }
 
-  function createMoons(positions) {
-    return positions.split('\n').map(x => new Moon(...December.getNumbers(x)));
+  class SolarSystem {
+    constructor(positions) {
+      this.moons = positions
+        .split('\n')
+        .map(x => new Moon(...December.getNumbers(x)));
+    }
+
+    tick() {
+      this.moons.forEach(moon => {
+        this.moons.forEach(x => {
+          if (moon === x) return;
+          moon.applyGravity(x);
+        });
+      });
+      this.moons.forEach(moon => moon.applyVelocity());
+    }
+
+    atInitialAxis(axis) {
+      return this.moons.every(moon => moon.atInitialAxis(axis));
+    }
+  }
+
+  function greatestCommonDivider(a, b) {
+    return !b ? a : greatestCommonDivider(b, a % b);
+  }
+
+  function leastCommonMultiple(a, b) {
+    return (a * b) / greatestCommonDivider(a, b);
   }
 
   December.addDay({
@@ -31,25 +70,36 @@
       'How many steps does it take to reach the first state that exactly matches a previous state?',
     ],
     answer1: ([positions, iter]) => {
-      const moons = createMoons(positions);
+      const solarSystem = new SolarSystem(positions);
+
       for (let i = 0; i < iter; i++) {
-        moons.forEach(moon => {
-          moons.forEach(x => {
-            if (moon === x) return;
-            moon.applyGravity(x);
-          });
-        });
-        moons.forEach(moon => moon.applyVelocity());
+        solarSystem.tick();
       }
       return Promise.resolve(
-        moons.reduce((acc, cur) => acc + cur.getEnergy(), 0)
+        solarSystem.moons.reduce((acc, cur) => acc + cur.getEnergy(), 0)
       );
     },
-    answer2: ([positions, iter]) => {
-      const moons = createMoons(positions);
-      // while (true) {}
-      return Promise.resolve(match);
+    answer2: ([positions]) => {
+      const solarSystem = new SolarSystem(positions);
+      const dimensions = ['x', 'y', 'z'].map(name => ({ name }));
+      let i = 0;
+
+      while (!dimensions.every(x => x.length)) {
+        solarSystem.tick();
+        i++;
+        dimensions.forEach(dimension => {
+          if (!dimension.length && solarSystem.atInitialAxis(dimension.name))
+            dimension.length = i;
+        });
+      }
+
+      return Promise.resolve(
+        dimensions
+          .map(x => x.length)
+          .reduce((a, b) => leastCommonMultiple(a, b))
+      );
     },
+
     input: [
       `<x=-13, y=14, z=-7>
 <x=-18, y=9, z=0>
@@ -71,14 +121,14 @@
       {
         input: [
           `<x=-8, y=-10, z=0>
-      <x=5, y=5, z=10>
-      <x=2, y=-7, z=3>
-      <x=9, y=-8, z=-3>`,
+<x=5, y=5, z=10>
+<x=2, y=-7, z=3>
+<x=9, y=-8, z=-3>`,
           100,
         ],
         solutions: [1940, 4686774924],
       },
     ],
-    solutions: [7138],
+    solutions: [7138, 572087463375796],
   });
 })();
