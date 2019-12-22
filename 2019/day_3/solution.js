@@ -26,7 +26,6 @@
     };
     const wires = puzzle
       .split('\n')
-      .filter(x => x)
       .map(x => x.split(',').reduce(getWires, [centralPort]));
 
     const grid = wires.reduce(

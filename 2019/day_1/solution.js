@@ -17,7 +17,6 @@
   function day_1(puzzle) {
     const modules = puzzle
       .split('\n')
-      .filter(x => x)
       .map(December.toInt);
     const answer1 = getAnswer(modules, getFuel);
     const answer2 = getAnswer(modules, doubleCheckFuel);

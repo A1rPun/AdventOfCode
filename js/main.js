@@ -42,6 +42,8 @@
     if (!input) {
       const res = await fetch(`${day.year}/day_${day.day}/input`);
       input = await res.text();
+      // TODO: might brake days so test :)
+      input = input.trim();
     }
     return input;
   }

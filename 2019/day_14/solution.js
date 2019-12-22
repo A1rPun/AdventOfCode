@@ -19,7 +19,6 @@
   function createReactions(input) {
     return input
       .split('\n')
-      .filter(x => x)
       .map(reaction => {
         const chemicals = reaction
           .match(/(\d+ \w+)+/g)
