@@ -92,7 +92,6 @@
             dimension.length = i;
         });
       }
-
       return Promise.resolve(
         dimensions
           .map(x => x.length)

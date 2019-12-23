@@ -38,6 +38,16 @@
       return years;
     },
     // Shared utility functions
+    cache: fn => {
+      const cache = new Map();
+      return (...args) => {
+        const cacheKey = args.join('');
+        if (cache.has(cacheKey)) return cache.get(cacheKey);
+        const result = fn(...args);
+        cache.set(cacheKey, result);
+        return result;
+      };
+    },
     count: (str, char) => (str.match(new RegExp(char, 'g')) || []).length,
     getNumbers: str => str.match(/-?\d+/g).map(december.toInt),
     prettify: function(jagged, char) {

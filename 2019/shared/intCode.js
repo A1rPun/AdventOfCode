@@ -75,6 +75,14 @@
       this.outputs = [];
       return outputs;
     }
+    clone() {
+      const intCode = new IntCode([...this.memory], [...this.input]);
+      intCode.outputs = [...this.outputs];
+      intCode.pointer = this.pointer;
+      intCode.relativeBase = this.relativeBase;
+      intCode.halted = this.halted;
+      return intCode;
+    }
     // OpCodes
     [ADD](a, b, target) {
       this.memory[target] = a + b;
