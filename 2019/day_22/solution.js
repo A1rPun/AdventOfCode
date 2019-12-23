@@ -22,10 +22,10 @@
     },
   };
 
-  function shuffleDeck(deck, puzzle) {
-    const instructions = puzzle.split('\n');
+  function shuffleDeck(puzzle, deckSize) {
+    let deck = December.range(deckSize);
 
-    instructions.forEach(instruction => {
+    puzzle.split('\n').forEach(instruction => {
       const parts = instruction.split(' ');
       if (parts[0] === 'cut') {
         deck = shuffles.cut(deck, +parts[1]);
@@ -40,6 +40,44 @@
     return deck;
   }
 
+  function shuffleDeckOptimized(puzzle, deckSize, repeatCount, index) {
+    puzzle.split('\n').forEach(instruction => {
+      const parts = instruction.split(' ');
+      if (parts[0] === 'cut') {
+        const cutSize = (parts[1] * repeatCount) % deckSize;
+        index += cutSize;
+        if (index < 0) index = deckSize + index;
+      } else if (parts[0] === 'deal' && parts[2] === 'increment') {
+        const inc = +parts[3];
+        // TODO: What to do here.... ????
+        
+        // inc = 3
+        // index = 1
+        // deckSize = 10
+        // totalIndex needs to be 21
+        // index needs to be 7 (21 / 3)
+        
+        // inc = 3
+        // index = 2
+        // deckSize = 10
+        // totalIndex needs to be 12
+        // index needs to be 4 (12 / 3)
+        
+        // It works but it needs to be calculated without a while for speed
+        let totalIndex = 0;
+        while (totalIndex % deckSize !== index) {
+          totalIndex += inc;
+        }
+        index = totalIndex / inc;
+      } else if (parts[0] === 'deal' && parts[2] === 'new') {
+        index = deckSize - 1 - index;
+      } else {
+        throw new Error('Invalid argument');
+      }
+    });
+    return index;
+  }
+
   December.addDay({
     day: 22,
     year: 2019,
@@ -49,19 +87,17 @@
       'After shuffling your new, giant, factory order deck that many times, what number is on the card that ends up in position 2020?',
     ],
     answer1: puzzle =>
-      Promise.resolve(
-        shuffleDeck(December.range(10007), puzzle).findIndex(x => x === 2019)
-      ),
+      Promise.resolve(shuffleDeck(puzzle, 10007).findIndex(x => x === 2019)),
     answer2: puzzle =>
       Promise.resolve(
-        // shuffleDeck(
-        //   December.range(119315717514047),
-        //   puzzle.repeat(101741582076661)
-        // )[2020]
+        shuffleDeckOptimized(puzzle, 10, 1, 2)
+        // shuffleDeckOptimized(puzzle, 119315717514047, 101741582076661, 2020)
       ),
     example: [
       {
-        input: `deal with increment 7`,
+        input: `deal with increment 7
+deal into new stack
+deal into new stack`,
         solutions: [4126],
         answer: 1,
       },
@@ -92,6 +128,27 @@ deal with increment 3
 cut -1`,
         solutions: [1219],
         answer: 1,
+      },
+      // shuffleDeckOptimized(puzzle, 10, 1, 2)
+      {
+        input: `deal into new stack`,
+        solutions: [undefined, 7],
+        answer: 2,
+      },
+      {
+        input: `cut 4`,
+        solutions: [undefined, 6],
+        answer: 2,
+      },
+      {
+        input: `cut -4`,
+        solutions: [undefined, 8],
+        answer: 2,
+      },
+      {
+        input: `deal with increment 3`,
+        solutions: [undefined, 4],
+        answer: 2,
       },
     ],
     solutions: [5472],
