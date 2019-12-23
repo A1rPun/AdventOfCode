@@ -48,29 +48,24 @@
         index += cutSize;
         if (index < 0) index = deckSize + index;
       } else if (parts[0] === 'deal' && parts[2] === 'increment') {
-        const inc = +parts[3];
+        const inc = (parts[3] * repeatCount) % deckSize;
         // TODO: What to do here.... ????
-        
-        // inc = 3
-        // index = 1
-        // deckSize = 10
-        // totalIndex needs to be 21
-        // index needs to be 7 (21 / 3)
-        
-        // inc = 3
-        // index = 2
-        // deckSize = 10
-        // totalIndex needs to be 12
-        // index needs to be 4 (12 / 3)
-        
+
+        // 0	1	  2	  3	  4	  5	  6	  7	  8	  9 // index
+        // 0	7	  4	  1	  8	  5	  2	  9	  6	  3 // result index
+        // 0	21	12	3	  24	15	6	  27	18	9 // totalIndex
+
         // It works but it needs to be calculated without a while for speed
-        let totalIndex = 0;
-        while (totalIndex % deckSize !== index) {
-          totalIndex += inc;
-        }
+        // let totalIndex = 0;
+        // while (totalIndex % deckSize !== index)
+        //   totalIndex += inc;
+
+        // This calculation works for 10 cards... but 119315717514047 is a problem
+        const totalIndex = (inc - (index % inc)) * deckSize + (index % 10); // % 10 needed?
+
         index = totalIndex / inc;
       } else if (parts[0] === 'deal' && parts[2] === 'new') {
-        index = deckSize - 1 - index;
+        index = deckSize - 1 - index; // repeatCount?
       } else {
         throw new Error('Invalid argument');
       }
@@ -90,7 +85,7 @@
       Promise.resolve(shuffleDeck(puzzle, 10007).findIndex(x => x === 2019)),
     answer2: puzzle =>
       Promise.resolve(
-        shuffleDeckOptimized(puzzle, 10, 1, 2)
+        shuffleDeckOptimized(puzzle, 10, 3, 2)
         // shuffleDeckOptimized(puzzle, 119315717514047, 101741582076661, 2020)
       ),
     example: [
@@ -129,7 +124,7 @@ cut -1`,
         solutions: [1219],
         answer: 1,
       },
-      // shuffleDeckOptimized(puzzle, 10, 1, 2)
+      // shuffleDeckOptimized(puzzle, 10, 3, 2)
       {
         input: `deal into new stack`,
         solutions: [undefined, 7],
@@ -137,12 +132,12 @@ cut -1`,
       },
       {
         input: `cut 4`,
-        solutions: [undefined, 6],
+        solutions: [undefined, 4],
         answer: 2,
       },
       {
         input: `cut -4`,
-        solutions: [undefined, 8],
+        solutions: [undefined, 0],
         answer: 2,
       },
       {
@@ -152,5 +147,6 @@ cut -1`,
       },
     ],
     solutions: [5472],
+    // answer 2 too low 38237339318117
   });
 })();
