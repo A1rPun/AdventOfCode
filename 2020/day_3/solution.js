@@ -35,7 +35,7 @@
         new Vector(7, 1),
         new Vector(1, 2),
       ];
-      answer2 = trajectories.reduce((acc, cur) => acc * findTrees(map, cur), 1);
+      const answer2 = trajectories.reduce((acc, cur) => acc * findTrees(map, cur), 1);
       return Promise.resolve(answer2);
     },
     example: [
