@@ -5,9 +5,10 @@
     '2017': [],
     '2018': [],
     '2019': [],
+    '2020': [],
   };
   var december = {
-    currentYear: '2019',
+    currentYear: '2020', // TODO: Please...
     addDay: function(d) {
       days[d.year].push(d);
       for (const fn in d.public)
@@ -57,7 +58,10 @@
         result += jagged[i].join(char) + '\n';
       return result;
     },
-    range: (max, min = 0) => Array.from(Array(max), (_, i) => i + min),
+    range: (max, min = 0, mapFn) => {
+      const fn = mapFn ? (_, i) => mapFn(i + min) : (_, i) => i + min;
+      return Array.from(Array(max), fn);
+    },
     // Rotate + = left, - = right
     rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
     sum: (a, b) => a + b,

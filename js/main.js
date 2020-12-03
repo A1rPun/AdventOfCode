@@ -267,17 +267,25 @@
   function logYears() {
     spanYear.innerHTML = '';
     var years = December.getYears();
+    var totalScore = 0;
+    
     for (var i = 0, l = years.length; i < l; i++) {
       var option = d.createElement('span');
       var year = years[i];
       option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
       option.classList.add('click', 'option');
       option.addEventListener('click', switchYear(year.year));
-      if (December.currentYear === year.year) {
+      if (December.currentYear === year.year)
         option.classList.add('active');
-      }
       spanYear.appendChild(option);
+
+      if (i && i % 3 === 0)
+        spanYear.appendChild(d.createElement('br'))
+      totalScore += year.score;
     }
+    var total = d.createElement('span');
+    total.innerHTML = `Total<small class="yellow darken">★${totalScore}</small>`;
+    spanYear.appendChild(total);
   }
 
   function switchYear(year) {
