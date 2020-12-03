@@ -92,8 +92,7 @@
 7 A, 1 B => 1 C
 7 A, 1 C => 1 D
 7 A, 1 D => 1 E
-7 A, 1 E => 1 FUEL
-`,
+7 A, 1 E => 1 FUEL`,
         solutions: [31],
         answer: 1,
       },
@@ -104,8 +103,7 @@
 3 A, 4 B => 1 AB
 5 B, 7 C => 1 BC
 4 C, 1 A => 1 CA
-2 AB, 3 BC, 4 CA => 1 FUEL
-`,
+2 AB, 3 BC, 4 CA => 1 FUEL`,
         solutions: [165],
         answer: 1,
       },
@@ -118,8 +116,7 @@
 177 ORE => 5 HKGWZ
 7 DCFZ, 7 PSHF => 2 XJWVT
 165 ORE => 2 GPVTF
-3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT
-`,
+3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT`,
         solutions: [13312, 82892753],
       },
       {
@@ -134,8 +131,7 @@
 145 ORE => 6 MNCFX
 1 NVRVD => 8 CXFTF
 1 VJHF, 6 MNCFX => 4 RFSQX
-176 ORE => 6 VJHF
-`,
+176 ORE => 6 VJHF`,
         solutions: [180697, 5586022],
       },
       {
@@ -155,8 +151,7 @@
 3 BHXH, 2 VRPVC => 7 MZWV
 121 ORE => 7 VRPVC
 7 XCVML => 6 RJRHP
-5 BHXH, 4 VRPVC => 5 LTCX
-`,
+5 BHXH, 4 VRPVC => 5 LTCX`,
         solutions: [2210736, 460664],
       },
     ],

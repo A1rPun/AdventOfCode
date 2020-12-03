@@ -48,7 +48,8 @@
         index += cutSize;
         if (index < 0) index = deckSize + index;
       } else if (parts[0] === 'deal' && parts[2] === 'increment') {
-        const inc = (parts[3] * repeatCount) % deckSize;
+        const inc = (index * (parts[3] * repeatCount)) % deckSize;
+        index = inc;
         // TODO: What to do here.... ????
 
         // 0	1	  2	  3	  4	  5	  6	  7	  8	  9 // index
@@ -61,9 +62,9 @@
         //   totalIndex += inc;
 
         // This calculation works for 10 cards... but 119315717514047 is a problem
-        const totalIndex = (inc - (index % inc)) * deckSize + (index % 10); // % 10 needed?
+        // const totalIndex = (inc - (index % inc)) * deckSize + (index % 10); // % 10 needed?
 
-        index = totalIndex / inc;
+        // index = totalIndex / inc;
       } else if (parts[0] === 'deal' && parts[2] === 'new') {
         index = deckSize - 1 - index; // repeatCount?
       } else {
