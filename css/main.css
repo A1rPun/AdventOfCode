@@ -55,6 +55,7 @@ textarea:active {
 
 .option {
   margin-right: 8px;
+  display: inline-block;
 }
 
 .active {
