@@ -3,20 +3,19 @@
   const seperator = '--------------------------------------------------';
   var code = d.querySelector('.code');
   function logCode(c, click) {
-    var span = d.createElement('span');
-    span.classList.add('line');
-    span.innerText =
+    var el = d.createElement('div');
+    el.innerText =
       typeof c === 'string' || c === 0
         ? c
         : c
         ? JSON.stringify(c, null, 4)
         : '';
     if (click) {
-      span.classList.add('click');
-      span.addEventListener('click', click);
+      el.classList.add('click');
+      el.addEventListener('click', click);
     }
-    code.appendChild(span);
-    return span;
+    code.appendChild(el);
+    return el;
   }
   December.log = function(o, clear) {
     if (clear) clearCode();
@@ -148,8 +147,8 @@
     return function() {
       spanDay.innerHTML = '';
 
-      const back = d.createElement('span');
-      back.classList.add('line', 'click');
+      const back = d.createElement('div');
+      back.classList.add('click');
       back.innerText = '<< Back <<';
       back.addEventListener('click', function() {
         clearCode();
@@ -162,8 +161,8 @@
       spanDay.appendChild(title);
 
       if (day.hasAnimation) {
-        const anim = d.createElement('span');
-        anim.classList.add('line', 'click', 'animated');
+        const anim = d.createElement('div');
+        anim.classList.add('click', 'animated');
         anim.innerText = `Animation = ${December.animate}`;
         anim.addEventListener('click', function() {
           December.animate = !December.animate;
@@ -172,8 +171,8 @@
         spanDay.appendChild(anim);
       }
 
-      const ans = d.createElement('span');
-      ans.classList.add('line', 'click');
+      const ans = d.createElement('div');
+      ans.classList.add('click');
       ans.innerText = 'Show answers';
       ans.addEventListener('click', async function() {
         clearCode();
@@ -183,8 +182,8 @@
       spanDay.appendChild(ans);
 
       if (day.example && day.example.length) {
-      const example = d.createElement('span');
-      example.classList.add('line', 'click');
+      const example = d.createElement('div');
+      example.classList.add('click');
       example.innerText = 'Show example';
       example.addEventListener('click', async function() {
         clearCode();
@@ -195,8 +194,8 @@
       spanDay.appendChild(example);
       }
 
-      const input = d.createElement('span');
-      input.classList.add('line', 'click');
+      const input = d.createElement('div');
+      input.classList.add('click');
       input.innerText = 'Show input';
       input.addEventListener('click', async function() {
         clearCode();
@@ -213,8 +212,8 @@
       });
       spanDay.appendChild(custom);
 
-      const cheat = d.createElement('span');
-      cheat.classList.add('line', 'click', 'hidden');
+      const cheat = d.createElement('div');
+      cheat.classList.add('click', 'hidden');
       cheat.innerText = 'Execute';
       cheat.addEventListener('click', function() {
         clearCode();
@@ -242,11 +241,11 @@
 
   function logDays() {
     spanDay.innerHTML = '';
+    spanDay.classList.add('text-left');
     var days = December.getDays();
     for (var i = 0; i < days.length; i++) {
       const decDay = days[i];
-      var day = d.createElement('span');
-      day.classList.add('line', 'text-left');
+      var day = d.createElement('div');
       if (decDay.hasAnimation) {
         day.classList.add('animated');
       }
