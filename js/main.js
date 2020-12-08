@@ -1,8 +1,7 @@
 ﻿(function(w, d) {
   const NEW_LINE = '\n';
-  const seperator = '--------------------------------------------------';
   var code = d.querySelector('.code');
-  function logCode(c, click) {
+  function logCode(c, click, seperate = false) {
     var el = d.createElement('div');
     el.innerText =
       typeof c === 'string' || c === 0
@@ -14,6 +13,8 @@
       el.classList.add('click');
       el.addEventListener('click', click);
     }
+
+    if (seperate) el.classList.add('seperator');
     code.appendChild(el);
     return el;
   }
@@ -22,14 +23,11 @@
     logCode(o);
   };
   showTree();
-  logCode('★★ AdventOfCode - A1rPun ★★');
-  logCode(seperator);
+  logCode('★★ AdventOfCode - A1rPun ★★', null, true);
   var spanYear = logCode();
   logYears();
-  logCode(seperator);
-  var spanDay = logCode();
+  var spanDay = logCode(null, null, true);
   logDays();
-  logCode(seperator);
   code = logCode();
 
   function clearCode() {
@@ -148,7 +146,7 @@
       spanDay.innerHTML = '';
 
       const back = d.createElement('div');
-      back.classList.add('click');
+      back.classList.add('click', 'text-center');
       back.innerText = '<< Back <<';
       back.addEventListener('click', function() {
         clearCode();
@@ -156,13 +154,14 @@
       });
       spanDay.appendChild(back);
 
-      const title = d.createElement('span');
+      const title = d.createElement('div');
+      title.classList.add('text-center');
       setDayTitle(title, day);
       spanDay.appendChild(title);
 
       if (day.hasAnimation) {
         const anim = d.createElement('div');
-        anim.classList.add('click', 'animated');
+        anim.classList.add('click', 'animated', 'text-center');
         anim.innerText = `Animation = ${December.animate}`;
         anim.addEventListener('click', function() {
           December.animate = !December.animate;
@@ -172,7 +171,7 @@
       }
 
       const ans = d.createElement('div');
-      ans.classList.add('click');
+      ans.classList.add('click', 'text-center');
       ans.innerText = 'Show answers';
       ans.addEventListener('click', async function() {
         clearCode();
@@ -182,20 +181,20 @@
       spanDay.appendChild(ans);
 
       if (day.example && day.example.length) {
-      const example = d.createElement('div');
-      example.classList.add('click');
-      example.innerText = 'Show example';
-      example.addEventListener('click', async function() {
-        clearCode();
+        const example = d.createElement('div');
+        example.classList.add('click', 'text-center');
+        example.innerText = 'Show example';
+        example.addEventListener('click', async function() {
+          clearCode();
           for (let i = 0; i < day.example.length; i++) {
             await handleExample(day, day.example[i]);
           }
-      });
-      spanDay.appendChild(example);
+        });
+        spanDay.appendChild(example);
       }
 
       const input = d.createElement('div');
-      input.classList.add('click');
+      input.classList.add('click', 'text-center');
       input.innerText = 'Show input';
       input.addEventListener('click', async function() {
         clearCode();
@@ -267,19 +266,17 @@
     spanYear.innerHTML = '';
     var years = December.getYears();
     var totalScore = 0;
-    
+
     for (var i = 0, l = years.length; i < l; i++) {
       var option = d.createElement('span');
       var year = years[i];
-      option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
+      option.innerHTML = `[${year.year}]<small class="yellow darken">★${
+        year.score
+      }</small>`;
       option.classList.add('click', 'option');
       option.addEventListener('click', switchYear(year.year));
-      if (December.currentYear === year.year)
-        option.classList.add('active');
+      if (December.currentYear === year.year) option.classList.add('active');
       spanYear.appendChild(option);
-
-      if (i && i % 3 === 0)
-        spanYear.appendChild(d.createElement('br'))
       totalScore += year.score;
     }
     var total = d.createElement('span');
@@ -329,6 +326,5 @@ _ __|_|__ _`;
     const span = logCode();
     span.innerHTML = html;
     span.classList.add('white');
-    logCode(seperator);
   }
 })(window, document);

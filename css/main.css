@@ -18,8 +18,7 @@ textarea:active {
 }
 
 .code {
-  width: 512px;
-  margin: 8px auto;
+  margin: 8px;
   text-align: center;
   white-space: pre-wrap;
   word-wrap: break-word;
@@ -105,5 +104,15 @@ textarea:active {
 
 .text-left {
   text-align: left;
-  padding-left: 8px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.seperator {
+  border-top: 1px #00cc00 dotted;
+  border-bottom: 1px #00cc00 dotted;
+  margin: 8px 0;
+  padding: 8px 0;
 }
