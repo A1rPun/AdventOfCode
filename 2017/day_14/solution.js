@@ -7,6 +7,49 @@ function hexToByte(h) {
     .padStart(4, '0');
 }
 
+function tieKnots(input, times = 64) {
+  let hash = December.range(256);
+  const l = hash.length;
+  let hashIndex = 0;
+  let skipSize = 0;
+  while (times--) {
+    for (let i = 0; i < input.length; i++) {
+      const knotLength = input[i];
+      const toIndex = hashIndex + knotLength;
+      const wrapIndex = toIndex > l ? toIndex - l : -1;
+      const current = (~wrapIndex
+        ? hash.slice(hashIndex, l + 1).concat(hash.slice(0, wrapIndex))
+        : hash.slice(hashIndex, toIndex)
+      ).reverse();
+      hash = ~wrapIndex
+        ? current
+            .slice(-wrapIndex)
+            .concat(hash.slice(wrapIndex, hashIndex))
+            .concat(current.slice(0, -wrapIndex))
+        : hash
+            .slice(0, hashIndex)
+            .concat(current)
+            .concat(hash.slice(toIndex, l + 1));
+      hashIndex = (toIndex + skipSize) % l;
+      skipSize++;
+    }
+  }
+  return hash;
+}
+
+function dense(hash) {
+  let densedHash = [];
+  let xorred = hash.reduce(function(prev, curr, i) {
+    if (i % 16 === 0) {
+      densedHash.push(prev);
+      return curr;
+    }
+    return prev ^ curr;
+  });
+  densedHash.push(xorred);
+  return densedHash;
+}
+
 function knotHash(puzzle) {
   const lengths = puzzle
     .split('')
