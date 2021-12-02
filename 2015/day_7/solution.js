@@ -50,5 +50,6 @@ y RSHIFT 2 -> g
 NOT x -> h
 NOT y -> i`,
   ],
-  solutions: [],
+  // exampleSolutions: [,],
+  solutions: [,],
 };

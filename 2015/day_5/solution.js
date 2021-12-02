@@ -66,4 +66,6 @@ jchzalrnumimnmhp
 haegwjzuvuyypxyu
 dvszwmarrgswjxmb`,
   ],
+  exampleSolutions: [2, 2],
+  solutions: [236, 51],
 };

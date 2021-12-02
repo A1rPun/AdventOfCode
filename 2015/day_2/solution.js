@@ -22,4 +22,6 @@ export default {
   ],
   answer: day_2,
   example: ['2x3x4\nx1x10'],
+  exampleSolutions: [78, 36],
+  solutions: [1588178, 3783758],
 };

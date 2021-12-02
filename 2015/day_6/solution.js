@@ -61,4 +61,6 @@ export default {
 toggle 0,0 through 999,0
 turn off 499,499 through 500,500`,
   ],
+  exampleSolutions: [998996, 1001996],
+  solutions: [377891, 14110788],
 };

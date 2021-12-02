@@ -30,11 +30,13 @@ function day_3(puzzle) {
     var key = roboSanta.key();
     houses[key] = houses[key] ? houses[key] + 1 : 1;
   }
-  return Object.keys(houses).length;
+  return [,Object.keys(houses).length];
 }
 export default {
   title: 'Perfectly Spherical Houses in a Vacuum',
   questions: 'How many houses receive at least one present?',
   answer: day_3,
   example: ['^v^v^v^v^v'],
+  exampleSolutions: [,11],
+  solutions: [2081, 2341],
 };

@@ -19,4 +19,6 @@ export default {
   answer: day_4,
   input: 'iwrupvqb',
   example: ['abcdef'],
+  exampleSolutions: [609043,],
+  solutions: [346386, 9958218],
 };
