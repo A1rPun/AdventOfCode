@@ -33,6 +33,6 @@ setr 1 0 0
 seti 8 0 4
 seti 9 0 5`,
   ],
-  // exampleSolutions: [7],
+  exampleSolutions: [7],
   solutions: [1228],
 };

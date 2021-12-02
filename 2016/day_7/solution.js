@@ -74,4 +74,6 @@ xyx[xyx]xyx
 aaa[kek]eke
 zazbz[bzb]cdb`,
   ],
+  exampleSolutions: [2, 3],
+  solutions: [105, 258],
 };

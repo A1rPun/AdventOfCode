@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function simpleCompress(file, deep = false) {
   let count = 0;
   for (let i = 0; i < file.length; ) {
@@ -31,4 +33,6 @@ export default {
   ],
   answer: day_9,
   example: ['X(8x2)(3x3)ABCY'],
+  exampleSolutions: [18, 20],
+  solutions: [99145, 10943094568],
 };

@@ -1,3 +1,4 @@
+import December from '../../js/december.js';
 import Astar from '../../js/astar.js';
 
 function getTile(x, y, num) {
@@ -42,5 +43,7 @@ export default {
   ],
   answer: day_13,
   input: 1358,
-  example: [10],
+  example: ['10'],
+  exampleSolutions: [11,],
+  solutions: [96, 141],
 };

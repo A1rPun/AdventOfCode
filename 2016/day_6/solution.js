@@ -63,4 +63,6 @@ vrdear
 dvrsen
 enarar`,
   ],
+  exampleSolutions: ['easter', 'advent'],
+  solutions: ['qqqluigu', 'lsoypmia'],
 };

@@ -33,5 +33,7 @@ export default {
   answer: day_5,
   input: 'ffykfhsq',
   example: ['abc'],
+  exampleSolutions: ['18f47a30', '05ace8e3'],
+  solutions: ['c6697b55', '8c35d1ab'],
   hasAnimation: true,
 };

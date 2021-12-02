@@ -1,9 +1,11 @@
+import December from '../../js/december.js';
+
 var actions = {
   rect: {
     txt: 'e',
     index: 1,
     slice: 5,
-    process: function(strip, input) {
+    process: function (strip, input) {
       var point = input.slice(this.slice).split('x');
       var x = point[0];
       var y = point[1];
@@ -19,7 +21,7 @@ var actions = {
     txt: 'r',
     index: 7,
     slice: 13,
-    process: function(strip, input) {
+    process: function (strip, input) {
       var point = input.slice(this.slice).split(' by ');
       strip[point[0]] = December.rotate(strip[point[0]], -point[1]);
     },
@@ -28,7 +30,7 @@ var actions = {
     txt: 'c',
     index: 7,
     slice: 16,
-    process: function(strip, input) {
+    process: function (strip, input) {
       var point = input.slice(this.slice).split(' by ');
       var x = point[0];
       var y = point[1];
@@ -64,11 +66,11 @@ function day_8(puzzle) {
   const animate = December.animate;
   var inputs = puzzle.split('\n');
   var strip = getStrip(50, 6);
-  return new Promise(function(resolve) {
+  return new Promise(function (resolve) {
     if (animate) {
       var interval = 50;
       var i = 0;
-      var fn = function() {
+      var fn = function () {
         processInput(inputs[i], strip);
         December.log(December.prettify(strip), true);
         i++;
@@ -97,5 +99,14 @@ export default {
     'What code is the screen trying to display?',
   ],
   answer: day_8,
+  solutions: [
+    121,
+    `###..#..#.###..#..#..##..####..##..####..###.#....
+#..#.#..#.#..#.#..#.#..#.#....#..#.#......#..#....
+#..#.#..#.#..#.#..#.#....###..#..#.###....#..#....
+###..#..#.###..#..#.#....#....#..#.#......#..#....
+#.#..#..#.#.#..#..#.#..#.#....#..#.#......#..#....
+#..#..##..#..#..##...##..####..##..####..###.####.`,
+  ],
   hasAnimation: true,
 };

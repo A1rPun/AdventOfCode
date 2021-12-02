@@ -61,4 +61,6 @@ RRDDD
 LURDL
 UUUUD`,
   ],
+  exampleSolutions: ['1985', '5DB3'],
+  solutions: ['99332', 'DD483'],
 };

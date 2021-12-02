@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function day_20(puzzle) {
   puzzle = puzzle.split('\n');
   puzzle.push(puzzle.length > 10 ? '4294967296-4294967296' : '10-10'); // MAX 4294967295
@@ -36,4 +38,6 @@ export default {
 0-2
 4-7`,
   ],
+  exampleSolutions: [3, 2],
+  solutions: [14975795, 101],
 };

@@ -5,4 +5,5 @@ export default {
   answer2: (puzzle) => {},
   input: 'ioramepc',
   example: ['hijkl'],
+  solutions: [],
 };

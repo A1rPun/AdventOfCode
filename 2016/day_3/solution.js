@@ -56,4 +56,6 @@ export default {
 202 402 602
 203 403 603`,
   ],
+  exampleSolutions: [3, 6],
+  solutions: [1050, 1921],
 };

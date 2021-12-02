@@ -73,4 +73,6 @@ export default {
   ],
   answer: day_1,
   example: ['R5, L5, R5, R3, R8, R4, R4, R8'],
+  // exampleSolutions: [,],
+  solutions: [307, 165],
 };

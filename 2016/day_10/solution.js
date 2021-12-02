@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function Bot(number, low, high, lowCollection, highCollection) {
   this.number = number;
   this.values = [];
@@ -85,4 +87,6 @@ bot 1 gives low to output 1 and high to bot 0
 bot 0 gives low to output 2 and high to output 0
 value 2 goes to bot 2`,
   ],
+  exampleSolutions: [, 30], // [2]
+  solutions: [141, 1209],
 };

@@ -78,7 +78,7 @@ export default {
   questions: 'How many pixels stay on after 5 iterations?',
   answer: day_21,
   example: ['../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#'],
-  // exampleSolutions: [12,],
+  exampleSolutions: [12,],
   solutions: [142, 1879071],
 };
 

@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 var TARP = '^';
 var SAFE = '.';
 
@@ -43,4 +45,6 @@ export default {
   input:
     '.^^.^^^..^.^..^.^^.^^^^.^^.^^...^..^...^^^..^^...^..^^^^^^..^.^^^..^.^^^^.^^^.^...^^^.^^.^^^.^.^^.^.',
   example: ['..^^.'],
+  exampleSolutions: [61, 600001],
+  solutions: [1951, 20002936],
 };

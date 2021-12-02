@@ -21,4 +21,6 @@ export default {
   answer: day_14,
   input: 'qzyelonm',
   example: ['abc'],
+  exampleSolutions: [22728, 22551],
+  solutions: [15168, 20864],
 };

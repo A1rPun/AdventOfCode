@@ -82,4 +82,6 @@ a-b-c-d-e-f-g-h-987[abcde]
 not-a-real-room-404[oarel]
 totally-real-room-200[decoy]`,
   ],
+  exampleSolutions: [1514, 0],
+  solutions: [185371, 984],
 };
