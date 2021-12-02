@@ -1,20 +1,8 @@
 import December from '../../js/december.js';
 
-function parse(puzzle) {
-  return puzzle.split('\n').map(December.toInt);
-}
-
-function countIncreases(measurements) {
-  const [, increases] = measurements.reduce(
-    (acc, cur) => {
-      let [prev, total] = acc;
-      if (prev < cur) total++;
-      return [cur, total];
-    },
-    [0, 0]
-  );
-  return increases - 1;
-}
+const parse = (puzzle) => puzzle.split('\n').map(December.toInt);
+const hasIncrease = (measurement, index, list) => measurement < list[index + 1];
+const hasIncreaseSum = (measurement, index, list) => measurement < list[index + 3];
 
 export default {
   day: 1,
@@ -24,19 +12,8 @@ export default {
     'How many measurements are larger than the previous measurement?',
     'How many sums are larger than the previous sum?',
   ],
-  answer1: puzzle => countIncreases(parse(puzzle)),
-  answer2: puzzle => {
-    const measurements = parse(puzzle);
-    const summedPairs = [];
-
-    for (let i = 0; i < measurements.length - 2; i++) {
-      summedPairs.push(
-        measurements[i] + measurements[i + 1] + measurements[i + 2]
-      );
-    }
-
-    return countIncreases(summedPairs);
-  },
+  answer1: (puzzle) => parse(puzzle).filter(hasIncrease).length,
+  answer2: (puzzle) => parse(puzzle).filter(hasIncreaseSum).length,
   example: [
     {
       input: `199
