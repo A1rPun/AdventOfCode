@@ -166,7 +166,10 @@ function dayClick(day) {
     spanDay.appendChild(back);
 
     const title = d.createElement('div');
-    title.classList.add('text-center');
+    title.classList.add('click', 'text-center');
+    title.addEventListener('click', function () {
+      window.open(`https://adventofcode.com/${day.year}/day/${day.day}`);
+    });
     setDayTitle(title, day);
     spanDay.appendChild(title);
 
