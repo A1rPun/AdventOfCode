@@ -87,8 +87,7 @@ export default {
 7 A, 1 C => 1 D
 7 A, 1 D => 1 E
 7 A, 1 E => 1 FUEL`,
-      solutions: [31],
-      answer: 1,
+      solutions: [31,],
     },
     {
       input: `9 ORE => 2 A
@@ -98,8 +97,7 @@ export default {
 5 B, 7 C => 1 BC
 4 C, 1 A => 1 CA
 2 AB, 3 BC, 4 CA => 1 FUEL`,
-      solutions: [165],
-      answer: 1,
+      solutions: [165,],
     },
     {
       input: `157 ORE => 5 NZVS

@@ -31,17 +31,14 @@ export default {
     // {
     //   input: '1,9,10,3,2,3,11,0,99,30,40,50',
     //   solutions: [3500],
-    //   answer: 1,
     // },
     // {
     //   input: '1,0,0,0,99',
     //   solutions: [2],
-    //   answer: 1,
     // },
     // {
     //   input: '1,1,1,4,99,5,6,0,99',
     //   solutions: [30],
-    //   answer: 1,
     // },
   ],
   solutions: [6327510, 4112],

@@ -124,39 +124,35 @@ async function handleExample(day, example) {
   logCode(`${example.input}`);
   logCode(NEW_LINE);
 
-  if (!example.answer || example.answer & 1) {
-    const answer1T = new perfTimer();
-    const answer1 = await getAnswer(day.answer1(example.input));
-    answer1T.stop();
-    const line1 = logCode(answer1);
+  const answer1T = new perfTimer();
+  const answer1 = await getAnswer(day.answer1(example.input));
+  answer1T.stop();
+  const line1 = logCode(answer1);
 
-    if (example.solutions[0] === answer1) {
-      line1.classList.add('yellow');
-    } else {
-      line1.classList.add('red');
-      logCode(`Output should be ${example.solutions[0]}`);
-    }
-    logCode(NEW_LINE);
-    logCode(answer1T.log());
-    logCode(NEW_LINE);
+  if (example.solutions[0] === answer1) {
+    line1.classList.add('yellow');
+  } else {
+    line1.classList.add('red');
+    logCode(`Output should be ${example.solutions[0]}`);
   }
+  logCode(NEW_LINE);
+  logCode(answer1T.log());
+  logCode(NEW_LINE);
 
-  if (!example.answer || example.answer & 2) {
-    const answer2T = new perfTimer();
-    const answer2 = await getAnswer(day.answer2(example.input));
-    answer2T.stop();
-    const line2 = logCode(answer2);
+  const answer2T = new perfTimer();
+  const answer2 = await getAnswer(day.answer2(example.input));
+  answer2T.stop();
+  const line2 = logCode(answer2);
 
-    if (example.solutions[1] === answer2) {
-      line2.classList.add('yellow');
-    } else {
-      line2.classList.add('red');
-      logCode(`Output should be ${example.solutions[1]}`);
-    }
-    logCode(NEW_LINE);
-    logCode(answer2T.log());
-    logCode(NEW_LINE);
+  if (example.solutions[1] === answer2) {
+    line2.classList.add('yellow');
+  } else {
+    line2.classList.add('red');
+    logCode(`Output should be ${example.solutions[1]}`);
   }
+  logCode(NEW_LINE);
+  logCode(answer2T.log());
+  logCode(NEW_LINE);
 }
 
 function dayClick(day) {

@@ -88,22 +88,19 @@ export default {
       input: `deal with increment 7
 deal into new stack
 deal into new stack`,
-      solutions: [4126],
-      answer: 1,
+      solutions: [4126,],
     },
     {
       input: `cut 6
 deal with increment 7
 deal into new stack`,
-      solutions: [5922],
-      answer: 1,
+      solutions: [5922,],
     },
     {
       input: `deal with increment 7
 deal with increment 9
 cut -2`,
-      solutions: [7115],
-      answer: 1,
+      solutions: [7115,],
     },
     {
       input: `deal into new stack
@@ -116,29 +113,24 @@ cut 3
 deal with increment 9
 deal with increment 3
 cut -1`,
-      solutions: [1219],
-      answer: 1,
+      solutions: [1219,],
     },
     // shuffleDeckOptimized(puzzle, 10, 3, 2)
     {
       input: `deal into new stack`,
-      solutions: [undefined, 7],
-      answer: 2,
+      solutions: [, 7],
     },
     {
       input: `cut 4`,
-      solutions: [undefined, 4],
-      answer: 2,
+      solutions: [, 4],
     },
     {
       input: `cut -4`,
-      solutions: [undefined, 0],
-      answer: 2,
+      solutions: [, 0],
     },
     {
       input: `deal with increment 3`,
-      solutions: [undefined, 4],
-      answer: 2,
+      solutions: [, 4],
     },
   ],
   solutions: [5472],

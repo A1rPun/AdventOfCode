@@ -30,8 +30,7 @@ hgt:179cm
 
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in`,
-      solutions: [2],
-      answer: 1,
+      solutions: [2,],
     },
     {
       input: `eyr:1972 cid:100

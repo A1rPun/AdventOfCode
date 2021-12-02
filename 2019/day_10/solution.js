@@ -92,8 +92,7 @@ export default {
 #####
 ....#
 ...##`,
-      solutions: [8],
-      answer: 1,
+      solutions: [8,],
     },
     {
       input: `......#.#.
@@ -106,8 +105,7 @@ export default {
 .##.#..###
 ##...#..#.
 .#....####`,
-      solutions: [33],
-      answer: 1,
+      solutions: [33,],
     },
     {
       input: `#.#...#.#.
@@ -120,8 +118,7 @@ export default {
 ..##....##
 ......#...
 .####.###.`,
-      solutions: [35],
-      answer: 1,
+      solutions: [35,],
     },
     {
       input: `.#..#..###
@@ -134,8 +131,7 @@ export default {
 #..#.#.###
 .##...##.#
 .....#.#..`,
-      solutions: [41],
-      answer: 1,
+      solutions: [41,],
     },
     {
       input: `.#..##.###...#######
@@ -166,8 +162,7 @@ export default {
 ##...#...#.#####.
 ..#.....#...###..
 ..#.#.....#....##`,
-      solutions: [30],
-      answer: 1,
+      solutions: [30,],
     },
   ],
   solutions: [253, 815],

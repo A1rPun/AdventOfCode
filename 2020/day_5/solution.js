@@ -30,8 +30,7 @@ export default {
       input: `BFFFBBFRRR
 FFFBBBFRRR
 BBFFBBFRLL`,
-      solutions: [820],
-      answer: 1,
+      solutions: [820,],
     },
   ],
   solutions: [991, 534],

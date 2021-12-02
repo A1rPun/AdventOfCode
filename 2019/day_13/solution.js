@@ -51,7 +51,6 @@ export default {
     // {
     //   input: 123456789,
     //   solutions: [],
-    //   answer: 1,
     // },
   ],
   solutions: [205, 10292],
