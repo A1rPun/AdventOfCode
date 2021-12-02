@@ -53,4 +53,6 @@ export default {
 5 <-> 6
 6 <-> 4, 5`,
   ],
+  exampleSolutions: [6, 2],
+  solutions: [380, 181],
 };

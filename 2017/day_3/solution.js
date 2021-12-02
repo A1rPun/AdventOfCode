@@ -101,4 +101,6 @@ export default {
   answer: day_3,
   input: 347991,
   example: [12],
+  // exampleSolutions: [,],
+  solutions: [480, 349975],
 };

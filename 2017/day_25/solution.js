@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function day_25(puzzle) {
   let [nextState, steps, ...stateValues] = puzzle.match(
     /[A-Z][:|\.]|\d+|left|right/g
@@ -33,7 +35,7 @@ function day_25(puzzle) {
     cursor += move;
   }
   const answer1 = Object.values(tape).reduce(December.sum);
-  return [answer1];
+  return [answer1,];
 }
 export default {
   title: 'The Halting Problem',
@@ -64,4 +66,6 @@ In state B:
     - Move one slot to the right.
     - Continue with state A.`,
   ],
+  exampleSolutions: [3,],
+  solutions: [3732, 50],
 };

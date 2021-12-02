@@ -77,4 +77,6 @@ export default {
      |  |  |  D 
      +B-+  +--+ `,
   ],
+  exampleSolutions: ['ABCDEF', 38],
+  solutions: ['QPRYCIOLU', 16162],
 };

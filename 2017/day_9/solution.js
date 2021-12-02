@@ -62,4 +62,6 @@ export default {
   ],
   answer: day_9,
   example: ['{{<!!>},{<!!>},{<!!>},{<!!>}}'],
+  exampleSolutions: [9, 0],
+  solutions: [10050, 4482],
 };

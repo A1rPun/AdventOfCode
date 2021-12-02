@@ -57,4 +57,6 @@ a inc 1 if b < 5
 c dec -10 if a >= 1
 c inc -20 if c == 10`,
   ],
+  exampleSolutions: [1, 10],
+  solutions: [6343, 7184],
 };

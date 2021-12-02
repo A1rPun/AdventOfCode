@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 class Component {
   constructor(portA, portB) {
     this.ports = [+portA, +portB];
@@ -83,6 +85,8 @@ export default {
 10/1
 9/10`,
   ],
+  exampleSolutions: [31, 19],
+  solutions: [1695, 1673],
 };
 
 /*

@@ -1,3 +1,4 @@
+import December from '../../js/december.js';
 import Vector from '../../js/vector.js';
 
 class Particle {
@@ -54,4 +55,6 @@ p=<-4,0,0>, v=< 2,0,0>, a=< 0,0,0>
 p=<-2,0,0>, v=< 1,0,0>, a=< 0,0,0>
 p=< 3,0,0>, v=<-1,0,0>, a=< 0,0,0>`,
   ],
+  exampleSolutions: [3, 1],
+  solutions: [157, 499],
 };

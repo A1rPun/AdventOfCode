@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function rotate(pattern) {
   const length = Math.sqrt(pattern.length);
   return pattern.reduce((acc, curr, i) => {
@@ -69,13 +71,15 @@ function day_21(puzzle) {
   }
   December.log(prettify(fractal));
   const answer1 = December.count(fractal.join(''), '#');
-  return answer1;
+  return [answer1];
 }
 export default {
   title: 'Fractal Art',
   questions: 'How many pixels stay on after 5 iterations?',
   answer: day_21,
   example: ['../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#'],
+  exampleSolutions: [12,],
+  solutions: [142, 1879071],
 };
 
 function prettify(fractal) {

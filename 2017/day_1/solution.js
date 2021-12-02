@@ -9,7 +9,7 @@ function getAnswer(input) {
       answer += +input[i];
     }
   }
-  return answer;
+  return [,answer];
 }
 export default {
   title: 'Inverse Captcha',
@@ -21,4 +21,6 @@ export default {
     return getAnswer(puzzle);
   },
   example: ['12131415'],
+  exampleSolutions: [,4],
+  solutions: [,1232],
 };

@@ -32,4 +32,6 @@ export default {
   // answer: day_15,
   example: ['Generator A starts with 65\nGenerator B starts with 8921'],
   // hasAnimation: true,
+  // exampleSolutions: [,],
+  solutions: [573, 294],
 };

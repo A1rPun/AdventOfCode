@@ -89,4 +89,6 @@ ugml (68) -> gyxo, ebii, jptl
 gyxo (61)
 cntj (57)`,
   ],
+  exampleSolutions: ['tknk', 'name:fwft balance:251 weight:243 self:72 answer:65'],
+  solutions: ['qibuqqg', 'name:egbzge balance:1640 weight:1647 self:1086 answer:1079'],
 };

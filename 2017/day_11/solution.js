@@ -45,4 +45,6 @@ export default {
     'You have the path the child process took. Starting where he started, you need to determine the fewest number of steps required to reach him.',
   answer: day_11,
   example: ['se,sw,se,sw,sw'],
+  exampleSolutions: [3, 3],
+  solutions: [764, 1532],
 };

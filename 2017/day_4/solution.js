@@ -33,4 +33,6 @@ export default {
 aa bb cc dd aa
 aa bb cc dd aaa`,
   ],
+  exampleSolutions: [2, 2],
+  solutions: [325, 119],
 };

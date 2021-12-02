@@ -60,4 +60,6 @@ export default {
   ],
   answer: day_16,
   example: ['s1,x3/4,pe/b'], // const programs = 'abcde';
+  exampleSolutions: ['paedcbfghijklmno', 'ghidjklmnopabcef'],
+  solutions: ['giadhmkpcnbfjelo', 'njfgilbkcoemhpad'],
 };

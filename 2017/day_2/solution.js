@@ -33,4 +33,6 @@ export default {
 9	4	7	3
 3	8	6	5`,
   ],
+  exampleSolutions: [18, 9],
+  solutions: [43074, 280],
 };

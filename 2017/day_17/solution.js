@@ -22,5 +22,7 @@ export default {
   ],
   answer: day_17,
   input: '329',
-  example: [3],
+  example: ['3'],
+  exampleSolutions: [638, 1222153],
+  solutions: [725, 27361412],
 };

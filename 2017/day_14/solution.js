@@ -1,4 +1,5 @@
 import Vector from '../../js/vector.js';
+import December from '../../js/december.js';
 
 function hexToByte(h) {
   return parseInt(h, 16)
@@ -80,4 +81,6 @@ export default {
   answer: day_14,
   input: 'hxtvlmkl',
   example: ['flqrgnkx'],
+  exampleSolutions: [8108, 1242],
+  solutions: [8214, 1093],
 };

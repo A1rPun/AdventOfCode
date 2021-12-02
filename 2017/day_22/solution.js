@@ -40,7 +40,7 @@ function day_22(puzzle) {
     else if (direction === face.bottom) y++;
     else x--;
   }
-  return answer1;
+  return [,answer1];
 }
 export default {
   title: 'Sporifica Virus',
@@ -52,4 +52,6 @@ export default {
 #..
 ...`,
   ],
+  exampleSolutions: [, 2511944], // 5587
+  solutions: [5322, 2512079],
 };

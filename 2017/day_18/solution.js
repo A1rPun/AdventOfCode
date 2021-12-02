@@ -86,4 +86,6 @@ rcv b
 rcv c
 rcv d`,
   ],
+  exampleSolutions: [0, 3],
+  solutions: [4601, 6858],
 };
