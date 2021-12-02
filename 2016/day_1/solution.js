@@ -66,8 +66,6 @@ function day_1(puzzle) {
 }
 
 export default {
-  day: 1,
-  year: 2016,
   title: 'No Time for a Taxicab',
   questions: [
     'How many blocks away is Easter Bunny HQ?',

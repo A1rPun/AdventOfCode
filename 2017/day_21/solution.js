@@ -64,16 +64,14 @@ function day_21(puzzle) {
   let iterations = 5;
   while (iterations--) {
     const divided = divide(fractal);
-    const ruled = divided.map(x => patterns[x.join('')]);
-    fractal = reunite(ruled).filter(x => x); // TODO Fix reunite indexing (9x2 vs 9x3) so that the filter isn't needed
+    const ruled = divided.map((x) => patterns[x.join('')]);
+    fractal = reunite(ruled).filter((x) => x); // TODO Fix reunite indexing (9x2 vs 9x3) so that the filter isn't needed
   }
   December.log(prettify(fractal));
   const answer1 = December.count(fractal.join(''), '#');
   return answer1;
 }
 export default {
-  day: 21,
-  year: 2017,
   title: 'Fractal Art',
   questions: 'How many pixels stay on after 5 iterations?',
   answer: day_21,

@@ -1,8 +1,6 @@
 import HandHeld from '../shared/handheld.js';
 
 export default {
-  day: 8,
-  year: 2020,
   title: 'Handheld Halting',
   questions: [
     'Immediately before any instruction is executed a second time, what value is in the accumulator?',

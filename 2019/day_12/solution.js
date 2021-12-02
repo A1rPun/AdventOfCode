@@ -64,8 +64,6 @@ function leastCommonMultiple(a, b) {
 }
 
 export default {
-  day: 12,
-  year: 2019,
   title: 'The N-Body Problem',
   questions: [
     'What is the total energy in the system after simulating the moons given in your scan for 1000 steps?',

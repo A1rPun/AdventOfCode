@@ -2,11 +2,10 @@ import December from '../../js/december.js';
 
 const parse = (puzzle) => puzzle.split('\n').map(December.toInt);
 const hasIncrease = (measurement, index, list) => measurement < list[index + 1];
-const hasIncreaseSum = (measurement, index, list) => measurement < list[index + 3];
+const hasIncreaseSum = (measurement, index, list) =>
+  measurement < list[index + 3];
 
 export default {
-  day: 1,
-  year: 2021,
   title: 'Sonar Sweep',
   questions: [
     'How many measurements are larger than the previous measurement?',

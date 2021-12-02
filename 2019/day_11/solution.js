@@ -86,14 +86,12 @@ function answer2(memory) {
 }
 
 export default {
-  day: 11,
-  year: 2019,
   title: 'Space Police',
   questions: [
     'How many panels does it paint at least once?',
     'After starting the robot on a single white panel instead, what registration identifier does it paint on your hull?',
   ],
-  answer1: memory => Object.values(createGrid(memory)).length,
+  answer1: (memory) => Object.values(createGrid(memory)).length,
   answer2,
   example: [],
   solutions: [

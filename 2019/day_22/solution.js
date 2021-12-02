@@ -76,8 +76,6 @@ function shuffleDeckOptimized(puzzle, deckSize, repeatCount, index) {
 }
 
 export default {
-  day: 22,
-  year: 2019,
   title: 'Slam Shuffle',
   questions: [
     'After shuffling your factory order deck of 10007 cards, what is the position of card 2019?',

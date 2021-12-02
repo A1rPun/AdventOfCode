@@ -9,14 +9,12 @@ const tile = {
 };
 
 export default {
-  day: 13,
-  year: 2019,
   title: 'Care Package',
   questions: [
     'How many block tiles are on the screen when the game exits?',
     'What is your score after the last block is broken?',
   ],
-  answer1: memory => {
+  answer1: (memory) => {
     const blockTiles = new December.IntCode(memory)
       .run()
       .reduce(
@@ -26,7 +24,7 @@ export default {
       );
     return blockTiles;
   },
-  answer2: memory => {
+  answer2: (memory) => {
     const computer = new December.IntCode(memory);
     computer.memory[0] = 2; // Play for free
 

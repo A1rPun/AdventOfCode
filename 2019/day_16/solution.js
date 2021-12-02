@@ -3,8 +3,8 @@ import December from '../../js/december.js';
 function genPattern(n) {
   let pattern = '0,1,0,-1'
     .split(',')
-    .flatMap(x => (x + ',').repeat(n).split(','))
-    .filter(x => x);
+    .flatMap((x) => (x + ',').repeat(n).split(','))
+    .filter((x) => x);
 
   pattern.push(pattern.shift());
   return pattern;
@@ -43,15 +43,13 @@ function getMessageOptimized(input) {
 }
 
 export default {
-  day: 16,
-  year: 2019,
   title: 'Flawed Frequency Transmission',
   questions: [
     'After 100 phases of FFT, what are the first eight digits in the final output list?',
     'After repeating your input signal 10000 times and running 100 phases of FFT, what is the eight-digit message embedded in the final output list?',
   ],
-  answer1: puzzle => getMessage(puzzle),
-  answer2: puzzle => {
+  answer1: (puzzle) => getMessage(puzzle),
+  answer2: (puzzle) => {
     const offset = December.toInt(puzzle.slice(0, 7));
     const signal = getMessageOptimized(puzzle.repeat(10000).slice(offset));
     return signal;

@@ -7,7 +7,7 @@ function day_19(puzzle) {
     bottom: 4,
     left: 8,
   };
-  const grid = puzzle.split('\n').map(x => x.split(''));
+  const grid = puzzle.split('\n').map((x) => x.split(''));
   const position = new Vector(grid[0].indexOf('|'), 0);
   let direction = directions.bottom;
   let answer1 = '';
@@ -63,8 +63,6 @@ function day_19(puzzle) {
   return [answer1, answer2];
 }
 export default {
-  day: 19,
-  year: 2017,
   title: 'A Series of Tubes',
   questions: [
     'What letters will it see if it follows the path?',

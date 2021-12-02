@@ -16,15 +16,13 @@ function countBeam(memory, stride) {
 }
 
 export default {
-  day: 19,
-  year: 2019,
   title: 'Tractor Beam',
   questions: [
     'How many points are affected by the tractor beam in the 50x50 area closest to the emitter?',
     "What value do you get if you take that point's X coordinate, multiply it by 10000, then add the point's Y coordinate?",
   ],
-  answer1: memory => countBeam(memory, 50),
-  answer2: memory => {
+  answer1: (memory) => countBeam(memory, 50),
+  answer2: (memory) => {
     const houseSize = 100 - 1;
     const pos = new Vector(houseSize * 5, houseSize * 10);
 

@@ -33,8 +33,6 @@ function day_3(puzzle) {
   return Object.keys(houses).length;
 }
 export default {
-  day: 3,
-  year: 2015,
   title: 'Perfectly Spherical Houses in a Vacuum',
   questions: 'How many houses receive at least one present?',
   answer: day_3,

@@ -1,8 +1,6 @@
 import IntCode from '../shared/intCode.js';
 
 export default {
-  day: 5,
-  year: 2019,
   title: 'Sunny with a Chance of Asteroids',
   questions: [
     'After providing 1 to the only input instruction and passing all the tests, what diagnostic code does the program produce?',

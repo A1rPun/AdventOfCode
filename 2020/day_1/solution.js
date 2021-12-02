@@ -13,13 +13,14 @@ function iJustGoLinearForAnswer2(entries) {
   }
 }
 
-function superbSolutionForThisDay(entries, amountOfEntriesThatContributeTo2020) {
+function superbSolutionForThisDay(
+  entries,
+  amountOfEntriesThatContributeTo2020
+) {
   // TODO: Implement ;)
 }
 
 export default {
-  day: 1,
-  year: 2020,
   title: 'Report Repair',
   questions: [
     'Find the two entries that sum to 2020; what do you get if you multiply them together?',

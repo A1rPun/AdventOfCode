@@ -10,7 +10,14 @@ import days2020 from '../2020/module.js';
 import days2021 from '../2021/module.js';
 
 [days2015, days2016, days2017, days2018, days2019, days2020, days2021].forEach(
-  y => y.forEach(x => December.addDay(x))
+  (y, i) =>
+    y.forEach((x, j) =>
+      December.addDay({
+        ...x,
+        year: 2015 + i,
+        day: j + 1,
+      })
+    )
 );
 
 const d = document;
@@ -29,7 +36,7 @@ function logCode(c, click, seperate = false) {
   code.appendChild(el);
   return el;
 }
-December.log = function (o, clear) {
+December.log = function(o, clear) {
   if (clear) clearCode();
   logCode(o);
 };
@@ -153,13 +160,13 @@ async function handleExample(day, example) {
 }
 
 function dayClick(day) {
-  return function () {
+  return function() {
     spanDay.innerHTML = '';
 
     const back = d.createElement('div');
     back.classList.add('click', 'text-center');
     back.innerText = '<< Back <<';
-    back.addEventListener('click', function () {
+    back.addEventListener('click', function() {
       clearCode();
       logDays();
     });
@@ -167,7 +174,7 @@ function dayClick(day) {
 
     const title = d.createElement('div');
     title.classList.add('click', 'text-center');
-    title.addEventListener('click', function () {
+    title.addEventListener('click', function() {
       window.open(`https://adventofcode.com/${day.year}/day/${day.day}`);
     });
     setDayTitle(title, day);
@@ -177,7 +184,7 @@ function dayClick(day) {
       const anim = d.createElement('div');
       anim.classList.add('click', 'animated', 'text-center');
       anim.innerText = `Animation = ${December.animate}`;
-      anim.addEventListener('click', function () {
+      anim.addEventListener('click', function() {
         December.animate = !December.animate;
         this.innerHTML = `Animation = ${December.animate}`;
       });
@@ -187,7 +194,7 @@ function dayClick(day) {
     const ans = d.createElement('div');
     ans.classList.add('click', 'text-center');
     ans.innerText = 'Show answers';
-    ans.addEventListener('click', async function () {
+    ans.addEventListener('click', async function() {
       clearCode();
       const input = await getAnswer(getInputForDay(day));
       handleAnswer(day, input);
@@ -198,7 +205,7 @@ function dayClick(day) {
       const example = d.createElement('div');
       example.classList.add('click', 'text-center');
       example.innerText = 'Show example';
-      example.addEventListener('click', async function () {
+      example.addEventListener('click', async function() {
         clearCode();
         for (let i = 0; i < day.example.length; i++) {
           await getAnswer(handleExample(day, day.example[i]));
@@ -210,7 +217,7 @@ function dayClick(day) {
     const input = d.createElement('div');
     input.classList.add('click', 'text-center');
     input.innerText = 'Show input';
-    input.addEventListener('click', async function () {
+    input.addEventListener('click', async function() {
       clearCode();
       const input = await getInputForDay(day);
       logCode(input);
@@ -220,7 +227,7 @@ function dayClick(day) {
     const custom = d.createElement('textarea');
     custom.rows = 1;
     custom.classList.add('line');
-    custom.addEventListener('input', function (e) {
+    custom.addEventListener('input', function(e) {
       cheat.classList[this.value ? 'remove' : 'add']('hidden');
     });
     spanDay.appendChild(custom);
@@ -228,7 +235,7 @@ function dayClick(day) {
     const cheat = d.createElement('div');
     cheat.classList.add('click', 'hidden');
     cheat.innerText = 'Execute';
-    cheat.addEventListener('click', function () {
+    cheat.addEventListener('click', function() {
       clearCode();
       handleAnswer(day, custom.value);
     });
@@ -297,7 +304,7 @@ function logYears() {
 }
 
 function switchYear(year) {
-  return function () {
+  return function() {
     December.currentYear = year;
     logYears();
     logDays();

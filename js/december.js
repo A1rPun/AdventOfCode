@@ -9,7 +9,7 @@
 };
 var december = {
   currentYear: '2021', // TODO: Please...
-  addDay: function (d) {
+  addDay: function(d) {
     days[d.year].push(d);
     for (const fn in d.public)
       if (d.public.hasOwnProperty(fn)) {
@@ -18,7 +18,7 @@ var december = {
   },
   animate: true,
   getDays: () => days[december.currentYear],
-  getYears: function () {
+  getYears: function() {
     const years = [];
     for (const year in days) {
       const day = days[year];
@@ -39,7 +39,7 @@ var december = {
     return years;
   },
   // Shared utility functions
-  cache: fn => {
+  cache: (fn) => {
     const cache = new Map();
     return (...args) => {
       const cacheKey = args.join('');
@@ -50,8 +50,8 @@ var december = {
     };
   },
   count: (str, char) => (str.match(new RegExp(char, 'g')) || []).length,
-  getNumbers: str => str.match(/-?\d+/g).map(december.toInt),
-  prettify: function (jagged, char) {
+  getNumbers: (str) => str.match(/-?\d+/g).map(december.toInt),
+  prettify: function(jagged, char) {
     var result = '';
     char = char || '';
     for (var i = 0; i < jagged.length; i++)
@@ -65,7 +65,7 @@ var december = {
   // Rotate + = left, - = right
   rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
   sum: (a, b) => a + b,
-  toInt: x => parseInt(x, 10),
+  toInt: (x) => parseInt(x, 10),
   log: (...args) => console.log(...args),
 };
 

@@ -95,8 +95,6 @@ function day_3(puzzle) {
   return [answer1, answer2];
 }
 export default {
-  day: 3,
-  year: 2017,
   title: 'Spiral Memory',
   questions:
     'How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?',

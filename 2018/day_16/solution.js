@@ -1,6 +1,6 @@
 import December from '../../js/december.js';
 
-const strToNumbers = str => str.match(/(\d+)/g).map(Number);
+const strToNumbers = (str) => str.match(/(\d+)/g).map(Number);
 
 class Device {
   constructor(memory) {
@@ -59,7 +59,7 @@ December.Device = Device;
 
 function day_16(puzzle) {
   const [manual, testProgram] = puzzle.split('\n\n\n\n');
-  const instructions = manual.split('\n\n').map(x => {
+  const instructions = manual.split('\n\n').map((x) => {
     const [before, codes, after] = x.split('\n');
     return {
       before: strToNumbers(before),
@@ -88,7 +88,7 @@ function day_16(puzzle) {
   ];
 
   const answer1 = instructions.filter(
-    x =>
+    (x) =>
       3 <=
       fns.reduce((acc, cur) => {
         const device = new Device([...x.before]);
@@ -111,8 +111,6 @@ function day_16(puzzle) {
 }
 
 export default {
-  day: 16,
-  year: 2018,
   title: 'Chronal Classification',
   questions: [
     'Ignoring the opcode numbers, how many samples in your puzzle input behave like three or more opcodes?',

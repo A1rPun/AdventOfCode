@@ -35,8 +35,6 @@ function prettifyGrid(grid, path) {
 }
 
 export default {
-  day: 13,
-  year: 2016,
   title: 'A Maze of Twisty Little Cubicles',
   questions: [
     'What is the fewest number of steps required for you to reach 31,39?',

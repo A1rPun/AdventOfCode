@@ -13,7 +13,7 @@ function solve(salt, stretch = 0) {
       checkIndex > -1 ? hashes[checkIndex].match(/(\S)\1{2}/g) : null;
     if (triplets) {
       const hasQuintuple = new RegExp(`${triplets[0][0]}{5}`, 'g');
-      if (hashes.slice(-1000).some(x => hasQuintuple.test(x))) {
+      if (hashes.slice(-1000).some((x) => hasQuintuple.test(x))) {
         keys.push(checkIndex);
         postMessage(
           `Hash ${keys.length} - ${hashes[checkIndex]} @ ${checkIndex}`

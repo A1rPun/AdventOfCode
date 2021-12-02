@@ -16,19 +16,17 @@ function findTrees(map, trajectory) {
 }
 
 export default {
-  day: 3,
-  year: 2020,
   title: 'Toboggan Trajectory',
   questions: [
     'How many trees would you encounter?',
     'What do you get if you multiply together the number of trees encountered on each of the listed slopes?',
   ],
-  answer1: puzzle => {
-    const map = puzzle.split('\n').filter(x => x);
+  answer1: (puzzle) => {
+    const map = puzzle.split('\n').filter((x) => x);
     return findTrees(map, new Vector(3, 1));
   },
-  answer2: puzzle => {
-    const map = puzzle.split('\n').filter(x => x);
+  answer2: (puzzle) => {
+    const map = puzzle.split('\n').filter((x) => x);
     const trajectories = [
       new Vector(1, 1),
       new Vector(3, 1),

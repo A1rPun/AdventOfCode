@@ -1,11 +1,8 @@
-
-  export default {
-    day: 17,
-    year: 2016,
-    title: '',
-    questions: ['', ''],
-    answer1: (puzzle) => {},
-    answer2: (puzzle) => {},
-    input: 'ioramepc',
-    example: ['hijkl'],
-  };
+export default {
+  title: '',
+  questions: ['', ''],
+  answer1: (puzzle) => {},
+  answer2: (puzzle) => {},
+  input: 'ioramepc',
+  example: ['hijkl'],
+};

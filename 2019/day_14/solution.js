@@ -1,111 +1,108 @@
+const ORE = 'ORE';
+const FUEL = 'FUEL';
 
-  const ORE = 'ORE';
-  const FUEL = 'FUEL';
+class Chemical {
+  constructor(quantity, name) {
+    this.quantity = parseInt(quantity);
+    this.name = name;
+  }
+}
 
-  class Chemical {
-    constructor(quantity, name) {
-      this.quantity = parseInt(quantity);
-      this.name = name;
+class Reaction {
+  constructor(chemical, reactions) {
+    this.chemical = chemical;
+    this.reactions = reactions;
+  }
+}
+
+function createReactions(input) {
+  return input.split('\n').map((reaction) => {
+    const chemicals = reaction
+      .match(/(\d+ \w+)+/g)
+      .map((x) => new Chemical(...x.split(' ')));
+    return new Reaction(chemicals.pop(), chemicals);
+  });
+}
+
+function binarySearch(fn, max, min = 0) {
+  let lo = min - 1;
+  let hi = max;
+
+  while (lo + 1 < hi) {
+    const mi = lo + ((hi - lo) >> 1);
+    if (fn(mi)) {
+      hi = mi;
+    } else {
+      lo = mi;
     }
   }
+  return hi;
+}
 
-  class Reaction {
-    constructor(chemical, reactions) {
-      this.chemical = chemical;
-      this.reactions = reactions;
-    }
-  }
+function getOre(reactions, amounts, name, quantity) {
+  const reaction = reactions.find((x) => x.chemical.name === name);
+  const amount = amounts.has(name) ? amounts.get(name) : 0;
+  const factor = Math.ceil(
+    Math.max(quantity - amount, 0) / reaction.chemical.quantity
+  );
 
-  function createReactions(input) {
-    return input.split('\n').map(reaction => {
-      const chemicals = reaction
-        .match(/(\d+ \w+)+/g)
-        .map(x => new Chemical(...x.split(' ')));
-      return new Reaction(chemicals.pop(), chemicals);
-    });
-  }
-
-  function binarySearch(fn, max, min = 0) {
-    let lo = min - 1;
-    let hi = max;
-
-    while (lo + 1 < hi) {
-      const mi = lo + ((hi - lo) >> 1);
-      if (fn(mi)) {
-        hi = mi;
-      } else {
-        lo = mi;
-      }
-    }
-    return hi;
-  }
-
-  function getOre(reactions, amounts, name, quantity) {
-    const reaction = reactions.find(x => x.chemical.name === name);
-    const amount = amounts.has(name) ? amounts.get(name) : 0;
-    const factor = Math.ceil(
-      Math.max(quantity - amount, 0) / reaction.chemical.quantity
-    );
-
-    if (reaction.name !== ORE) {
-      amounts.set(
-        name,
-        reaction.chemical.quantity * factor - (quantity - amount)
-      );
-    }
-    return reaction.reactions.reduce(
-      (acc, cur) =>
-        acc +
-        (cur.name === ORE
-          ? factor * cur.quantity
-          : getOre(reactions, amounts, cur.name, factor * cur.quantity)),
-      0
+  if (reaction.name !== ORE) {
+    amounts.set(
+      name,
+      reaction.chemical.quantity * factor - (quantity - amount)
     );
   }
+  return reaction.reactions.reduce(
+    (acc, cur) =>
+      acc +
+      (cur.name === ORE
+        ? factor * cur.quantity
+        : getOre(reactions, amounts, cur.name, factor * cur.quantity)),
+    0
+  );
+}
 
-  export default {
-    day: 14,
-    year: 2019,
-    title: 'Space Stoichiometry',
-    questions: [
-      'What is the minimum amount of ORE required to produce exactly 1 FUEL?',
-      'Given 1 trillion ORE, what is the maximum amount of FUEL you can produce?',
-    ],
-    answer1: (puzzle) => getOre(createReactions(puzzle), new Map(), FUEL, 1),
-    answer2: (puzzle) => {
-      const reactions = createReactions(puzzle);
-      const storage = 1000000000000;
-      return (
-        binarySearch(
-          x => getOre(reactions, new Map(), FUEL, x) >= storage,
-          100000000 // Arbitrary number
-        ) - 1
-      );
-    },
-    example: [
-      {
-        input: `10 ORE => 10 A
+export default {
+  title: 'Space Stoichiometry',
+  questions: [
+    'What is the minimum amount of ORE required to produce exactly 1 FUEL?',
+    'Given 1 trillion ORE, what is the maximum amount of FUEL you can produce?',
+  ],
+  answer1: (puzzle) => getOre(createReactions(puzzle), new Map(), FUEL, 1),
+  answer2: (puzzle) => {
+    const reactions = createReactions(puzzle);
+    const storage = 1000000000000;
+    return (
+      binarySearch(
+        (x) => getOre(reactions, new Map(), FUEL, x) >= storage,
+        100000000 // Arbitrary number
+      ) - 1
+    );
+  },
+  example: [
+    {
+      input: `10 ORE => 10 A
 1 ORE => 1 B
 7 A, 1 B => 1 C
 7 A, 1 C => 1 D
 7 A, 1 D => 1 E
 7 A, 1 E => 1 FUEL`,
-        solutions: [31],
-        answer: 1,
-      },
-      {
-        input: `9 ORE => 2 A
+      solutions: [31],
+      answer: 1,
+    },
+    {
+      input: `9 ORE => 2 A
 8 ORE => 3 B
 7 ORE => 5 C
 3 A, 4 B => 1 AB
 5 B, 7 C => 1 BC
 4 C, 1 A => 1 CA
 2 AB, 3 BC, 4 CA => 1 FUEL`,
-        solutions: [165],
-        answer: 1,
-      },
-      {
-        input: `157 ORE => 5 NZVS
+      solutions: [165],
+      answer: 1,
+    },
+    {
+      input: `157 ORE => 5 NZVS
 165 ORE => 6 DCFZ
 44 XJWVT, 5 KHKGT, 1 QDVJ, 29 NZVS, 9 GPVTF, 48 HKGWZ => 1 FUEL
 12 HKGWZ, 1 GPVTF, 8 PSHF => 9 QDVJ
@@ -114,10 +111,10 @@
 7 DCFZ, 7 PSHF => 2 XJWVT
 165 ORE => 2 GPVTF
 3 DCFZ, 7 NZVS, 5 HKGWZ, 10 PSHF => 8 KHKGT`,
-        solutions: [13312, 82892753],
-      },
-      {
-        input: `2 VPVL, 7 FWMGM, 2 CXFTF, 11 MNCFX => 1 STKFG
+      solutions: [13312, 82892753],
+    },
+    {
+      input: `2 VPVL, 7 FWMGM, 2 CXFTF, 11 MNCFX => 1 STKFG
 17 NVRVD, 3 JNWZP => 8 VPVL
 53 STKFG, 6 MNCFX, 46 VJHF, 81 HVMC, 68 CXFTF, 25 GNMV => 1 FUEL
 22 VJHF, 37 MNCFX => 5 FWMGM
@@ -129,10 +126,10 @@
 1 NVRVD => 8 CXFTF
 1 VJHF, 6 MNCFX => 4 RFSQX
 176 ORE => 6 VJHF`,
-        solutions: [180697, 5586022],
-      },
-      {
-        input: `171 ORE => 8 CNZTR
+      solutions: [180697, 5586022],
+    },
+    {
+      input: `171 ORE => 8 CNZTR
 7 ZLQW, 3 BMBT, 9 XCVML, 26 XMNCP, 1 WPTQ, 2 MZWV, 1 RJRHP => 4 PLWSL
 114 ORE => 4 BHXH
 14 VRPVC => 6 BMBT
@@ -149,11 +146,11 @@
 121 ORE => 7 VRPVC
 7 XCVML => 6 RJRHP
 5 BHXH, 4 VRPVC => 5 LTCX`,
-        solutions: [2210736, 460664],
-      },
-    ],
-    solutions: [168046, 6972986],
-    public: {
-      binarySearch,
+      solutions: [2210736, 460664],
     },
-  };
+  ],
+  solutions: [168046, 6972986],
+  public: {
+    binarySearch,
+  },
+};

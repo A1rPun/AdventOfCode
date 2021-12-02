@@ -2,13 +2,13 @@
   this.start();
 }
 perfTimer.prototype = {
-  start: function () {
+  start: function() {
     this.begin = performance.now();
   },
-  stop: function () {
+  stop: function() {
     this.end = performance.now();
   },
-  log: function () {
+  log: function() {
     return 'Execution took ' + (this.end - this.begin) + ' milliseconds.';
   },
 };

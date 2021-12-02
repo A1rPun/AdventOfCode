@@ -1,30 +1,23 @@
+const requiredFields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
+const isValidPassport = (passport) =>
+  requiredFields.every((field) => passport.includes(field));
+const getValidPassports = (passports) => passports.filter(isValidPassport);
+const getReallyValidPassports = (passports) =>
+  getValidPassports(passports).filter(isReallyValidPassport);
 
-  const requiredFields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
-  const isValidPassport = passport =>
-    requiredFields.every(field => passport.includes(field));
-  const getValidPassports = passports => passports.filter(isValidPassport);
-  const getReallyValidPassports = passports =>
-    getValidPassports(passports).filter(isReallyValidPassport);
+function isReallyValidPassport(passport) {}
 
-  function isReallyValidPassport(passport) {
-    
-  }
-
-  export default {
-    day: 4,
-    year: 2020,
-    title: 'Passport Processing',
-    questions: [
-      'In your batch file, how many passports are valid?',
-      'In your batch file, how many passports are valid?',
-    ],
-    answer1: (puzzle) =>
-      getValidPassports(puzzle.split('\n\n')).length,
-    answer2: (puzzle) =>
-      getReallyValidPassports(puzzle.split('\n\n')).length,
-    example: [
-      {
-        input: `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
+export default {
+  title: 'Passport Processing',
+  questions: [
+    'In your batch file, how many passports are valid?',
+    'In your batch file, how many passports are valid?',
+  ],
+  answer1: (puzzle) => getValidPassports(puzzle.split('\n\n')).length,
+  answer2: (puzzle) => getReallyValidPassports(puzzle.split('\n\n')).length,
+  example: [
+    {
+      input: `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd
 byr:1937 iyr:2017 cid:147 hgt:183cm
 
 iyr:2013 ecl:amb cid:350 eyr:2023 pid:028048884
@@ -37,11 +30,11 @@ hgt:179cm
 
 hcl:#cfa07d eyr:2025 pid:166559648
 iyr:2011 ecl:brn hgt:59in`,
-        solutions: [2],
-        answer: 1,
-      },
-      {
-        input: `eyr:1972 cid:100
+      solutions: [2],
+      answer: 1,
+    },
+    {
+      input: `eyr:1972 cid:100
 hcl:#18171d ecl:amb hgt:170 pid:186cm iyr:2018 byr:1926
 
 iyr:2019
@@ -67,9 +60,9 @@ pid:545766238 ecl:hzl
 eyr:2022
 
 iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719`,
-        solutions: [8, 4],
-        answer: 2,
-      },
-    ],
-    solutions: [216],
-  };
+      solutions: [8, 4],
+      answer: 2,
+    },
+  ],
+  solutions: [216],
+};

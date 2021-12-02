@@ -1,11 +1,16 @@
 import Vector from '../../js/vector.js';
 
 function hexToByte(h) {
-  return parseInt(h, 16).toString(2).padStart(4, '0');
+  return parseInt(h, 16)
+    .toString(2)
+    .padStart(4, '0');
 }
 
 function rowHash(input) {
-  return December.knotHash(input).split('').map(hexToByte).join('');
+  return December.knotHash(input)
+    .split('')
+    .map(hexToByte)
+    .join('');
 }
 
 function findOpenGroup(grid, char) {
@@ -20,7 +25,7 @@ function findOpenGroup(grid, char) {
 }
 
 function findRegions(rows) {
-  const grid = rows.map(x => x.split(''));
+  const grid = rows.map((x) => x.split(''));
   let pos;
   let regions = 0;
   while ((pos = findOpenGroup(grid, '1'))) {
@@ -61,14 +66,12 @@ function floodFill(grid, startX, startY, oldVal, newVal) {
 }
 
 function day_14(puzzle) {
-  const rows = December.range(128).map(x => rowHash(`${puzzle}-${x}`));
+  const rows = December.range(128).map((x) => rowHash(`${puzzle}-${x}`));
   const answer1 = December.count(rows.join('\n'), '1');
   const answer2 = findRegions(rows);
   return [answer1, answer2];
 }
 export default {
-  day: 14,
-  year: 2017,
   title: 'Disk Defragmentation',
   questions: [
     'How many squares are used?',

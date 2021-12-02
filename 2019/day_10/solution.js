@@ -20,9 +20,9 @@ function createAsteroidMap(input) {
 }
 
 function findVisible(map) {
-  map.forEach(asteroid => {
-    const others = map.filter(x => asteroid !== x);
-    asteroid.visible = others.filter(x => isVisible(others, asteroid, x));
+  map.forEach((asteroid) => {
+    const others = map.filter((x) => asteroid !== x);
+    asteroid.visible = others.filter((x) => isVisible(others, asteroid, x));
   });
 }
 
@@ -33,7 +33,7 @@ function product(a, b) {
 function isVisible(map, a, b) {
   const productB = product(a, b);
 
-  return !map.filter(asteroid => {
+  return !map.filter((asteroid) => {
     if (b === asteroid) return;
 
     const productX = product(a, asteroid);
@@ -52,14 +52,12 @@ function isVisible(map, a, b) {
 }
 
 export default {
-  day: 10,
-  year: 2019,
   title: 'Monitoring Station',
   questions: [
     'Find the best location for a new monitoring station. How many other asteroids can be detected from that location?',
     'The Elves are placing bets on which will be the 200th asteroid to be vaporized. Win the bet by determining which asteroid that will be; what do you get if you multiply its X coordinate by 100 and then add its Y coordinate?',
   ],
-  answer1: puzzle => {
+  answer1: (puzzle) => {
     const map = createAsteroidMap(puzzle);
     findVisible(map);
     const mostDetected = map.reduce(
@@ -68,15 +66,15 @@ export default {
     );
     return mostDetected;
   },
-  answer2: puzzle => {
+  answer2: (puzzle) => {
     const map = createAsteroidMap(puzzle);
     findVisible(map);
     const mostDetected = map.reduce(
       (acc, x) => Math.max(acc, x.visible.length),
       0
     );
-    const station = map.find(x => x.visible.length === mostDetected);
-    station.visible.forEach(x => {
+    const station = map.find((x) => x.visible.length === mostDetected);
+    station.visible.forEach((x) => {
       const productX = product(station, x);
       x.angle =
         ((Math.atan2(productX.y, productX.x) * 180) / Math.PI + 450) % 360;

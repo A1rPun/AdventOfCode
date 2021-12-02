@@ -149,6 +149,6 @@ function add32(a, b) {
   return (a + b) & 0xffffffff;
 }
 
-export default function (str) {
+export default function(str) {
   return hex(md51(str));
 }

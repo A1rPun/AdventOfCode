@@ -13,7 +13,7 @@ function day_6(puzzle) {
     for (let x = 0; x < 400; x++) {
       const coordinate = { x, y };
       coordinates.forEach(
-        x => (x.distance = AStar.prototype.ManhattanDistance(x, coordinate))
+        (x) => (x.distance = AStar.prototype.ManhattanDistance(x, coordinate))
       );
       coordinates.sort((a, b) =>
         a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0
@@ -41,8 +41,6 @@ function day_6(puzzle) {
   return [answer1, answer2];
 }
 export default {
-  day: 6,
-  year: 2018,
   title: 'Chronal Coordinates',
   questions: "What is the size of the largest area that isn't infinite?",
   answer: day_6,

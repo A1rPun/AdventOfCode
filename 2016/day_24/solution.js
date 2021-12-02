@@ -1,20 +1,17 @@
+function day_24(puzzle) {
+  return;
+}
 
-  function day_24(puzzle) {
-    return;
-  }
-
-  export default {
-    day: 24,
-    year: 2016,
-    title: '',
-    questions: ['', ''],
-    answer: day_24,
-    example: [
-      // {
-      //   input: 123456789,
-      //   solutions: [],
-      //   answer: 1,
-      // },
-    ],
-    solutions: [],
-  };
+export default {
+  title: '',
+  questions: ['', ''],
+  answer: day_24,
+  example: [
+    // {
+    //   input: 123456789,
+    //   solutions: [],
+    //   answer: 1,
+    // },
+  ],
+  solutions: [],
+};

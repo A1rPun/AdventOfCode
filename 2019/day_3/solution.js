@@ -28,7 +28,7 @@ function day_3(puzzle) {
   };
   const wires = puzzle
     .split('\n')
-    .map(x => x.split(',').reduce(getWires, [centralPort]));
+    .map((x) => x.split(',').reduce(getWires, [centralPort]));
 
   const grid = wires.reduce(
     (acc, wire, index) => {
@@ -63,15 +63,13 @@ function day_3(puzzle) {
   }, []);
 
   const answer1 = intersections
-    .map(x => AStar.ManhattanDistance(centralPort, x))
+    .map((x) => AStar.ManhattanDistance(centralPort, x))
     .sort((a, b) => a - b);
   const answer2 = intersections.sort((a, b) => a.steps - b.steps);
   return [answer1, answer2];
 }
 
 export default {
-  day: 3,
-  year: 2019,
   title: 'Crossed Wires',
   questions: [
     'What is the Manhattan distance from the central port to the closest intersection?',

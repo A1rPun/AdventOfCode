@@ -18,8 +18,6 @@ function answer2(line) {
 }
 
 export default {
-  day: 2,
-  year: 2020,
   title: 'Password Philosophy',
   questions: [
     'How many passwords are valid according to their policies?',

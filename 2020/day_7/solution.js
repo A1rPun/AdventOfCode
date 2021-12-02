@@ -42,8 +42,6 @@ function countBags(bags, bagName) {
 }
 
 export default {
-  day: 7,
-  year: 2020,
   title: 'Handy Haversacks',
   questions: [
     'How many bag colors can eventually contain at least one shiny gold bag? ',

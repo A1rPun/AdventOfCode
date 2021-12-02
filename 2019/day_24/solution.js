@@ -74,8 +74,6 @@ function gameOfBugsRecursive(puzzle, iter) {
 }
 
 export default {
-  day: 24,
-  year: 2019,
   title: 'Planet of Discord',
   questions: [
     'What is the biodiversity rating for the first layout that appears twice?',

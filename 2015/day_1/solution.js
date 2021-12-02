@@ -1,6 +1,4 @@
 export default {
-  day: 1,
-  year: 2015,
   title: 'Not Quite Lisp',
   questions: 'To what floor do the instructions take Santa?',
   answer: function day_1(puzzle) {

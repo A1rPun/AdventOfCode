@@ -1,8 +1,6 @@
 import IntCode from '../shared/intCode.js';
 
 export default {
-  day: 9,
-  year: 2019,
   title: 'Sensor Boost',
   questions: [
     'What BOOST keycode does it produce?',

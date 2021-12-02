@@ -9,28 +9,28 @@ function p47hF1nd3r(grid, tiles) {
 }
 
 p47hF1nd3r.prototype = {
-  setAcceptableTiles: function (acceptableTiles) {
+  setAcceptableTiles: function(acceptableTiles) {
     this.acceptableTiles = acceptableTiles || [0];
   },
-  setGrid: function (level) {
+  setGrid: function(level) {
     this.grid = level || [[]];
     this.worldHeight = level.length;
     this.worldWidth = level[0].length;
     this.worldSize = this.worldHeight * this.worldWidth;
   },
-  ManhattanDistance: function (Point, Goal) {
+  ManhattanDistance: function(Point, Goal) {
     // linear movement - no diagonals - just cardinal directions (NSEW)
     return abs(Point.x - Goal.x) + abs(Point.y - Goal.y);
   },
-  DiagonalDistance: function (Point, Goal) {
+  DiagonalDistance: function(Point, Goal) {
     // diagonal movement - assumes diag dist is 1, same as cardinals
     return max(abs(Point.x - Goal.x), abs(Point.y - Goal.y));
   },
-  EuclideanDistance: function (Point, Goal) {
+  EuclideanDistance: function(Point, Goal) {
     // diagonals are considered a little farther than cardinal directions
     return sqrt(pow(Point.x - Goal.x, 2) + pow(Point.y - Goal.y, 2));
   },
-  Neighbours: function (x, y) {
+  Neighbours: function(x, y) {
     var N = y - 1,
       S = y + 1,
       E = x + 1,
@@ -47,7 +47,7 @@ p47hF1nd3r.prototype = {
     if (myW) result.push({ x: W, y: y });
     return result;
   },
-  DiagonalNeighbours: function (myN, myS, myE, myW, N, S, E, W, result) {
+  DiagonalNeighbours: function(myN, myS, myE, myW, N, S, E, W, result) {
     if (myN) {
       if (myE && this.canWalkHere(E, N)) result.push({ x: E, y: N });
       if (myW && this.canWalkHere(W, N)) result.push({ x: W, y: N });
@@ -57,7 +57,7 @@ p47hF1nd3r.prototype = {
       if (myW && this.canWalkHere(W, S)) result.push({ x: W, y: S });
     }
   },
-  DiagonalNeighboursFree: function (myN, myS, myE, myW, N, S, E, W, result) {
+  DiagonalNeighboursFree: function(myN, myS, myE, myW, N, S, E, W, result) {
     myN = N > -1;
     myS = S < this.worldHeight;
     myE = E < this.worldWidth;
@@ -71,16 +71,16 @@ p47hF1nd3r.prototype = {
       if (myS && this.canWalkHere(W, S)) result.push({ x: W, y: S });
     }
   },
-  canWalkHere: function (x, y) {
+  canWalkHere: function(x, y) {
     return (
       this.grid &&
       this.grid[y] &&
       this.acceptableTiles.indexOf(this.grid[y][x]) !== -1
     );
   },
-  findPath: function (pathStart, pathEnd) {
+  findPath: function(pathStart, pathEnd) {
     var distanceFunction = this.ManhattanDistance;
-    var findNeighbours = function () {};
+    var findNeighbours = function() {};
     var a = this;
     function Node(Parent, Point) {
       return {

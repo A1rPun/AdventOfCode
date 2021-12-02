@@ -21,7 +21,7 @@ class Particle {
 }
 
 function day_20(puzzle) {
-  const particles = puzzle.split('\n').map(p => {
+  const particles = puzzle.split('\n').map((p) => {
     return new Particle(...p.match(/(-?\d+)/g).map(December.toInt));
   });
   const middlePoint = new Particle();
@@ -38,14 +38,12 @@ function day_20(puzzle) {
       collisions[key] = i;
     });
   }
-  const distances = particles.map(p => middlePoint.distance(p));
+  const distances = particles.map((p) => middlePoint.distance(p));
   const answer1 = distances.indexOf(Math.min(...distances));
-  const answer2 = particles.filter(p => !p.collided).length;
+  const answer2 = particles.filter((p) => !p.collided).length;
   return [answer1, answer2];
 }
 export default {
-  day: 20,
-  year: 2017,
   title: 'Particle Swarm',
   questions:
     'Which particle will stay closest to position <0,0,0> in the long term?',

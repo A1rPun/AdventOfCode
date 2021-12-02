@@ -1,7 +1,7 @@
 import Vector from '../../js/vector.js';
 
 function day_10(puzzle) {
-  const stars = puzzle.split('\n').map(x => {
+  const stars = puzzle.split('\n').map((x) => {
     const [posX, posY, velX, velY] = December.getNumbers(x);
     return {
       position: new Vector(posX, posY),
@@ -12,7 +12,7 @@ function day_10(puzzle) {
   let bounds;
   let answer2 = 0;
   while (true) {
-    stars.forEach(x => x.position.add(x.velocity));
+    stars.forEach((x) => x.position.add(x.velocity));
     answer2++;
     bounds = stars.reduce(
       (acc, x) => {
@@ -51,8 +51,6 @@ function day_10(puzzle) {
   return ['HJBJXRAZ', answer2];
 }
 export default {
-  day: 10,
-  year: 2018,
   title: 'The Stars Align',
   questions: [
     'What message will eventually appear in the sky?',

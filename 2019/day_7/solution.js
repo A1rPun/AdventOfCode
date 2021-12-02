@@ -40,8 +40,6 @@ function answer2(memory) {
 }
 
 export default {
-  day: 7,
-  year: 2019,
   title: 'Amplification Circuit',
   questions: [
     'What is the highest signal that can be sent to the thrusters?',
