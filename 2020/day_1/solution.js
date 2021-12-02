@@ -24,17 +24,17 @@
       'Find the two entries that sum to 2020; what do you get if you multiply them together?',
       'In your expense report, what is the product of the three entries that sum to 2020?',
     ],
-    answer1: puzzle => {
+    answer1: (puzzle) => {
       const entries = puzzle.split('\n').map(December.toInt);
       const answer = entries.reduce((acc, cur, i) => {
         const entry = entries.find((x, j) => i !== j && x + cur === 2020);
         return entry ? cur * entry : acc;
       }, 0);
-      return Promise.resolve(answer);
+      return answer;
     },
-    answer2: puzzle => {
+    answer2: (puzzle) => {
       const entries = puzzle.split('\n').map(December.toInt);
-      return Promise.resolve(iJustGoLinearForAnswer2(entries));
+      return iJustGoLinearForAnswer2(entries);
     },
     example: [
       {

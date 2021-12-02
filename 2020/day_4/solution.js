@@ -18,10 +18,10 @@
       'In your batch file, how many passports are valid?',
       'In your batch file, how many passports are valid?',
     ],
-    answer1: puzzle =>
-      Promise.resolve(getValidPassports(puzzle.split('\n\n')).length),
-    answer2: puzzle =>
-      Promise.resolve(getReallyValidPassports(puzzle.split('\n\n')).length),
+    answer1: (puzzle) =>
+      getValidPassports(puzzle.split('\n\n')).length,
+    answer2: (puzzle) =>
+      getReallyValidPassports(puzzle.split('\n\n')).length,
     example: [
       {
         input: `ecl:gry pid:860033327 eyr:2020 hcl:#fffffd

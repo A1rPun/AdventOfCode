@@ -49,15 +49,15 @@
       'After 100 phases of FFT, what are the first eight digits in the final output list?',
       'After repeating your input signal 10000 times and running 100 phases of FFT, what is the eight-digit message embedded in the final output list?',
     ],
-    answer1: puzzle => Promise.resolve(getMessage(puzzle)),
-    answer2: puzzle => {
+    answer1: (puzzle) => getMessage(puzzle),
+    answer2: (puzzle) => {
       const offset = December.toInt(puzzle.slice(0, 7));
       const signal = getMessageOptimized(
         puzzle
           .repeat(10000)
           .slice(offset)
       );
-      return Promise.resolve(signal);
+      return signal;
     },
     example: [
       {

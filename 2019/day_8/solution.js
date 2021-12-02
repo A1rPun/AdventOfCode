@@ -37,7 +37,7 @@
       all[ch] = [].concat(all[ch] || [], one);
       return all;
     }, []);
-    return Promise.resolve([answer1, December.prettify(answer2)]);
+    return [answer1, December.prettify(answer2)];
   }
   December.addDay({
     day: 8,

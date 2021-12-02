@@ -48,13 +48,13 @@
       'How many bag colors can eventually contain at least one shiny gold bag? ',
       'How many individual bags are required inside your single shiny gold bag?',
     ],
-    answer1: puzzle => {
+    answer1: (puzzle) => {
       const foundBags = findBag(createBags(puzzle.split('\n')), 'shiny gold');
-      return Promise.resolve(Object.keys(foundBags).length);
+      return Object.keys(foundBags).length;
     },
-    answer2: puzzle => {
+    answer2: (puzzle) => {
       const bagCount = countBags(createBags(puzzle.split('\n')), 'shiny gold');
-      return Promise.resolve(bagCount - 1);
+      return bagCount - 1;
     },
     example: [
       {

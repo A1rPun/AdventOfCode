@@ -27,7 +27,7 @@
       if (a1) answer1++;
       if (a2) answer2++;
     }
-    return Promise.resolve([answer1, answer2]);
+    return [answer1, answer2];
   }
 
   December.addDay({

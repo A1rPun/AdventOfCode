@@ -1,4 +1,4 @@
-(function() {
+(function () {
   const ORE = 'ORE';
   const FUEL = 'FUEL';
 
@@ -17,14 +17,12 @@
   }
 
   function createReactions(input) {
-    return input
-      .split('\n')
-      .map(reaction => {
-        const chemicals = reaction
-          .match(/(\d+ \w+)+/g)
-          .map(x => new Chemical(...x.split(' ')));
-        return new Reaction(chemicals.pop(), chemicals);
-      });
+    return input.split('\n').map(reaction => {
+      const chemicals = reaction
+        .match(/(\d+ \w+)+/g)
+        .map(x => new Chemical(...x.split(' ')));
+      return new Reaction(chemicals.pop(), chemicals);
+    });
   }
 
   function binarySearch(fn, max, min = 0) {
@@ -73,12 +71,11 @@
       'What is the minimum amount of ORE required to produce exactly 1 FUEL?',
       'Given 1 trillion ORE, what is the maximum amount of FUEL you can produce?',
     ],
-    answer1: puzzle =>
-      Promise.resolve(getOre(createReactions(puzzle), new Map(), FUEL, 1)),
-    answer2: puzzle => {
+    answer1: (puzzle) => getOre(createReactions(puzzle), new Map(), FUEL, 1),
+    answer2: (puzzle) => {
       const reactions = createReactions(puzzle);
       const storage = 1000000000000;
-      return Promise.resolve(
+      return (
         binarySearch(
           x => getOre(reactions, new Map(), FUEL, x) >= storage,
           100000000 // Arbitrary number

@@ -79,9 +79,9 @@
       'What is the total number of direct and indirect orbits in your map data?',
       'What is the minimum number of orbital transfers required to move from the object YOU are orbiting to the object SAN is orbiting?',
     ],
-    answer: puzzle => {
+    answer: (puzzle) => {
       const planets = puzzle.split('\n');
-      return Promise.resolve(answer(planets, ['YOU', 'SAN']));
+      return answer(planets, ['YOU', 'SAN']);
     },
     example: [
       `COM)B

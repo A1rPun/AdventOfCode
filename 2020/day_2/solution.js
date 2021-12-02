@@ -24,10 +24,10 @@
       'How many passwords are valid according to their policies?',
       'How many passwords are valid according to the new interpretation of the policies?',
     ],
-    answer1: puzzle =>
-      Promise.resolve(puzzle.split('\n').filter(answer1).length),
-    answer2: puzzle =>
-      Promise.resolve(puzzle.split('\n').filter(answer2).length),
+    answer1: (puzzle) =>
+      puzzle.split('\n').filter(answer1).length,
+    answer2: (puzzle) =>
+      puzzle.split('\n').filter(answer2).length,
     example: [
       {
         input: `1-3 a: abcde

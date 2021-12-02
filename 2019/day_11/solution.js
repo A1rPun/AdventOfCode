@@ -81,7 +81,7 @@
     const prettified = December.prettify(canvas)
       .replace(/0/g, '.')
       .replace(/1/g, '#');
-    return Promise.resolve(prettified);
+    return prettified;
   }
 
   December.addDay({
@@ -93,7 +93,7 @@
       'After starting the robot on a single white panel instead, what registration identifier does it paint on your hull?',
     ],
     answer1: memory =>
-      Promise.resolve(Object.values(createGrid(memory)).length),
+      Object.values(createGrid(memory)).length,
     answer2,
     example: [],
     solutions: [

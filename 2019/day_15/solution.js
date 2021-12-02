@@ -30,7 +30,7 @@
     // while (!computer.halted) {
     //   const [status] = computer.setInput(movement).run(1);
     // }
-    return Promise.resolve();
+    return;
   }
 
   December.addDay({
@@ -42,7 +42,7 @@
       '',
     ],
     answer1,
-    answer2: puzzle => Promise.resolve(),
+    answer2: (puzzle) => {},
     example: [],
     solutions: [],
   });

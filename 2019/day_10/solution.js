@@ -58,16 +58,16 @@
       'Find the best location for a new monitoring station. How many other asteroids can be detected from that location?',
       'The Elves are placing bets on which will be the 200th asteroid to be vaporized. Win the bet by determining which asteroid that will be; what do you get if you multiply its X coordinate by 100 and then add its Y coordinate?',
     ],
-    answer1: puzzle => {
+    answer1: (puzzle) => {
       const map = createAsteroidMap(puzzle);
       findVisible(map);
       const mostDetected = map.reduce(
         (acc, x) => Math.max(acc, x.visible.length),
         0
       );
-      return Promise.resolve(mostDetected);
+      return mostDetected;
     },
-    answer2: puzzle => {
+    answer2: (puzzle) => {
       const map = createAsteroidMap(puzzle);
       findVisible(map);
       const mostDetected = map.reduce(
@@ -82,7 +82,7 @@
         });
 
       const exactVaporized = station.visible.sort((a, b) => a.angle - b.angle)[200 -1];
-      return Promise.resolve(exactVaporized.x * 100 + exactVaporized.y);
+      return exactVaporized.x * 100 + exactVaporized.y;
     },
     example: [
       {

@@ -20,7 +20,7 @@
       .map(December.toInt);
     const answer1 = getAnswer(modules, getFuel);
     const answer2 = getAnswer(modules, doubleCheckFuel);
-    return Promise.resolve([answer1, answer2]);
+    return [answer1, answer2];
   }
 
   December.addDay({

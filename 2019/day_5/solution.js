@@ -9,10 +9,10 @@
     ],
     answer1: memory => {
       const diagnostics = new December.IntCode(memory, 1).run();
-      return Promise.resolve(diagnostics.pop());
+      return diagnostics.pop();
     },
     answer2: memory => {
-      return Promise.resolve(new December.IntCode(memory, 5).run()[0]);
+      return new December.IntCode(memory, 5).run()[0];
     },
     example: [
       { input: '3,0,4,0,99', solutions: [1, 5] },

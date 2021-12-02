@@ -82,13 +82,8 @@
       'After shuffling your factory order deck of 10007 cards, what is the position of card 2019?',
       'After shuffling your new, giant, factory order deck that many times, what number is on the card that ends up in position 2020?',
     ],
-    answer1: puzzle =>
-      Promise.resolve(shuffleDeck(puzzle, 10007).findIndex(x => x === 2019)),
-    answer2: puzzle =>
-      Promise.resolve(
-        shuffleDeckOptimized(puzzle, 10, 3, 2)
-        // shuffleDeckOptimized(puzzle, 119315717514047, 101741582076661, 2020)
-      ),
+    answer1: (puzzle) => shuffleDeck(puzzle, 10007).findIndex(x => x === 2019),
+    answer2: (puzzle) => shuffleDeckOptimized(puzzle, 10, 3, 2), // shuffleDeckOptimized(puzzle, 119315717514047, 101741582076661, 2020)
     example: [
       {
         input: `deal with increment 7

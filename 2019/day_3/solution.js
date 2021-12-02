@@ -64,7 +64,7 @@
       .map(x => AStar.prototype.ManhattanDistance(centralPort, x))
       .sort((a, b) => a - b);
     const answer2 = intersections.sort((a, b) => a.steps - b.steps);
-    return Promise.resolve([answer1, answer2]);
+    return [answer1, answer2];
   }
 
   December.addDay({

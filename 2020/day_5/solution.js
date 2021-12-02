@@ -11,11 +11,11 @@
       'What is the highest seat ID on a boarding pass?',
       'What is the ID of your seat?',
     ],
-    answer1: puzzle => {
+    answer1: (puzzle) => {
       const seatIds = puzzle.split('\n').map(x => getSeatId(x));
-      return Promise.resolve(Math.max.apply(Math, seatIds));
+      return Math.max.apply(Math, seatIds);
     },
-    answer2: puzzle => {
+    answer2: (puzzle) => {
       const seatIds = puzzle
         .split('\n')
         .map(x => getSeatId(x))
@@ -26,7 +26,7 @@
         seatId++;
         if (seatId !== seatIds[i]) break;
       }
-      return Promise.resolve(seatId);
+      return seatId;
     },
     example: [
       {

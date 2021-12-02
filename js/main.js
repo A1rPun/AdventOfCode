@@ -1,4 +1,4 @@
-﻿(function(w, d) {
+﻿(function (w, d) {
   const NEW_LINE = '\n';
   var code = d.querySelector('.code');
   function logCode(c, click, seperate = false) {
@@ -18,7 +18,7 @@
     code.appendChild(el);
     return el;
   }
-  December.log = function(o, clear) {
+  December.log = function (o, clear) {
     if (clear) clearCode();
     logCode(o);
   };
@@ -35,20 +35,20 @@
   }
 
   async function getInputForDay(day) {
-    let input = day.input;
-    if (!input) {
-      const res = await fetch(`${day.year}/day_${day.day}/input`);
-      input = await res.text();
-      // TODO: might brake days so test :)
-      input = input.trim();
-    }
-    return input;
+    if (day.input) return day.input;
+    const res = await fetch(`${day.year}/day_${day.day}/input`);
+    const input = await res.text();
+    return input.trim();
+  }
+
+  async function getAnswer(answer) {
+    return await Promise.resolve(answer);
   }
 
   async function handleAnswer(day, input) {
     if (day.answer1) {
       const answer1T = new perfTimer();
-      const answer1 = await day.answer1(input);
+      const answer1 = await getAnswer(day.answer1(input));
       answer1T.stop();
       logCode(day.questions[0]);
       const line1 = logCode(answer1);
@@ -65,7 +65,7 @@
 
       if (day.answer2 && day.questions[1]) {
         const answer2T = new perfTimer();
-        const answer2 = await day.answer2(input);
+        const answer2 = await getAnswer(day.answer2(input));
         answer2T.stop();
         logCode(day.questions[1]);
         const line2 = logCode(answer2);
@@ -80,7 +80,7 @@
       }
     } else {
       const answerT = new perfTimer();
-      let answer = await day.answer(input);
+      let answer = await getAnswer(day.answer(input));
       answerT.stop();
 
       if (!Array.isArray(answer)) answer = [answer];
@@ -108,7 +108,7 @@
 
     if (!example.answer || example.answer & 1) {
       const answer1T = new perfTimer();
-      const answer1 = await day.answer1(example.input);
+      const answer1 = await getAnswer(day.answer1(example.input));
       answer1T.stop();
       const line1 = logCode(answer1);
 
@@ -125,7 +125,7 @@
 
     if (!example.answer || example.answer & 2) {
       const answer2T = new perfTimer();
-      const answer2 = await day.answer2(example.input);
+      const answer2 = await getAnswer(day.answer2(example.input));
       answer2T.stop();
       const line2 = logCode(answer2);
 
@@ -142,13 +142,13 @@
   }
 
   function dayClick(day) {
-    return function() {
+    return function () {
       spanDay.innerHTML = '';
 
       const back = d.createElement('div');
       back.classList.add('click', 'text-center');
       back.innerText = '<< Back <<';
-      back.addEventListener('click', function() {
+      back.addEventListener('click', function () {
         clearCode();
         logDays();
       });
@@ -163,7 +163,7 @@
         const anim = d.createElement('div');
         anim.classList.add('click', 'animated', 'text-center');
         anim.innerText = `Animation = ${December.animate}`;
-        anim.addEventListener('click', function() {
+        anim.addEventListener('click', function () {
           December.animate = !December.animate;
           this.innerHTML = `Animation = ${December.animate}`;
         });
@@ -173,9 +173,9 @@
       const ans = d.createElement('div');
       ans.classList.add('click', 'text-center');
       ans.innerText = 'Show answers';
-      ans.addEventListener('click', async function() {
+      ans.addEventListener('click', async function () {
         clearCode();
-        const input = await getInputForDay(day);
+        const input = await getAnswer(getInputForDay(day));
         handleAnswer(day, input);
       });
       spanDay.appendChild(ans);
@@ -184,10 +184,10 @@
         const example = d.createElement('div');
         example.classList.add('click', 'text-center');
         example.innerText = 'Show example';
-        example.addEventListener('click', async function() {
+        example.addEventListener('click', async function () {
           clearCode();
           for (let i = 0; i < day.example.length; i++) {
-            await handleExample(day, day.example[i]);
+            await getAnswer(handleExample(day, day.example[i]));
           }
         });
         spanDay.appendChild(example);
@@ -196,7 +196,7 @@
       const input = d.createElement('div');
       input.classList.add('click', 'text-center');
       input.innerText = 'Show input';
-      input.addEventListener('click', async function() {
+      input.addEventListener('click', async function () {
         clearCode();
         const input = await getInputForDay(day);
         logCode(input);
@@ -206,7 +206,7 @@
       const custom = d.createElement('textarea');
       custom.rows = 1;
       custom.classList.add('line');
-      custom.addEventListener('input', function(e) {
+      custom.addEventListener('input', function (e) {
         cheat.classList[this.value ? 'remove' : 'add']('hidden');
       });
       spanDay.appendChild(custom);
@@ -214,7 +214,7 @@
       const cheat = d.createElement('div');
       cheat.classList.add('click', 'hidden');
       cheat.innerText = 'Execute';
-      cheat.addEventListener('click', function() {
+      cheat.addEventListener('click', function () {
         clearCode();
         handleAnswer(day, custom.value);
       });
@@ -270,9 +270,7 @@
     for (var i = 0, l = years.length; i < l; i++) {
       var option = d.createElement('span');
       var year = years[i];
-      option.innerHTML = `[${year.year}]<small class="yellow darken">★${
-        year.score
-      }</small>`;
+      option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
       option.classList.add('click', 'option');
       option.addEventListener('click', switchYear(year.year));
       if (December.currentYear === year.year) option.classList.add('active');
@@ -285,7 +283,7 @@
   }
 
   function switchYear(year) {
-    return function() {
+    return function () {
       December.currentYear = year;
       logYears();
       logDays();

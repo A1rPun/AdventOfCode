@@ -37,8 +37,8 @@
       'What is the sum of those counts?',
       'What is the sum of those counts?',
     ],
-    answer1: puzzle => Promise.resolve(countYesAnswers(puzzle)),
-    answer2: puzzle => Promise.resolve(countYesForAllAnswers(puzzle)),
+    answer1: (puzzle) => countYesAnswers(puzzle),
+    answer2: (puzzle) => countYesForAllAnswers(puzzle),
     example: [
       {
         input: `abc

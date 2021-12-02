@@ -44,13 +44,13 @@
           0
         );
 
-      return Promise.resolve(sumAlignmentParams);
+      return sumAlignmentParams;
     },
     answer2: memory => {
       const computer = new December.IntCode(memory);
       computer.memory[0] = 2; // Wake up
       // computer.run();
-      return Promise.resolve();
+      return;
     },
     example: [],
     solutions: [7584],

@@ -23,7 +23,7 @@
             cur === tile.block && (i + 1) % 3 === 0 ? acc + 1 : acc,
           0
         );
-      return Promise.resolve(blockTiles);
+      return blockTiles;
     },
     answer2: memory => {
       const computer = new December.IntCode(memory);
@@ -46,7 +46,7 @@
         }
         input = Math.max(-1, Math.min(ball.x - paddle.x, 1));
       }
-      return Promise.resolve(score);
+      return score;
     },
     example: [
       // {

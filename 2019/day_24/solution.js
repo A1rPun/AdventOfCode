@@ -79,8 +79,8 @@
       'What is the biodiversity rating for the first layout that appears twice?',
       'Starting with your scan, how many bugs are present after 200 minutes?',
     ],
-    answer1: ([puzzle]) => Promise.resolve(gameOfBugs(puzzle)),
-    answer2: ([puzzle, iter]) => Promise.resolve(gameOfBugsRecursive(puzzle, iter)),
+    answer1: ([puzzle]) => gameOfBugs(puzzle),
+    answer2: ([puzzle, iter]) => gameOfBugsRecursive(puzzle, iter),
     input: [`.....
 ...#.
 .#..#

@@ -27,10 +27,10 @@
       'Find the input noun and verb that cause the program to produce the output 19690720. What is 100 * noun + verb?',
     ],
     // Answers fail because the IntCode changed requirements for opCode 1, 2
-    answer1: puzzle =>
-      Promise.resolve(createIntCode(puzzle.split(',').map(December.toInt))),
-    answer2: puzzle =>
-      Promise.resolve(answer2(puzzle.split(',').map(December.toInt), 19690720)),
+    answer1: (puzzle) =>
+      createIntCode(puzzle.split(',').map(December.toInt)),
+    answer2: (puzzle) =>
+      answer2(puzzle.split(',').map(December.toInt), 19690720),
     example: [
       // Examples fail because they don't have a noun and a verb
       // {

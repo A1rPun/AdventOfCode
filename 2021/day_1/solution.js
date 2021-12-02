@@ -23,8 +23,8 @@
       'How many measurements are larger than the previous measurement?',
       'How many sums are larger than the previous sum?',
     ],
-    answer1: puzzle => Promise.resolve(countIncreases(parse(puzzle))),
-    answer2: puzzle => {
+    answer1: (puzzle) => countIncreases(parse(puzzle)),
+    answer2: (puzzle) => {
       const measurements = parse(puzzle);
       const summedPairs = [];
 
@@ -34,7 +34,7 @@
         );
       }
 
-      return Promise.resolve(countIncreases(summedPairs));
+      return countIncreases(summedPairs);
     },
     example: [
       {

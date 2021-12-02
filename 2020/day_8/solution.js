@@ -7,15 +7,15 @@
       'Immediately before any instruction is executed a second time, what value is in the accumulator?',
       'What is the value of the accumulator after the program terminates?',
     ],
-    answer1: puzzle => {
+    answer1: (puzzle) => {
       const handheld = new December.HandHeld(puzzle);
       handheld.run();
-      return Promise.resolve(handheld.accumulator);
+      return handheld.accumulator;
     },
-    answer2: puzzle => {
+    answer2: (puzzle) => {
       const handheld = new December.HandHeld(puzzle);
       handheld.runAndFix();
-      return Promise.resolve(handheld.accumulator);
+      return handheld.accumulator;
     },
     example: [
       {

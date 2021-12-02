@@ -75,9 +75,7 @@
       for (let i = 0; i < iter; i++) {
         solarSystem.tick();
       }
-      return Promise.resolve(
-        solarSystem.moons.reduce((acc, cur) => acc + cur.getEnergy(), 0)
-      );
+      return solarSystem.moons.reduce((acc, cur) => acc + cur.getEnergy(), 0);
     },
     answer2: ([positions]) => {
       const solarSystem = new SolarSystem(positions);
@@ -92,11 +90,9 @@
             dimension.length = i;
         });
       }
-      return Promise.resolve(
-        dimensions
+      return dimensions
           .map(x => x.length)
-          .reduce((a, b) => leastCommonMultiple(a, b))
-      );
+          .reduce((a, b) => leastCommonMultiple(a, b));
     },
 
     input: [
