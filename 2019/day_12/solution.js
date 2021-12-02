@@ -1,3 +1,4 @@
+import December from '../../js/december.js';
 import Vector from '../../js/vector.js';
 
 class Moon {
@@ -36,21 +37,21 @@ class SolarSystem {
   constructor(positions) {
     this.moons = positions
       .split('\n')
-      .map(x => new Moon(...December.getNumbers(x)));
+      .map((x) => new Moon(...December.getNumbers(x)));
   }
 
   tick() {
-    this.moons.forEach(moon => {
-      this.moons.forEach(x => {
+    this.moons.forEach((moon) => {
+      this.moons.forEach((x) => {
         if (moon === x) return;
         moon.applyGravity(x);
       });
     });
-    this.moons.forEach(moon => moon.applyVelocity());
+    this.moons.forEach((moon) => moon.applyVelocity());
   }
 
   atInitialAxis(axis) {
-    return this.moons.every(moon => moon.atInitialAxis(axis));
+    return this.moons.every((moon) => moon.atInitialAxis(axis));
   }
 }
 
@@ -80,19 +81,19 @@ export default {
   },
   answer2: ([positions]) => {
     const solarSystem = new SolarSystem(positions);
-    const dimensions = ['x', 'y', 'z'].map(name => ({ name }));
+    const dimensions = ['x', 'y', 'z'].map((name) => ({ name }));
     let i = 0;
 
-    while (!dimensions.every(x => x.length)) {
+    while (!dimensions.every((x) => x.length)) {
       solarSystem.tick();
       i++;
-      dimensions.forEach(dimension => {
+      dimensions.forEach((dimension) => {
         if (!dimension.length && solarSystem.atInitialAxis(dimension.name))
           dimension.length = i;
       });
     }
     return dimensions
-      .map(x => x.length)
+      .map((x) => x.length)
       .reduce((a, b) => leastCommonMultiple(a, b));
   },
 

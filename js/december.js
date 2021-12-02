@@ -66,6 +66,7 @@ var december = {
   rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
   sum: (a, b) => a + b,
   toInt: x => parseInt(x, 10),
+  log: (...args) => console.log(...args),
 };
 
 export default december;
