@@ -6,9 +6,10 @@
     '2018': [],
     '2019': [],
     '2020': [],
+    '2021': [],
   };
   var december = {
-    currentYear: '2020', // TODO: Please...
+    currentYear: '2021', // TODO: Please...
     addDay: function(d) {
       days[d.year].push(d);
       for (const fn in d.public)
