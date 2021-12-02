@@ -1,0 +1,16 @@
+{
+  "name": "AdventOfCode",
+  "version": "1.0.0",
+  "description": ":christmas_tree: My take on the challenges :trophy:",
+  "main": "js/main.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "type": "module",
+  "devDependencies": {
+    "@babel/core": "^7.16.0",
+    "@babel/preset-env": "^7.16.4",
+    "babel-jest": "^27.4.2",
+    "jest": "^27.4.3"
+  }
+}
