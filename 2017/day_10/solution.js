@@ -78,7 +78,4 @@ export default {
   example: ['1,2,3'],
   exampleSolutions: [0, '3efbe78a8d82f29979031a4aa0b16a9d'],
   solutions: [37230, '70b856a24d586194331398c7fcfa0aaf'],
-  public: {
-    knotHash: knotHash,
-  },
 };

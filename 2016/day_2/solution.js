@@ -61,7 +61,4 @@ RRDDD
 LURDL
 UUUUD`,
   ],
-  public: {
-    clamp: clamp,
-  },
 };

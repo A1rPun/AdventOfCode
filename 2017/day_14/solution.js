@@ -7,8 +7,23 @@ function hexToByte(h) {
     .padStart(4, '0');
 }
 
+function knotHash(puzzle) {
+  const lengths = puzzle
+    .split('')
+    .map(function(char) {
+      return char.charCodeAt(0);
+    })
+    .concat([17, 31, 73, 47, 23]);
+  const densedHash = dense(tieKnots(lengths));
+  return densedHash
+    .map(function(a) {
+      return a.toString(16).padStart(2, '0');
+    })
+    .join('');
+}
+
 function rowHash(input) {
-  return December.knotHash(input)
+  return knotHash(input)
     .split('')
     .map(hexToByte)
     .join('');

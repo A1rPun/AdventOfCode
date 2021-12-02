@@ -150,7 +150,4 @@ export default {
     },
   ],
   solutions: [168046, 6972986],
-  public: {
-    binarySearch,
-  },
 };

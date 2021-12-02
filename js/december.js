@@ -11,10 +11,6 @@ var december = {
   currentYear: '2021', // TODO: Please...
   addDay: function(d) {
     days[d.year].push(d);
-    for (const fn in d.public)
-      if (d.public.hasOwnProperty(fn)) {
-        this[fn] = d.public[fn];
-      }
   },
   animate: true,
   getDays: () => days[december.currentYear],
