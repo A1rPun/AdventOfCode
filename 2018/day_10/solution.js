@@ -1,3 +1,4 @@
+import December from '../../js/december.js';
 import Vector from '../../js/vector.js';
 
 function day_10(puzzle) {
@@ -90,4 +91,6 @@ position=< 5,  9> velocity=< 1, -2>
 position=<14,  7> velocity=<-2,  0>
 position=<-3,  6> velocity=< 2, -1>`,
   ],
+  exampleSolutions: [, 2], // ['HI']
+  solutions: ['HJBJXRAZ', 10641],
 };

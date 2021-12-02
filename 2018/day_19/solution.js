@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function answer(instructions, axiom) {
   let pointer = December.toInt(instructions.shift().match(/(\d+)/g)[0]);
   const device = new December.Device(axiom);
@@ -31,5 +33,6 @@ setr 1 0 0
 seti 8 0 4
 seti 9 0 5`,
   ],
+  // exampleSolutions: [7],
   solutions: [1228],
 };

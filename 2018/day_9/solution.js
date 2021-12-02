@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 class Marble {
   constructor(value, previous, next) {
     this.value = value;
@@ -53,4 +55,6 @@ export default {
     `21 players; last marble is worth 6111 points: high score is 54718`,
     `30 players; last marble is worth 5807 points: high score is 37305`,
   ],
+  exampleSolutions: [32, 22563], // TODO: Multiple tests
+  solutions: [436720, 3527845091],
 };

@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function findInObject(obj, select, keySelect = false) {
   let match;
   let maxValue = 0;
@@ -85,4 +87,6 @@ export default {
 [1518-11-03 00:05] Guard #10 begins shift
 [1518-11-05 00:55] wakes up`,
   ],
+  exampleSolutions: [240, 4455],
+  solutions: [99911, 65854],
 };

@@ -51,5 +51,5 @@ NOT x -> h
 NOT y -> i`,
   ],
   // exampleSolutions: [,],
-  solutions: [,],
+  solutions: [],
 };

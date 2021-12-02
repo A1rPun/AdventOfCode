@@ -70,4 +70,6 @@ Step B must be finished before step E can begin.
 Step D must be finished before step E can begin.
 Step F must be finished before step E can begin.`,
   ],
+  exampleSolutions: ['CAFBDE', 253],
+  solutions: ['CGUXKMFSWAIHYDNQLJTREOPZBV', 1046],
 };

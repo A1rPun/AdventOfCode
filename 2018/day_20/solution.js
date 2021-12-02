@@ -53,5 +53,6 @@ export default {
     'What is the largest number of doors you would be required to pass through to reach a room?',
   answer: day_20,
   example: [`^ENWWW(NEEE|SSE(EE|N))$`],
+  // exampleSolutions: [,],
   solutions: [],
 };

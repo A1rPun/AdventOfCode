@@ -53,4 +53,6 @@ fguij
 axcye
 wvxyz`,
   ],
+  exampleSolutions: [0, 'fgij'],
+  solutions: [4940, 'wrziyfdmlumeqvaatbiosngkc'],
 };

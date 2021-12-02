@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function day_1(puzzle) {
   puzzle = puzzle.split('\n').map(December.toInt);
   const answer1 = puzzle.reduce(December.sum);
@@ -21,4 +23,11 @@ export default {
     'What is the first frequency your device reaches twice?',
   ],
   answer: day_1,
+  example: [`+7
++7
+-2
+-7
+-4`],
+  exampleSolutions: [1, 14],
+  solutions: [533, 73272],
 };

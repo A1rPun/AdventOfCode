@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function day_3(puzzle) {
   puzzle = puzzle.split('\n').map(December.getNumbers);
 
@@ -30,13 +32,13 @@ function day_3(puzzle) {
     return acc;
   }, []);
 
-  return [answer1, answer2];
+  return [answer1, December.toInt(Object.keys(answer2)[0])];
 }
 export default {
   title: 'No Matter How You Slice It',
   questions: [
     'How many square inches of fabric are within two or more claims?',
-    "What is the ID of the only claim that doesn't overlap?",
+    `What is the ID of the only claim that doesn't overlap?`,
   ],
   answer: day_3,
   example: [
@@ -44,4 +46,6 @@ export default {
 #2 @ 3,1: 4x4
 #3 @ 5,5: 2x2`,
   ],
+  exampleSolutions: [4, 3],
+  solutions: [120408, 1276],
 };

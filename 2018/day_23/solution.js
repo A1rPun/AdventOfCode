@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function manhattan(a, b) {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z);
 }
@@ -58,5 +60,6 @@ pos=<50,50,50>, r=200
 pos=<10,10,10>, r=5`,
             */
   ],
+  exampleSolutions: [7],
   solutions: [499],
 };

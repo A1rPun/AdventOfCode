@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 function createNode(stream, nodes, parent = []) {
   const [childCount, metadataCount] = stream.splice(0, 2);
   const node = { childs: [] };
@@ -39,4 +41,6 @@ export default {
   ],
   answer: day_8,
   example: [`2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2`],
+  exampleSolutions: [138, 66],
+  solutions: [41926, 24262],
 };

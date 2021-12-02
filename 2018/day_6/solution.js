@@ -1,3 +1,4 @@
+import December from '../../js/december.js';
 import Astar from '../../js/astar.js';
 
 function day_6(puzzle) {
@@ -52,4 +53,6 @@ export default {
 5, 5
 8, 9`,
   ],
+  // exampleSolutions: [,],
+  solutions: [4589, 40252],
 };
