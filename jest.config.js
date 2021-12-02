@@ -1,3 +1,3 @@
 export default {
-  coverageDirectory: "coverage",
+  coverageDirectory: 'coverage',
 };
