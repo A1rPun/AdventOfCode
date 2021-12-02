@@ -33,7 +33,7 @@ Bot.prototype = {
       this.lowCollection[this.low] = lowValue;
     }
 
-    if (lowValue === 17 && highValue === 61) console.log(this.number);
+    if (lowValue === 17 && highValue === 61) December.log(this.number);
   },
 };
 

@@ -1,3 +1,5 @@
+import December from '../../js/december.js';
+
 var vowels = ['a', 'e', 'i', 'o', 'u'];
 var avoid = ['ab', 'cd', 'pq', 'xy'];
 function naughtOrNice1(string) {
@@ -28,7 +30,7 @@ function naughtOrNice2(string) {
       if (!pairs[pair]) pairs[pair] = 0;
       pairs[pair]++;
       if (pairs[pair] > 1) {
-        console.log(string, pair);
+        December.log(string, pair);
         hasMultiplePairs = true;
       }
     }
