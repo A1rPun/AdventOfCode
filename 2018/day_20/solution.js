@@ -1,4 +1,4 @@
-(function() {
+
   function parseRegEx(regex, node) {
     if (!regex) {
       regex = node.text;
@@ -48,7 +48,7 @@
     parseRegEx(regex, root);
     return root;
   }
-  December.addDay({
+  export default {
     day: 20,
     year: 2018,
     title: 'A Regular Map',
@@ -57,5 +57,4 @@
     answer: day_20,
     example: [`^ENWWW(NEEE|SSE(EE|N))$`],
     solutions: [],
-  });
-})();
+  };

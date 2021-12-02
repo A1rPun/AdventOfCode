@@ -1,4 +1,4 @@
-(function() {
+
   var assembunny = {
     cpy: function(register, values) {
       var vals = values.split(' ');
@@ -54,7 +54,7 @@
     return register;
   }
 
-  December.addDay({
+  export default {
     day: 23,
     year: 2016,
     title: 'Safe Cracking',
@@ -70,5 +70,4 @@ dec a
 dec a`,
     ],
     solutions: [],
-  });
-})();
+  };

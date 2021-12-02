@@ -1,4 +1,4 @@
-(function() {
+
   function tieKnots(input, times = 64) {
     let hash = December.range(256);
     const l = hash.length;
@@ -66,7 +66,7 @@
       .join('');
   }
 
-  December.addDay({
+  export default {
     day: 10,
     year: 2017,
     title: 'Knot Hash',
@@ -80,5 +80,4 @@
     public: {
       knotHash: knotHash,
     },
-  });
-})();
+  };

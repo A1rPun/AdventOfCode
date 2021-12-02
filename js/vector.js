@@ -32,3 +32,5 @@ class Vector {
   // }
 }
 Vector.fromKey = key => new Vector(...key.split('_'));
+
+export default Vector;

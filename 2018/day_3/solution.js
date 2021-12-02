@@ -1,4 +1,4 @@
-(function() {
+
   function day_3(puzzle) {
     puzzle = puzzle.split('\n').map(December.getNumbers);
 
@@ -33,7 +33,7 @@
 
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 3,
     year: 2018,
     title: 'No Matter How You Slice It',
@@ -47,5 +47,4 @@
 #2 @ 3,1: 4x4
 #3 @ 5,5: 2x2`,
     ],
-  });
-})();
+  };

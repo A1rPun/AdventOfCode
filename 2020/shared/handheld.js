@@ -1,4 +1,4 @@
-(function() {
+
   const ACC = 'acc';
   const JUMP = 'jmp';
   const NOOP = 'nop';

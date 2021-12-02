@@ -1,4 +1,4 @@
-(function() {
+
   function day_2(puzzle) {
     puzzle = puzzle.split('\n');
     var paper = 0;
@@ -15,7 +15,7 @@
     }
     return [paper, ribbon];
   }
-  December.addDay({
+  export default {
     day: 2,
     year: 2015,
     title: 'I Was Told There Would Be No Math',
@@ -25,5 +25,4 @@
     ],
     answer: day_2,
     example: ['2x3x4\nx1x10'],
-  });
-})();
+  };

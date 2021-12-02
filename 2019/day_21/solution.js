@@ -1,4 +1,4 @@
-(function() {
+
   const AND = ''
 
   // class SpringScript extends December.IntCode {
@@ -9,7 +9,7 @@
   //   }
   // }
 
-  December.addDay({
+  export default {
     day: 21,
     year: 2019,
     title: 'Springdroid Adventure',
@@ -24,5 +24,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function answer1(jumps) {
     var answer1 = 0;
     for (var i = 0; i < jumps.length; ) {
@@ -19,7 +19,7 @@
     }
     return answer2;
   }
-  December.addDay({
+  export default {
     day: 5,
     year: 2017,
     title: 'A Maze of Twisty Trampolines, All Alike',
@@ -37,5 +37,4 @@
 1
 -3`,
     ],
-  });
-})();
+  };

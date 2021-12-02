@@ -1,4 +1,4 @@
-(function() {
+
   const getFuel = x => Math.floor(x / 3) - 2;
   const getAnswer = (x, fn) => x.map(fn).reduce(December.sum);
 
@@ -23,7 +23,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 1,
     year: 2019,
     title: 'The Tyranny of the Rocket Equation',
@@ -34,5 +34,4 @@
     answer: day_1,
     example: ['1969'],
     solutions: [3249817, 4871866],
-  });
-})();
+  };

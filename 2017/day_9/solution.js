@@ -1,4 +1,4 @@
-(function() {
+
   function day_9(puzzle) {
     var answer1 = 0;
     var answer2 = 0;
@@ -55,7 +55,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 9,
     year: 2017,
     title: 'Stream Processing',
@@ -65,5 +65,4 @@
     ],
     answer: day_9,
     example: ['{{<!!>},{<!!>},{<!!>},{<!!>}}'],
-  });
-})();
+  };

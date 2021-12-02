@@ -1,4 +1,4 @@
-(function() {
+
   function iJustGoLinearForAnswer2(entries) {
     for (let i = 0; i < entries.length; i++) {
       for (let j = 0; j < entries.length; j++) {
@@ -16,7 +16,7 @@
     // TODO: Implement ;)
   }
 
-  December.addDay({
+  export default {
     day: 1,
     year: 2020,
     title: 'Report Repair',
@@ -48,5 +48,4 @@
       },
     ],
     solutions: [138379, 85491920],
-  });
-})();
+  };

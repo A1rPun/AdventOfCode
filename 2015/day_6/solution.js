@@ -1,4 +1,4 @@
-(function() {
+
   function parseInstruction(instruction) {
     var match = instruction.match(
       /(turn on|turn off|toggle) (\d+),(\d+) through (\d+),(\d+)/
@@ -53,7 +53,7 @@
     puzzle = puzzle.split('\n');
     return [answer1(puzzle), answer2(puzzle)];
   }
-  December.addDay({
+  export default {
     day: 6,
     year: 2015,
     title: 'Probably a Fire Hazard',
@@ -64,5 +64,4 @@
 toggle 0,0 through 999,0
 turn off 499,499 through 500,500`,
     ],
-  });
-})();
+  };

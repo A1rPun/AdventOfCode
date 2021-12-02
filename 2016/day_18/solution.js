@@ -1,4 +1,4 @@
-(function() {
+
   var TARP = '^';
   var SAFE = '.';
 
@@ -34,7 +34,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 18,
     year: 2016,
     title: 'Like a Rogue',
@@ -46,5 +46,4 @@
     input:
       '.^^.^^^..^.^..^.^^.^^^^.^^.^^...^..^...^^^..^^...^..^^^^^^..^.^^^..^.^^^^.^^^.^...^^^.^^.^^^.^.^^.^.',
     example: ['..^^.'],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function* gen(value, factor, criteria) {
     while (true) {
       value = (value * factor) % 2147483647;
@@ -27,7 +27,7 @@
     }
     return [answer1];
   }
-  December.addDay({
+  export default {
     day: 15,
     year: 2017,
     title: 'Dueling Generators',
@@ -35,5 +35,4 @@
     answer: day_15,
     example: ['Generator A starts with 65\nGenerator B starts with 8921'],
     // hasAnimation: true,
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   const shuffles = {
     new: deck => deck.reverse(),
     increment: (deck, n) => {
@@ -74,7 +74,7 @@
     return index;
   }
 
-  December.addDay({
+  export default {
     day: 22,
     year: 2019,
     title: 'Slam Shuffle',
@@ -144,5 +144,4 @@ cut -1`,
     ],
     solutions: [5472],
     // answer 2 too low 38237339318117
-  });
-})();
+  };

@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 25,
     year: 2016,
     title: '',
@@ -8,5 +8,4 @@
     answer2: puzzle => {},
     // input:
     example: [''],
-  });
-})();
+  };

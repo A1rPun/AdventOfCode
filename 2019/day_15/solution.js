@@ -1,4 +1,4 @@
-(function() {
+
   const directions = {
     north: 1,
     south: 2,
@@ -33,7 +33,7 @@
     return;
   }
 
-  December.addDay({
+  export default {
     day: 15,
     year: 2019,
     title: 'Oxygen System',
@@ -45,5 +45,4 @@
     answer2: (puzzle) => {},
     example: [],
     solutions: [],
-  });
-})();
+  };

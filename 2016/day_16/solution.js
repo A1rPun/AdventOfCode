@@ -1,4 +1,4 @@
-(function() {
+
   function dragonCurve(bits) {
     var result = bits + '0';
     for (var i = bits.length; i--; ) result += bits[i] === '0' ? '1' : '0';
@@ -30,7 +30,7 @@
     ];
   }
 
-  December.addDay({
+  export default {
     day: 16,
     year: 2016,
     title: 'Dragon Checksum',
@@ -41,5 +41,4 @@
     answer: day_16,
     input: '01111010110010011',
     example: ['10000'],
-  });
-})();
+  };

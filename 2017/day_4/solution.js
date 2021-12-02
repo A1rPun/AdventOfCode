@@ -1,4 +1,4 @@
-(function() {
+
   function checkWords(words) {
     for (var i = 0; i < words.length - 1; i++)
       if (words[i] === words[i + 1]) return false;
@@ -25,7 +25,7 @@
 
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 4,
     year: 2017,
     title: 'High-Entropy Passphrases',
@@ -36,5 +36,4 @@
 aa bb cc dd aa
 aa bb cc dd aaa`,
     ],
-  });
-})();
+  };

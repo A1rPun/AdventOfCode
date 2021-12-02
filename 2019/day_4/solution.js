@@ -1,4 +1,4 @@
-(function() {
+
   const hasAdjacentCharacters = (a, b) => a === b;
   const hasSequence = (a, b) => a <= b;
   const isPassword = pass => {
@@ -30,7 +30,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 4,
     year: 2019,
     title: 'Secure Container',
@@ -42,5 +42,4 @@
     answer: day_1,
     example: ['112233-112233'],
     solutions: [460, 290],
-  });
-})();
+  };

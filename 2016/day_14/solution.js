@@ -1,4 +1,4 @@
-(function() {
+
   function day_14(puzzle) {
     return new Promise(function(resolve, reject) {
       if (Worker !== arguments[1337]) {
@@ -15,7 +15,7 @@
       }
     });
   }
-  December.addDay({
+  export default {
     day: 14,
     year: 2016,
     title: 'One-Time Pad',
@@ -24,5 +24,4 @@
     answer: day_14,
     input: 'qzyelonm',
     example: ['abc'],
-  });
-})();
+  };

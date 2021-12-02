@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 13,
     year: 2020,
     title: '',
@@ -14,5 +14,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

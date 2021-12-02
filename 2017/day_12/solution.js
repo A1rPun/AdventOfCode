@@ -1,4 +1,4 @@
-(function() {
+
   function createLookup(inputs) {
     const lookup = {};
     for (let i = 0; i < inputs.length; i++) {
@@ -38,7 +38,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 12,
     year: 2017,
     title: 'Digital Plumber',
@@ -56,5 +56,4 @@
 5 <-> 6
 6 <-> 4, 5`,
     ],
-  });
-})();
+  };

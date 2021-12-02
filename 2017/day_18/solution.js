@@ -1,4 +1,4 @@
-(function() {
+
   class Register {
     constructor(programId, instructions) {
       this.index = 0;
@@ -71,7 +71,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 18,
     year: 2017,
     title: 'Duet',
@@ -89,5 +89,4 @@ rcv b
 rcv c
 rcv d`,
     ],
-  });
-})();
+  };

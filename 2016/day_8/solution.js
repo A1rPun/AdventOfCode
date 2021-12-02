@@ -1,4 +1,4 @@
-(function() {
+
   var actions = {
     rect: {
       txt: 'e',
@@ -91,7 +91,7 @@
     });
   }
 
-  December.addDay({
+  export default {
     day: 8,
     year: 2016,
     title: 'Two-Factor Authentication',
@@ -101,5 +101,4 @@
     ],
     answer: day_8,
     hasAnimation: true,
-  });
-})();
+  };

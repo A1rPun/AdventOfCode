@@ -1,4 +1,4 @@
-(function() {
+
   function react(polymer) {
     for (let i = 0; i < polymer.length - 1; i++) {
       const char = polymer.charCodeAt(i);
@@ -29,7 +29,7 @@
 
     return [answer1.length, answer2];
   }
-  December.addDay({
+  export default {
     day: 5,
     year: 2018,
     title: 'Alchemical Reduction',
@@ -39,5 +39,4 @@
     ],
     answer: day_5,
     example: ['dabAcCaCBAcCcaDA'],
-  });
-})();
+  };

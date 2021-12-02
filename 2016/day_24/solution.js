@@ -1,9 +1,9 @@
-(function() {
+
   function day_24(puzzle) {
     return;
   }
 
-  December.addDay({
+  export default {
     day: 24,
     year: 2016,
     title: '',
@@ -17,5 +17,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

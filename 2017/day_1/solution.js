@@ -1,4 +1,4 @@
-(function() {
+
   function getAnswer(input) {
     var answer = 0;
     var len = input.length;
@@ -12,7 +12,7 @@
     }
     return answer;
   }
-  December.addDay({
+  export default {
     day: 1,
     year: 2017,
     title: 'Inverse Captcha',
@@ -24,5 +24,4 @@
       return getAnswer(puzzle);
     },
     example: ['12131415'],
-  });
-})();
+  };

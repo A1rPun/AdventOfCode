@@ -1,4 +1,4 @@
-(function() {
+
   const POSITION_MODE = '0';
   const IMMEDIATE_MODE = '1';
   const RELATIVE_MODE = '2';

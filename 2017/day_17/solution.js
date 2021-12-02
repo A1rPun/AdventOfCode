@@ -1,4 +1,4 @@
-(function() {
+
   function day_17(puzzle) {
     puzzle = parseInt(puzzle, 10);
     const answer1 = [0];
@@ -15,7 +15,7 @@
     }
     return [answer1[answer1.indexOf(max) + 1], answer2];
   }
-  December.addDay({
+  export default {
     day: 17,
     year: 2017,
     title: 'Spinlock',
@@ -26,5 +26,4 @@
     answer: day_17,
     input: '329',
     example: [3],
-  });
-})();
+  };

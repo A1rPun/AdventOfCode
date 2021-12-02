@@ -1,4 +1,4 @@
-(function() {
+
   var operators = {
     '>': function(a, b) {
       return a > b;
@@ -48,7 +48,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 8,
     year: 2017,
     title: 'Heard You Like Registers',
@@ -60,5 +60,4 @@ a inc 1 if b < 5
 c dec -10 if a >= 1
 c inc -20 if c == 10`,
     ],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function findDivisor(numbers) {
     for (var i = 0; i < numbers.length; i++) {
       for (var j = 0; j < numbers.length; j++) {
@@ -22,7 +22,7 @@
     }, 0);
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 2,
     year: 2017,
     title: 'Corruption Checksum',
@@ -36,5 +36,4 @@
 9	4	7	3
 3	8	6	5`,
     ],
-  });
-})();
+  };

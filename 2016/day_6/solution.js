@@ -1,4 +1,4 @@
-(function() {
+
   function getHighestCount(name, asc) {
     var commons = {};
     // Count all occurences in the name
@@ -43,7 +43,7 @@
     return [frequent, lessLikely];
   }
 
-  December.addDay({
+  export default {
     day: 6,
     year: 2016,
     title: 'Signals and Noise',
@@ -67,5 +67,4 @@ vrdear
 dvrsen
 enarar`,
     ],
-  });
-})();
+  };

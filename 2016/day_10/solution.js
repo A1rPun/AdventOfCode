@@ -1,4 +1,4 @@
-(function() {
+
   function Bot(number, low, high, lowCollection, highCollection) {
     this.number = number;
     this.values = [];
@@ -75,7 +75,7 @@
     return [141, outputs[0] * outputs[1] * outputs[2]];
   }
 
-  December.addDay({
+  export default {
     day: 10,
     year: 2016,
     title: 'Balance Bots',
@@ -90,5 +90,4 @@ bot 1 gives low to output 1 and high to bot 0
 bot 0 gives low to output 2 and high to output 0
 value 2 goes to bot 2`,
     ],
-  });
-})();
+  };

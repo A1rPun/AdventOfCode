@@ -1,4 +1,4 @@
-(function() {
+
   function day_22(puzzle) {
     const face = {
       top: 0,
@@ -43,7 +43,7 @@
     }
     return answer1;
   }
-  December.addDay({
+  export default {
     day: 22,
     year: 2017,
     title: 'Sporifica Virus',
@@ -55,5 +55,4 @@
 #..
 ...`,
     ],
-  });
-})();
+  };

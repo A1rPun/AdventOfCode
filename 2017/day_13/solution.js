@@ -1,4 +1,4 @@
-(function() {
+
   function day_13(puzzle) {
     const firewall = puzzle.split('\n').reduce((prev, curr) => {
       const layer = curr.split(': ');
@@ -19,7 +19,7 @@
     }
     return [answer1, picoSeconds];
   }
-  December.addDay({
+  export default {
     day: 13,
     year: 2017,
     title: 'Packet Scanners',
@@ -34,5 +34,4 @@
 4: 4
 6: 4`,
     ],
-  });
-})();
+  };

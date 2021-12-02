@@ -1,4 +1,4 @@
-(function() {
+
   class Layout {
     constructor(grid) {
       this.grid = grid;
@@ -71,7 +71,7 @@
     return grid.reduce(December.sum);
   }
 
-  December.addDay({
+  export default {
     day: 24,
     year: 2019,
     title: 'Planet of Discord',
@@ -97,5 +97,4 @@
       },
     ],
     solutions: [18370591],
-  });
-})();
+  };

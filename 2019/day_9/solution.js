@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 9,
     year: 2019,
     title: 'Sensor Boost',
@@ -33,5 +33,4 @@
       },
     ],
     solutions: ['2955820355', '46643'],
-  });
-})();
+  };

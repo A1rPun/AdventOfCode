@@ -1,4 +1,4 @@
-(function() {
+
   function day_4(puzzle) {
     return new Promise(function(resolve, reject) {
       if (Worker !== undefined) {
@@ -14,7 +14,7 @@
     });
   }
 
-  December.addDay({
+  export default {
     day: 4,
     year: 2015,
     title: 'The Ideal Stocking Stuffer',
@@ -22,5 +22,4 @@
     answer: day_4,
     input: 'iwrupvqb',
     example: ['abcdef'],
-  });
-})();
+  };

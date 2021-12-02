@@ -1,4 +1,4 @@
-(function() {
+
   function createIntCode(memory, noun = 12, verb = 2) {
     memory[1] = noun;
     memory[2] = verb;
@@ -18,7 +18,7 @@
     return 'Not found';
   }
 
-  December.addDay({
+  export default {
     day: 2,
     year: 2019,
     title: '1202 Program Alarm',
@@ -50,5 +50,4 @@
       // },
     ],
     solutions: [6327510, 4112],
-  });
-})();
+  };

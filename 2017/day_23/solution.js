@@ -1,4 +1,4 @@
-(function() {
+
   function optimize(puzzle) {
     let h = 0;
     let b = puzzle * 100 + 100000;
@@ -18,11 +18,10 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 23,
     year: 2017,
     title: 'Coprocessor Conflagration',
     questions: 'How many times is the mul instruction invoked?',
     answer: day_23,
-  });
-})();
+  };

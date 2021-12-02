@@ -1,4 +1,4 @@
-(function() {
+
   function answer(instructions, axiom) {
     let pointer = December.toInt(instructions.shift().match(/(\d+)/g)[0]);
     const device = new December.Device(axiom);
@@ -9,7 +9,7 @@
     }
     return device.memory;
   }
-  December.addDay({
+  export default {
     day: 19,
     year: 2018,
     title: 'Go With The Flow',
@@ -35,5 +35,4 @@ seti 8 0 4
 seti 9 0 5`,
     ],
     solutions: [1228],
-  });
-})();
+  };

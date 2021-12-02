@@ -1,4 +1,4 @@
-(function() {
+
   function Floor(generators, microchips) {
     this.generators = generators || [];
     this.microchips = microchips || [];
@@ -46,7 +46,7 @@
     return [answer1];
   }
 
-  December.addDay({
+  export default {
     day: 11,
     year: 2016,
     title: 'Radioisotope Thermoelectric Generators',
@@ -54,5 +54,4 @@
       'What is the minimum number of steps required to bring all of the objects to the fourth floor?',
     answer: day_11,
     solutions: [],
-  });
-})();
+  };

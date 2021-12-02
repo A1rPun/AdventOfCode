@@ -1,4 +1,4 @@
-(function() {
+
   function scanABBA(sequence) {
     var s = '_' + sequence;
     for (var i = 1, l = s.length - 2; i < l; i++) {
@@ -58,7 +58,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 7,
     year: 2016,
     title: 'Internet Protocol Version 7',
@@ -77,5 +77,4 @@ xyx[xyx]xyx
 aaa[kek]eke
 zazbz[bzb]cdb`,
     ],
-  });
-})();
+  };

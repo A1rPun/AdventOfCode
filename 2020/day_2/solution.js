@@ -1,4 +1,4 @@
-(function() {
+
   const lineMatch = /(\d+)-(\d+) (\w): (\w+)/;
 
   function answer1(line) {
@@ -16,7 +16,7 @@
     return check1 !== check2 && (check1 === char || check2 === char);
   }
 
-  December.addDay({
+  export default {
     day: 2,
     year: 2020,
     title: 'Password Philosophy',
@@ -37,5 +37,4 @@
       },
     ],
     solutions: [580, 611],
-  });
-})();
+  };

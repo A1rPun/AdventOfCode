@@ -1,9 +1,9 @@
-(function() {
+
   function getSeatId(pass) {
     return parseInt(pass.replace(/[F|L]/g, 0).replace(/[B|R]/g, 1), 2);
   }
 
-  December.addDay({
+  export default {
     day: 5,
     year: 2020,
     title: 'Binary Boarding',
@@ -38,5 +38,4 @@ BBFFBBFRLL`,
       },
     ],
     solutions: [991, 534],
-  });
-})();
+  };

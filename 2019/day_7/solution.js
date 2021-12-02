@@ -1,4 +1,4 @@
-(function() {
+
   const sortNum = (a, b) => b - a;
 
   function getPermutation(seq) {
@@ -38,7 +38,7 @@
       .sort(sortNum)[0];
   }
 
-  December.addDay({
+  export default {
     day: 7,
     year: 2019,
     title: 'Amplification Circuit',
@@ -80,5 +80,4 @@
       },
     ],
     solutions: [17406, 1047153],
-  });
-})();
+  };

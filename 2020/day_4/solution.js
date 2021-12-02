@@ -1,4 +1,4 @@
-(function() {
+
   const requiredFields = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid'];
   const isValidPassport = passport =>
     requiredFields.every(field => passport.includes(field));
@@ -10,7 +10,7 @@
     
   }
 
-  December.addDay({
+  export default {
     day: 4,
     year: 2020,
     title: 'Passport Processing',
@@ -72,5 +72,4 @@ iyr:2010 hgt:158cm hcl:#b6652a ecl:blu byr:1944 eyr:2021 pid:093154719`,
       },
     ],
     solutions: [216],
-  });
-})();
+  };

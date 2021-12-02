@@ -1,4 +1,4 @@
-(function() {
+
   function simpleCompress(file, deep = false) {
     let count = 0;
     for (let i = 0; i < file.length; ) {
@@ -24,7 +24,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 9,
     year: 2016,
     title: 'Explosives in Cyberspace',
@@ -34,5 +34,4 @@
     ],
     answer: day_9,
     example: ['X(8x2)(3x3)ABCY'],
-  });
-})();
+  };

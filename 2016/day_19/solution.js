@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 19,
     year: 2016,
     title: 'An Elephant Named Joseph',
@@ -11,5 +11,4 @@
     },
     input: 3012210,
     example: [5],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function createNode(stream, nodes, parent = []) {
     const [childCount, metadataCount] = stream.splice(0, 2);
     const node = { childs: [] };
@@ -32,7 +32,7 @@
     const answer2 = nodes[0].value;
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 8,
     year: 2018,
     title: 'Memory Maneuver',
@@ -42,5 +42,4 @@
     ],
     answer: day_8,
     example: [`2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2`],
-  });
-})();
+  };

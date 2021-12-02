@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 23,
     year: 2019,
     title: 'Category Six',
@@ -25,5 +25,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     // day: 20,
     year: 2019,
     title: 'Donut Maze',
@@ -14,5 +14,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

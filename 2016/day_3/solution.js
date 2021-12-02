@@ -1,4 +1,4 @@
-(function() {
+
   function isValid(triangle) {
     if (
       triangle[0] < triangle[1] + triangle[2] &&
@@ -45,7 +45,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 3,
     year: 2016,
     title: 'Squares With Three Sides',
@@ -59,5 +59,4 @@
 202 402 602
 203 403 603`,
     ],
-  });
-})();
+  };

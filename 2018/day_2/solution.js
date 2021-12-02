@@ -1,4 +1,4 @@
-(function() {
+
   function day_2(puzzle) {
     puzzle = puzzle.split('\n');
     const boxIds = puzzle.map(x =>
@@ -38,7 +38,7 @@
 
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 2,
     year: 2018,
     title: 'Inventory Management System',
@@ -56,5 +56,4 @@ fguij
 axcye
 wvxyz`,
     ],
-  });
-})();
+  };

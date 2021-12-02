@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     //day: ,
     year: 2018,
     title: '',
@@ -14,5 +14,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

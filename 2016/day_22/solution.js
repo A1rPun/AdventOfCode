@@ -1,4 +1,4 @@
-(function() {
+
   function day_22(puzzle) {
     const nodes = puzzle.split('\n').map(December.getNumbers);
     const pairs = nodes.reduce((acc, node) => {
@@ -12,12 +12,11 @@
     return answer1;
   }
 
-  December.addDay({
+  export default {
     day: 22,
     year: 2016,
     title: 'Grid Computing',
     questions: 'How many viable pairs of nodes are there?',
     answer: day_22,
     solutions: [],
-  });
-})();
+  };

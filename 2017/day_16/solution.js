@@ -1,4 +1,4 @@
-(function() {
+
   function exchange(a, b, prog) {
     [prog[a], prog[b]] = [prog[b], prog[a]];
     return prog;
@@ -53,7 +53,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 16,
     year: 2017,
     title: 'Permutation Promenade',
@@ -63,5 +63,4 @@
     ],
     answer: day_16,
     example: ['s1,x3/4,pe/b'], // const programs = 'abcde';
-  });
-})();
+  };

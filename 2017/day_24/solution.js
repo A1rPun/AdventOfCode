@@ -1,4 +1,4 @@
-(function() {
+
   class Component {
     constructor(portA, portB) {
       this.ports = [+portA, +portB];
@@ -69,7 +69,7 @@
     );
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 24,
     year: 2017,
     title: 'Electromagnetic Moat',
@@ -86,8 +86,7 @@
 10/1
 9/10`,
     ],
-  });
-})();
+  };
 
 /*
 

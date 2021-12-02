@@ -1,4 +1,4 @@
-(function() {
+
   function day_20(puzzle) {
     puzzle = puzzle.split('\n');
     puzzle.push(puzzle.length > 10 ? '4294967296-4294967296' : '10-10'); // MAX 4294967295
@@ -25,7 +25,7 @@
     return [answer1, answer2];
   }
 
-  December.addDay({
+  export default {
     day: 20,
     year: 2016,
     title: 'Firewall Rules',
@@ -39,5 +39,4 @@
 0-2
 4-7`,
     ],
-  });
-})();
+  };

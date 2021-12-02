@@ -1,4 +1,4 @@
-(function() {
+
   function chunkString(str, length) {
     return str.match(new RegExp('.{1,' + length + '}', 'g'));
   }
@@ -39,7 +39,7 @@
     }, []);
     return [answer1, December.prettify(answer2)];
   }
-  December.addDay({
+  export default {
     day: 8,
     year: 2019,
     title: 'Space Image Format',
@@ -50,5 +50,4 @@
     answer: day_8,
     example: ['123456789012'],
     solutions: [2684, 'YGRYZ'],
-  });
-})();
+  };

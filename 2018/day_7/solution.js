@@ -1,4 +1,4 @@
-(function() {
+
   function day_7(puzzle) {
     const test = false;
     const minSeconds = test ? 64 : 4;
@@ -55,7 +55,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 7,
     year: 2018,
     title: 'The Sum of Its Parts',
@@ -73,5 +73,4 @@ Step B must be finished before step E can begin.
 Step D must be finished before step E can begin.
 Step F must be finished before step E can begin.`,
     ],
-  });
-})();
+  };

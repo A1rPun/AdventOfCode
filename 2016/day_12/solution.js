@@ -1,4 +1,4 @@
-(function() {
+
   var assembunny = {
     cpy: function(register, values) {
       var vals = values.split(' ');
@@ -33,7 +33,7 @@
     return register['a'];
   }
 
-  December.addDay({
+  export default {
     day: 12,
     year: 2016,
     title: "Leonardo's Monorail",
@@ -48,5 +48,4 @@ dec a
 jnz a 2
 dec a`,
     ],
-  });
-})();
+  };

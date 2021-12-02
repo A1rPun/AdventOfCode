@@ -1,4 +1,4 @@
-(function() {
+
   const PATH = '#';
 
   function findNeighbours(grid, x, y) {
@@ -11,7 +11,7 @@
     );
   }
 
-  December.addDay({
+  export default {
     day: 17,
     year: 2019,
     title: 'Set and Forget',
@@ -54,5 +54,4 @@
     },
     example: [],
     solutions: [7584],
-  });
-})();
+  };

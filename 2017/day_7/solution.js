@@ -1,4 +1,4 @@
-(function() {
+
   function day_7(puzzle) {
     // Sanitize puzzle input and create lookup
     var lookup = {};
@@ -68,7 +68,7 @@
     findUnbalance(tree);
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 7,
     year: 2017,
     title: 'Recursive Circus',
@@ -92,5 +92,4 @@ ugml (68) -> gyxo, ebii, jptl
 gyxo (61)
 cntj (57)`,
     ],
-  });
-})();
+  };

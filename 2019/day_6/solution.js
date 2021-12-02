@@ -1,4 +1,4 @@
-(function() {
+
   function answer(input, movePlanets) {
     const planetMap = input.reduce((acc, cur) => {
       const [planet, orbit] = cur.split(')');
@@ -71,7 +71,7 @@
     return [totalOrbits, orbitalTransfers];
   }
 
-  December.addDay({
+  export default {
     day: 6,
     year: 2019,
     title: 'Universal Orbit Map',
@@ -99,5 +99,4 @@ K)YOU
 I)SAN`,
     ],
     solutions: [358244, 517],
-  });
-})();
+  };

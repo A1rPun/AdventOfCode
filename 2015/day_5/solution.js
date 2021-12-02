@@ -1,4 +1,4 @@
-(function() {
+
   var vowels = ['a', 'e', 'i', 'o', 'u'];
   var avoid = ['ab', 'cd', 'pq', 'xy'];
   function naughtOrNice1(string) {
@@ -48,7 +48,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 5,
     year: 2015,
     title: "Doesn't He Have Intern- Elves For This?",
@@ -69,5 +69,4 @@ jchzalrnumimnmhp
 haegwjzuvuyypxyu
 dvszwmarrgswjxmb`,
     ],
-  });
-})();
+  };

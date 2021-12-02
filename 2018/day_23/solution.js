@@ -1,4 +1,4 @@
-(function() {
+
   function manhattan(a, b) {
     return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z);
   }
@@ -36,7 +36,7 @@
         */
     return [answer1];
   }
-  December.addDay({
+  export default {
     day: 23,
     year: 2018,
     title: 'Experimental Emergency Teleportation',
@@ -64,5 +64,4 @@ pos=<10,10,10>, r=5`,
             */
     ],
     solutions: [499],
-  });
-})();
+  };

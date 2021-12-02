@@ -1,4 +1,4 @@
-(function() {
+
   function bitwise(lookup, x, operator, y) {
     switch (operator.toUpperCase()) {
       case 'AND':
@@ -36,7 +36,7 @@
     }
     return [wires];
   }
-  December.addDay({
+  export default {
     day: 7,
     year: 2015,
     title: 'Some Assembly Required',
@@ -54,5 +54,4 @@ NOT x -> h
 NOT y -> i`,
     ],
     solutions: [],
-  });
-})();
+  };

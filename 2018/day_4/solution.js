@@ -1,4 +1,4 @@
-(function() {
+
   function findInObject(obj, select, keySelect = false) {
     let match;
     let maxValue = 0;
@@ -62,7 +62,7 @@
     const answer2 = frequentAsleep.id * frequentAsleep.bestMinute()[0];
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 4,
     year: 2018,
     title: 'Repose Record',
@@ -88,5 +88,4 @@
 [1518-11-03 00:05] Guard #10 begins shift
 [1518-11-05 00:55] wakes up`,
     ],
-  });
-})();
+  };

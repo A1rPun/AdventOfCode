@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     // day: 18,
     year: 2019,
     title: 'Many-Worlds Interpretation',
@@ -14,5 +14,4 @@
       // },
     ],
     solutions: [],
-  });
-})();
+  };

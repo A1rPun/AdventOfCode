@@ -1,4 +1,4 @@
-(function() {
+
   function day_5(doorId) {
     const animate = December.animate;
     return new Promise(function(resolve, reject) {
@@ -27,7 +27,7 @@
     December.log(result, true);
   }
 
-  December.addDay({
+  export default {
     day: 5,
     year: 2016,
     title: 'How About a Nice Game of Chess?',
@@ -37,5 +37,4 @@
     input: 'ffykfhsq',
     example: ['abc'],
     hasAnimation: true,
-  });
-})();
+  };

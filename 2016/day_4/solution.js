@@ -1,4 +1,4 @@
-(function() {
+
   var alpha = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
   function isValid(checksum, name) {
     var commons = {};
@@ -71,7 +71,7 @@
     return [ids, cipherSectorId];
   }
 
-  December.addDay({
+  export default {
     day: 4,
     year: 2016,
     title: 'Security Through Obscurity',
@@ -86,5 +86,4 @@ a-b-c-d-e-f-g-h-987[abcde]
 not-a-real-room-404[oarel]
 totally-real-room-200[decoy]`,
     ],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function getIndexFromMaxValue(list) {
     var index = -1;
     var maxValue = -1;
@@ -43,7 +43,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 6,
     year: 2017,
     title: 'Memory Reallocation',
@@ -54,5 +54,4 @@
     answer: day_6,
     input: '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11',
     example: ['0	2	7	0'],
-  });
-})();
+  };

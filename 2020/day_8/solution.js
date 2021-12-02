@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 8,
     year: 2020,
     title: 'Handheld Halting',
@@ -32,5 +32,4 @@ acc +6`,
       },
     ],
     solutions: [1723, 846],
-  });
-})();
+  };

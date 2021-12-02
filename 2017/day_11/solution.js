@@ -1,4 +1,4 @@
-(function() {
+
   function Cube(x, y, z) {
     this.x = x;
     this.y = y;
@@ -40,7 +40,7 @@
     }
     return [home.distanceTo(end), furthestDistance];
   }
-  December.addDay({
+  export default {
     day: 11,
     year: 2017,
     title: 'Hex Ed',
@@ -48,5 +48,4 @@
       'You have the path the child process took. Starting where he started, you need to determine the fewest number of steps required to reach him.',
     answer: day_11,
     example: ['se,sw,se,sw,sw'],
-  });
-})();
+  };

@@ -1,5 +1,5 @@
-(function() {
-  December.addDay({
+
+  export default {
     day: 5,
     year: 2019,
     title: 'Sunny with a Chance of Asteroids',
@@ -29,5 +29,4 @@
       },
     ],
     solutions: [9006673, 3629692],
-  });
-})();
+  };

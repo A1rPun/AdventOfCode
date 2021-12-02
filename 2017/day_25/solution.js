@@ -1,4 +1,4 @@
-(function() {
+
   function day_25(puzzle) {
     let [nextState, steps, ...stateValues] = puzzle.match(
       /[A-Z][:|\.]|\d+|left|right/g
@@ -36,7 +36,7 @@
     const answer1 = Object.values(tape).reduce(December.sum);
     return [answer1];
   }
-  December.addDay({
+  export default {
     day: 25,
     year: 2017,
     title: 'The Halting Problem',
@@ -67,5 +67,4 @@ In state B:
     - Move one slot to the right.
     - Continue with state A.`,
     ],
-  });
-})();
+  };

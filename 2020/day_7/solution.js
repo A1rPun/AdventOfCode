@@ -1,4 +1,4 @@
-(function() {
+
   function createBagContents(contents) {
     return contents.reduce((acc, cur) => {
       if (cur !== 'no other bags.') {
@@ -40,7 +40,7 @@
     return count;
   }
 
-  December.addDay({
+  export default {
     day: 7,
     year: 2020,
     title: 'Handy Haversacks',
@@ -82,5 +82,4 @@ dark violet bags contain no other bags.`,
       },
     ],
     solutions: [302, 4165],
-  });
-})();
+  };

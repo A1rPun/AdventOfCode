@@ -1,4 +1,4 @@
-(function() {
+
   class Marble {
     constructor(value, previous, next) {
       this.value = value;
@@ -38,7 +38,7 @@
     const answer2 = getHighScore(playerCount, points * 100);
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 9,
     year: 2018,
     title: 'Marble Mania',
@@ -56,5 +56,4 @@
       `21 players; last marble is worth 6111 points: high score is 54718`,
       `30 players; last marble is worth 5807 points: high score is 37305`,
     ],
-  });
-})();
+  };

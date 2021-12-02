@@ -1,4 +1,4 @@
-(function () {
+
   const ORE = 'ORE';
   const FUEL = 'FUEL';
 
@@ -63,7 +63,7 @@
     );
   }
 
-  December.addDay({
+  export default {
     day: 14,
     year: 2019,
     title: 'Space Stoichiometry',
@@ -156,5 +156,4 @@
     public: {
       binarySearch,
     },
-  });
-})();
+  };

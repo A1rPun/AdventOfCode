@@ -1,4 +1,4 @@
-(function() {
+
   function countCharacters(str) {
     const characters = {};
     for (let i = 0; i < str.length; i++) {
@@ -29,7 +29,7 @@
       }, 0);
   }
 
-  December.addDay({
+  export default {
     day: 6,
     year: 2020,
     title: 'Custom Customs',
@@ -60,5 +60,4 @@ b`,
       },
     ],
     solutions: [6947, 3398],
-  });
-})();
+  };

@@ -1,4 +1,4 @@
-(function() {
+
   function Disc(positions, start) {
     this.positions = positions;
     this.start = start;
@@ -35,7 +35,7 @@
     return answer1;
   }
 
-  December.addDay({
+  export default {
     day: 15,
     year: 2016,
     title: 'Timing is Everything',
@@ -45,5 +45,4 @@
     example: [
       'Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 positions; at time=0, it is at position 1.',
     ],
-  });
-})();
+  };

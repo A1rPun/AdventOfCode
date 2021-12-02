@@ -1,4 +1,4 @@
-(function() {
+
   var actions = {
     swap: function(charArr, split) {
       if (split[1] === 'position') {
@@ -73,7 +73,7 @@
     });
   }
 
-  December.addDay({
+  export default {
     day: 21,
     year: 2016,
     title: 'Scrambled Letters and Hash',
@@ -93,5 +93,4 @@ rotate based on position of letter b
 rotate based on position of letter d`,
     ],
     solutions: ['agcebfdh'],
-  });
-})();
+  };

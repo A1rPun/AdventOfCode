@@ -1,4 +1,4 @@
-(function() {
+
   function day_1(puzzle) {
     puzzle = puzzle.split('\n').map(December.toInt);
     const answer1 = puzzle.reduce(December.sum);
@@ -15,7 +15,7 @@
     }
     return [answer1, answer2];
   }
-  December.addDay({
+  export default {
     day: 1,
     year: 2018,
     title: 'Chronal Calibration',
@@ -24,5 +24,4 @@
       'What is the first frequency your device reaches twice?',
     ],
     answer: day_1,
-  });
-})();
+  };
