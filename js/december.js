@@ -1,39 +1,4 @@
-﻿var days = {
-  2015: [],
-  2016: [],
-  2017: [],
-  2018: [],
-  2019: [],
-  2020: [],
-  2021: [],
-};
-var december = {
-  currentYear: '2021', // TODO: Please...
-  addDay: function(d) {
-    days[d.year].push(d);
-  },
-  animate: true,
-  getDays: () => days[december.currentYear],
-  getYears: function() {
-    const years = [];
-    for (const year in days) {
-      const day = days[year];
-      years.push({
-        year,
-        score: day.reduce(
-          (acc, curr) =>
-            acc +
-            (curr.day && curr.title
-              ? curr.solutions
-                ? curr.solutions.length
-                : 2
-              : 0),
-          0
-        ),
-      });
-    }
-    return years;
-  },
+﻿const december = {
   // Shared utility functions
   cache: (fn) => {
     const cache = new Map();

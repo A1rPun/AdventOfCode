@@ -49,8 +49,7 @@ function processInput(input, charArr) {
   return actions[splitted[0]](charArr, splitted);
 }
 
-function day_21(puzzle) {
-  const animate = December.animate;
+function day_21(puzzle, animate) {
   puzzle = puzzle.split('\n');
   var answer1 = 'abcdefgh';
   return new Promise(function(resolve) {

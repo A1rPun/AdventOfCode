@@ -6,8 +6,7 @@
 //     }
 //   }
 // }
-// function day_15(puzzle) {
-//   // const animate = December.animate;
+// function day_15(puzzle, animate) {
 //   const max = 5000000;
 //   const values = puzzle.match(/(\d+)/g);
 //   const genA = gen(+values[0], 16807, 4);
