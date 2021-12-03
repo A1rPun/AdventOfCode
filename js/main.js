@@ -9,34 +9,13 @@ December.log = function (o, clear) {
 
 let code, spanYear, spanDay;
 let animate = true;
-let currentYear = '2021'; // TODO: Please...
+let currentYear = years.length - 1;
 const d = document;
 const NEW_LINE = '\n';
-const days = {
-  2015: [],
-  2016: [],
-  2017: [],
-  2018: [],
-  2019: [],
-  2020: [],
-  2021: [],
-};
-// const days = years.reduce((acc, cur, i) => ({
-//   ...acc,
-//   [2015 + i]: cur,
-// }));
+
 main();
 
 function main() {
-  years.forEach((y, i) =>
-    y.forEach((x, j) =>
-      days[2015 + i].push({
-        ...x,
-        year: 2015 + i,
-        day: j + 1,
-      })
-    )
-  );
   code = d.querySelector('.code');
   showTree();
   logCode('★★ AdventOfCode - A1rPun ★★', null, true);
@@ -45,31 +24,6 @@ function main() {
   spanDay = logCode(null, null, true);
   logDays();
   code = logCode();
-}
-
-function getDays() {
-  return days[currentYear];
-}
-
-function getYears() {
-  const years = [];
-  for (const year in days) {
-    const day = days[year];
-    years.push({
-      year,
-      score: day.reduce(
-        (acc, curr) =>
-          acc +
-          (curr.day && curr.title
-            ? curr.solutions
-              ? curr.solutions.length
-              : 2
-            : 0),
-        0
-      ),
-    });
-  }
-  return years;
 }
 
 function logCode(c, click, seperate = false) {
@@ -90,9 +44,9 @@ function clearCode() {
   code.innerHTML = '';
 }
 
-async function getInputForDay(day) {
+async function getInputForDay(day, dd) {
   if (day.input) return day.input;
-  const res = await fetch(`${day.year}/day_${day.day}/input`);
+  const res = await fetch(`${2015 + currentYear}/day_${dd}/input`);
   const input = await res.text();
   return input.trim();
 }
@@ -193,7 +147,7 @@ async function handleExample(day, example) {
   logCode(NEW_LINE);
 }
 
-function dayClick(day) {
+function dayClick(day, dd) {
   return function () {
     spanDay.innerHTML = '';
 
@@ -211,7 +165,7 @@ function dayClick(day) {
     title.addEventListener('click', function () {
       window.open(`https://adventofcode.com/${day.year}/day/${day.day}`);
     });
-    setDayTitle(title, day);
+    setDayTitle(title, day, dd);
     spanDay.appendChild(title);
 
     if (day.hasAnimation) {
@@ -230,7 +184,7 @@ function dayClick(day) {
     ans.innerText = 'Show answers';
     ans.addEventListener('click', async function () {
       clearCode();
-      const input = await getAnswer(getInputForDay(day));
+      const input = await getAnswer(getInputForDay(day, dd));
       handleAnswer(day, input);
     });
     spanDay.appendChild(ans);
@@ -253,7 +207,7 @@ function dayClick(day) {
     input.innerText = 'Show input';
     input.addEventListener('click', async function () {
       clearCode();
-      const input = await getInputForDay(day);
+      const input = await getInputForDay(day, dd);
       logCode(input);
     });
     spanDay.appendChild(input);
@@ -277,14 +231,14 @@ function dayClick(day) {
   };
 }
 
-function setDayTitle(el, day) {
+function setDayTitle(el, day, dd) {
   const solutions = day.solutions ? day.solutions.length : 2;
 
   if (!solutions) {
     el.classList.add('development');
   }
 
-  el.innerHTML = `Day ${day.day.toString().padStart(2, '0')} ${
+  el.innerHTML = `Day ${dd.toString().padStart(2, '0')} ${
     solutions === 2
       ? '<span class="yellow">★</span>'
       : solutions >= 1
@@ -296,42 +250,43 @@ function setDayTitle(el, day) {
 function logDays() {
   spanDay.innerHTML = '';
   spanDay.classList.add('text-left');
-  const days = getDays();
-  for (let i = 0; i < days.length; i++) {
-    const decDay = days[i];
+  years[currentYear].forEach((decDay, i) => {
     const day = d.createElement('div');
+    const dd = i + 1;
     if (decDay.hasAnimation) {
       day.classList.add('animated');
     }
-    if (decDay.day && decDay.title) {
-      setDayTitle(day, decDay);
+    if (decDay.title) {
+      setDayTitle(day, decDay, dd);
       day.classList.add('click');
-      day.addEventListener('click', dayClick(decDay));
+      day.addEventListener('click', dayClick(decDay, dd));
     } else {
-      day.innerText = `Day ${(i + 1).toString().padStart(2, '0')}    ${
+      day.innerText = `Day ${dd.toString().padStart(2, '0')}    ${
         decDay.title
       }`;
       day.classList.add('unsolved');
     }
     spanDay.appendChild(day);
-  }
+  });
 }
 
 function logYears() {
   spanYear.innerHTML = '';
-  const years = getYears();
   let totalScore = 0;
-
-  for (let i = 0, l = years.length; i < l; i++) {
+  const scores = years.map((x) =>
+    x.reduce((acc, cur) => acc + (cur.solutions?.length ?? 0), 0)
+  );
+  scores.forEach((score, i) => {
     const option = d.createElement('span');
-    const year = years[i];
-    option.innerHTML = `[${year.year}]<small class="yellow darken">★${year.score}</small>`;
+    const year = 2015 + i;
+    option.innerHTML = `[${year}]<small class="yellow darken">★${score}</small>`;
     option.classList.add('click', 'option');
-    option.addEventListener('click', switchYear(year.year));
-    if (currentYear === year.year) option.classList.add('active');
+    option.addEventListener('click', switchYear(i));
+    if (currentYear === i) option.classList.add('active');
     spanYear.appendChild(option);
-    totalScore += year.score;
-  }
+    totalScore += score;
+  });
+
   const total = d.createElement('span');
   total.innerHTML = `Total<small class="yellow darken">★${totalScore}</small>`;
   spanYear.appendChild(total);
