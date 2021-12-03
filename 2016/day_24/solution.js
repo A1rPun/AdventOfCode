@@ -1,11 +1,8 @@
-function day_24(puzzle) {
-  return;
-}
-
 export default {
   title: '',
   questions: ['', ''],
-  answer: day_24,
+  answer1: (puzzle) => {},
+  answer2: (puzzle) => {},
   example: [
     // {
     //   input: 123456789,

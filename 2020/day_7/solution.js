@@ -76,8 +76,7 @@ dark yellow bags contain 2 dark green bags.
 dark green bags contain 2 dark blue bags.
 dark blue bags contain 2 dark violet bags.
 dark violet bags contain no other bags.`,
-      solutions: [undefined, 126],
-      answer: 2,
+      solutions: [, 126],
     },
   ],
   solutions: [302, 4165],

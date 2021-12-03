@@ -101,59 +101,55 @@ async function logAnswer(question, fn, solution, input) {
   let answer = await Promise.resolve(fn(input, animate));
   answerT.stop();
 
-  if (Array.isArray(solution)) {
-    if (!Array.isArray(answer)) answer = [answer];
+  logCode(question);
+  const line = logCode(answer);
 
-    answer.forEach((answer, i) => {
-      const qq = Array.isArray(question) ? question[i] : question;
-      logCode(qq);
-      logCode(answer).classList.add('yellow');
-      logCode();
-    });
+  if (solution === answer) {
+    line.classList.add('yellow');
   } else {
-    logCode(question);
-    const line = logCode(answer);
-
-    if (solution === answer) {
-      line.classList.add('yellow');
-    } else {
-      line.classList.add('red');
-      logCode(`Output should be ${solution}`);
-    }
-    logCode();
+    line.classList.add('red');
+    logCode(`Output should be ${solution}`);
   }
+  logCode();
   logCode(answerT.log());
   logCode();
 }
 
 async function handleAnswer(day, input) {
-  if (day.answer1) {
-    logAnswer(day.questions[0], day.answer1, day.solutions[0], input);
+  const answer1 = day.answer1
+    ? day.answer1
+    : (input, animate) => day.answer(input, animate)[0];
+  const answer2 = day.answer2
+    ? day.answer2
+    : (input, animate) => day.answer(input, animate)[1];
+  const questions =
+    typeof day.questions === 'string'
+      ? [day.questions, day.questions]
+      : day.questions;
 
-    if (day.answer2 && day.questions[1]) {
-      logAnswer(day.questions[1], day.answer2, day.solutions[1], input);
-    }
-  } else {
-    logAnswer(day.questions, day.answer, day.solutions, input);
-  }
+  logAnswer(questions[0], answer1, day.solutions[0], input);
+  logAnswer(questions[1], answer2, day.solutions[1], input);
 }
 
 async function handleExample(day, example) {
+  const answer1 = day.answer1
+    ? day.answer1
+    : (input, animate) => day.answer(input, animate)[0];
+  const answer2 = day.answer2
+    ? day.answer2
+    : (input, animate) => day.answer(input, animate)[1];
+
+  const oldStyle = typeof example === 'string';
+  const exampleInput = oldStyle ? example : example.input;
+  const solution1 = oldStyle ? day.exampleSolutions[0] : example.solutions[0];
+  const solution2 = oldStyle ? day.exampleSolutions[1] : example.solutions[1];
+
   logCode('Example input');
+  logCode(`${exampleInput}`);
+  logCode();
 
-  if (day.answer1) {
-    logCode(`${example.input}`);
-    logCode();
-    logAnswer('', day.answer1, example.solutions[0], example.input);
-
-    if (day.answer2 && day.questions[1]) {
-      logAnswer('', day.answer2, example.solutions[1], example.input);
-    }
-  } else {
-    logCode(`${example}`);
-    logCode();
-    logAnswer('', day.answer, day.solutions, example);
-  }
+  logAnswer('', answer1, solution1, exampleInput);
+  logAnswer('', answer2, solution2, exampleInput);
 }
 
 function dayClick(day, dd) {

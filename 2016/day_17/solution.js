@@ -3,7 +3,12 @@ export default {
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},
+  example: [
+    {
+      input: 'hijkl',
+      solutions: [],
+    },
+  ],
   input: 'ioramepc',
-  example: ['hijkl'],
   solutions: [],
 };

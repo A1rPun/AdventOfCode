@@ -3,6 +3,11 @@ export default {
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},
-  // input:
-  example: [''],
+  example: [
+    // {
+    //   input: 123456789,
+    //   solutions: [],
+    // },
+  ],
+  solutions: [],
 };
