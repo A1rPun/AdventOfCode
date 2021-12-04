@@ -1,10 +1,8 @@
+import 'regenerator-runtime/runtime';
 import years from './module.js';
+import { setSink } from './js/december.js';
 
-// December.log = () => {};
-
-// test('Init', () => {
-//   expect('abc\n').toBe('abc')
-// })
+setSink(() => {});
 
 const exclude = [
   /* Add */
@@ -30,7 +28,6 @@ const exclude = [
   [2017, 22],
   [2019, 10],
   /* Solve */
-  [2016, 21],
   [2018, 19],
   [2019, 7],
   [2019, 22],
@@ -49,16 +46,20 @@ const days = years.flatMap((x, i) =>
 const getTitle = (yy, dd, n, s) =>
   `Year: ${yy}, Day ${dd}${n ? `, Answer ${n}` : ''}${s ? `, Test ${s}` : ''}`;
 
-days.forEach((x) => {
+async function handleAnswer(answer, input) {
+  return await Promise.resolve(answer(input, false));
+}
+
+days.forEach(async function (x) {
   if (!x.title || exclude.find(([yy, dd]) => yy === x.year && dd === x.day))
     return;
 
-  x.example?.forEach((example, s, { length }) => {
+  x.example?.forEach(async function (example, s, { length }) {
     if (typeof example === 'string') {
       if (!x.exampleSolutions) return;
 
-      test(getTitle(x.year, x.day), () => {
-        const [a1, a2] = x.answer(example);
+      test(getTitle(x.year, x.day), async function () {
+        const [a1, a2] = await handleAnswer(x.answer, example);
         const [s1, s2] = x.exampleSolutions;
         if (s1 !== undefined) expect(a1).toBe(s1);
         if (s2 !== undefined) expect(a2).toBe(s2);
@@ -73,15 +74,17 @@ days.forEach((x) => {
     const step = length > 1 ? s + 1 : 0;
 
     if (x.answer1 && s1 !== undefined) {
-      test(getTitle(x.year, x.day, 1, step), () =>
-        expect(x.answer1(example.input)).toBe(s1)
-      );
+      test(getTitle(x.year, x.day, 1, step), async function () {
+        const a1 = await handleAnswer(x.answer1, example.input);
+        expect(a1).toBe(s1);
+      });
     }
 
     if (x.answer2 && s2 !== undefined) {
-      test(getTitle(x.year, x.day, 2, step), () =>
-        expect(x.answer2(example.input)).toBe(s2)
-      );
+      test(getTitle(x.year, x.day, 2, step), async function () {
+        const a2 = await handleAnswer(x.answer2, example.input);
+        expect(a2).toBe(s2);
+      });
     }
   });
 });

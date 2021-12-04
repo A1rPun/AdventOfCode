@@ -1,12 +1,12 @@
 import perfTimer from './perfTimer.js';
 import years from '../module.js';
 import tree from './tree.js';
+import { setSink } from './december.js';
 
-// import { log } from './december.js';
-// log = function (o, clear) {
-//   if (clear) clearCode();
-//   logCode(o);
-// };
+setSink((o, clear) => {
+  if (clear) clearCode();
+  logCode(o);
+});
 
 let code, spanYear, spanDay;
 let animate = true;
@@ -148,8 +148,8 @@ async function handleExample(day, example) {
   logCode(`${exampleInput}`);
   logCode();
 
-  logAnswer('', answer1, solution1, exampleInput);
-  logAnswer('', answer2, solution2, exampleInput);
+  if (solution1 !== undefined) logAnswer('', answer1, solution1, exampleInput);
+  if (solution2 !== undefined) logAnswer('', answer2, solution2, exampleInput);
 }
 
 function dayClick(day, dd) {

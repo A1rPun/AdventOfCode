@@ -1,4 +1,8 @@
-﻿export function cache(fn) {
+﻿function sink(...args) {
+  console.log(...args);
+}
+
+export function cache(fn) {
   const cache = new Map();
   return (...args) => {
     const cacheKey = args.join('');
@@ -18,7 +22,7 @@ export function getNumbers(str) {
 }
 
 export function log(...args) {
-  // console.log(...args);
+  sink(...args);
 }
 
 export function prettify(jagged, char) {
@@ -36,6 +40,10 @@ export function range(max, min = 0, mapFn) {
 // Rotate + = left, - = right
 export function rotate(arr, n) {
   return arr.slice(n, arr.length).concat(arr.slice(0, n));
+}
+
+export function setSink(fn) {
+  sink = fn;
 }
 
 export const sum = (a, b) => a + b;
