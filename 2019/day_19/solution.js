@@ -40,5 +40,6 @@ export default {
     return pos.x * 10000 + (pos.y - houseSize);
   },
   example: [],
+  exampleSolutions: [],
   solutions: [162, 13021056],
 };

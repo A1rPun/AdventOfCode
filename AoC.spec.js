@@ -1,7 +1,10 @@
-import December from './js/december.js';
 import years from './module.js';
 
 // December.log = () => {};
+
+// test('Init', () => {
+//   expect('abc\n').toBe('abc')
+// })
 
 const exclude = [
   /* Add */
@@ -10,7 +13,7 @@ const exclude = [
   [2017, 3],
   [2017, 15],
   [2017, 23],
-  // Add 2019, 1 2 3 4 6 8 11 17 19
+  [2019, 2],
   /* Fix */
   [2015, 4],
   [2016, 5],

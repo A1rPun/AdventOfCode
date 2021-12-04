@@ -95,5 +95,6 @@ K)L
 K)YOU
 I)SAN`,
   ],
+  exampleSolutions: [54, 4],
   solutions: [358244, 517],
 };

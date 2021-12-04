@@ -30,5 +30,6 @@ export default {
   ],
   answer: day_1,
   example: ['1969'],
+  exampleSolutions: [654, 966],
   solutions: [3249817, 4871866],
 };

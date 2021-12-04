@@ -53,5 +53,6 @@ export default {
     return;
   },
   example: [],
+  exampleSolutions: [],
   solutions: [7584],
 };

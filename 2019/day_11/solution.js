@@ -95,7 +95,6 @@ export default {
   ],
   answer1: (memory) => Object.values(createGrid(memory)).length,
   answer2,
-  example: [],
   solutions: [
     1686,
     `..##...##..###..###..#..#.####.#..#.#......

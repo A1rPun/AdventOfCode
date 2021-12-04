@@ -29,20 +29,20 @@ export default {
   // Answers fail because the IntCode changed requirements for opCode 1, 2
   answer1: (puzzle) => createIntCode(puzzle.split(',').map(toInt)),
   answer2: (puzzle) => answer2(puzzle.split(',').map(toInt), 19690720),
-  example: [
-    // Examples fail because they don't have a noun and a verb
-    // {
-    //   input: '1,9,10,3,2,3,11,0,99,30,40,50',
-    //   solutions: [3500],
-    // },
-    // {
-    //   input: '1,0,0,0,99',
-    //   solutions: [2],
-    // },
-    // {
-    //   input: '1,1,1,4,99,5,6,0,99',
-    //   solutions: [30],
-    // },
-  ],
+  // example: [
+  //   // Examples fail because they don't have a noun and a verb
+  //   {
+  //     input: '1,9,10,3,2,3,11,0,99,30,40,50',
+  //     solutions: [3500],
+  //   },
+  //   {
+  //     input: '1,0,0,0,99',
+  //     solutions: [2],
+  //   },
+  //   {
+  //     input: '1,1,1,4,99,5,6,0,99',
+  //     solutions: [30],
+  //   },
+  // ],
   solutions: [6327510, 4112],
 };

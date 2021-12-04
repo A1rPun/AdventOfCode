@@ -43,5 +43,6 @@ export default {
   answer1,
   answer2: (puzzle) => {},
   example: [],
+  exampleSolutions: [2, ],
   solutions: [],
 };

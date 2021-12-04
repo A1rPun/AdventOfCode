@@ -48,5 +48,6 @@ export default {
   ],
   answer: day_8,
   example: ['123456789012'],
+  exampleSolutions: [4, '123456789012\n'],
   solutions: [2684, 'YGRYZ'],
 };

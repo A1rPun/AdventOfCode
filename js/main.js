@@ -1,8 +1,8 @@
 import perfTimer from './perfTimer.js';
 import years from '../module.js';
 import tree from './tree.js';
-import { log } from './december.js';
 
+// import { log } from './december.js';
 // log = function (o, clear) {
 //   if (clear) clearCode();
 //   logCode(o);
@@ -141,8 +141,8 @@ async function handleExample(day, example) {
 
   const oldStyle = typeof example === 'string';
   const exampleInput = oldStyle ? example : example.input;
-  const solution1 = oldStyle ? day.exampleSolutions[0] : example.solutions[0];
-  const solution2 = oldStyle ? day.exampleSolutions[1] : example.solutions[1];
+  const solution1 = oldStyle ? day.exampleSolutions?.[0] : example.solutions[0];
+  const solution2 = oldStyle ? day.exampleSolutions?.[1] : example.solutions[1];
 
   logCode('Example input');
   logCode(`${exampleInput}`);
