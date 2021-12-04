@@ -1,5 +1,5 @@
 export default {
-  title: '',
+  title: 'Two Steps Forward',
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},

@@ -1,5 +1,5 @@
 export default {
-  title: '',
+  title: 'Air Duct Spelunking',
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},

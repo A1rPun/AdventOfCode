@@ -1,5 +1,5 @@
 export default {
-  title: '',
+  title: 'Four-Dimensional Adventure',
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},

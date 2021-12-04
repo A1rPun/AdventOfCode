@@ -1,5 +1,5 @@
 export default {
-  title: '',
+  title: 'Chronal Conversion',
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},

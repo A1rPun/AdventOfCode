@@ -1,5 +1,5 @@
 export default {
-  title: '',
+  title: 'Mine Cart Madness',
   questions: ['', ''],
   answer1: (puzzle) => {},
   answer2: (puzzle) => {},
