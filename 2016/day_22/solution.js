@@ -1,5 +1,7 @@
+import { getNumbers } from '../../js/december.js';
+
 function day_22(puzzle) {
-  const nodes = puzzle.split('\n').map(December.getNumbers);
+  const nodes = puzzle.split('\n').map(getNumbers);
   const pairs = nodes.reduce((acc, node) => {
     const pair = node[3]
       ? nodes.filter((x) => x !== node && x[4] < node[3])

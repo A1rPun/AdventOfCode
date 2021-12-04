@@ -1,7 +1,8 @@
 import Vector from '../../js/vector.js';
+import IntCode from '../shared/intCode.js';
 
 const checkVector = (memory, x, y) =>
-  new December.IntCode(memory, x, y).run()[0];
+  new IntCode(memory, x, y).run()[0];
 
 function countBeam(memory, stride) {
   const mapSize = stride * stride;

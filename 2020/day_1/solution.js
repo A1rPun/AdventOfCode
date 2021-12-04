@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
 function iJustGoLinearForAnswer2(entries) {
   for (let i = 0; i < entries.length; i++) {
@@ -27,7 +27,7 @@ export default {
     'In your expense report, what is the product of the three entries that sum to 2020?',
   ],
   answer1: (puzzle) => {
-    const entries = puzzle.split('\n').map(December.toInt);
+    const entries = puzzle.split('\n').map(toInt);
     const answer = entries.reduce((acc, cur, i) => {
       const entry = entries.find((x, j) => i !== j && x + cur === 2020);
       return entry ? cur * entry : acc;
@@ -35,7 +35,7 @@ export default {
     return answer;
   },
   answer2: (puzzle) => {
-    const entries = puzzle.split('\n').map(December.toInt);
+    const entries = puzzle.split('\n').map(toInt);
     return iJustGoLinearForAnswer2(entries);
   },
   example: [

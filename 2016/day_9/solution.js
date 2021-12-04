@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 
 function simpleCompress(file, deep = false) {
   let count = 0;
@@ -6,7 +6,7 @@ function simpleCompress(file, deep = false) {
     if (file[i] === '(') {
       const endMarker = file.indexOf(')', i) + 1;
       const marker = file.slice(i, endMarker);
-      const [x, y] = December.getNumbers(marker);
+      const [x, y] = getNumbers(marker);
       count += deep
         ? simpleCompress(file.slice(endMarker, endMarker + x), deep) * y
         : x * y;

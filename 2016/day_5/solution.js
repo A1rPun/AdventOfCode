@@ -1,3 +1,5 @@
+import { log } from '../../js/december.js';
+
 function day_5(doorId, animate) {
   return new Promise(function(resolve, reject) {
     if (Worker !== arguments[1337]) {
@@ -22,7 +24,7 @@ function logz(found) {
     .slice(-8);
   var result = '';
   for (var i = 0; i < 8; i++) result += found[i] ? found[i] : HAXX0R[i];
-  December.log(result, true);
+  log(result, true);
 }
 
 export default {

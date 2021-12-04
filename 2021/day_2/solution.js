@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
 const directions = {
   down: 'down',
@@ -8,7 +8,7 @@ const directions = {
 
 const planCourse = ([horizontal, depth], cur) => {
   const [direction, num] = cur.split(' ');
-  const X = December.toInt(num);
+  const X = toInt(num);
 
   if (direction === directions.forward) {
     horizontal += X;
@@ -20,7 +20,7 @@ const planCourse = ([horizontal, depth], cur) => {
 
 const planActualCourse = ([horizontal, depth, aim], cur) => {
   const [direction, num] = cur.split(' ');
-  const X = December.toInt(num);
+  const X = toInt(num);
 
   if (direction === directions.forward) {
     horizontal += X;

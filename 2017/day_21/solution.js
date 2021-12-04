@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { count, log } from '../../js/december.js';
 
 function rotate(pattern) {
   const length = Math.sqrt(pattern.length);
@@ -69,8 +69,8 @@ function day_21(puzzle) {
     const ruled = divided.map((x) => patterns[x.join('')]);
     fractal = reunite(ruled).filter((x) => x); // TODO Fix reunite indexing (9x2 vs 9x3) so that the filter isn't needed
   }
-  December.log(prettify(fractal));
-  const answer1 = December.count(fractal.join(''), '#');
+  log(prettify(fractal));
+  const answer1 = count(fractal.join(''), '#');
   return [answer1];
 }
 export default {

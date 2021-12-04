@@ -1,3 +1,5 @@
+// import { log } from '../../js/december.js';
+//
 // function* gen(value, factor, criteria) {
 //   while (true) {
 //     value = (value * factor) % 2147483647;
@@ -19,7 +21,7 @@
 //     pairs++;
 //     if (valueA.value === valueB.value) {
 //       answer1++;
-//       // animate && December.log(`Judge: ${answer1}\nGenerator A${valueA.value}\nGenerator B${valueB.value}`, true);
+//       // animate && log(`Judge: ${answer1}\nGenerator A${valueA.value}\nGenerator B${valueB.value}`, true);
 //     }
 //     if (pairs === max) break;
 //   }

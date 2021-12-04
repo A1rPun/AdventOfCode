@@ -1,9 +1,9 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 import Vector from '../../js/vector.js';
 
 function day_10(puzzle) {
   const stars = puzzle.split('\n').map((x) => {
-    const [posX, posY, velX, velY] = December.getNumbers(x);
+    const [posX, posY, velX, velY] = getNumbers(x);
     return {
       position: new Vector(posX, posY),
       velocity: new Vector(velX, velY),

@@ -1,9 +1,9 @@
-import December from '../../js/december.js';
+import { count, log, prettify } from '../../js/december.js';
 import Astar from '../../js/astar.js';
 
 function getTile(x, y, num) {
   var sum = x * x + 3 * x + 2 * x * y + y + y * y + num;
-  var bitCount = December.count(sum.toString(2), '1');
+  var bitCount = count(sum.toString(2), '1');
   return bitCount & 1 ? '#' : '.';
 }
 
@@ -25,14 +25,14 @@ function day_13(puzzle) {
       if (length > 0 && length <= 50) answer2++;
     }
   }
-  December.log(prettifyGrid(grid, path));
+  log(prettifyGrid(grid, path));
   return [path.length - 1, answer2];
 }
 
 function prettifyGrid(grid, path) {
   for (var i = 0; i < path.length; i++)
     grid[path[i][1]][path[i][0]] = i === path.length - 1 ? 'X' : 'O';
-  return December.prettify(grid);
+  return prettify(grid);
 }
 
 export default {

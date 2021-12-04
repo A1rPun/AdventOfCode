@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 
 function Disc(positions, start) {
   this.positions = positions;
@@ -22,7 +22,7 @@ function day_15(puzzle) {
   puzzle = puzzle.split('\n');
   var discs = [];
   for (var i = 0; i < puzzle.length; i++) {
-    var nums = December.getNumbers(puzzle[i]);
+    var nums = getNumbers(puzzle[i]);
     discs.push(new Disc(nums[1], nums[3]));
   }
   discs.push(new Disc(11, 0)); // Answer2

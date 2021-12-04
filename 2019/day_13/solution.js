@@ -1,4 +1,5 @@
 import Vector from '../../js/vector.js';
+import IntCode from '../shared/intCode.js';
 
 const tile = {
   empty: 0,
@@ -15,7 +16,7 @@ export default {
     'What is your score after the last block is broken?',
   ],
   answer1: (memory) => {
-    const blockTiles = new December.IntCode(memory)
+    const blockTiles = new IntCode(memory)
       .run()
       .reduce(
         (acc, cur, i) =>
@@ -25,7 +26,7 @@ export default {
     return blockTiles;
   },
   answer2: (memory) => {
-    const computer = new December.IntCode(memory);
+    const computer = new IntCode(memory);
     computer.memory[0] = 2; // Play for free
 
     let ball = new Vector();

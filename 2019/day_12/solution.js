@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 import Vector from '../../js/vector.js';
 
 class Moon {
@@ -37,7 +37,7 @@ class SolarSystem {
   constructor(positions) {
     this.moons = positions
       .split('\n')
-      .map((x) => new Moon(...December.getNumbers(x)));
+      .map((x) => new Moon(...getNumbers(x)));
   }
 
   tick() {

@@ -1,12 +1,12 @@
 import perfTimer from './perfTimer.js';
 import years from '../module.js';
 import tree from './tree.js';
-import December from './december.js';
+import { log } from './december.js';
 
-December.log = function (o, clear) {
-  if (clear) clearCode();
-  logCode(o);
-};
+// log = function (o, clear) {
+//   if (clear) clearCode();
+//   logCode(o);
+// };
 
 let code, spanYear, spanDay;
 let animate = true;

@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { toInt, cache, log } from '../../js/december.js';
 
 function genPattern(n) {
   let pattern = '0,1,0,-1'
@@ -9,7 +9,7 @@ function genPattern(n) {
   pattern.push(pattern.shift());
   return pattern;
 }
-const genPatternCached = December.cache(genPattern);
+const genPatternCached = cache(genPattern);
 
 function getMessage(input) {
   let output = input.split('');
@@ -25,14 +25,14 @@ function getMessage(input) {
       }
       signal.push(Math.abs(result) % 10);
     }
-    // December.log(signal.join(''));
+    // log(signal.join(''));
     output = signal;
   }
   return output.slice(0, 8).join('');
 }
 
 function getMessageOptimized(input) {
-  let signal = input.split('').map(December.toInt);
+  let signal = input.split('').map(toInt);
 
   for (let i = 0; i < 100; i++) {
     for (let j = signal.length; j--; ) {
@@ -50,7 +50,7 @@ export default {
   ],
   answer1: (puzzle) => getMessage(puzzle),
   answer2: (puzzle) => {
-    const offset = December.toInt(puzzle.slice(0, 7));
+    const offset = toInt(puzzle.slice(0, 7));
     const signal = getMessageOptimized(puzzle.repeat(10000).slice(offset));
     return signal;
   },

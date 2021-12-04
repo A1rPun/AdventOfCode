@@ -1,3 +1,4 @@
+import { toInt } from '../../js/december.js';
 import Astar from '../../js/astar.js';
 import Vector from '../../js/vector.js';
 
@@ -56,7 +57,7 @@ function day_3(puzzle) {
 
   const intersections = Object.entries(grid).reduce((acc, [key, point]) => {
     if (point[0] && point[1] && point[0].times >= 1 && point[1].times >= 1) {
-      const [x, y] = key.split('_').map(December.toInt);
+      const [x, y] = key.split('_').map(toInt);
       acc.push({ x, y, steps: point[0].length + point[1].length });
     }
     return acc;

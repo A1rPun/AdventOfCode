@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { range } from '../../js/december.js';
 
 const shuffles = {
   new: (deck) => deck.reverse(),
@@ -24,7 +24,7 @@ const shuffles = {
 };
 
 function shuffleDeck(puzzle, deckSize) {
-  let deck = December.range(deckSize);
+  let deck = range(deckSize);
 
   puzzle.split('\n').forEach((instruction) => {
     const parts = instruction.split(' ');

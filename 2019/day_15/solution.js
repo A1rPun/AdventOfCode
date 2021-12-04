@@ -1,3 +1,5 @@
+import IntCode from '../shared/intCode.js';
+
 const directions = {
   north: 1,
   south: 2,
@@ -19,7 +21,7 @@ const tiles = {
 };
 
 function answer1(memory) {
-  const computer = new December.IntCode(memory);
+  const computer = new IntCode(memory);
   const width = 50;
   const height = 50;
   const canvas = Array.from(Array(height), () =>

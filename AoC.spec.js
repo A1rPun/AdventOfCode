@@ -1,7 +1,7 @@
 import December from './js/december.js';
 import years from './module.js';
 
-December.log = () => {};
+// December.log = () => {};
 
 const exclude = [
   /* Add */

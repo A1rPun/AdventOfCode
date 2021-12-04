@@ -1,5 +1,5 @@
+import { count, range } from '../../js/december.js';
 import Vector from '../../js/vector.js';
-import December from '../../js/december.js';
 
 function hexToByte(h) {
   return parseInt(h, 16)
@@ -8,7 +8,7 @@ function hexToByte(h) {
 }
 
 function tieKnots(input, times = 64) {
-  let hash = December.range(256);
+  let hash = range(256);
   const l = hash.length;
   let hashIndex = 0;
   let skipSize = 0;
@@ -125,8 +125,8 @@ function floodFill(grid, startX, startY, oldVal, newVal) {
 }
 
 function day_14(puzzle) {
-  const rows = December.range(128).map((x) => rowHash(`${puzzle}-${x}`));
-  const answer1 = December.count(rows.join('\n'), '1');
+  const rows = range(128).map((x) => rowHash(`${puzzle}-${x}`));
+  const answer1 = count(rows.join('\n'), '1');
   const answer2 = findRegions(rows);
   return [answer1, answer2];
 }

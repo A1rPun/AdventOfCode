@@ -1,6 +1,6 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
-const parse = (puzzle) => puzzle.split('\n').map(December.toInt);
+const parse = (puzzle) => puzzle.split('\n').map(toInt);
 const hasIncrease = (measurement, index, list) => measurement < list[index + 1];
 const hasIncreaseSum = (measurement, index, list) =>
   measurement < list[index + 3];

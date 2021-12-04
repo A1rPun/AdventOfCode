@@ -1,6 +1,8 @@
+import IntCode from '../shared/intCode.js';
+
 const AND = '';
 
-// class SpringScript extends December.IntCode {
+// class SpringScript extends IntCode {
 //   constructor(memory) {
 //     super(memory);
 //     this.temp = false;

@@ -1,3 +1,6 @@
+import { range } from '../../js/december.js';
+import IntCode from '../shared/intCode.js';
+
 export default {
   title: 'Category Six',
   questions: [
@@ -5,11 +8,7 @@ export default {
     '',
   ],
   answer1: (puzzle) => {
-    const computers = December.range(
-      49,
-      0,
-      (x) => new December.IntCode(puzzle)
-    );
+    const computers = range(49, 0, (x) => new IntCode(puzzle));
     //
     return computers;
   },

@@ -1,3 +1,5 @@
+import { toInt } from '../../js/december.js';
+
 const hasAdjacentCharacters = (a, b) => a === b;
 const hasSequence = (a, b) => a <= b;
 const isPassword = (pass) => {
@@ -17,7 +19,7 @@ const isPassword = (pass) => {
 };
 
 function day_1(puzzle) {
-  const [min, max] = puzzle.split('-').map(December.toInt);
+  const [min, max] = puzzle.split('-').map(toInt);
   let answer1 = 0;
   let answer2 = 0;
 

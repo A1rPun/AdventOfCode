@@ -1,3 +1,5 @@
+import { prettify, toInt } from '../../js/december.js';
+
 function chunkString(str, length) {
   return str.match(new RegExp('.{1,' + length + '}', 'g'));
 }
@@ -7,7 +9,7 @@ function day_8(puzzle) {
   const height = 6;
 
   const layers = chunkString(puzzle, width * height).reduce((acc, cur) => {
-    acc.push(cur.split('').map(December.toInt));
+    acc.push(cur.split('').map(toInt));
     return acc;
   }, []);
 
@@ -30,13 +32,13 @@ function day_8(puzzle) {
   }, []);
 
   const answer1 = layerWithLeastZeroes[1] * layerWithLeastZeroes[2];
-  // TODO: Create better image and do it it one go (without December.prettify)
+  // TODO: Create better image and do it it one go (without prettify)
   const answer2 = image.reduce((all, one, i) => {
     const ch = Math.floor(i / width);
     all[ch] = [].concat(all[ch] || [], one);
     return all;
   }, []);
-  return [answer1, December.prettify(answer2)];
+  return [answer1, prettify(answer2)];
 }
 export default {
   title: 'Space Image Format',

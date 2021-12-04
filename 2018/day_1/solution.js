@@ -1,8 +1,8 @@
-import December from '../../js/december.js';
+import { sum, toInt } from '../../js/december.js';
 
 function day_1(puzzle) {
-  puzzle = puzzle.split('\n').map(December.toInt);
-  const answer1 = puzzle.reduce(December.sum);
+  puzzle = puzzle.split('\n').map(toInt);
+  const answer1 = puzzle.reduce(sum);
 
   let answer2;
   let i = 0;

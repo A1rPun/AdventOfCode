@@ -1,10 +1,10 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
 function createBagContents(contents) {
   return contents.reduce((acc, cur) => {
     if (cur !== 'no other bags.') {
       const [, amount, name] = cur.match(/(\d+) (\w+ \w+) bag/);
-      acc[name] = December.toInt(amount);
+      acc[name] = toInt(amount);
     }
     return acc;
   }, {});

@@ -1,3 +1,6 @@
+import { log } from '../../js/december.js';
+import IntCode from '../shared/intCode.js';
+
 const PATH = '#';
 
 function findNeighbours(grid, x, y) {
@@ -17,12 +20,12 @@ export default {
     'After visiting every part of the scaffold at least once, how much dust does the vacuum robot report it has collected?',
   ],
   answer1: (memory) => {
-    const outputs = new December.IntCode(memory).run();
+    const outputs = new IntCode(memory).run();
     const map = outputs.reduce(
       (acc, cur) => acc + (String.fromCharCode(cur) || 'X'),
       ''
     );
-    December.log(map);
+    log(map);
 
     const sumAlignmentParams = map
       .split('\n')
@@ -44,7 +47,7 @@ export default {
     return sumAlignmentParams;
   },
   answer2: (memory) => {
-    const computer = new December.IntCode(memory);
+    const computer = new IntCode(memory);
     computer.memory[0] = 2; // Wake up
     // computer.run();
     return;

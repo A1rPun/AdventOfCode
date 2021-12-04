@@ -1,9 +1,9 @@
-import December from '../../js/december.js';
+import { sum, log } from '../../js/december.js';
 
 class Component {
   constructor(portA, portB) {
     this.ports = [+portA, +portB];
-    this.strength = this.ports.reduce(December.sum);
+    this.strength = this.ports.reduce(sum);
   }
 }
 class Bridge {
@@ -59,7 +59,7 @@ function day_24(puzzle) {
     }, [])
     .map((x) => new Bridge(x));
 
-  //December.log(bridges.map(x => x.chain.reduce((acc, curr) => `${acc ? acc + ' =>' : ''} ${curr.ports.join('/')}`, '')).join('\n'));
+  //log(bridges.map(x => x.chain.reduce((acc, curr) => `${acc ? acc + ' =>' : ''} ${curr.ports.join('/')}`, '')).join('\n'));
   const answer1 = getMaxStrength(bridges);
   const longest = bridges.reduce(
     (acc, curr) => (acc < curr.chain.length ? curr.chain.length : acc),

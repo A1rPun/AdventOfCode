@@ -1,4 +1,6 @@
+import { prettify, toInt } from '../../js/december.js';
 import Vector from '../../js/vector.js';
+import IntCode from '../shared/intCode.js';
 
 const directions = {
   north: 1,
@@ -14,7 +16,7 @@ const colors = {
 
 class Painter {
   constructor(memory) {
-    this.computer = new December.IntCode(memory);
+    this.computer = new IntCode(memory);
     this.direction = directions.north;
     this.pos = new Vector();
   }
@@ -75,11 +77,11 @@ function answer2(memory) {
   );
 
   Object.entries(grid).forEach(([key, color]) => {
-    const [x, y] = key.split('_').map(December.toInt);
+    const [x, y] = key.split('_').map(toInt);
     canvas[y][x] = color;
   });
 
-  const prettified = December.prettify(canvas)
+  const prettified = prettify(canvas)
     .replace(/0/g, '.')
     .replace(/1/g, '#');
   return prettified;

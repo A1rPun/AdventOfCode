@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 
 function manhattan(a, b) {
   return Math.abs(a.x - b.x) + Math.abs(a.y - b.y) + Math.abs(a.z - b.z);
@@ -17,7 +17,7 @@ function inRadius(a, b) {
     */
 function day_23(puzzle) {
   const nanoBots = puzzle.split('\n').map((b) => {
-    const [x, y, z, radius] = December.getNumbers(b);
+    const [x, y, z, radius] = getNumbers(b);
     return { x, y, z, radius };
   });
   const strongestBot = nanoBots.reduce((a, b) => (a.radius > b.radius ? a : b));

@@ -1,9 +1,9 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 import Astar from '../../js/astar.js';
 
 function day_6(puzzle) {
   const coordinates = puzzle.split('\n').map((c, i) => {
-    const [x, y] = December.getNumbers(c);
+    const [x, y] = getNumbers(c);
     return { x, y, id: 65 + i };
   });
   const invalidChars = {};

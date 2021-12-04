@@ -1,5 +1,7 @@
+import { sum, toInt } from '../../js/december.js';
+
 const getFuel = (x) => Math.floor(x / 3) - 2;
-const getAnswer = (x, fn) => x.map(fn).reduce(December.sum);
+const getAnswer = (x, fn) => x.map(fn).reduce(sum);
 
 function doubleCheckAux(totalFuel, fuel) {
   const extraFuel = getFuel(fuel);
@@ -14,7 +16,7 @@ function doubleCheckFuel(x) {
 }
 
 function day_1(puzzle) {
-  const modules = puzzle.split('\n').map(December.toInt);
+  const modules = puzzle.split('\n').map(toInt);
   const answer1 = getAnswer(modules, getFuel);
   const answer2 = getAnswer(modules, doubleCheckFuel);
   return [answer1, answer2];

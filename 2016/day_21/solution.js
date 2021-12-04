@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { rotate, log } from '../../js/december.js';
 
 var actions = {
   swap: function(charArr, split) {
@@ -16,12 +16,12 @@ var actions = {
   },
   rotate: function(charArr, split) {
     if (split[1] === 'left') {
-      charArr = December.rotate(charArr, split[2]);
+      charArr = rotate(charArr, split[2]);
     } else if (split[1] === 'right') {
-      charArr = December.rotate(charArr, -split[2]);
+      charArr = rotate(charArr, -split[2]);
     } else {
       var x = charArr.indexOf(split[6]);
-      charArr = December.rotate(
+      charArr = rotate(
         charArr,
         -(1 + x + (+x > 3 ? 1 : 0)) % charArr.length
       );
@@ -60,7 +60,7 @@ function day_21(puzzle, animate) {
         answer1 = processInput(puzzle[i], answer1);
         i++;
         if (i < puzzle.length) {
-          December.log(answer1.join(''), true);
+          log(answer1.join(''), true);
           setTimeout(fn, interval);
         } else resolve(answer1.join(''));
       };

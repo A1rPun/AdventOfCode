@@ -1,11 +1,11 @@
-import December from '../../js/december.js';
+import { sum, toInt } from '../../js/december.js';
 
 function day_20(puzzle) {
   puzzle = puzzle.split('\n');
   puzzle.push(puzzle.length > 10 ? '4294967296-4294967296' : '10-10'); // MAX 4294967295
   puzzle = puzzle
     .map((x) => {
-      const [low, high] = x.split('-').map(December.toInt);
+      const [low, high] = x.split('-').map(toInt);
       return { low, high };
     })
     .sort((a, b) => a.low - b.low);
@@ -22,7 +22,7 @@ function day_20(puzzle) {
   });
 
   const answer1 = Math.min(...Object.keys(whitelist));
-  const answer2 = Object.values(whitelist).reduce(December.sum);
+  const answer2 = Object.values(whitelist).reduce(sum);
   return [answer1, answer2];
 }
 

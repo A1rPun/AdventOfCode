@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { sum, log } from '../../js/december.js';
 
 class Layout {
   constructor(grid) {
@@ -59,7 +59,7 @@ function gameOfBugs(puzzle) {
     states.set(layout.rating, layout);
     grid = nextState(grid);
   }
-  December.log(matchedState.grid.join(''));
+  log(matchedState.grid.join(''));
   return matchedState.rating;
 }
 
@@ -69,8 +69,8 @@ function gameOfBugsRecursive(puzzle, iter) {
     // TODO: lulzify
     grid = nextState(grid);
   }
-  December.log(grid.join(''));
-  return grid.reduce(December.sum);
+  log(grid.join(''));
+  return grid.reduce(sum);
 }
 
 export default {

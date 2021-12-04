@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 
 class Marble {
   constructor(value, previous, next) {
@@ -34,7 +34,7 @@ function getHighScore(playerCount, points) {
 }
 
 function day_9(puzzle) {
-  let [playerCount, points] = December.getNumbers(puzzle);
+  let [playerCount, points] = getNumbers(puzzle);
   const answer1 = getHighScore(playerCount, points);
   const answer2 = getHighScore(playerCount, points * 100);
   return [answer1, answer2];

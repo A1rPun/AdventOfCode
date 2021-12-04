@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
 const POSITION_MODE = '0';
 const IMMEDIATE_MODE = '1';
@@ -19,7 +19,7 @@ class IntCode {
   constructor(memory, ...input) {
     this.memory =
       typeof memory === 'string'
-        ? memory.split(',').map(December.toInt)
+        ? memory.split(',').map(toInt)
         : memory || [];
     this.input = input;
     this.outputs = [];

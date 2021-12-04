@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { sum } from '../../js/december.js';
 
 function day_25(puzzle) {
   let [nextState, steps, ...stateValues] = puzzle.match(
@@ -34,7 +34,7 @@ function day_25(puzzle) {
     tape[cursor] = current;
     cursor += move;
   }
-  const answer1 = Object.values(tape).reduce(December.sum);
+  const answer1 = Object.values(tape).reduce(sum);
   return [answer1,];
 }
 export default {

@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { count, rotate, log, prettify } from '../../js/december.js';
 
 var actions = {
   rect: {
@@ -23,7 +23,7 @@ var actions = {
     slice: 13,
     process: function (strip, input) {
       var point = input.slice(this.slice).split(' by ');
-      strip[point[0]] = December.rotate(strip[point[0]], -point[1]);
+      strip[point[0]] = rotate(strip[point[0]], -point[1]);
     },
   },
   rotateColumn: {
@@ -36,7 +36,7 @@ var actions = {
       var y = point[1];
       var arr = [];
       for (var i = 0; i < strip.length; i++) arr.push(strip[i][x]);
-      arr = December.rotate(arr, -y);
+      arr = rotate(arr, -y);
       for (var i = 0; i < strip.length; i++) strip[i][x] = arr[i];
     },
   },
@@ -71,21 +71,21 @@ function day_8(puzzle, animate) {
       var i = 0;
       var fn = function () {
         processInput(inputs[i], strip);
-        December.log(December.prettify(strip), true);
+        log(prettify(strip), true);
         i++;
         if (i < inputs.length) setTimeout(fn, interval);
         else
           resolve([
-            December.count(December.prettify(strip), '#'),
-            December.prettify(strip),
+            count(prettify(strip), '#'),
+            prettify(strip),
           ]);
       };
       setTimeout(fn, interval);
     } else {
       for (var i = 0; i < inputs.length; i++) processInput(inputs[i], strip);
       resolve([
-        December.count(December.prettify(strip), '#'),
-        December.prettify(strip),
+        count(prettify(strip), '#'),
+        prettify(strip),
       ]);
     }
   });

@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers } from '../../js/december.js';
 
 function findInObject(obj, select, keySelect = false) {
   let match;
@@ -36,7 +36,7 @@ class Guard {
 
 function day_4(puzzle) {
   puzzle = puzzle.split('\n');
-  const duties = puzzle.sort().map(December.getNumbers);
+  const duties = puzzle.sort().map(getNumbers);
 
   const guards = {};
   let currentGuard;

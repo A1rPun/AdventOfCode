@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { sum, toInt } from '../../js/december.js';
 
 function createNode(stream, nodes, parent = []) {
   const [childCount, metadataCount] = stream.splice(0, 2);
@@ -16,18 +16,18 @@ function createNode(stream, nodes, parent = []) {
           const child = node.childs[curr - 1];
           return acc + (child ? child.value : 0);
         }
-      : December.sum,
+      : sum,
     0
   );
   return stream;
 }
 
 function day_8(puzzle) {
-  const stream = puzzle.split(' ').map(December.toInt);
+  const stream = puzzle.split(' ').map(toInt);
   const nodes = [];
   createNode(stream, nodes);
   const answer1 = nodes.reduce(
-    (acc, curr) => acc + curr.metadata.reduce(December.sum),
+    (acc, curr) => acc + curr.metadata.reduce(sum),
     0
   );
   const answer2 = nodes[0].value;

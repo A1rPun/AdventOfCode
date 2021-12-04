@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { getNumbers, log } from '../../js/december.js';
 
 function Bot(number, low, high, lowCollection, highCollection) {
   this.number = number;
@@ -33,7 +33,7 @@ Bot.prototype = {
       this.lowCollection[this.low] = lowValue;
     }
 
-    if (lowValue === 17 && highValue === 61) December.log(this.number);
+    if (lowValue === 17 && highValue === 61) log(this.number);
   },
 };
 
@@ -44,7 +44,7 @@ function day_10(puzzle) {
 
   for (var i = 0; i < puzzle.length; i++) {
     var input = puzzle[i];
-    var nums = December.getNumbers(input);
+    var nums = getNumbers(input);
     if (input[0] === 'b') {
       var lowCollection = input.indexOf('low to bot') !== -1 ? bots : outputs;
       var highCollection = input.indexOf('high to bot') !== -1 ? bots : outputs;

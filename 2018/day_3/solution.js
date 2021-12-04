@@ -1,7 +1,7 @@
-import December from '../../js/december.js';
+import { getNumbers, toInt } from '../../js/december.js';
 
 function day_3(puzzle) {
-  puzzle = puzzle.split('\n').map(December.getNumbers);
+  puzzle = puzzle.split('\n').map(getNumbers);
 
   const stride = 1000;
   let answer1 = 0;
@@ -32,7 +32,7 @@ function day_3(puzzle) {
     return acc;
   }, []);
 
-  return [answer1, December.toInt(Object.keys(answer2)[0])];
+  return [answer1, toInt(Object.keys(answer2)[0])];
 }
 export default {
   title: 'No Matter How You Slice It',

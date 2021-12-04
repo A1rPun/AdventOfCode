@@ -1,8 +1,9 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
+import Device from '../shared/device.js';
 
 function answer(instructions, axiom) {
-  let pointer = December.toInt(instructions.shift().match(/(\d+)/g)[0]);
-  const device = new December.Device(axiom);
+  let pointer = toInt(instructions.shift().match(/(\d+)/g)[0]);
+  const device = new Device(axiom);
   while (device.memory[pointer] < instructions.length) {
     const [opCode, ...args] = instructions[device.memory[pointer]].split(' ');
     device[opCode](...args.map(Number));

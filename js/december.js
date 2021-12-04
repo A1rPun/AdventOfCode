@@ -1,33 +1,45 @@
-﻿const december = {
-  // Shared utility functions
-  cache: (fn) => {
-    const cache = new Map();
-    return (...args) => {
-      const cacheKey = args.join('');
-      if (cache.has(cacheKey)) return cache.get(cacheKey);
-      const result = fn(...args);
-      cache.set(cacheKey, result);
-      return result;
-    };
-  },
-  count: (str, char) => (str.match(new RegExp(char, 'g')) || []).length,
-  getNumbers: (str) => str.match(/-?\d+/g).map(december.toInt),
-  prettify: function(jagged, char) {
-    var result = '';
-    char = char || '';
-    for (var i = 0; i < jagged.length; i++)
-      result += jagged[i].join(char) + '\n';
+﻿export function cache(fn) {
+  const cache = new Map();
+  return (...args) => {
+    const cacheKey = args.join('');
+    if (cache.has(cacheKey)) return cache.get(cacheKey);
+    const result = fn(...args);
+    cache.set(cacheKey, result);
     return result;
-  },
-  range: (max, min = 0, mapFn) => {
-    const fn = mapFn ? (_, i) => mapFn(i + min) : (_, i) => i + min;
-    return Array.from(Array(max), fn);
-  },
-  // Rotate + = left, - = right
-  rotate: (arr, n) => arr.slice(n, arr.length).concat(arr.slice(0, n)),
-  sum: (a, b) => a + b,
-  toInt: (x) => parseInt(x, 10),
-  log: (...args) => console.log(...args),
-};
+  };
+}
 
-export default december;
+export function count(str, char) {
+  return (str.match(new RegExp(char, 'g')) || []).length;
+}
+
+export function getNumbers(str) {
+  return str.match(/-?\d+/g).map(toInt);
+}
+
+export function log(...args) {
+  // console.log(...args);
+}
+
+export function prettify(jagged, char) {
+  var result = '';
+  char = char || '';
+  for (var i = 0; i < jagged.length; i++) result += jagged[i].join(char) + '\n';
+  return result;
+}
+
+export function range(max, min = 0, mapFn) {
+  const fn = mapFn ? (_, i) => mapFn(i + min) : (_, i) => i + min;
+  return Array.from(Array(max), fn);
+}
+
+// Rotate + = left, - = right
+export function rotate(arr, n) {
+  return arr.slice(n, arr.length).concat(arr.slice(0, n));
+}
+
+export const sum = (a, b) => a + b;
+
+export function toInt(n) {
+  return parseInt(n, 10);
+}

@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { count } from '../../js/december.js';
 
 var TARP = '^';
 var SAFE = '.';
@@ -28,10 +28,10 @@ function day_18(puzzle) {
     floor.push(row);
 
     if (i === 38) {
-      answer1 = December.count(floor.join(''), '\\.');
+      answer1 = count(floor.join(''), '\\.');
     }
   }
-  const answer2 = December.count(floor.join(''), '\\.');
+  const answer2 = count(floor.join(''), '\\.');
   return [answer1, answer2];
 }
 

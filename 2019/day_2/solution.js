@@ -1,7 +1,10 @@
+import { toInt } from '../../js/december.js';
+import IntCode from '../shared/intCode.js';
+
 function createIntCode(memory, noun = 12, verb = 2) {
   memory[1] = noun;
   memory[2] = verb;
-  const computer = new December.IntCode(memory);
+  const computer = new IntCode(memory);
   computer.run();
   return computer.memory[0];
 }
@@ -24,8 +27,8 @@ export default {
     'Find the input noun and verb that cause the program to produce the output 19690720. What is 100 * noun + verb?',
   ],
   // Answers fail because the IntCode changed requirements for opCode 1, 2
-  answer1: (puzzle) => createIntCode(puzzle.split(',').map(December.toInt)),
-  answer2: (puzzle) => answer2(puzzle.split(',').map(December.toInt), 19690720),
+  answer1: (puzzle) => createIntCode(puzzle.split(',').map(toInt)),
+  answer2: (puzzle) => answer2(puzzle.split(',').map(toInt), 19690720),
   example: [
     // Examples fail because they don't have a noun and a verb
     // {

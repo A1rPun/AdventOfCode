@@ -1,7 +1,7 @@
-import December from '../../js/december.js';
+import { range } from '../../js/december.js';
 
 function tieKnots(input, times = 64) {
-  let hash = December.range(256);
+  let hash = range(256);
   const l = hash.length;
   let hashIndex = 0;
   let skipSize = 0;

@@ -1,3 +1,5 @@
+import { log } from '../../js/december.js';
+
 function day_14(puzzle) {
   return new Promise(function(resolve, reject) {
     if (Worker !== arguments[1337]) {
@@ -5,7 +7,7 @@ function day_14(puzzle) {
       var md5Worker = new Worker('/2016/day_14/day_14_worker.js');
       md5Worker.onmessage = function(e) {
         if (Array.isArray(e.data)) resolve(e.data);
-        else December.log(e.data);
+        else log(e.data);
       };
       md5Worker.onerror = function(e) {
         reject(e);

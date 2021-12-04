@@ -1,4 +1,4 @@
-import December from '../../js/december.js';
+import { toInt } from '../../js/december.js';
 
 const lineMatch = /(\d+)-(\d+) (\w): (\w+)/;
 
@@ -12,8 +12,8 @@ function answer1(line) {
 function answer2(line) {
   if (!line) return;
   const [, pos1, pos2, char, password] = line.match(lineMatch);
-  const check1 = password[December.toInt(pos1) - 1];
-  const check2 = password[December.toInt(pos2) - 1];
+  const check1 = password[toInt(pos1) - 1];
+  const check2 = password[toInt(pos2) - 1];
   return check1 !== check2 && (check1 === char || check2 === char);
 }
 
