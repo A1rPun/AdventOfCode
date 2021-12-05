@@ -25,10 +25,12 @@ export function log(...args) {
   sink(...args);
 }
 
-export function prettify(jagged, char) {
-  var result = '';
-  char = char || '';
-  for (var i = 0; i < jagged.length; i++) result += jagged[i].join(char) + '\n';
+export function prettify(jagged, char = '') {
+  let result = '';
+  
+  for (let i = 0; i < jagged.length; i++) {
+    result += jagged[i].join(char) + '\n';
+  }
   return result;
 }
 
@@ -39,7 +41,7 @@ export function range(max, min = 0, mapFn) {
 
 // Rotate + = left, - = right
 export function rotate(arr, n) {
-  return arr.slice(n, arr.length).concat(arr.slice(0, n));
+  return [...arr.slice(n, arr.length), ...arr.slice(0, n)];
 }
 
 export function setSink(fn) {

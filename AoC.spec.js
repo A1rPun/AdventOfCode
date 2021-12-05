@@ -20,6 +20,7 @@ const exclude = [
   [2017, 21],
   [2018, 6],
   [2018, 9],
+  [2019, 3],
   /* Slow */
   [2016, 16],
   [2016, 18],
@@ -51,8 +52,9 @@ async function handleAnswer(answer, input) {
 }
 
 days.forEach(async function (x) {
-  if (!x.title || exclude.find(([yy, dd]) => yy === x.year && dd === x.day))
+  if (!x.title || exclude.find(([yy, dd]) => yy === x.year && dd === x.day)) {
     return;
+  }
 
   x.example?.forEach(async function (example, s, { length }) {
     if (typeof example === 'string') {

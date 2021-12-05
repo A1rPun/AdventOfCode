@@ -127,8 +127,8 @@ async function handleAnswer(day, input) {
       ? [day.questions, day.questions]
       : day.questions;
 
-  logAnswer(questions[0], answer1, day.solutions[0], input);
-  logAnswer(questions[1], answer2, day.solutions[1], input);
+  await logAnswer(questions[0], answer1, day.solutions[0], input);
+  await logAnswer(questions[1], answer2, day.solutions[1], input);
 }
 
 async function handleExample(day, example) {
@@ -148,8 +148,12 @@ async function handleExample(day, example) {
   logCode(`${exampleInput}`);
   logCode();
 
-  if (solution1 !== undefined) logAnswer('', answer1, solution1, exampleInput);
-  if (solution2 !== undefined) logAnswer('', answer2, solution2, exampleInput);
+  if (solution1 !== undefined) {
+    await logAnswer('', answer1, solution1, exampleInput);
+  }
+  if (solution2 !== undefined) {
+    await logAnswer('', answer2, solution2, exampleInput);
+  }
 }
 
 function dayClick(day, dd) {
@@ -190,7 +194,7 @@ function dayClick(day, dd) {
     ans.addEventListener('click', async function () {
       clearCode();
       const input = await getInputForDay(day, dd);
-      handleAnswer(day, input);
+      await handleAnswer(day, input);
     });
     spanDay.appendChild(ans);
 
@@ -200,9 +204,9 @@ function dayClick(day, dd) {
       example.innerText = 'Show example';
       example.addEventListener('click', async function () {
         clearCode();
-        day.example.forEach(async function (example) {
-          return await handleExample(day, example);
-        });
+        for (let i = 0; i < day.example.length; i++) {
+          await handleExample(day, day.example[i])
+        }
       });
       spanDay.appendChild(example);
     }
@@ -228,9 +232,9 @@ function dayClick(day, dd) {
     const cheat = document.createElement('div');
     cheat.classList.add('click', 'hidden');
     cheat.innerText = 'Execute';
-    cheat.addEventListener('click', function () {
+    cheat.addEventListener('click', async function () {
       clearCode();
-      handleAnswer(day, custom.value);
+      await handleAnswer(day, custom.value);
     });
     spanDay.appendChild(cheat);
   };

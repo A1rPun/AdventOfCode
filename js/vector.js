@@ -31,6 +31,6 @@ class Vector {
   //   return Math.acos(this.dot(vec) / (this.norm() * vec.norm()));
   // }
 }
-Vector.fromKey = (key) => new Vector(...key.split('_'));
+// Vector.fromKey = (key) => new Vector(...key.split('_'));
 
 export default Vector;
