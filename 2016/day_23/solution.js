@@ -1,70 +1,61 @@
-var assembunny = {
-  cpy: function(register, values) {
-    var vals = values.split(' ');
-    var from = parseInt(vals[0]);
-    if (isNaN(from)) {
-      from = register[vals[0]];
-    }
-    register[vals[1]] = from;
-  },
-  inc: function(register, value) {
-    register[value]++;
-  },
-  dec: function(register, value) {
-    register[value]--;
-  },
-  jnz: function(register, values) {
-    var vals = values.split(' ');
-    var x = parseInt(vals[0]);
-    var y = parseInt(vals[1]);
-    var num = isNaN(x) ? y : x;
-    var check = register[vals[isNaN(x) ? 0 : 1]];
-    return check ? num : 0;
-  },
-  tgl: function(register, value, collection, i) {
-    var index = i + register[value];
-    if (index > collection.length) return;
-    var instruction = collection[index];
-    var values = instruction.slice(3);
+import assembunny from '../shared/assembunny.js';
 
-    if (values.length > 2) {
-      instruction = (instruction[0] === 'j' ? 'cpy' : 'jnz') + values;
-    } else {
-      instruction = (instruction[0] === 'i' ? 'dec' : 'inc') + values;
-    }
-    collection[index] = instruction;
-    /*
-            collection[index] = (values.length > 2
-                ? (instruction[0] === 'j' ? 'cpy' : 'jnz')
-                : (instruction[0] === 'i' ? 'dec' : 'inc')
-                ) + values;
-            */
-  },
-};
+function toggleLine(collection, index) {
+  let [opCode, ...args] = collection[index].split(' ');
 
-function day_23(puzzle) {
-  var register = {};
-  for (var i = 0; i < puzzle.length; ) {
-    var instruction = puzzle[i];
-    var code = instruction.slice(0, 3);
-    var skip = assembunny[code](register, instruction.slice(4), puzzle, i);
-    i += skip ? skip : 1;
+  if (args.length > 1) {
+    opCode = opCode === 'jnz' ? 'cpy' : 'jnz';
+  } else {
+    opCode = opCode === 'inc' ? 'dec' : 'inc';
   }
-  return register;
+  collection[index] = [opCode, ...args].join(' ');
+  return collection;
+}
+
+function answer(lines, registerA) {
+  const interpreter = new assembunny({ a: registerA });
+
+  for (let i = 0; i < lines.length; ) {
+    const [opCode, ...args] = lines[i].split(' ');
+
+    if (opCode === 'tgl') {
+      const index = i + interpreter.get(args[0]);
+
+      if (index < lines.length) {
+        lines = toggleLine(lines, index);
+      }
+      i++;
+    } else {
+      i += interpreter[opCode](...args);
+    }
+  }
+  return interpreter.get('a');
 }
 
 export default {
   title: 'Safe Cracking',
-  questions: 'What value should be sent to the safe?',
-  answer: day_23,
+  questions: [
+    'What value should be sent to the safe?',
+    'Anyway, what value should actually be sent to the safe?',
+  ],
+  answer1: (puzzle) => answer(puzzle.split('\n'), 7),
+  answer2: (puzzle) => {
+    const lines = puzzle.split('\n');
+    const replacer = `mul b d a${'\njnz 0'.repeat(5)}`.split('\n');
+    lines.splice(4, 6, ...replacer);
+    return answer(lines, 12);
+  },
   example: [
-    `cpy 2 a
+    {
+      input: `cpy 2 a
 tgl a
 tgl a
 tgl a
 cpy 1 a
 dec a
 dec a`,
+      solutions: [3, 3],
+    },
   ],
-  solutions: [],
+  solutions: [13468, 479010028],
 };

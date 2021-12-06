@@ -2,8 +2,15 @@ import { toInt } from '../../js/december.js';
 
 class assembunny {
   constructor(register = {}) {
-    this.register = register;
+    this.register = {
+      a: 0,
+      b: 0,
+      c: 0,
+      d: 0,
+      ...register,
+    };
   }
+
   cpy(value, letter) {
     let x = toInt(value);
 
@@ -36,6 +43,11 @@ class assembunny {
       y = this.register[value];
     }
     return x ? y : 1;
+  }
+
+  mul(x, y, z) {
+    this.register[z] = this.register[x] * this.register[y];
+    return 1;
   }
 
   get(letter) {
