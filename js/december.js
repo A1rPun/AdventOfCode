@@ -5,7 +5,7 @@
 export function cache(fn) {
   const cache = new Map();
   return (...args) => {
-    const cacheKey = args.join('');
+    const cacheKey = args.join('_');
     if (cache.has(cacheKey)) return cache.get(cacheKey);
     const result = fn(...args);
     cache.set(cacheKey, result);
@@ -42,6 +42,12 @@ export function range(max, min = 0, mapFn) {
 // Rotate + = left, - = right
 export function rotate(arr, n) {
   return [...arr.slice(n, arr.length), ...arr.slice(0, n)];
+}
+
+export function safeAdd(obj, index, value = 1) {
+  if (obj[index]) obj[index] += value;
+  else obj[index] = value;
+  return obj;
 }
 
 export function setSink(fn) {

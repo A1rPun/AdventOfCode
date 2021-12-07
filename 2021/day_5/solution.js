@@ -1,5 +1,5 @@
 import Vector from '../../js/vector.js';
-import { getNumbers } from '../../js/december.js';
+import { getNumbers, safeAdd } from '../../js/december.js';
 
 function parse(puzzle) {
   return puzzle.split('\n').map((x) => {
@@ -17,8 +17,7 @@ function drawLines(lines) {
 
     while (v.to.x + forX !== x || v.to.y + forY !== y) {
       const key = `${x}_${y}`;
-      if (!acc[key]) acc[key] = 0;
-      acc[key] += 1;
+      safeAdd(acc, key);
       x += forX;
       y += forY;
     }

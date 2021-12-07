@@ -1,11 +1,9 @@
+import { safeAdd } from '../../js/december.js';
+
 function day_2(puzzle) {
   puzzle = puzzle.split('\n');
   const boxIds = puzzle.map((x) =>
-    x.split('').reduce((acc, curr) => {
-      if (!acc[curr]) acc[curr] = 0;
-      acc[curr]++;
-      return acc;
-    }, {})
+    x.split('').reduce((r, x) => safeAdd(r, x), {})
   );
   const letterCount = boxIds.reduce(
     (acc, curr) => {

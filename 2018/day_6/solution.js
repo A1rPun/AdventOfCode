@@ -1,4 +1,4 @@
-import { getNumbers } from '../../js/december.js';
+import { getNumbers, safeAdd } from '../../js/december.js';
 import Astar from '../../js/astar.js';
 
 function day_6(puzzle) {
@@ -30,13 +30,10 @@ function day_6(puzzle) {
     }
   }
 
-  const letters = grid.reduce((acc, curr) => {
-    if (!invalidChars[curr]) {
-      if (!acc[curr]) acc[curr] = 0;
-      acc[curr]++;
-    }
-    return acc;
-  }, {});
+  const letters = grid.reduce(
+    (acc, curr) => (invalidChars[curr] ? acc : safeAdd(acc, curr)),
+    {}
+  );
 
   const answer1 = Math.max(...Object.values(letters));
   return [answer1, answer2];

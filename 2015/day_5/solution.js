@@ -1,4 +1,4 @@
-import { log } from '../../js/december.js';
+import { log, safeAdd } from '../../js/december.js';
 
 var vowels = ['a', 'e', 'i', 'o', 'u'];
 var avoid = ['ab', 'cd', 'pq', 'xy'];
@@ -27,8 +27,8 @@ function naughtOrNice2(string) {
         string[j] === string[j + 3])
     ) {
       var pair = string[j] + string[j + 1];
-      if (!pairs[pair]) pairs[pair] = 0;
-      pairs[pair]++;
+      safeAdd(pairs, pair);
+
       if (pairs[pair] > 1) {
         log(string, pair);
         hasMultiplePairs = true;

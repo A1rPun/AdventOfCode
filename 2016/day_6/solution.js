@@ -1,10 +1,10 @@
+import { safeAdd } from '../../js/december.js';
+
 function getHighestCount(name, asc) {
   var commons = {};
   // Count all occurences in the name
   for (var i = 0; i < name.length; i++) {
-    var key = name[i];
-    if (!commons.hasOwnProperty(key)) commons[key] = 0;
-    commons[key]++;
+    safeAdd(commons, name[i]);
   }
   // Create a most common checksum
   var mostCommons = [];

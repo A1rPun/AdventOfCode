@@ -1,4 +1,4 @@
-import { prettify, toInt } from '../../js/december.js';
+import { prettify, toInt, safeAdd } from '../../js/december.js';
 
 function chunkString(str, length) {
   return str.match(new RegExp('.{1,' + length + '}', 'g'));
@@ -14,11 +14,7 @@ function day_8(puzzle) {
   }, []);
 
   const pixelCount = layers.map((x) => {
-    return x.reduce((acc, cur) => {
-      if (!acc[cur]) acc[cur] = 1;
-      else acc[cur]++;
-      return acc;
-    }, {});
+    return x.reduce((r, x) => safeAdd(r, x), {});
   });
   const layerWithLeastZeroes = pixelCount.sort((a, b) => a[0] - b[0])[0];
 
