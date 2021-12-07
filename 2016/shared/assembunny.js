@@ -50,6 +50,16 @@ class assembunny {
     return 1;
   }
 
+  out(calue) {
+    let x = toInt(value);
+
+    if (isNaN(x)) {
+      x = this.register[value];
+    }
+    console.log(x);
+    return 1;
+  }
+
   get(letter) {
     return this.register[letter];
   }
