@@ -17,6 +17,12 @@ export function count(str, char) {
   return (str.match(new RegExp(char, 'g')) || []).length;
 }
 
+export function createSquareGrid(size = 1, fn = () => 0) {
+  return [...Array(size)].map((_, y) =>
+    [...Array(size)].map((_, x) => fn(x, y))
+  );
+}
+
 export function getNumbers(str) {
   return str.match(/-?\d+/g).map(toInt);
 }
@@ -27,7 +33,7 @@ export function log(...args) {
 
 export function prettify(jagged, char = '') {
   let result = '';
-  
+
   for (let i = 0; i < jagged.length; i++) {
     result += jagged[i].join(char) + '\n';
   }
