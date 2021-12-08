@@ -6,7 +6,7 @@ function costFuel(puzzle, fn) {
   const max = Math.max(...crabs);
   const fuels = [];
 
-  for (let i = min; i < max; i++) {
+  for (let i = min; i <= max; i++) {
     const total = crabs.map(x => fn(x, i)).reduce(sum);
     fuels.push(total);
   }
@@ -18,7 +18,7 @@ function simpleFuel(x, n) {
 }
 
 function betterFuel(x, n) {
-  const diff = Math.abs(x - n);
+  const diff = simpleFuel(x, n);
   return (diff + 1) * (diff / 2);
 }
 
