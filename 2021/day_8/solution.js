@@ -1,3 +1,29 @@
+import { toInt } from '../../js/december.js';
+
+function find1478(digit) {
+  return digit.length !== 5 && digit.length !== 6;
+}
+
+function getNumber(digit, mapping) {
+  if (digit.length === 2) return 1;
+  if (digit.length === 3) return 7;
+  if (digit.length === 4) return 4;
+  if (digit.length === 5) return find5Length(digit, mapping);
+  if (digit.length === 6) return find6Length(digit, mapping);
+  if (digit.length === 7) return 8;
+  return 0;
+}
+
+function find5Length(digit, mapping, letter2 = 'g', letter5 = 'e') {
+  if (digit.includes(letter2)) return 2;
+  return digit.includes(letter5) ? 5 : 3;
+}
+
+function find6Length(digit, mapping, letter6 = 'a', letter0 = 'f') {
+  if (!digit.includes(letter6)) return 6;
+  return !digit.includes(letter0) ? 0 : 9;
+}
+
 export default {
   title: 'Seven Segment Search',
   questions: [
@@ -6,17 +32,17 @@ export default {
   ],
   answer1: (puzzle) => {
     return puzzle.split('\n').reduce((acc, cur) => {
-      const [, last] = cur.split(' | ');
-      const count = last.split(' ').filter((x) => x.length !== 5 && x.length !== 6).length;
+      const [, tail] = cur.split(' | ');
+      const count = tail.split(' ').filter(find1478).length;
       return acc + count;
-    });
+    }, 0);
   },
   answer2: (puzzle) => {
     return puzzle.split('\n').reduce((acc, cur) => {
-      const [, last] = cur.split(' | ');
-      const count = last.split(' ').filter((x) => x.length !== 5 && x.length !== 6).length;
-      return acc + count;
-    })
+      const [head, tail] = cur.split(' | ');
+      const numbers = tail.split(' ').map((x) => getNumber(x, head));
+      return acc + toInt(numbers.join(''));
+    }, 0);
   },
   example: [
     {
@@ -30,8 +56,12 @@ dbcfg fgd bdegcaf fgec aegbdf ecdfab fbedc dacgb gdcebf gf | cefg dcbef fcge gbc
 bdfegc cbegaf gecbf dfcage bdacg ed bedf ced adcbefg gebcd | ed bcgafe cdgba cbgef
 egadfb cdbfeg cegd fecab cgb gbdefca cg fgcdab egfdb bfceg | gbdfcae bgc cg cgb
 gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce`,
-      solutions: [26],
+      solutions: [26, 61229],
+    },
+    {
+      input: `acedgfb cdfbe gcdfa fbcad dab cefabd cdfgeb eafb cagedb ab | cdfeb fcadb cdfeb cdbaf`,
+      solutions: [0, 5353],
     },
   ],
-  solutions: [],
+  solutions: [390],
 };
