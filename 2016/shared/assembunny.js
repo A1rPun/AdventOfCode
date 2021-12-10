@@ -9,6 +9,7 @@ class assembunny {
       d: 0,
       ...register,
     };
+    this.values = [];
   }
 
   cpy(value, letter) {
@@ -50,13 +51,13 @@ class assembunny {
     return 1;
   }
 
-  out(calue) {
+  out(value) {
     let x = toInt(value);
 
     if (isNaN(x)) {
       x = this.register[value];
     }
-    console.log(x);
+    this.values.push(x);
     return 1;
   }
 
