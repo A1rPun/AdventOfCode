@@ -5,7 +5,7 @@ function day_5(doorId, animate) {
     if (Worker !== arguments[1337]) {
       // lamest undefined check ever
       var count = 0;
-      var md5Worker = new Worker('/2016/day_5/day_5_worker.js');
+      var md5Worker = new Worker('/2016/day_05/day_5_worker.js');
       md5Worker.onmessage = function(e) {
         if (e.data.length === 2) resolve(e.data);
         else if (animate) logz(e.data);

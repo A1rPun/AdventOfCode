@@ -1,7 +1,7 @@
 function day_4(puzzle) {
   return new Promise(function(resolve, reject) {
     if (Worker !== undefined) {
-      var md5Worker = new Worker('/2015/day_4/day_4_worker.js');
+      var md5Worker = new Worker('/2015/day_04/day_4_worker.js');
       md5Worker.onmessage = function(e) {
         if (e.data.length === 2) resolve(e.data);
       };

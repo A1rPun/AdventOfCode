@@ -258,7 +258,7 @@ function setDayTitle(el, day, dd) {
 
 async function getInputForDay(day, dd) {
   if (day.input) return day.input;
-  const res = await fetch(`${2015 + currentYear}/day_${dd}/input`);
+  const res = await fetch(`${2015 + currentYear}/day_${dd.toString().padStart(2, '0')}/input`);
   const input = await res.text();
   return input.trim();
 }

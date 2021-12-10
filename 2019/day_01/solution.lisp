@@ -27,7 +27,7 @@
   (reduce #'+ (mapcar 'double-check-fuel modules)))
 
 (defun main ()
-  (let ((modules (mapcar 'parse-integer (read-file-as-lines "~/projects/git/AdventOfCode/2019/day_1/input"))))
+  (let ((modules (mapcar 'parse-integer (read-file-as-lines "~/projects/git/AdventOfCode/2019/day_01/input"))))
     ;(time (part1 modules))
     (time (part2 modules))
     ))
