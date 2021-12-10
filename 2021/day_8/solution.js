@@ -1,27 +1,48 @@
 import { toInt } from '../../js/december.js';
 
+const digit1Length = 2;
+const digit4Length = 4;
+const digit7Length = 3;
+
 function find1478(digit) {
   return digit.length !== 5 && digit.length !== 6;
 }
 
 function getNumber(digit, mapping) {
-  if (digit.length === 2) return 1;
-  if (digit.length === 3) return 7;
-  if (digit.length === 4) return 4;
+  if (digit.length === digit1Length) return 1;
+  if (digit.length === digit7Length) return 7;
+  if (digit.length === digit4Length) return 4;
   if (digit.length === 5) return find5Length(digit, mapping);
   if (digit.length === 6) return find6Length(digit, mapping);
-  if (digit.length === 7) return 8;
-  return 0;
+  return 8;
 }
 
-function find5Length(digit, mapping, letter2 = 'g', letter5 = 'e') {
-  if (digit.includes(letter2)) return 2;
-  return digit.includes(letter5) ? 5 : 3;
+function find5Length(digit, mapping) {
+  const splitted = mapping.split(' ');
+
+  const digit1 = splitted.find(x => x.length === digit1Length);
+  if (deepIncludes(digit1, digit)) return 3;
+
+  const digit4 = splitted.find(x => x.length === digit4Length);
+  return deepIncludesCount(digit4, digit) === 3 ? 5 : 2;
 }
 
-function find6Length(digit, mapping, letter6 = 'a', letter0 = 'f') {
-  if (!digit.includes(letter6)) return 6;
-  return !digit.includes(letter0) ? 0 : 9;
+function find6Length(digit, mapping) {
+  const splitted = mapping.split(' ');
+
+  const digit4 = splitted.find(x => x.length === digit4Length);
+  if (deepIncludes(digit4, digit)) return 9;
+
+  const digit1 = splitted.find(x => x.length === digit1Length);
+  return deepIncludes(digit1, digit) ? 0 : 6;
+}
+
+function deepIncludes(needle, haystack) {
+  return needle.split('').every((x) => haystack.includes(x));
+}
+
+function deepIncludesCount(needle, haystack) {
+  return needle.split('').filter((x) => haystack.includes(x)).length;
 }
 
 export default {
@@ -32,16 +53,16 @@ export default {
   ],
   answer1: (puzzle) => {
     return puzzle.split('\n').reduce((acc, cur) => {
-      const [, tail] = cur.split(' | ');
-      const count = tail.split(' ').filter(find1478).length;
+      const [, output] = cur.split(' | ');
+      const count = output.split(' ').filter(find1478).length;
       return acc + count;
     }, 0);
   },
   answer2: (puzzle) => {
     return puzzle.split('\n').reduce((acc, cur) => {
-      const [head, tail] = cur.split(' | ');
-      const numbers = tail.split(' ').map((x) => getNumber(x, head));
-      return acc + toInt(numbers.join(''));
+      const [signals, output] = cur.split(' | ');
+      const outputValues = output.split(' ').map((x) => getNumber(x, signals));
+      return acc + toInt(outputValues.join(''));
     }, 0);
   },
   example: [
@@ -63,5 +84,5 @@ gcafb gcf dcaebfg ecagb gf abcdeg gaef cafbge fdbac fegbdc | fgae cfgab fg bagce
       solutions: [0, 5353],
     },
   ],
-  solutions: [390],
+  solutions: [390, 1011785],
 };
