@@ -41,11 +41,11 @@ function autoComplete(line) {
       stack.push(x);
     }
   }
-  return stack.reverse().join('');
+  return stack.reverse();
 }
 
 function getScore(completion) {
-  return completion.split('').reduce((a, b) => a * 5 + starts[b], 0);
+  return completion.reduce((a, b) => a * 5 + starts[b], 0);
 }
 
 export default {
