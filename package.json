@@ -1,10 +1,10 @@
 {
-  "name": "AdventOfCode",
+  "name": "advent-of-code",
   "version": "1.0.0",
   "description": ":christmas_tree: My take on the challenges :trophy:",
   "main": "js/main.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest AoC.spec.js"
   },
   "type": "module",
   "devDependencies": {
