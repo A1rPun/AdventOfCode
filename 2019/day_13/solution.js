@@ -50,7 +50,7 @@ export default {
   },
   example: [
     // {
-    //   input: 123456789,
+    //   input: ``,
     //   solutions: [],
     // },
   ],

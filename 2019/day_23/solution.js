@@ -15,7 +15,7 @@ export default {
   answer2: (puzzle) => {},
   example: [
     // {
-    //   input: 123456789,
+    //   input: ``,
     //   solutions: [],
     // },
   ],
