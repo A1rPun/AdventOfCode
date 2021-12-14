@@ -50,6 +50,7 @@ async function getAnswer(x) {
     const a1 = await handleAnswer(x.answer1, input);
     console.log(a1 === s1 ? 'Perfect' : 'Hopeful');
     console.log(a1);
+    console.log(s1);
   }
 
   if (x.answer2) {
@@ -57,6 +58,7 @@ async function getAnswer(x) {
     const a2 = await handleAnswer(x.answer2, input);
     console.log(a2 === s2 ? 'Perfect' : 'Hopeful');
     console.log(a2);
+    console.log(s2);
   }
 
   if (x.answer) { 
@@ -64,7 +66,9 @@ async function getAnswer(x) {
     const [a1, a2] = await handleAnswer(x.answer, input);
     console.log(a1 === s1 ? 'Perfect' : 'Hopeful');
     console.log(a1);
+    console.log(s1);
     console.log(a2 === s2 ? 'Perfect' : 'Hopeful');
     console.log(a2);
+    console.log(s2);
   }
 }
