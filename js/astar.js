@@ -1,37 +1,42 @@
-﻿var abs = Math.abs;
-var max = Math.max;
-var pow = Math.pow;
-var sqrt = Math.sqrt;
+﻿const abs = Math.abs;
+const max = Math.max;
+const pow = Math.pow;
+const sqrt = Math.sqrt;
 
-function p47hF1nd3r(grid, tiles) {
-  this.setGrid(grid);
-  this.setAcceptableTiles(tiles);
-}
+class p47hF1nd3r {
+  constructor(grid, tiles) {
+    this.setGrid(grid);
+    this.setAcceptableTiles(tiles);
+  }
 
-p47hF1nd3r.prototype = {
-  setAcceptableTiles: function(acceptableTiles) {
+  setAcceptableTiles(acceptableTiles) {
     this.acceptableTiles = acceptableTiles || [0];
-  },
-  setGrid: function(level) {
+  }
+
+  setGrid(level) {
     this.grid = level || [[]];
     this.worldHeight = level.length;
     this.worldWidth = level[0].length;
     this.worldSize = this.worldHeight * this.worldWidth;
-  },
-  ManhattanDistance: function(Point, Goal) {
+  }
+
+  static ManhattanDistance(Point, Goal) {
     // linear movement - no diagonals - just cardinal directions (NSEW)
     return abs(Point.x - Goal.x) + abs(Point.y - Goal.y);
-  },
-  DiagonalDistance: function(Point, Goal) {
+  }
+
+  static DiagonalDistance(Point, Goal) {
     // diagonal movement - assumes diag dist is 1, same as cardinals
     return max(abs(Point.x - Goal.x), abs(Point.y - Goal.y));
-  },
-  EuclideanDistance: function(Point, Goal) {
+  }
+
+  static EuclideanDistance(Point, Goal) {
     // diagonals are considered a little farther than cardinal directions
     return sqrt(pow(Point.x - Goal.x, 2) + pow(Point.y - Goal.y, 2));
-  },
-  Neighbours: function(x, y) {
-    var N = y - 1,
+  }
+
+  Neighbours(x, y) {
+    const N = y - 1,
       S = y + 1,
       E = x + 1,
       W = x - 1,
@@ -46,8 +51,9 @@ p47hF1nd3r.prototype = {
     if (myS) result.push({ x: x, y: S });
     if (myW) result.push({ x: W, y: y });
     return result;
-  },
-  DiagonalNeighbours: function(myN, myS, myE, myW, N, S, E, W, result) {
+  }
+
+  DiagonalNeighbours(myN, myS, myE, myW, N, S, E, W, result) {
     if (myN) {
       if (myE && this.canWalkHere(E, N)) result.push({ x: E, y: N });
       if (myW && this.canWalkHere(W, N)) result.push({ x: W, y: N });
@@ -56,8 +62,9 @@ p47hF1nd3r.prototype = {
       if (myE && this.canWalkHere(E, S)) result.push({ x: E, y: S });
       if (myW && this.canWalkHere(W, S)) result.push({ x: W, y: S });
     }
-  },
-  DiagonalNeighboursFree: function(myN, myS, myE, myW, N, S, E, W, result) {
+  }
+
+  DiagonalNeighboursFree(myN, myS, myE, myW, N, S, E, W, result) {
     myN = N > -1;
     myS = S < this.worldHeight;
     myE = E < this.worldWidth;
@@ -70,18 +77,20 @@ p47hF1nd3r.prototype = {
       if (myN && this.canWalkHere(W, N)) result.push({ x: W, y: N });
       if (myS && this.canWalkHere(W, S)) result.push({ x: W, y: S });
     }
-  },
-  canWalkHere: function(x, y) {
+  }
+
+  canWalkHere(x, y) {
     return (
       this.grid &&
       this.grid[y] &&
       this.acceptableTiles.indexOf(this.grid[y][x]) !== -1
     );
-  },
-  findPath: function(pathStart, pathEnd) {
-    var distanceFunction = this.ManhattanDistance;
-    var findNeighbours = function() {};
-    var a = this;
+  }
+
+  findPath(pathStart, pathEnd) {
+    const distanceFunction = this.ManhattanDistance;
+    const findNeighbours = () => {};
+    const a = this;
     function Node(Parent, Point) {
       return {
         Parent: Parent,
@@ -92,16 +101,17 @@ p47hF1nd3r.prototype = {
         g: 0,
       };
     }
-    var mypathStart = Node(null, { x: pathStart[0], y: pathStart[1] });
-    var mypathEnd = Node(null, { x: pathEnd[0], y: pathEnd[1] });
-    var AStar = [];
-    var Open = [mypathStart];
-    var Closed = [];
-    var result = [];
-    var myNeighbours;
-    var myNode;
-    var myPath;
-    var length, max, min, i, j;
+    const mypathStart = Node(null, { x: pathStart[0], y: pathStart[1] });
+    const mypathEnd = Node(null, { x: pathEnd[0], y: pathEnd[1] });
+    let AStar = [];
+    let Open = [mypathStart];
+    let Closed = [];
+    let result = [];
+    let myNeighbours;
+    let myNode;
+    let myPath;
+    let length, max, min, i, j;
+
     while ((length = Open.length)) {
       max = this.worldSize;
       min = -1;
@@ -134,26 +144,27 @@ p47hF1nd3r.prototype = {
       }
     }
     return result;
-  },
-};
+  }
+}
+
 export default p47hF1nd3r;
 /*
 // alternate heuristics
 
 // diagonals allowed but no sqeezing through cracks:
-var distanceFunction = DiagonalDistance;
-var findNeighbours = DiagonalNeighbours;
+const distanceFunction = DiagonalDistance;
+const findNeighbours = DiagonalNeighbours;
 
 // diagonals and squeezing through cracks allowed:
-var distanceFunction = DiagonalDistance;
-var findNeighbours = DiagonalNeighboursFree;
+const distanceFunction = DiagonalDistance;
+const findNeighbours = DiagonalNeighboursFree;
 
 // euclidean but no squeezing through cracks:
-var distanceFunction = EuclideanDistance;
-var findNeighbours = DiagonalNeighbours;
+const distanceFunction = EuclideanDistance;
+const findNeighbours = DiagonalNeighbours;
 
 // euclidean and squeezing through cracks allowed:
-var distanceFunction = EuclideanDistance;
-var findNeighbours = DiagonalNeighboursFree;
+const distanceFunction = EuclideanDistance;
+const findNeighbours = DiagonalNeighboursFree;
 
 */

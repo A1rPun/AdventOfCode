@@ -1,5 +1,5 @@
 import { getNumbers, safeAdd } from '../../js/december.js';
-import Astar from '../../js/astar.js';
+import AStar from '../../js/astar.js';
 
 function day_6(puzzle) {
   const coordinates = puzzle.split('\n').map((c, i) => {

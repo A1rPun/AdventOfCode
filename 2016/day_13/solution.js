@@ -1,5 +1,5 @@
 import { count, log, prettify } from '../../js/december.js';
-import Astar from '../../js/astar.js';
+import AStar from '../../js/astar.js';
 
 function getTile(x, y, num) {
   var sum = x * x + 3 * x + 2 * x * y + y + y * y + num;

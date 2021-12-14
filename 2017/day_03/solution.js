@@ -1,4 +1,4 @@
-import Astar from '../../js/astar.js';
+import AStar from '../../js/astar.js';
 import Vector from '../../js/vector.js';
 
 function generateSpiralGrid(count) {
