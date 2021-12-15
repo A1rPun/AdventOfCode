@@ -88,7 +88,7 @@ class p47hF1nd3r {
   }
 
   findPath(pathStart, pathEnd) {
-    const distanceFunction = this.ManhattanDistance;
+    const distanceFunction = p47hF1nd3r.ManhattanDistance;
     const findNeighbours = () => {};
     const a = this;
     function Node(Parent, Point) {
