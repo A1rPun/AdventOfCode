@@ -1,14 +1,18 @@
 import { safeAdd } from '../../js/december.js';
 
-function countOccurrence(str) {
-  const dict = {};
-  for (let i = 0; i < str.length; i++) safeAdd(dict, str[i]);
-  return dict;
+function solve(puzzle, steps = 10) {
+  const [template, pairs] = parse(puzzle);
+  const pairCounts = createEmptyObject(pairs);
+
+  init(pairCounts, template);
+  grow(pairCounts, pairs, steps);
+
+  return getQuantity(pairCounts);
 }
 
 function parse(puzzle) {
-  const [axiom, abc] = puzzle.split('\n\n');
-  const pairs = abc.split('\n').reduce((acc, cur) => {
+  const [axiom, mapping] = puzzle.split('\n\n');
+  const pairs = mapping.split('\n').reduce((acc, cur) => {
     const [pair, insert] = cur.split(' -> ');
     acc[pair] = insert;
     return acc;
@@ -16,30 +20,43 @@ function parse(puzzle) {
   return [axiom, pairs];
 }
 
-function insertPairs(pairs, polymer) {
-  let newstr = '';
-  for (let j = 0; j < polymer.length; j++) {
-    newstr += polymer[j];
-
-    const pair = `${polymer[j]}${polymer[j + 1]}`;
-
-    if (pairs[pair]) newstr += `${pairs[pair]}`;
-    else if (polymer[j + 1]) newstr += polymer[j + 1];
-  }
-  return newstr;
+function createEmptyObject(obj) {
+  const result = {};
+  for (const key in obj) result[key] = 0;
+  return result;
 }
 
-function solve(puzzle, num = 10) {
-  let [polymer, pairs] = parse(puzzle);
-
-  for (let i = 0; i < num; i++) {
-    polymer = insertPairs(pairs, polymer);
+function init(pairCounts, template) {
+  for (let i = 0; i < template.length - 1; i++) {
+    pairCounts[template[i] + template[i + 1]]++;
   }
-  const counts = countOccurrence(polymer);
+}
 
-  const values = Object.values(counts);
-  const max = Math.max(...values);
-  const min = Math.min(...values);
+function grow(pairCounts, pairs, steps) {
+  while (steps--) {
+    const counts = { ...pairCounts };
+
+    for (const pair in pairs) {
+      const [a, b] = pair;
+      const pairCount = counts[pair];
+      pairCounts[pair] -= pairCount;
+      pairCounts[a + pairs[pair]] += pairCount;
+      pairCounts[pairs[pair] + b] += pairCount;
+    }
+  }
+}
+
+function getQuantity(pairCounts) {
+  const counts = {};
+
+  for (const [[a, b], count] of Object.entries(pairCounts)) {
+    safeAdd(counts, a, count);
+    safeAdd(counts, b, count);
+  }
+
+  const nums = Object.values(counts);
+  const max = Math.round(Math.max(...nums) / 2);
+  const min = Math.round(Math.min(...nums) / 2);
 
   return max - min;
 }
@@ -75,5 +92,5 @@ CN -> C`,
       solutions: [1588, 2188189693529],
     },
   ],
-  solutions: [2891],
+  solutions: [2891, 4607749009683],
 };
