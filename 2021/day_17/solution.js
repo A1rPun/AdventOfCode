@@ -8,7 +8,7 @@ class Probe {
     this.positions = [];
   }
 
-  move(){
+  move() {
     this.pos.add(this.velocity);
     this.velocity.y--;
 
@@ -16,21 +16,23 @@ class Probe {
       this.velocity.x += this.velocity.x > 0 ? -1 : 1;
     }
 
-    this.positions.push({...this.pos});
+    this.positions.push({ ...this.pos });
   }
 }
 
-function highestY(startX, endX, endY, startY, x, y){
+function highestY(startX, endX, endY, startY, x, y) {
   const probe = new Probe(x, y);
 
   while (probe.pos.x < endX && probe.pos.y > endY) {
     probe.move();
 
-    if (probe.pos.x <= endX &&
+    if (
+      probe.pos.x <= endX &&
       probe.pos.y >= endY &&
       probe.pos.x >= startX &&
-      probe.pos.y <= startY) {
-      return Math.max(...probe.positions.map(pos => pos.y));
+      probe.pos.y <= startY
+    ) {
+      return Math.max(...probe.positions.map((pos) => pos.y));
     }
   }
 }
@@ -46,10 +48,10 @@ export default {
     let highest = 0;
     const range = 200;
 
-    for(let y = 1; y < range; y++){
-      for(let x = 1; x < range; x++){  
+    for (let y = 1; y < range; y++) {
+      for (let x = 1; x < range; x++) {
         const yval = highestY(startX, endX, endY, startY, x, y);
-        if(highest < yval) highest = yval;
+        if (highest < yval) highest = yval;
       }
     }
     return highest;
@@ -59,10 +61,10 @@ export default {
     let count = 0;
     const range = 200;
 
-    for(let y = -range; y < range; y++){
-      for(let x = -range; x < range; x++){  
+    for (let y = -range; y < range; y++) {
+      for (let x = -range; x < range; x++) {
         const yval = highestY(startX, endX, endY, startY, x, y);
-        if(yval !== undefined) count++;
+        if (yval !== undefined) count++;
       }
     }
     return count;
