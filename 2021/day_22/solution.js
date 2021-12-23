@@ -1,17 +1,11 @@
 import { getNumbers } from '../../js/december.js';
+import Vector from '../../js/vector.js';
 
-function parse(puzzle) {
-  return puzzle.split('\n').map((x) => {
-    const [status] = x.split(' ');
-    return [status === 'on', ...getNumbers(x)];
-  });
+function parse(lines) {
+  return lines.map((x) => [x.split(' ')[0] === 'on', ...getNumbers(x)]);
 }
 
-function solve(
-  puzzle,
-  min = Number.MIN_SAFE_INTEGER,
-  max = Number.MAX_SAFE_INTEGER
-) {
+function bruteForce(puzzle, min = -50, max = 50) {
   const lines = parse(puzzle);
   const grid = lines.reduce(
     (acc, [status, minX, maxX, minY, maxY, minZ, maxZ]) => {
@@ -24,23 +18,39 @@ function solve(
 
       for (let z = minZ; z <= maxZ; z++)
         for (let y = minY; y <= maxY; y++)
-          for (let x = minX; x <= maxX; x++) {
+          for (let x = minX; x <= maxX; x++)
             acc[`${x}_${y}_${z}`] = status;
-          }
+
       return acc;
     },
     {}
   );
-
   return Object.values(grid).filter((x) => x).length;
+}
+
+function solve(puzzle) {
+  const lines = parse(puzzle);
+  const cuboids = lines.map(([status, minX, maxX, minY, maxY, minZ, maxZ]) => {
+    return {
+      status,
+      min: new Vector(minX, minY, minZ),
+      max: new Vector(maxX, maxY, maxZ),
+      // size: (maxX + 1 - minX) * (maxY + 1 - minY) * (maxZ + 1 - minZ),
+    };
+  });
+
+  return cuboids;
 }
 
 export default {
   title: 'Reactor Reboot',
-  questions: ['How many cubes are on?', 'How many cubes are on?'],
+  questions: [
+    'Considering only cubes in the region x=-50..50,y=-50..50,z=-50..50, How many cubes are on?',
+    'How many cubes are on?',
+  ],
   solutions: [503864],
-  answer1: (puzzle) => solve(puzzle, -50, 50),
-  // answer2: (puzzle) => solve(puzzle),
+  answer1: (puzzle) => bruteForce(puzzle.split('\n').slice(0, 20)),
+  answer2: (puzzle) => solve(puzzle.split('\n')),
   example: [
     {
       input: `on x=10..12,y=10..12,z=10..12
