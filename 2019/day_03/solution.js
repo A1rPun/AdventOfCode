@@ -1,5 +1,5 @@
 import { toInt } from '../../js/december.js';
-import AStar from '../../js/astar.js';
+import { manhattanDistance } from '../../js/astar.js';
 import Vector from '../../js/vector.js';
 
 class Wire {
@@ -64,7 +64,7 @@ function day_3(puzzle) {
   }, []);
 
   const answer1 = intersections
-    .map((x) => AStar.ManhattanDistance(centralPort, x))
+    .map((x) => manhattanDistance(centralPort, x))
     .sort((a, b) => a - b);
   const answer2 = intersections.sort((a, b) => a.steps - b.steps);
   return [answer1, answer2];

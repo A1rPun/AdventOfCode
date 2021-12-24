@@ -1,4 +1,4 @@
-import AStar from '../../js/astar.js';
+import { manhattanDistance } from '../../js/astar.js';
 import Vector from '../../js/vector.js';
 
 var directions = {
@@ -51,14 +51,14 @@ function day_1(puzzle) {
     points = points.concat(pts);
     endPoint = pts[pts.length - 1];
   }
-  answer1 = AStar.ManhattanDistance(startPoint, endPoint);
+  answer1 = manhattanDistance(startPoint, endPoint);
 
   var dict = {};
   for (var i = 0; i < points.length; i++) {
     var p = points[i];
     var key = p.x + '_' + p.y;
     if (dict[key]) {
-      answer2 = AStar.ManhattanDistance(startPoint, p);
+      answer2 = manhattanDistance(startPoint, p);
       break;
     } else dict[key] = true; // new Vector(endPoint.x, endPoint.y);
   }

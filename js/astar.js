@@ -1,170 +1,93 @@
-﻿const abs = Math.abs;
-const max = Math.max;
-const pow = Math.pow;
-const sqrt = Math.sqrt;
+﻿export function manhattanDistance(point, goal) {
+  return Math.abs(point.x - goal.x) + Math.abs(point.y - goal.y);
+}
 
-class p47hF1nd3r {
-  constructor(grid, tiles) {
-    this.setGrid(grid);
-    this.setAcceptableTiles(tiles);
-  }
+const Point = (x, y) => ({ x, y });
 
-  setAcceptableTiles(acceptableTiles) {
+export class AStar {
+  constructor(grid, acceptableTiles) {
+    this.grid = grid || [[]];
     this.acceptableTiles = acceptableTiles || [0];
-  }
-
-  setGrid(level) {
-    this.grid = level || [[]];
-    this.worldHeight = level.length;
-    this.worldWidth = level[0].length;
+    this.worldMin = -1;
+    this.worldHeight = grid.length;
+    this.worldWidth = grid[0].length;
     this.worldSize = this.worldHeight * this.worldWidth;
   }
 
-  static ManhattanDistance(Point, Goal) {
-    // linear movement - no diagonals - just cardinal directions (NSEW)
-    return abs(Point.x - Goal.x) + abs(Point.y - Goal.y);
-  }
+  neighbours(x, y) {
+    const north = y - 1;
+    const east = x + 1;
+    const south = y + 1;
+    const west = x - 1;
+    const result = [];
+    const canWalkHere = (x, y) =>
+      this.acceptableTiles.find((tt) => tt === this.grid[y][x]);
 
-  static DiagonalDistance(Point, Goal) {
-    // diagonal movement - assumes diag dist is 1, same as cardinals
-    return max(abs(Point.x - Goal.x), abs(Point.y - Goal.y));
-  }
+    if (north > this.worldMin && canWalkHere(x, north))
+      result.push(Point(x, north));
+    if (east < this.worldWidth && canWalkHere(east, y))
+      result.push(Point(east, y));
+    if (south < this.worldHeight && canWalkHere(x, south))
+      result.push(Point(x, south));
+    if (west > this.worldMin && canWalkHere(west, y))
+      result.push(Point(west, y));
 
-  static EuclideanDistance(Point, Goal) {
-    // diagonals are considered a little farther than cardinal directions
-    return sqrt(pow(Point.x - Goal.x, 2) + pow(Point.y - Goal.y, 2));
-  }
-
-  Neighbours(x, y) {
-    const N = y - 1,
-      S = y + 1,
-      E = x + 1,
-      W = x - 1,
-      myN = N > -1 && this.canWalkHere(x, N),
-      myS = S < this.worldHeight && this.canWalkHere(x, S),
-      myE = E < this.worldWidth && this.canWalkHere(E, y),
-      myW = W > -1 && this.canWalkHere(W, y),
-      result = [];
-
-    if (myN) result.push({ x: x, y: N });
-    if (myE) result.push({ x: E, y: y });
-    if (myS) result.push({ x: x, y: S });
-    if (myW) result.push({ x: W, y: y });
     return result;
   }
 
-  DiagonalNeighbours(myN, myS, myE, myW, N, S, E, W, result) {
-    if (myN) {
-      if (myE && this.canWalkHere(E, N)) result.push({ x: E, y: N });
-      if (myW && this.canWalkHere(W, N)) result.push({ x: W, y: N });
-    }
-    if (myS) {
-      if (myE && this.canWalkHere(E, S)) result.push({ x: E, y: S });
-      if (myW && this.canWalkHere(W, S)) result.push({ x: W, y: S });
-    }
-  }
+  findPath([x1, y1], [x2, y2], fn) {
+    const distanceFunction = manhattanDistance ?? fn;
+    const Node = (point, parent = null) => ({
+      ...point,
+      parent,
+      value: point.x + point.y * this.worldWidth,
+      f: 0,
+      g: 0,
+    });
+    const pathStart = Node(Point(x1, y1));
+    const pathEnd = Node(Point(x2, y2));
+    let open = [pathStart];
+    let closed = [];
+    let aStar = [];
 
-  DiagonalNeighboursFree(myN, myS, myE, myW, N, S, E, W, result) {
-    myN = N > -1;
-    myS = S < this.worldHeight;
-    myE = E < this.worldWidth;
-    myW = W > -1;
-    if (myE) {
-      if (myN && this.canWalkHere(E, N)) result.push({ x: E, y: N });
-      if (myS && this.canWalkHere(E, S)) result.push({ x: E, y: S });
-    }
-    if (myW) {
-      if (myN && this.canWalkHere(W, N)) result.push({ x: W, y: N });
-      if (myS && this.canWalkHere(W, S)) result.push({ x: W, y: S });
-    }
-  }
+    let path = [];
+    let length;
 
-  canWalkHere(x, y) {
-    return (
-      this.grid &&
-      this.grid[y] &&
-      this.acceptableTiles.indexOf(this.grid[y][x]) !== -1
-    );
-  }
+    while ((length = open.length)) {
+      let max = this.worldSize;
+      let min = this.worldMin;
 
-  findPath(pathStart, pathEnd) {
-    const distanceFunction = p47hF1nd3r.ManhattanDistance;
-    const findNeighbours = () => {};
-    const a = this;
-    function Node(Parent, Point) {
-      return {
-        Parent: Parent,
-        value: Point.x + Point.y * a.worldWidth,
-        x: Point.x,
-        y: Point.y,
-        f: 0,
-        g: 0,
-      };
-    }
-    const mypathStart = Node(null, { x: pathStart[0], y: pathStart[1] });
-    const mypathEnd = Node(null, { x: pathEnd[0], y: pathEnd[1] });
-    let AStar = [];
-    let Open = [mypathStart];
-    let Closed = [];
-    let result = [];
-    let myNeighbours;
-    let myNode;
-    let myPath;
-    let length, max, min, i, j;
-
-    while ((length = Open.length)) {
-      max = this.worldSize;
-      min = -1;
-      for (i = 0; i < length; i++) {
-        if (Open[i].f < max) {
-          max = Open[i].f;
+      for (let i = 0; i < length; i++) {
+        if (open[i].f < max) {
+          max = open[i].f;
           min = i;
         }
       }
-      myNode = Open.splice(min, 1)[0];
-      if (myNode.value === mypathEnd.value) {
-        myPath = Closed[Closed.push(myNode) - 1];
+      let node = open.splice(min, 1)[0];
+
+      if (node.value === pathEnd.value) {
+        let nextNode = closed[closed.push(node) - 1];
+
         do {
-          result.push([myPath.x, myPath.y]);
-        } while ((myPath = myPath.Parent));
-        AStar = Closed = Open = [];
-        result.reverse();
+          path.push([nextNode.x, nextNode.y]);
+        } while ((nextNode = nextNode.parent));
+
+        aStar = closed = open = [];
+        path.reverse();
       } else {
-        myNeighbours = this.Neighbours(myNode.x, myNode.y);
-        for (i = 0, j = myNeighbours.length; i < j; i++) {
-          myPath = Node(myNode, myNeighbours[i]);
-          if (!AStar[myPath.value]) {
-            myPath.g = myNode.g + distanceFunction(myNeighbours[i], myNode);
-            myPath.f = myPath.g + distanceFunction(myNeighbours[i], mypathEnd);
-            Open.push(myPath);
-            AStar[myPath.value] = true;
+        for (const neighbour of this.neighbours(node.x, node.y)) {
+          let nextNode = Node(neighbour, node);
+
+          if (!aStar[nextNode.value]) {
+            nextNode.g = node.g + distanceFunction(neighbour, node);
+            nextNode.f = nextNode.g + distanceFunction(neighbour, pathEnd);
+            open.push(nextNode);
+            aStar[nextNode.value] = true;
           }
         }
-        Closed.push(myNode);
+        closed.push(node);
       }
     }
-    return result;
+    return path;
   }
 }
-
-export default p47hF1nd3r;
-/*
-// alternate heuristics
-
-// diagonals allowed but no sqeezing through cracks:
-const distanceFunction = DiagonalDistance;
-const findNeighbours = DiagonalNeighbours;
-
-// diagonals and squeezing through cracks allowed:
-const distanceFunction = DiagonalDistance;
-const findNeighbours = DiagonalNeighboursFree;
-
-// euclidean but no squeezing through cracks:
-const distanceFunction = EuclideanDistance;
-const findNeighbours = DiagonalNeighbours;
-
-// euclidean and squeezing through cracks allowed:
-const distanceFunction = EuclideanDistance;
-const findNeighbours = DiagonalNeighboursFree;
-
-*/

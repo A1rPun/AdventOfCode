@@ -1,4 +1,4 @@
-import AStar from '../../js/astar.js';
+import { manhattanDistance } from '../../js/astar.js';
 import Vector from '../../js/vector.js';
 
 function generateSpiralGrid(count) {
@@ -90,7 +90,7 @@ function day_3(puzzle) {
   var grid = generateSpiralGrid(puzzle);
   var axiom = pointOnSpiralGrid(grid, 1);
   var point = pointOnSpiralGrid(grid, puzzle);
-  var answer1 = AStar.ManhattanDistance(point, axiom);
+  var answer1 = manhattanDistance(point, axiom);
   var answer2 = generateNeighbourSpiralGrid(puzzle);
   return [answer1, answer2];
 }

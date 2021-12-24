@@ -1,5 +1,5 @@
 import { getNumbers, safeAdd } from '../../js/december.js';
-import AStar from '../../js/astar.js';
+import { manhattanDistance } from '../../js/astar.js';
 
 function day_6(puzzle) {
   const coordinates = puzzle.split('\n').map((c, i) => {
@@ -14,7 +14,7 @@ function day_6(puzzle) {
     for (let x = 0; x < 400; x++) {
       const coordinate = { x, y };
       coordinates.forEach(
-        (x) => (x.distance = AStar.ManhattanDistance(x, coordinate))
+        (x) => (x.distance = manhattanDistance(x, coordinate))
       );
       coordinates.sort((a, b) =>
         a.distance > b.distance ? 1 : b.distance > a.distance ? -1 : 0

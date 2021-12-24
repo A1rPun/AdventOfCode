@@ -1,5 +1,5 @@
 import { createSquareGrid, toInt } from '../../js/december.js';
-import AStar from '../../js/astar.js';
+import { AStar } from '../../js/astar.js';
 
 export default {
   title: 'Chiton',
@@ -11,17 +11,12 @@ export default {
     const check = puzzle.split('\n');
     const grid = createSquareGrid(10, (x, y) => toInt(check[y][x]));
 
-    const myAStar = new AStar(10, 10);
-    myAStar.loadMap(grid);
-    myAStar.setStart(0, 0);
-    myAStar.setDestination(9, 9);
+    const aStar = new AStar(grid, [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    const path = aStar.findPath([0, 0], [9, 9]);
 
-    const myPath = myAStar.findPath();
-    return myPath;
+    return path.length;
   },
-  answer2: (puzzle) => {
-
-  },
+  // answer2: (puzzle) => {},
   example: [
     {
       input: `1163751742
