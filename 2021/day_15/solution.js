@@ -1,4 +1,4 @@
-import { createSquareGrid } from '../../js/december.js';
+import { createSquareGrid, toInt } from '../../js/december.js';
 import AStar from '../../js/astar.js';
 
 export default {
@@ -8,14 +8,20 @@ export default {
     '',
   ],
   answer1: (puzzle) => {
-    const grid = createSquareGrid(10);
+    const check = puzzle.split('\n');
+    const grid = createSquareGrid(10, (x, y) => toInt(check[y][x]));
 
-    const astar = new AStar(grid, [0,1,2,3,4,5,6,7,8,9]);
-    const path = astar.findPath([0, 0], [9 ,9]);
+    const myAStar = new AStar(10, 10);
+    myAStar.loadMap(grid);
+    myAStar.setStart(0, 0);
+    myAStar.setDestination(9, 9);
 
-    return path;
+    const myPath = myAStar.findPath();
+    return myPath;
   },
-  answer2: (puzzle) => {},
+  answer2: (puzzle) => {
+
+  },
   example: [
     {
       input: `1163751742
