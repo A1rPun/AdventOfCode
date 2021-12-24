@@ -1,10 +1,8 @@
 #!/usr/bin/env node
 import fs from 'fs';
 import years from './module.js';
-import { setSink } from './js/december.js';
 
 let day, year, exampleN;
-setSink(() => {});
 main();
 
 async function handleAnswer(answer, input) {
