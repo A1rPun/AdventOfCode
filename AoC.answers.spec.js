@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import fs from 'fs';
 
 import years from './module.js';

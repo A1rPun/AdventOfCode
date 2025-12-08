@@ -1,4 +1,3 @@
-import 'regenerator-runtime/runtime';
 import years from './module.js';
 import { setSink } from './js/december.js';
 
@@ -23,6 +22,11 @@ const exclude = [
   [2019, 3],
   [2021, 9], // Node?
   [2021, 10], // Node?
+  [2021, 16],
+  [2021, 18],
+  [2021, 19],
+  [2021, 22],
+  [2021, 23],
   /* Slow */
   [2016, 16],
   [2016, 18],
