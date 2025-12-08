@@ -62,7 +62,7 @@ function getInputForDay(x) {
   try {
     const fileName = `${year}/day_${day.toString().padStart(2, '0')}/input`;
     const data = fs.readFileSync(fileName, 'utf8');
-    return data.trim();
+    return data.trimEnd();
   } catch (err) {
     console.error(err);
   }
