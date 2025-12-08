@@ -81,7 +81,8 @@ export default {
     return answer(planets, ['YOU', 'SAN']);
   },
   example: [
-    `COM)B
+    {
+      input: `COM)B
 B)C
 C)D
 D)E
@@ -94,7 +95,8 @@ J)K
 K)L
 K)YOU
 I)SAN`,
+      solutions: [54, 4],
+    },
   ],
-  exampleSolutions: [54, 4],
   solutions: [358244, 517],
 };

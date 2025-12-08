@@ -43,13 +43,15 @@ export default {
   questions: "What is the size of the largest area that isn't infinite?",
   answer: day_6,
   example: [
-    `1, 1
+    {
+      input: `1, 1
 1, 6
 8, 3
 3, 4
 5, 5
 8, 9`,
+      solutions: [,],
+    },
   ],
-  exampleSolutions: [,],
   solutions: [4589, 40252],
 };

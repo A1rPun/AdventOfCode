@@ -46,7 +46,8 @@ export default {
   questions: 'What is the error-corrected version of the message being sent?',
   answer: day_6,
   example: [
-    `eedadn
+    {
+      input: `eedadn
 drvtee
 eandsr
 raavrd
@@ -62,7 +63,8 @@ vntsnd
 vrdear
 dvrsen
 enarar`,
+      solutions: ['easter', 'advent'],
+    },
   ],
-  exampleSolutions: ['easter', 'advent'],
   solutions: ['qqqluigu', 'lsoypmia'],
 };

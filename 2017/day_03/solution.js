@@ -100,7 +100,11 @@ export default {
     'How many steps are required to carry the data from the square identified in your puzzle input all the way to the access port?',
   answer: day_3,
   input: 347991,
-  example: [12],
-  // exampleSolutions: [,],
+  example: [
+    {
+      input: 12,
+      solutions: [],
+    },
+  ],
   solutions: [480, 349975],
 };

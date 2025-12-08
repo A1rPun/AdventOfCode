@@ -18,7 +18,6 @@ const exclude = [
   [2016, 14],
   [2017, 21],
   [2018, 6],
-  [2018, 9],
   [2019, 3],
   [2021, 9], // Node?
   [2021, 10], // Node?
@@ -37,9 +36,13 @@ const exclude = [
   /* Solve */
   [2018, 19],
   [2019, 7],
+  [2019, 15],
   [2019, 22],
   [2019, 24],
   [2020, 4],
+  [2025, 2],
+  [2025, 5],
+  [2025, 8],
 ];
 
 const days = years.flatMap((x, i) =>
@@ -62,24 +65,20 @@ days.forEach(async function (x) {
     return;
   }
 
+
   x.example?.forEach(async function (example, s, { length }) {
-    if (typeof example === 'string') {
-      if (!x.exampleSolutions) return;
-
-      test(getTitle(x.year, x.day), async function () {
-        const [a1, a2] = await handleAnswer(x.answer, example);
-        const [s1, s2] = x.exampleSolutions;
-        if (s1 !== undefined) expect(a1).toBe(s1);
-        if (s2 !== undefined) expect(a2).toBe(s2);
-      });
-
-      return;
-    }
-
     if (!example.solutions) return;
 
     const [s1, s2] = example.solutions;
     const step = length > 1 ? s + 1 : 0;
+
+    if (x.answer && (s1 !== undefined || s2 !== undefined)) {
+      test(getTitle(x.year, x.day), async function () {
+        const [a1, a2] = await handleAnswer(x.answer, example.input);
+        if (s1 !== undefined) expect(a1).toBe(s1);
+        if (s2 !== undefined) expect(a2).toBe(s2);
+      });
+    }
 
     if (x.answer1 && s1 !== undefined) {
       test(getTitle(x.year, x.day, 1, step), async function () {

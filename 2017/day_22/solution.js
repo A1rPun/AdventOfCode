@@ -48,10 +48,12 @@ export default {
     'Given your actual map, after 10000 bursts of activity, how many bursts cause a node to become infected?',
   answer: day_22,
   example: [
-    `..#
+    {
+      input: `..#
 #..
 ...`,
-  ],
-  exampleSolutions: [, 2511944], // 5587
+      solutions: [, 2511944],
+    },
+  ], // 5587
   solutions: [5322, 2512079],
 };

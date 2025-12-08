@@ -42,7 +42,11 @@ export default {
   ],
   answer1,
   answer2: (puzzle) => {},
-  example: [],
-  exampleSolutions: [2, ],
+  example: [
+    {
+      input: ``,
+      solutions: [2,],
+    },
+  ],
   solutions: [],
 };

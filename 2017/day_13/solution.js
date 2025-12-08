@@ -26,11 +26,13 @@ export default {
   ],
   answer: day_13,
   example: [
-    `0: 3
+    {
+      input: `0: 3
 1: 2
 4: 4
 6: 4`,
+      solutions: [24, 10],
+    },
   ],
-  exampleSolutions: [24, 10],
   solutions: [1840, 3850260],
 };

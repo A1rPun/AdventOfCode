@@ -56,11 +56,13 @@ export default {
   questions: 'What is the bathroom code?',
   answer: day_2,
   example: [
-    `ULL
+    {
+      input: `ULL
 RRDDD
 LURDL
 UUUUD`,
+      solutions: ['1985', '5DB3'],
+    },
   ],
-  exampleSolutions: ['1985', '5DB3'],
   solutions: ['99332', 'DD483'],
 };

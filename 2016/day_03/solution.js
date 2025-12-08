@@ -49,13 +49,15 @@ export default {
   questions: 'How many of the listed triangles are possible?',
   answer: day_3,
   example: [
-    `101 301 501
+    {
+      input: `101 301 501
 102 302 502
 103 303 503
 201 401 601
 202 402 602
 203 403 603`,
+      solutions: [3, 6],
+    },
   ],
-  exampleSolutions: [3, 6],
   solutions: [1050, 1921],
 };

@@ -50,7 +50,11 @@ export default {
   ],
   answer: day_6,
   input: '0	5	10	0	11	14	13	4	11	8	8	7	1	4	12	11',
-  example: ['0	2	7	0'],
-  exampleSolutions: [5, 4],
+  example: [
+    {
+      input: '0	2	7	0',
+      solutions: [5, 4],
+    },
+  ],
   solutions: [7864, 1695],
 };

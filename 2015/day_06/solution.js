@@ -57,10 +57,12 @@ export default {
   questions: 'After following the instructions, how many lights are lit?',
   answer: day_6,
   example: [
-    `turn on 0,0 through 999,999
+    {
+      input: `turn on 0,0 through 999,999
 toggle 0,0 through 999,0
 turn off 499,499 through 500,500`,
+      solutions: [998996, 1001996],
+    },
   ],
-  exampleSolutions: [998996, 1001996],
   solutions: [377891, 14110788],
 };

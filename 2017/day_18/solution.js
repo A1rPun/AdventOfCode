@@ -78,14 +78,16 @@ export default {
   ],
   answer: day_18,
   example: [
-    `snd 1
+    {
+      input: `snd 1
 snd 2
 snd p
 rcv a
 rcv b
 rcv c
 rcv d`,
+      solutions: [0, 3],
+    },
   ],
-  exampleSolutions: [0, 3],
   solutions: [4601, 6858],
 };

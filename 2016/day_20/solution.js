@@ -34,10 +34,12 @@ export default {
   ],
   answer: day_20,
   example: [
-    `5-8
+    {
+      input: `5-8
 0-2
 4-7`,
+      solutions: [3, 2],
+    },
   ],
-  exampleSolutions: [3, 2],
   solutions: [14975795, 101],
 };

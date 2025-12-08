@@ -52,7 +52,11 @@ export default {
     // computer.run();
     return;
   },
-  example: [],
-  exampleSolutions: [],
+  example: [
+    {
+      input: ``,
+      solutions: [],
+    },
+  ],
   solutions: [7584],
 };

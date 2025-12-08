@@ -61,7 +61,11 @@ export default {
     'How many non-canceled characters are within the garbage in your puzzle input?',
   ],
   answer: day_9,
-  example: ['{{<!!>},{<!!>},{<!!>},{<!!>}}'],
-  exampleSolutions: [9, 0],
+  example: [
+    {
+      input: '{{<!!>},{<!!>},{<!!>},{<!!>}}',
+      solutions: [9, 0],
+    },
+  ],
   solutions: [10050, 4482],
 };

@@ -43,7 +43,8 @@ export default {
     "What is the diagnostic checksum it produces once it's working again?",
   answer: day_25,
   example: [
-    `Begin in state A.
+    {
+      input: `Begin in state A.
 Perform a diagnostic checksum after 6 steps.
 
 In state A:
@@ -65,7 +66,8 @@ In state B:
     - Write the value 1.
     - Move one slot to the right.
     - Continue with state A.`,
+      solutions: [3,],
+    },
   ],
-  exampleSolutions: [3,],
   solutions: [3732, 50],
 };

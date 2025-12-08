@@ -59,7 +59,8 @@ export default {
   ],
   answer: day_10,
   example: [
-    `position=< 9,  1> velocity=< 0,  2>
+    {
+      input: `position=< 9,  1> velocity=< 0,  2>
 position=< 7,  0> velocity=<-1,  0>
 position=< 3, -2> velocity=<-1,  1>
 position=< 6, 10> velocity=<-2, -1>
@@ -90,7 +91,8 @@ position=<-6,  0> velocity=< 2,  0>
 position=< 5,  9> velocity=< 1, -2>
 position=<14,  7> velocity=<-2,  0>
 position=<-3,  6> velocity=< 2, -1>`,
-  ],
-  exampleSolutions: [, 2], // ['HI']
+      solutions: [, 2],
+    },
+  ], // ['HI']
   solutions: ['HJBJXRAZ', 10641],
 };

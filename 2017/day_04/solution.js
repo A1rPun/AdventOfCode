@@ -29,10 +29,12 @@ export default {
   questions: 'How many passphrases are valid?',
   answer: day_4,
   example: [
-    `aa bb cc dd ee
+    {
+      input: `aa bb cc dd ee
 aa bb cc dd aa
 aa bb cc dd aaa`,
+      solutions: [2, 2],
+    },
   ],
-  exampleSolutions: [2, 2],
   solutions: [325, 119],
 };

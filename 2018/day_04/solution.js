@@ -69,7 +69,8 @@ export default {
     'What is the ID of the guard you chose multiplied by the minute you chose?',
   answer: day_4,
   example: [
-    `[1518-11-01 00:00] Guard #10 begins shift
+    {
+      input: `[1518-11-01 00:00] Guard #10 begins shift
 [1518-11-04 00:02] Guard #99 begins shift
 [1518-11-04 00:46] wakes up
 [1518-11-05 00:03] Guard #99 begins shift
@@ -86,7 +87,8 @@ export default {
 [1518-11-01 00:55] wakes up
 [1518-11-03 00:05] Guard #10 begins shift
 [1518-11-05 00:55] wakes up`,
+      solutions: [240, 4455],
+    },
   ],
-  exampleSolutions: [240, 4455],
   solutions: [99911, 65854],
 };

@@ -77,7 +77,11 @@ export default {
     'What is the fewest combined steps the wires must take to reach an intersection?',
   ],
   answer: day_3,
-  example: ['R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7'],
-  exampleSolutions: [135, 410],
+  example: [
+    {
+      input: `R98,U47,R26,D63,R33,U87,L62,D20,R33,U53,R51\nU98,R91,D20,R16,D67,R40,U7,R15,U6,R7`,
+      solutions: [135, 410],
+    },
+  ],
   solutions: [1264, 37390],
 };

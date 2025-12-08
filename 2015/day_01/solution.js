@@ -10,7 +10,11 @@ export default {
     }
     return [answer1, answer2];
   },
-  example: ['()())'],
-  exampleSolutions: [-1, 5],
+  example: [
+    {
+      input: '()())',
+      solutions : [-1, 5],
+    },
+  ],
   solutions: [232, 1783],
 };

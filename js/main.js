@@ -139,10 +139,9 @@ async function handleExample(day, example) {
     ? day.answer2
     : (input, animate) => day.answer(input, animate)[1];
 
-  const oldStyle = typeof example === 'string';
-  const exampleInput = oldStyle ? example : example.input;
-  const solution1 = oldStyle ? day.exampleSolutions?.[0] : example.solutions[0];
-  const solution2 = oldStyle ? day.exampleSolutions?.[1] : example.solutions[1];
+  const exampleInput = typeof example === 'string' ? example : example.input;
+  const solution1 = example.solutions?.[0];
+  const solution2 = example.solutions?.[1];
 
   logCode('Example input');
   logCode(`${exampleInput}`);

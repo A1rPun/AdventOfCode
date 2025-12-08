@@ -28,12 +28,14 @@ export default {
     return [answer1(jumps.slice()), answer2(jumps.slice())];
   },
   example: [
-    `0
+    {
+      input: `0
 3
 0
 1
 -3`,
+      solutions: [5, 10],
+    },
   ],
-  exampleSolutions: [5, 10],
   solutions: [378980, 26889114],
 };

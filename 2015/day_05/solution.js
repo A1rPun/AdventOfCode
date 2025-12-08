@@ -57,7 +57,8 @@ export default {
   ],
   answer: day_5,
   example: [
-    `qjhvhtzxzqqjkmpb
+    {
+      input: `qjhvhtzxzqqjkmpb
 xxyxx
 uurcxstgmygtbstg
 ieodomkazucvgmuy
@@ -67,7 +68,8 @@ aaa
 jchzalrnumimnmhp
 haegwjzuvuyypxyu
 dvszwmarrgswjxmb`,
+      solutions: [2, 2],
+    },
   ],
-  exampleSolutions: [2, 2],
   solutions: [236, 51],
 };

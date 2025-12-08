@@ -77,8 +77,12 @@ export default {
   title: 'Fractal Art',
   questions: 'How many pixels stay on after 5 iterations?',
   answer: day_21,
-  example: ['../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#'],
-  exampleSolutions: [12,],
+  example: [
+    {
+      input: '../.# => ##./#../...\n.#./..#/### => #..#/..../..../#..#',
+      solutions: [12,],
+    },
+  ],
   solutions: [142, 1879071],
 };
 

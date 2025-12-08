@@ -48,13 +48,30 @@ export default {
   answer: day_9,
   input: '416 players; last marble is worth 71617 points',
   example: [
-    `9 players; last marble is worth 25 points: high score is 32`,
-    `10 players; last marble is worth 1618 points: high score is 8317`,
-    `13 players; last marble is worth 7999 points: high score is 146373`,
-    `17 players; last marble is worth 1104 points: high score is 2764`,
-    `21 players; last marble is worth 6111 points: high score is 54718`,
-    `30 players; last marble is worth 5807 points: high score is 37305`,
+    {
+      input: '9 players; last marble is worth 25 points: high score is 32',
+      solutions: [32, 22563],
+    },
+    {
+      input: '10 players; last marble is worth 1618 points: high score is 8317',
+      solutions: [8317, 74765078],
+    },
+    {
+      input: '13 players; last marble is worth 7999 points: high score is 146373',
+      solutions: [146373, 1406506154],
+    },
+    {
+      input: '17 players; last marble is worth 1104 points: high score is 2764',
+      solutions: [2764, 20548882],
+    },
+    {
+      input: '21 players; last marble is worth 6111 points: high score is 54718',
+      solutions: [54718, 507583214],
+    },
+    {
+      input: '30 players; last marble is worth 5807 points: high score is 37305',
+      solutions: [37305, 320997431],
+    },
   ],
-  exampleSolutions: [32, 22563], // TODO: Multiple tests
   solutions: [436720, 3527845091],
 };

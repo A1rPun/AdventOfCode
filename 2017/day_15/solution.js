@@ -31,8 +31,12 @@ export default {
   title: 'Dueling Generators',
   questions: "After 40 million pairs, what is the judge's final count?",
   // answer: day_15,
-  example: ['Generator A starts with 65\nGenerator B starts with 8921'],
+  example: [
+    {
+      input: 'Generator A starts with 65\nGenerator B starts with 8921',
+      solutions: [],
+    },
+  ],
   // hasAnimation: true,
-  // exampleSolutions: [,],
   solutions: [573, 294],
 };

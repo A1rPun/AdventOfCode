@@ -39,7 +39,11 @@ export default {
   ],
   input: '382345-843167',
   answer: day_1,
-  example: ['112233-112233'],
-  exampleSolutions: [1, 1],
+  example: [
+    {
+      input: `112233-112233`,
+      solutions: [1, 1],
+    },
+  ],
   solutions: [460, 290],
 };

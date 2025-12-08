@@ -70,13 +70,15 @@ export default {
   ],
   answer: day_19,
   example: [
-    `     |          
+    {
+      input: `     |          
      |  +--+    
      A  |  C    
  F---|----E|--+ 
      |  |  |  D 
      +B-+  +--+ `,
+      solutions: ['ABCDEF', 38],
+    },
   ],
-  exampleSolutions: ['ABCDEF', 38],
   solutions: ['QPRYCIOLU', 16162],
 };

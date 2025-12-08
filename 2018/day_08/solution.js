@@ -40,7 +40,11 @@ export default {
     'What is the value of the root node?',
   ],
   answer: day_8,
-  example: [`2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2`],
-  exampleSolutions: [138, 66],
+  example: [
+    {
+      input: `2 3 0 3 10 11 12 1 1 0 1 99 2 1 1 2`,
+      solutions: [138, 66],
+    },
+  ],
   solutions: [41926, 24262],
 };

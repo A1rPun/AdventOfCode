@@ -43,7 +43,11 @@ export default {
   ],
   answer: day_13,
   input: 1358,
-  example: ['10'],
-  exampleSolutions: [11,],
+  example: [
+    {
+      input: '10',
+      solutions: [11,],
+    },
+  ],
   solutions: [96, 141],
 };

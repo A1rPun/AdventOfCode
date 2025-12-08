@@ -43,14 +43,16 @@ export default {
   ],
   answer: day_2,
   example: [
-    `abcde
+    {
+      input: `abcde
 fghij
 klmno
 pqrst
 fguij
 axcye
 wvxyz`,
+      solutions: [0, 'fgij'],
+    },
   ],
-  exampleSolutions: [0, 'fgij'],
   solutions: [4940, 'wrziyfdmlumeqvaatbiosngkc'],
 };

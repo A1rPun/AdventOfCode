@@ -35,7 +35,11 @@ export default {
     'What is the length of the shortest polymer you can produce',
   ],
   answer: day_5,
-  example: ['dabAcCaCBAcCcaDA'],
-  exampleSolutions: [10, 4],
+  example: [
+    {
+      input: `dabAcCaCBAcCcaDA`,
+      solutions: [10, 4],
+    },
+  ],
   solutions: [9060, 6310],
 };

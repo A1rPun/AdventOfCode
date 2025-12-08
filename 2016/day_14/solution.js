@@ -22,7 +22,11 @@ export default {
     'Given the actual salt in your puzzle input, what index produces your 64th one-time pad key?',
   answer: day_14,
   input: 'qzyelonm',
-  example: ['abc'],
-  exampleSolutions: [22728, 22551],
+  example: [
+    {
+      input: 'abc',
+      solutions: [22728, 22551],
+    },
+  ],
   solutions: [15168, 20864],
 };

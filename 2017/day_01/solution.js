@@ -20,7 +20,11 @@ export default {
   answer: function(puzzle) {
     return getAnswer(puzzle);
   },
-  example: ['12131415'],
-  exampleSolutions: [,4],
+  example: [
+    {
+      input: '12131415',
+      solutions: [,4],
+    },
+  ],
   solutions: [,1232],
 };

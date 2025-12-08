@@ -29,7 +29,11 @@ export default {
     '... when also taking into account the mass of the added fuel? ',
   ],
   answer: day_1,
-  example: ['1969'],
-  exampleSolutions: [654, 966],
+  example: [
+    {
+      input: `1969`,
+      solutions: [654, 966],
+    },
+  ],
   solutions: [3249817, 4871866],
 };

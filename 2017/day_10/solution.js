@@ -75,7 +75,11 @@ export default {
   ],
   answer: day_10,
   input: '147,37,249,1,31,2,226,0,161,71,254,243,183,255,30,70',
-  example: ['1,2,3'],
-  exampleSolutions: [0, '3efbe78a8d82f29979031a4aa0b16a9d'],
+  example: [
+    {
+      input: '1,2,3',
+      solutions: [0, '3efbe78a8d82f29979031a4aa0b16a9d'],
+    },
+  ],
   solutions: [37230, '70b856a24d586194331398c7fcfa0aaf'],
 };

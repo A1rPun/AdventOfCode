@@ -76,7 +76,8 @@ export default {
     'What is the strength of the strongest bridge you can make with the components you have available?',
   answer: day_24,
   example: [
-    `0/2
+    {
+      input: `0/2
 2/2
 2/3
 3/4
@@ -84,8 +85,9 @@ export default {
 0/1
 10/1
 9/10`,
+      solutions: [31, 19],
+    },
   ],
-  exampleSolutions: [31, 19],
   solutions: [1695, 1673],
 };
 

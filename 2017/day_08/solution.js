@@ -52,11 +52,13 @@ export default {
   questions: 'What is the largest value in any register?',
   answer: day_8,
   example: [
-    `b inc 5 if a > 1
+    {
+      input: `b inc 5 if a > 1
 a inc 1 if b < 5
 c dec -10 if a >= 1
 c inc -20 if c == 10`,
+      solutions: [1, 10],
+    },
   ],
-  exampleSolutions: [1, 10],
   solutions: [6343, 7184],
 };

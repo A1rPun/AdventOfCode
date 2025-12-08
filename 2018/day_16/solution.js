@@ -63,14 +63,16 @@ export default {
   ],
   answer: day_16,
   example: [
-    `Before: [3, 2, 1, 1]
+    {
+      input: `Before: [3, 2, 1, 1]
 9 2 1 2
 After:  [3, 2, 2, 1]
 
 
 
 9 2 1 2`,
+      solutions: [1],
+    },
   ],
-  exampleSolutions: [1],
   solutions: [570],
 };

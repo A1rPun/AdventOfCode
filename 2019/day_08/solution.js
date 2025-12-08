@@ -43,7 +43,11 @@ export default {
     'What message is produced after decoding your image?',
   ],
   answer: day_8,
-  example: ['123456789012'],
-  exampleSolutions: [4, '123456789012\n'],
+  example: [
+    {
+      input: '123456789012',
+      solutions: [4, '123456789012\n'],
+    },
+  ],
   solutions: [2684, 'YGRYZ'],
 };

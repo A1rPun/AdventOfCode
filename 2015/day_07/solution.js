@@ -41,7 +41,8 @@ export default {
     "In little Bobby's kit's instructions booklet, what signal is ultimately provided to wire a?",
   answer: day_7,
   example: [
-    `123 -> x
+    {
+      input: `123 -> x
 456 -> y
 x AND y -> d
 x OR y -> e
@@ -49,7 +50,8 @@ x LSHIFT 2 -> f
 y RSHIFT 2 -> g
 NOT x -> h
 NOT y -> i`,
+      solutions: [],
+    },
   ],
-  // exampleSolutions: [,],
   solutions: [],
 };

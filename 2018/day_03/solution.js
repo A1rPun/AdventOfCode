@@ -42,10 +42,12 @@ export default {
   ],
   answer: day_3,
   example: [
-    `#1 @ 1,3: 4x4
+    {
+      input: `#1 @ 1,3: 4x4
 #2 @ 3,1: 4x4
 #3 @ 5,5: 2x2`,
+      solutions: [4, 3],
+    },
   ],
-  exampleSolutions: [4, 3],
   solutions: [120408, 1276],
 };

@@ -45,8 +45,10 @@ export default {
   ],
   answer: day_15,
   example: [
-    'Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 positions; at time=0, it is at position 1.',
+    {
+      input: 'Disc #1 has 5 positions; at time=0, it is at position 4.\nDisc #2 has 2 positions; at time=0, it is at position 1.',
+      solutions: [, 85],
+    },
   ],
-  exampleSolutions: [, 85],
   solutions: [121834, 3208099],
 };

@@ -72,7 +72,11 @@ export default {
     'How many blocks away is the first location you visit twice?',
   ],
   answer: day_1,
-  example: ['R5, L5, R5, R3, R8, R4, R4, R8'],
-  // exampleSolutions: [,],
+  example: [
+    {
+      input: 'R5, L5, R5, R3, R8, R4, R4, R8',
+      solutions: [],
+    },
+  ],
   solutions: [307, 165],
 };

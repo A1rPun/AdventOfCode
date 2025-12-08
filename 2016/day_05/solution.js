@@ -33,8 +33,12 @@ export default {
     'Given the actual Door ID and this new method, what is the password? Be extra proud of your solution if it uses a cinematic "decrypting" animation.',
   answer: day_5,
   input: 'ffykfhsq',
-  example: ['abc'],
-  exampleSolutions: ['18f47a30', '05ace8e3'],
+  example: [
+    {
+      input: 'abc',
+      solutions: ['18f47a30', '05ace8e3'],
+    },
+  ],
   solutions: ['c6697b55', '8c35d1ab'],
   hasAnimation: true,
 };

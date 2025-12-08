@@ -65,7 +65,8 @@ export default {
   ],
   answer: day_7,
   example: [
-    `abba[mnop]qrst
+    {
+      input: `abba[mnop]qrst
 abcd[bddb]xyyx
 aaaa[qwer]tyui
 ioxxoj[asdfgh]zxcvbn
@@ -73,7 +74,8 @@ aba[bab]xyz
 xyx[xyx]xyx
 aaa[kek]eke
 zazbz[bzb]cdb`,
+      solutions: [2, 3],
+    },
   ],
-  exampleSolutions: [2, 3],
   solutions: [105, 258],
 };

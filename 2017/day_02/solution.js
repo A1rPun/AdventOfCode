@@ -29,10 +29,12 @@ export default {
   ],
   answer: day_2,
   example: [
-    `5	9	2	8
+    {
+      input: `5	9	2	8
 9	4	7	3
 3	8	6	5`,
+      solutions: [18, 9],
+    },
   ],
-  exampleSolutions: [18, 9],
   solutions: [43074, 280],
 };

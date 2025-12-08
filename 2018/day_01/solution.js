@@ -23,11 +23,15 @@ export default {
     'What is the first frequency your device reaches twice?',
   ],
   answer: day_1,
-  example: [`+7
+  example: [
+    {
+      input: `+7
 +7
 -2
 -7
--4`],
-  exampleSolutions: [1, 14],
+-4`,
+      solutions: [1, 14],
+    },
+  ],
   solutions: [533, 73272],
 };

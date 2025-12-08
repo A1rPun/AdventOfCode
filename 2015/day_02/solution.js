@@ -21,7 +21,11 @@ export default {
     'How many total feet of ribbon should they order?',
   ],
   answer: day_2,
-  example: ['2x3x4\nx1x10'],
-  exampleSolutions: [78, 36],
+  example: [
+    {
+      input: '2x3x4\nx1x10',
+      solutions: [78, 36],
+    },
+  ],
   solutions: [1588178, 3783758],
 };

@@ -59,7 +59,11 @@ export default {
     'In what order are the programs standing after their billion dances?',
   ],
   answer: day_16,
-  example: ['s1,x3/4,pe/b'], // const programs = 'abcde';
-  exampleSolutions: ['paedcbfghijklmno', 'ghidjklmnopabcef'],
+  example: [
+    {
+      input: 's1,x3/4,pe/b', // const programs = 'abcde';
+      solutions: ['paedcbfghijklmno', 'ghidjklmnopabcef'],
+    },
+  ],
   solutions: ['giadhmkpcnbfjelo', 'njfgilbkcoemhpad'],
 };

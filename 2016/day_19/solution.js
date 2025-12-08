@@ -7,7 +7,11 @@ export default {
     return [answer1, answer2];
   },
   input: 3012210,
-  example: ['5'],
-  exampleSolutions: [1,],
+  example: [
+    {
+      input: '5',
+      solutions: [1,],
+    },
+  ],
   solutions: [1830117, 1417887],
 };
