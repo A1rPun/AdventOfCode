@@ -1,22 +1,22 @@
-function Cube(x, y, z) {
-  this.x = x;
-  this.y = y;
-  this.z = z;
-}
-Cube.prototype = {
-  add: function(cube) {
+class Cube {
+  constructor(x, y, z) {
+    this.x = x;
+    this.y = y;
+    this.z = z;
+  }
+  add(cube) {
     this.x += cube.x;
     this.y += cube.y;
     this.z += cube.z;
-  },
-  distanceTo: function(cube) {
+  }
+  distanceTo(cube) {
     return Math.max(
       Math.abs(this.x - cube.x),
       Math.abs(this.y - cube.y),
       Math.abs(this.z - cube.z)
     );
-  },
-};
+  }
+}
 
 function day_11(puzzle) {
   const cube_directions = {

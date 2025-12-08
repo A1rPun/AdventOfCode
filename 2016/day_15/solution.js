@@ -1,14 +1,15 @@
 import { getNumbers } from '../../js/december.js';
 
-function Disc(positions, start) {
-  this.positions = positions;
-  this.start = start;
-}
-Disc.prototype = {
-  canPass: function (time) {
+class Disc {
+  constructor(positions, start) {
+    this.positions = positions;
+    this.start = start;
+  }
+
+  canPass(time) {
     return (time + this.start) % this.positions === 0;
-  },
-};
+  }
+}
 
 function checkTime(discs, time) {
   for (var i = 0; i < discs.length; i++) {

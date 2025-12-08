@@ -1,18 +1,18 @@
 import { getNumbers, log } from '../../js/december.js';
 
-function Bot(number, low, high, lowCollection, highCollection) {
-  this.number = number;
-  this.values = [];
-  this.low = low;
-  this.high = high;
-  this.lowCollection = lowCollection;
-  this.highCollection = highCollection;
-}
-Bot.prototype = {
-  addValue: function(val) {
+class Bot {
+  constructor(number, low, high, lowCollection, highCollection) {
+    this.number = number;
+    this.values = [];
+    this.low = low;
+    this.high = high;
+    this.lowCollection = lowCollection;
+    this.highCollection = highCollection;
+  }
+  addValue(val) {
     this.values.push(val);
-  },
-  process: function(val) {
+  }
+  process(val) {
     var highValue = this.values.pop();
     var lowValue = this.values.pop();
 
@@ -34,8 +34,8 @@ Bot.prototype = {
     }
 
     if (lowValue === 17 && highValue === 61) log(this.number);
-  },
-};
+  }
+}
 
 function day_10(puzzle) {
   puzzle = puzzle.split('\n').sort(); // forces values to be the latest instructions

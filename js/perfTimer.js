@@ -1,15 +1,15 @@
-﻿function perfTimer() {
-  this.start();
-}
-perfTimer.prototype = {
-  start: function() {
+﻿class perfTimer {
+  constructor() {
+    this.start();
+  }
+  start() {
     this.begin = performance.now();
-  },
-  stop: function() {
+  }
+  stop() {
     this.end = performance.now();
-  },
-  log: function() {
+  }
+  log() {
     return 'Execution took ' + (this.end - this.begin) + ' milliseconds.';
-  },
-};
+  }
+}
 export default perfTimer;

@@ -1,30 +1,31 @@
-function Floor(generators, microchips) {
-  this.generators = generators || [];
-  this.microchips = microchips || [];
-}
-Floor.prototype = {
-  isClear: function() {
+class Floor {
+  constructor(generators, microchips) {
+    this.generators = generators || [];
+    this.microchips = microchips || [];
+  }
+  isClear() {
     return !this.generators.length && !this.microchips.length;
-  },
-  hasGenerator: function(generator) {
+  }
+  hasGenerator(generator) {
     return this.generators.indexOf(generator) !== -1;
-  },
-  hasMicrochip: function(microchip) {
+  }
+  hasMicrochip(microchip) {
     return this.microchips.indexOf(microchip) !== -1;
-  },
-  getGenerator: function(generator) {
+  }
+  getGenerator(generator) {
     return this.generators.splice(this.generators.indexOf(generator), 1)[0];
-  },
-  setGenerator: function(generator) {
+  }
+  setGenerator(generator) {
     this.generators.push(generator);
-  },
-  getMicrochip: function(microchip) {
+  }
+  getMicrochip(microchip) {
     return this.microchips.splice(this.microchips.indexOf(microchip), 1)[0];
-  },
-  setMicrochip: function(microchip) {
+  }
+  setMicrochip(microchip) {
     this.microchips.push(microchip);
-  },
-};
+  }
+}
+
 function day_11(puzzle) {
   var answer1 = 0;
   var elevator = 0;
