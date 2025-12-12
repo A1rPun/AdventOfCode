@@ -1,3 +1,15 @@
+// export { default as day1 } from './day_01/solution.js';
+// export { default as day2 } from './day_02/solution.js';
+// export { default as day3 } from './day_03/solution.js';
+// export { default as day4 } from './day_04/solution.js';
+// export { default as day5 } from './day_05/solution.js';
+// export { default as day6 } from './day_06/solution.js';
+// export { default as day7 } from './day_07/solution.js';
+// export { default as day8 } from './day_08/solution.js';
+// export { default as day9 } from './day_09/solution.js';
+// export { default as day10 } from './day_10/solution.js';
+// export { default as day11 } from './day_11/solution.js';
+// export { default as day12 } from './day_12/solution.js';
 import day1 from './day_01/solution.js';
 import day2 from './day_02/solution.js';
 import day3 from './day_03/solution.js';
@@ -6,10 +18,10 @@ import day5 from './day_05/solution.js';
 import day6 from './day_06/solution.js';
 import day7 from './day_07/solution.js';
 import day8 from './day_08/solution.js';
-// import day9 from './day_09/solution.js';
-// import day10 from './day_10/solution.js';
-// import day11 from './day_11/solution.js';
-// import day12 from './day_12/solution.js';
+import day9 from './day_09/solution.js';
+import day10 from './day_10/solution.js';
+import day11 from './day_11/solution.js';
+import day12 from './day_12/solution.js';
 
 export default [
   day1,
@@ -20,8 +32,8 @@ export default [
   day6,
   day7,
   day8,
-  // day9,
-  // day10,
-  // day11,
-  // day12,
+  day9,
+  day10,
+  day11,
+  day12,
 ];
